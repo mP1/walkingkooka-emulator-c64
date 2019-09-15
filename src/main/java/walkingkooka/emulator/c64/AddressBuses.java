@@ -37,6 +37,15 @@ public final class AddressBuses implements PublicStaticHelper {
         return MemoryPage.create();
     }
 
+    /**
+     * {@see Rom}
+     */
+    public static AddressBus rom(final byte[] values,
+                                 final AddressBus write) {
+        return Rom.with(values, write);
+    }
+
+
     // ................................................................................................................
 
     /**
