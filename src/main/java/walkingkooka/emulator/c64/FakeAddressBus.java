@@ -14,35 +14,24 @@
  * limitations under the License.
  *
  */
+
 package walkingkooka.emulator.c64;
 
-import walkingkooka.type.PublicStaticHelper;
+import walkingkooka.test.Fake;
 
-/**
- * Collection of factory methods to create devices which provide an {@link AddressBus} for interaction with the CPU.
- */
-public final class AddressBuses implements PublicStaticHelper {
+public class FakeAddressBus implements AddressBus, Fake {
 
-    /**
-     * {@see FakeAddressBus}
-     */
-    public static AddressBus fake() {
-        return new FakeAddressBus();
+    protected FakeAddressBus() {
+        super();
     }
 
-    /**
-     * {@see MemoryPage}
-     */
-    public static AddressBus memory() {
-        return MemoryPage.create();
+    @Override
+    public byte read(final int offset) {
+        throw new UnsupportedOperationException();
     }
 
-    // ................................................................................................................
-
-    /**
-     * Stop creation.
-     */
-    private AddressBuses() {
+    @Override
+    public void write(final int offset, final byte value) {
         throw new UnsupportedOperationException();
     }
 }
