@@ -18,6 +18,8 @@ package walkingkooka.emulator.c64;
 
 import walkingkooka.type.PublicStaticHelper;
 
+import java.util.List;
+
 /**
  * Collection of factory methods to create devices which provide an {@link AddressBus} for interaction with the CPU.
  */
@@ -35,6 +37,13 @@ public final class AddressBuses implements PublicStaticHelper {
      */
     public static AddressBus memory() {
         return MemoryPage.create();
+    }
+
+    /**
+     * {@see PagedAddressBus}
+     */
+    public static AddressBus paged(final List<AddressBus> pages) {
+        return PagedAddressBus.with(pages);
     }
 
     /**
