@@ -28,6 +28,26 @@ public abstract class CiaTestCase2<C extends Cia> extends CiaTestCase<C> impleme
         super();
     }
 
+    // data direction...................................................................................................
+
+    @Test
+    public final void testDataDirectionPortAReadWrite() {
+        final C cia = this.createCiaInterruptFails();
+
+        for (int i = 0; i < 256; i++) {
+            this.writeAndReadCheck(cia, Cia.DDRA, (byte) i);
+        }
+    }
+
+    @Test
+    public final void testDataDirectionPortBReadWrite() {
+        final C cia = this.createCiaInterruptFails();
+
+        for (int i = 0; i < 256; i++) {
+            this.writeAndReadCheck(cia, Cia.DDRB, (byte) i);
+        }
+    }
+
     // timer............................................................................................................
 
     @Test
