@@ -549,6 +549,91 @@ public final class BitTest implements ClassTesting2<Bit> {
                 () -> bit + " text " + Integer.toHexString(value) + " " + CharSequences.quoteAndEscape(text));
     }
 
+    // byteText..........................................................................................................
+
+    @Test
+    public void testByteTextZero() {
+        this.byteTextAndCheck2((byte) 0,
+                "");
+    }
+
+    @Test
+    public void testByteText0xf0() {
+        this.byteTextAndCheck2((byte) 0xf0,
+                "A B C D");
+    }
+
+    @Test
+    public void testByteText0x09() {
+        this.byteTextAndCheck2((byte) 0x09,
+                "E H");
+    }
+
+    @Test
+    public void testByteText255() {
+        this.byteTextAndCheck2((byte) 255,
+                "A B C D E F G H");
+    }
+
+    @Test
+    public void testByteText3() {
+        this.byteTextAndCheck2((byte) 0x83,
+                "7",
+                "6",
+                "5",
+                "4",
+                "3",
+                "2",
+                "1",
+                "0",
+                "7 1 0");
+    }
+
+    private void byteTextAndCheck2(final byte value,
+                                   final String expected) {
+        byteTextAndCheck2(value,
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G",
+                "H",
+                expected);
+    }
+
+    private void byteTextAndCheck2(final byte value,
+                                   final String text7,
+                                   final String text6,
+                                   final String text5,
+                                   final String text4,
+                                   final String text3,
+                                   final String text2,
+                                   final String text1,
+                                   final String text0,
+                                   final String expected) {
+        assertEquals(expected,
+                Bit.byteText(value,
+                        text7,
+                        text6,
+                        text5,
+                        text4,
+                        text3,
+                        text2,
+                        text1,
+                        text0),
+                () -> "Bit.byteText " + Integer.toHexString(value) + " " +
+                        CharSequences.quoteAndEscape(text7) + ", " +
+                        CharSequences.quoteAndEscape(text6) + ", " +
+                        CharSequences.quoteAndEscape(text5) + ", " +
+                        CharSequences.quoteAndEscape(text4) + ", " +
+                        CharSequences.quoteAndEscape(text3) + ", " +
+                        CharSequences.quoteAndEscape(text2) + ", " +
+                        CharSequences.quoteAndEscape(text1) + ", " +
+                        CharSequences.quoteAndEscape(text0));
+    }
+
     // ClassTesting.....................................................................................................
 
     @Override
