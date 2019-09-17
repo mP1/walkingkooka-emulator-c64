@@ -51,6 +51,26 @@ public final class MemoryTest extends AddressBusTestCase<Memory> {
     }
 
     @Test
+    public void testBaseOffsetReadAndWrite() {
+        final Memory memory = Memory.with(256);
+
+        final int baseOffset = 128;
+        for (int i = 0; i < 128; i++) {
+            memory.write(baseOffset + i, (byte) i);
+        }
+
+        final Memory base = memory.setBaseOffset(-baseOffset);
+        for (int i = 0; i < 128; i++) {
+            this.readAndCheck(base, i, (byte) i);
+            base.write(i, (byte) (~i));
+        }
+
+        for (int i = 0; i < 128; i++) {
+            this.readAndCheck(memory, baseOffset + i, (byte) ~i);
+        }
+    }
+
+    @Test
     public void testToString() {
         final Memory memory = Memory.with(256);
         memory.write(1, (byte) 1);

@@ -17,10 +17,32 @@
 
 package walkingkooka.emulator.c64;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 /**
  * An interface with default methods that allow mixins
  */
 public interface AddressBusTesting2<A extends AddressBus> extends AddressBusTesting {
+
+    @Test
+    default void testSetBaseOffsetZero() {
+        final AddressBus bus = this.createAddressBus();
+        assertSame(bus, bus.setBaseOffset(0));
+    }
+
+    @Test
+    default void testSetBaseOffsetDifferentAndRead() {
+        final AddressBus bus = this.createAddressBus();
+
+        final int base = 256;
+        final AddressBus bus2 = bus.setBaseOffset(-base);
+
+        final int offset = 1;
+        final byte read = bus.read(base + offset);
+        this.readAndCheck(bus2, 0 + offset, read);
+    }
 
     A createAddressBus();
 
