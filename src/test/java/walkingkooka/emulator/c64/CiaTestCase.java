@@ -17,11 +17,8 @@
 
 package walkingkooka.emulator.c64;
 
-import org.junit.jupiter.api.Test;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.type.JavaVisibility;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public abstract class CiaTestCase<C extends Cia> implements AddressBusTesting,
         ClassTesting2<C> {

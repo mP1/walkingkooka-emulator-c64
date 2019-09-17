@@ -18,54 +18,53 @@
 package walkingkooka.emulator.c64;
 
 
-import walkingkooka.ToStringBuilder;
-import walkingkooka.ToStringBuilderOption;
-
 /**
- * Holds a page of memory, where page means 256 bytes in C6510 talk. Note the offset will be masked and only the bottom 8 bits used to identify the memory byte.
+ * Holds a block of read/write memory.
+ * Note the offset will be masked and only the bottom 8 bits used to identify the memory byte.
  */
-final class MemoryPage implements AddressBus {
+final class Memory implements AddressBus {
 
     /**
-     * Creates a new page of memory
+     * Creates some memory. The size should be a power of two.
      */
-    static MemoryPage create() {
-        return new MemoryPage();
+    static Memory with(final int size) {
+        if(size <= 0) {
+            throw new IllegalArgumentException("Size " + size + " <= 0");
+        }
+        return new Memory(size);
     }
 
-    private MemoryPage() {
+    private Memory(final int size) {
         super();
+        this.values = new byte[size];
+        this.mask = size - 1;
     }
 
     @Override
     public byte read(final int offset) {
-        return this.values[offset & MASK];
+        return this.values[offset & this.mask];
     }
 
     @Override
     public void write(final int offset, final byte value) {
-        this.values[offset & MASK] = value;
+        this.values[offset & this.mask] = value;
     }
 
     /**
      * The memory value.
      */
-    private final byte[] values = new byte[256];
+    private final byte[] values;
 
     /**
      * Mask used to mask out unnecessary offset bits.
      */
-    private final static int MASK = 0xff;
+    private final int mask;
 
     /**
-     * Dumps the page memory as hex bytes.
+     * Reports memory and the read/write mask.
      */
     @Override
     public String toString() {
-        return ToStringBuilder.empty()
-                .disable(ToStringBuilderOption.SKIP_IF_DEFAULT_VALUE)
-                .enable(ToStringBuilderOption.HEX_BYTES)
-                .value(this.values)
-                .build();
+        return "Memory 0x" + Integer.toHexString(this.mask);
     }
 }

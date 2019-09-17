@@ -37,7 +37,7 @@ public final class PagedAddressBusTest extends AddressBusTestCase<PagedAddressBu
         final AddressBus one = AddressBuses.fake();
         final AddressBus three = AddressBuses.fake();
 
-        final AddressBus two = AddressBuses.memory();
+        final AddressBus two = AddressBuses.memory(256);
 
         final byte value1 = 12;
         final byte value2 = 34;
@@ -58,12 +58,12 @@ public final class PagedAddressBusTest extends AddressBusTestCase<PagedAddressBu
         final AddressBus one = AddressBuses.fake();
         final AddressBus three = AddressBuses.fake();
 
-        final AddressBus zero = AddressBuses.memory();
+        final AddressBus zero = AddressBuses.memory(256);
         final byte value1 = 12;
         final int offset1 = 1;
         zero.write(offset1, value1);
 
-        final AddressBus two = AddressBuses.memory();
+        final AddressBus two = AddressBuses.memory(256);
         final byte value2 = 34;
         final int offset2 = 2;
         two.write(offset2, value2);
@@ -78,12 +78,12 @@ public final class PagedAddressBusTest extends AddressBusTestCase<PagedAddressBu
         final AddressBus one = AddressBuses.fake();
         final AddressBus two = AddressBuses.fake();
 
-        final AddressBus zero = AddressBuses.memory();
+        final AddressBus zero = AddressBuses.memory(256);
         final byte value1 = 12;
         final int offset1 = 1;
         zero.write(offset1, value1);
 
-        final AddressBus three = AddressBuses.memory();
+        final AddressBus three = AddressBuses.memory(256);
         final byte value2 = 34;
         final int offset2 = 2;
         three.write(offset2, value2);
@@ -99,7 +99,7 @@ public final class PagedAddressBusTest extends AddressBusTestCase<PagedAddressBu
         final AddressBus one = AddressBuses.fake();
         final AddressBus three = AddressBuses.fake();
 
-        final AddressBus two = AddressBuses.memory();
+        final AddressBus two = AddressBuses.memory(256);
         final byte value = 34;
         final int offset = 2;
         two.write(offset, value);
@@ -115,7 +115,7 @@ public final class PagedAddressBusTest extends AddressBusTestCase<PagedAddressBu
         final AddressBus one = AddressBuses.fake();
         final AddressBus three = AddressBuses.fake();
 
-        final AddressBus two = AddressBuses.memory();
+        final AddressBus two = AddressBuses.memory(256);
 
         final byte value1 = 12;
         final byte value2 = 34;
@@ -139,11 +139,11 @@ public final class PagedAddressBusTest extends AddressBusTestCase<PagedAddressBu
         final AddressBus one = AddressBuses.fake();
         final AddressBus three = AddressBuses.fake();
 
-        final AddressBus zero = AddressBuses.memory();
+        final AddressBus zero = AddressBuses.memory(256);
         final byte value1 = 12;
         final int offset1 = 1;
 
-        final AddressBus two = AddressBuses.memory();
+        final AddressBus two = AddressBuses.memory(256);
         final byte value2 = 34;
         final int offset2 = 2;
 
@@ -164,7 +164,7 @@ public final class PagedAddressBusTest extends AddressBusTestCase<PagedAddressBu
         final AddressBus one = AddressBuses.fake();
         final AddressBus three = AddressBuses.fake();
 
-        final AddressBus two = AddressBuses.memory();
+        final AddressBus two = AddressBuses.memory(256);
         final byte value = 34;
         final int offset = 2;
         two.write(offset + 16384, value);
