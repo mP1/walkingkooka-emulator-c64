@@ -75,7 +75,7 @@ public final class RomTest extends AddressBusTestCase<Rom> {
 
     @Test
     public void testWriteAndReadBack() {
-        final Memory memory = Memory.with(256);
+        final AddressBus memory = AddressBuses.memory(256);
 
         final byte offset = 12;
         final byte value = 34;
@@ -102,6 +102,11 @@ public final class RomTest extends AddressBusTestCase<Rom> {
             values[i] = (byte) (128 ^ i);
         }
         return values;
+    }
+    
+    @Test
+    public Rom createAddressBus() {
+        return Rom.with(this.values(), AddressBuses.memory(256));
     }
 
     @Override

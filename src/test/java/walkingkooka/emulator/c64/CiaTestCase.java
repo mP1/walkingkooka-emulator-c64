@@ -767,6 +767,11 @@ public abstract class CiaTestCase<C extends Cia> extends AddressBusTestCase<C> i
 
     // helpers..........................................................................................................
 
+    @Test
+    public final C createAddressBus() {
+        return this.createCiaInterruptable();
+    }
+
     final C createCiaInterruptFails() {
         return this.createCia(() -> {
             throw new UnsupportedOperationException();

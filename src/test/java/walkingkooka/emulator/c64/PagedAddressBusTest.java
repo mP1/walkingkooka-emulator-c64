@@ -181,6 +181,14 @@ public final class PagedAddressBusTest extends AddressBusTestCase<PagedAddressBu
         this.toStringAndCheck(PagedAddressBus.with(Lists.of(zero, one)), zero + ", " + one);
     }
 
+    @Test
+    public PagedAddressBus createAddressBus() {
+        final AddressBus zero = AddressBuses.memory(256);
+        final AddressBus one = AddressBuses.memory(256);
+
+        return PagedAddressBus.with(Lists.of(zero, one));
+    }
+
     @Override
     public Class<PagedAddressBus> type() {
         return PagedAddressBus.class;
