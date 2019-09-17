@@ -27,12 +27,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public final class TimerTest implements ClassTesting2<Timer>, ToStringTesting<Timer> {
 
     @Test
+    public void testCreate() {
+        final Timer timer = this.timerUnderflowFails();
+        this.checkValue(timer, -1);
+    }
+
+    @Test
     public void testSetLatchSetLatch() {
         final Timer timer = this.timerUnderflowFails();
         timer.setLatch(1000);
         timer.setLatch(200);
 
-        this.checkValue(timer, 0); // setLatch doesnt load value
+        this.checkValue(timer, -1); // setLatch doesnt load value
     }
 
     @Test
