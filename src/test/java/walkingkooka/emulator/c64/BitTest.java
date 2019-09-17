@@ -443,6 +443,68 @@ public final class BitTest implements ClassTesting2<Bit> {
                 () -> bit + " or " + bit + ", " + Arrays.toString(params));
     }
 
+    // or...............................................................................................................
+
+    @Test
+    public void testAndNot() {
+        andNotAndCheck(Bit.BIT0,
+                Bit.BIT0,
+                0xfe);
+    }
+
+    @Test
+    public void testAndNot2() {
+        andNotAndCheck(Bit.BIT0,
+                Bit.BIT1,
+                0xfc);
+    }
+
+    @Test
+    public void testAndNot3() {
+        andNotAndCheck(Bit.BIT0,
+                Bit.BIT1,
+                new Bit[]{Bit.BIT2},
+                0xf8);
+    }
+
+    @Test
+    public void testAndNot4() {
+        andNotAndCheck(Bit.BIT0,
+                Bit.BIT1,
+                new Bit[]{Bit.BIT2, Bit.BIT3},
+                0xf0);
+    }
+
+    @Test
+    public void testAndNot5() {
+        andNotAndCheck(Bit.BIT0,
+                Bit.BIT1,
+                new Bit[]{Bit.BIT2, Bit.BIT3, Bit.BIT4},
+                0xe0);
+    }
+
+    @Test
+    public void testAndNot6() {
+        andNotAndCheck(Bit.BIT7,
+                Bit.BIT6,
+                0x3f);
+    }
+
+    private void andNotAndCheck(final Bit bit,
+                                final Bit param0,
+                                final int expected) {
+        this.andNotAndCheck(bit, param0, new Bit[0], expected);
+    }
+
+    private void andNotAndCheck(final Bit bit,
+                                final Bit param0,
+                                final Bit[] params,
+                                final int expected) {
+        assertEquals((byte) expected,
+                bit.andNot(param0, params),
+                () -> bit + " andNot " + bit + ", " + Arrays.toString(params));
+    }
+    
     // ClassTesting.....................................................................................................
 
     @Override
