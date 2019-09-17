@@ -54,22 +54,21 @@ final class TimeOfDayClock implements Updatable {
 
     @Override
     public void update(final int cycles) {
-        long before = this.time;
+        long time = this.time;
         final long alarm = this.alarm;
 
-        if (before > alarm) {
-            before = before + cycles;
-        } else {
-            before = before + cycles;
-            if (before > alarm) {
-                this.watcher.run();
-            }
-        }
+        final boolean maybeFire = time < alarm;
 
-        if (before > TICKS_DAY) {
-            before = before - TICKS_DAY;
+        time = time + cycles;
+
+        final boolean fire = time >= alarm;
+        if (time > TICKS_DAY) {
+            time = time - TICKS_DAY;
         }
-        this.time = before;
+        this.time = time;
+        if (maybeFire && fire) {
+            this.watcher.run();
+        }
     }
 
     int timeHours() {

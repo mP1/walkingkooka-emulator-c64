@@ -100,7 +100,35 @@ public final class TimeOfDayClockTest implements ClassTesting2<TimeOfDayClock>, 
     }
 
     @Test
-    public void testSetAlarmAndUpdatesFired() {
+    public void testSetAlarmThenSetTimeAfterAndUpdates() {
+        final TimeOfDayClock clock = this.timeOfDay();
+
+        clock.setTime(3, 0, 0, 0);
+        clock.setAlarm(2, 0, 1, 0);
+
+        clock.update(SECOND);
+        this.checkAlarmFired(clock, false);
+    }
+
+    @Test
+    public void testSetAlarmAndUpdatesTimeMatchInterruptFired() {
+        final TimeOfDayClock clock = this.timeOfDay();
+
+        clock.setTime(12, 0, 0, 0);
+        clock.setAlarm(12, 0, 1, 0);
+
+        clock.update(SECOND);
+        this.checkAlarmFired(clock, true);
+
+        this.checkTime(clock, 12, 0, 1, 0);
+        this.checkAlarm(clock, 12, 0, 1, 0);
+
+        clock.update(SECOND);
+        this.checkAlarmFired(clock, false);
+    }
+
+    @Test
+    public void testSetAlarmAndUpdatesMatchInterruptFired() {
         final TimeOfDayClock clock = this.timeOfDay();
 
         clock.setTime(12, 0, 0, 0);
@@ -108,13 +136,12 @@ public final class TimeOfDayClockTest implements ClassTesting2<TimeOfDayClock>, 
         clock.update(1);
         this.checkAlarmFired(clock, false);
 
-        clock.update(SECOND);
+        clock.update(SECOND + 1);
         this.checkAlarmFired(clock, true);
 
-        this.checkTime(clock, 12, 0, 1, 1);
+        this.checkTime(clock, 12, 0, 1, 2);
         this.checkAlarm(clock, 12, 0, 1, 0);
 
-        clock.update(SECOND);
         this.checkAlarmFired(clock, false);
     }
 
