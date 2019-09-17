@@ -43,8 +43,9 @@ public final class AddressBuses implements PublicStaticHelper {
     /**
      * {@see Ciab}
      */
-    public static AddressBus ciab(final Runnable interrupt) {
-        return Ciab.with(interrupt);
+    public static AddressBus ciab(final VicMapper mapper,
+                                  final Runnable interrupt) {
+        return Ciab.with(mapper, interrupt);
     }
 
     /**

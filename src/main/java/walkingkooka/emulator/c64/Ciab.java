@@ -24,14 +24,18 @@ import java.util.Objects;
  */
 final class Ciab extends Cia {
 
-    static Ciab with(final Runnable interrupt) {
-        Objects.requireNonNull(interrupt);
+    static Ciab with(final VicMapper mapper,
+                     final Runnable interrupt) {
+        Objects.requireNonNull(mapper, "mapper");
+        Objects.requireNonNull(interrupt, "interrupt");
 
-        return new Ciab(interrupt);
+        return new Ciab(mapper, interrupt);
     }
 
-    private Ciab(final Runnable interrupt) {
+    private Ciab(final VicMapper mapper,
+                 final Runnable interrupt) {
         super(interrupt);
+        this.mapper = mapper;
     }
 
     /**
@@ -58,6 +62,8 @@ final class Ciab extends Cia {
     @Override
     void writeDataPortA(final byte value) {
         this.portA = value;
+
+        this.mapper.setBank(VicBank.fromDataPortByte(value));
     }
 
     @Override
@@ -67,4 +73,6 @@ final class Ciab extends Cia {
 
     private byte portA;
     private byte portB;
+
+    private final VicMapper mapper;
 }
