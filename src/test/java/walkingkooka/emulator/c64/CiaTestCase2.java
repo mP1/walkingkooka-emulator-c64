@@ -778,7 +778,7 @@ public abstract class CiaTestCase2<C extends Cia> extends CiaTestCase<C> impleme
         return this.createCia(this::interrupt);
     }
 
-    private void interrupt() {
+    final void interrupt() {
         this.interrupt = true;
     }
 

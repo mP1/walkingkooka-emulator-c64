@@ -18,18 +18,47 @@
 package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.test.ClassTesting2;
+import walkingkooka.test.ToStringTesting;
+import walkingkooka.type.JavaVisibility;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public final class CiabTest extends CiaTestCase2<Ciab> {
+public final class VicMapperTest implements AddressBusTesting,
+        ClassTesting2<VicMapper>,
+        ToStringTesting<VicMapper> {
+
+    @Test
+    public void testWithNullCharactersFails() {
+        assertThrows(NullPointerException.class, () -> {
+            VicMapper.with(null, AddressBuses.fake(), this::vicAddressBus);
+        });
+    }
+
+    @Test
+    public void testWithNullMemoryFails() {
+        assertThrows(NullPointerException.class, () -> {
+            VicMapper.with(AddressBuses.fake(), null, this::vicAddressBus);
+        });
+    }
+
+    @Test
+    public void testWithNullVicAddressBusConsumerFails() {
+        assertThrows(NullPointerException.class, () -> {
+            VicMapper.with(AddressBuses.fake(), AddressBuses.fake(), null);
+        });
+    }
 
     // setBank..........................................................................................................
 
     @Test
     public void testSetBank0() {
-        final Ciab ciab = this.createCiaInterruptFails();
+        final AddressBus characters = this.characters();
+        final AddressBus memory = this.memory();
+        final VicMapper mapper = this.vicMapper(characters, memory);
 
-        this.writeAndReadCheck(ciab, Cia.PRA, (byte)0x3);
+        mapper.setBank(VicBank.BANK0);
 
         this.readMemoryAndCheck(0x0000, 0x0fff);
         this.readCharacterAndCheck(0x1000, 0x1fff);
@@ -38,18 +67,22 @@ public final class CiabTest extends CiaTestCase2<Ciab> {
 
     @Test
     public void testSetBank1() {
-        final Ciab ciab = this.createCiaInterruptFails();
+        final AddressBus characters = AddressBuses.fake();
+        final AddressBus memory = this.memory();
+        final VicMapper mapper = this.vicMapper(characters, memory);
 
-        this.writeAndReadCheck(ciab, Cia.PRA, (byte)0x2);
+        mapper.setBank(VicBank.BANK1);
 
         this.readMemoryAndCheck(0x4000, 0x7fff);
     }
 
     @Test
     public void testSetBank2() {
-        final Ciab ciab = this.createCiaInterruptFails();
+        final AddressBus characters = this.characters();
+        final AddressBus memory = this.memory();
+        final VicMapper mapper = this.vicMapper(characters, memory);
 
-        this.writeAndReadCheck(ciab, Cia.PRA, (byte)0x1);
+        mapper.setBank(VicBank.BANK2);
 
         this.readMemoryAndCheck(0x8000, 0x8fff);
         this.readCharacterAndCheck(0x9000, 0x9fff);
@@ -58,9 +91,11 @@ public final class CiabTest extends CiaTestCase2<Ciab> {
 
     @Test
     public void testSetBank3() {
-        final Ciab ciab = this.createCiaInterruptFails();
+        final AddressBus characters = AddressBuses.fake();
+        final AddressBus memory = this.memory();
+        final VicMapper mapper = this.vicMapper(characters, memory);
 
-        this.writeAndReadCheck(ciab, Cia.PRA, (byte)0x0);
+        mapper.setBank(VicBank.BANK3);
 
         this.readMemoryAndCheck(0xc000, 0xffff);
     }
@@ -71,10 +106,7 @@ public final class CiabTest extends CiaTestCase2<Ciab> {
         final AddressBus memory = this.memory();
         final VicMapper mapper = this.vicMapper(characters, memory);
 
-        final Ciab ciab = this.createCia(mapper);
-
         mapper.setBank(VicBank.BANK3);
-        this.readAndCheck(ciab, Cia.DDRA, ZERO);
 
         this.readMemoryAndCheck(0xc000, 0xffff);
 
@@ -103,14 +135,35 @@ public final class CiabTest extends CiaTestCase2<Ciab> {
         }
     }
 
-    @Override
-    Ciab createCia(final Runnable interrupts) {
-        return this.createCia(this.vicMapper(), interrupts);
+    // toString.........................................................................................................
+
+    @Test
+    public void testToString() {
+        this.toStringAndCheck(this.vicMapper(), "Bank 0");
     }
 
-    private Ciab createCia(final VicMapper mapper) {
-        return this.createCia(mapper, this::interrupt);
+    @Test
+    public void testToString1() {
+        final VicMapper mapper = this.vicMapper();
+        mapper.setBank(VicBank.BANK1);
+        this.toStringAndCheck(mapper, "Bank 1");
     }
+
+    @Test
+    public void testToString2() {
+        final VicMapper mapper = this.vicMapper();
+        mapper.setBank(VicBank.BANK2);
+        this.toStringAndCheck(mapper, "Bank 2");
+    }
+
+    @Test
+    public void testToString3() {
+        final VicMapper mapper = this.vicMapper();
+        mapper.setBank(VicBank.BANK3);
+        this.toStringAndCheck(mapper, "Bank 3");
+    }
+
+    // helper...........................................................................................................
 
     private VicMapper vicMapper() {
         return this.vicMapper(characters(), memory());
@@ -156,13 +209,15 @@ public final class CiabTest extends CiaTestCase2<Ciab> {
 
     private AddressBus vicAddressBus;
 
-    private Ciab createCia(final VicMapper mapper,
-                           final Runnable interrupts) {
-        return Ciab.with(mapper, interrupts);
+    // ClassTesting.....................................................................................................
+
+    @Override
+    public Class<VicMapper> type() {
+        return VicMapper.class;
     }
 
     @Override
-    public Class<Ciab> type() {
-        return Ciab.class;
+    public JavaVisibility typeVisibility() {
+        return JavaVisibility.PUBLIC;
     }
 }
