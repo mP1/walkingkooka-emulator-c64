@@ -43,7 +43,7 @@ public final class BaseOffsetAddressBusTest extends AddressBusTestCase<BaseOffse
 
     @Test
     public void testWriteThenRead() {
-        final AddressBus memory = AddressBuses.memory();
+        final AddressBus memory = AddressBuses.memory(256);
         final BaseOffsetAddressBus base = (BaseOffsetAddressBus)BaseOffsetAddressBus.with(BASE_OFFSET, memory);
 
         final int offset = 1;
@@ -53,7 +53,7 @@ public final class BaseOffsetAddressBusTest extends AddressBusTestCase<BaseOffse
 
     @Test
     public void testWriteAndRead() {
-        final AddressBus memory = AddressBuses.memory();
+        final AddressBus memory = AddressBuses.memory(256);
         final BaseOffsetAddressBus base = (BaseOffsetAddressBus)BaseOffsetAddressBus.with(BASE_OFFSET, memory);
 
         for (int i = 0; i < 256; i++) {
@@ -69,7 +69,7 @@ public final class BaseOffsetAddressBusTest extends AddressBusTestCase<BaseOffse
     public void testPagedMemoryRead() {
         final AddressBus[] all = new AddressBus[256];
         for (int hi = 0; hi < 256; hi++) {
-            final AddressBus memory = AddressBuses.memory();
+            final AddressBus memory = AddressBuses.memory(256);
             all[hi] = memory;
 
             for (int lo = 0; lo < 256; lo++) {
@@ -88,7 +88,7 @@ public final class BaseOffsetAddressBusTest extends AddressBusTestCase<BaseOffse
     public void testPagedMemoryWrite() {
         final AddressBus[] all = new AddressBus[256];
         for (int hi = 0; hi < 256; hi++) {
-            final AddressBus memory = AddressBuses.memory();
+            final AddressBus memory = AddressBuses.memory(256);
             all[hi] = memory;
 
             for (int lo = 0; lo < 256; lo++) {
@@ -113,11 +113,11 @@ public final class BaseOffsetAddressBusTest extends AddressBusTestCase<BaseOffse
 
     @Test
     public void testToString() {
-        final AddressBus memory = AddressBuses.memory();
+        final AddressBus memory = AddressBuses.memory(256);
         final BaseOffsetAddressBus base = (BaseOffsetAddressBus)BaseOffsetAddressBus.with(2, memory);
         base.write(1, (byte) 1);
         base.write(2, (byte) 2);
-        this.toStringAndCheck(base, "baseOffset: 2 00, 00, 00, 01, 02, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, ");
+        this.toStringAndCheck(base, "baseOffset: 2 Memory 0xff");
     }
 
     @Override

@@ -19,17 +19,17 @@ package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
 
-public final class MemoryPageTest extends AddressBusTestCase<MemoryPage> {
+public final class MemoryTest extends AddressBusTestCase<Memory> {
 
     @Test
     public void testWrite() {
-        final MemoryPage memory = MemoryPage.create();
+        final Memory memory = Memory.with(256);
         this.writeAndReadCheck(memory, 1, (byte) 1);
     }
 
     @Test
     public void testWrite2() {
-        final MemoryPage memory = MemoryPage.create();
+        final Memory memory = Memory.with(256);
 
         for (int i = 0; i < 256; i++) {
             this.writeAndReadCheck(memory, i, (byte) i);
@@ -38,28 +38,28 @@ public final class MemoryPageTest extends AddressBusTestCase<MemoryPage> {
 
     @Test
     public void testReadMasksHighBits() {
-        final MemoryPage memory = MemoryPage.create();
+        final Memory memory = Memory.with(256);
         memory.write(0x10, (byte) 0xff);
         this.readAndCheck(memory, 0x4010, (byte) 0xff);
     }
 
     @Test
     public void testWriteMasksHighBits() {
-        final MemoryPage memory = MemoryPage.create();
+        final Memory memory = Memory.with(256);
         memory.write(0x4010, (byte) 0xff);
         this.readAndCheck(memory, 0x10, (byte) 0xff);
     }
 
     @Test
     public void testToString() {
-        final MemoryPage memory = MemoryPage.create();
+        final Memory memory = Memory.with(256);
         memory.write(1, (byte) 1);
         memory.write(2, (byte) 2);
-        this.toStringAndCheck(memory, "00, 01, 02, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, ");
+        this.toStringAndCheck(memory, "Memory 0xff");
     }
 
     @Override
-    public Class<MemoryPage> type() {
-        return MemoryPage.class;
+    public Class<Memory> type() {
+        return Memory.class;
     }
 }

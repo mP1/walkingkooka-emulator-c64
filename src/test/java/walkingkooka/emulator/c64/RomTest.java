@@ -75,7 +75,7 @@ public final class RomTest extends AddressBusTestCase<Rom> {
 
     @Test
     public void testWriteAndReadBack() {
-        final MemoryPage memory = MemoryPage.create();
+        final Memory memory = Memory.with(256);
 
         final byte offset = 12;
         final byte value = 34;

@@ -56,10 +56,10 @@ public final class AddressBuses implements PublicStaticHelper {
     }
 
     /**
-     * {@see MemoryPage}
+     * {@see Memory}
      */
-    public static AddressBus memory() {
-        return MemoryPage.create();
+    public static AddressBus memory(final int size) {
+        return Memory.with(size);
     }
 
     /**
