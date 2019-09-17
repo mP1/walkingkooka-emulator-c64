@@ -1,0 +1,407 @@
+/*
+ * Copyright 2019 Miroslav Pokorny (github.com/mP1)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+package walkingkooka.emulator.c64;
+
+import org.junit.jupiter.api.Test;
+import walkingkooka.test.ClassTesting2;
+import walkingkooka.type.JavaVisibility;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public final class BitTest implements ClassTesting2<Bit> {
+
+    // read.............................................................................................................
+
+    @Test
+    public void testRead0True() {
+        readAndCheck(Bit.BIT0, (byte) (1 << 0), true);
+    }
+
+    @Test
+    public void testRead0False() {
+        readAndCheck(Bit.BIT0, (byte) ~(1 << 0), false);
+    }
+
+    @Test
+    public void testRead1True() {
+        readAndCheck(Bit.BIT1, (byte) (1 << 1), true);
+    }
+
+    @Test
+    public void testRead1False() {
+        readAndCheck(Bit.BIT1, (byte) ~(1 << 1), false);
+    }
+
+    @Test
+    public void testRead2True() {
+        readAndCheck(Bit.BIT2, (byte) (1 << 2), true);
+    }
+
+    @Test
+    public void testRead2False() {
+        readAndCheck(Bit.BIT2, (byte) ~(1 << 2), false);
+    }
+
+    @Test
+    public void testRead3True() {
+        readAndCheck(Bit.BIT3, (byte) (1 << 3), true);
+    }
+
+    @Test
+    public void testRead3False() {
+        readAndCheck(Bit.BIT3, (byte) ~(1 << 3), false);
+    }
+
+    @Test
+    public void testRead4True() {
+        readAndCheck(Bit.BIT4, (byte) (1 << 4), true);
+    }
+
+    @Test
+    public void testRead4False() {
+        readAndCheck(Bit.BIT4, (byte) ~(1 << 4), false);
+    }
+
+    @Test
+    public void testRead5True() {
+        readAndCheck(Bit.BIT5, (byte) (1 << 5), true);
+    }
+
+    @Test
+    public void testRead5False() {
+        readAndCheck(Bit.BIT5, (byte) ~(1 << 5), false);
+    }
+
+    @Test
+    public void testRead6True() {
+        readAndCheck(Bit.BIT6, (byte) (1 << 6), true);
+    }
+
+    @Test
+    public void testRead6False() {
+        readAndCheck(Bit.BIT6, (byte) ~(1 << 6), false);
+    }
+
+    @Test
+    public void testRead7True() {
+        readAndCheck(Bit.BIT7, (byte) (1 << 7), true);
+    }
+
+    @Test
+    public void testRead7False() {
+        readAndCheck(Bit.BIT7, (byte) ~(1 << 7), false);
+    }
+
+    private void readAndCheck(final Bit bit, final byte value, final boolean expected) {
+        assertEquals(expected,
+                bit.read(value),
+                () -> bit + " read " + Integer.toHexString(value));
+    }
+
+    // not.............................................................................................................
+
+    @Test
+    public void testNot0True() {
+        notAndCheck(Bit.BIT0, (byte) ~(1 << 0));
+    }
+
+    @Test
+    public void testNot1True() {
+        notAndCheck(Bit.BIT1, (byte) ~(1 << 1));
+    }
+
+    @Test
+    public void testNot2True() {
+        notAndCheck(Bit.BIT2, (byte) ~(1 << 2));
+    }
+    
+    @Test
+    public void testNot3True() {
+        notAndCheck(Bit.BIT3, (byte) ~(1 << 3));
+    }
+
+    @Test
+    public void testNot4True() {
+        notAndCheck(Bit.BIT4, (byte) ~(1 << 4));
+    }
+
+    @Test
+    public void testNot5True() {
+        notAndCheck(Bit.BIT5, (byte) ~(1 << 5));
+    }
+
+    @Test
+    public void testNot6True() {
+        notAndCheck(Bit.BIT6, (byte) ~(1 << 6));
+    }
+
+    @Test
+    public void testNot7True() {
+        notAndCheck(Bit.BIT7, (byte) ~(1 << 7));
+    }
+
+    private void notAndCheck(final Bit bit, final byte expected) {
+        assertEquals(expected,
+                bit.not(),
+                () -> bit + " not " + Integer.toHexString(expected));
+    }
+
+    // set.............................................................................................................
+
+    @Test
+    public void testSet0() {
+        setAndCheck(Bit.BIT0, 1 << 0);
+    }
+
+    @Test
+    public void testSet1() {
+        setAndCheck(Bit.BIT1, 1 << 1);
+    }
+
+    @Test
+    public void testSet2() {
+        setAndCheck(Bit.BIT2, 1 << 2);
+    }
+
+    @Test
+    public void testSet3() {
+        setAndCheck(Bit.BIT3, 1 << 3);
+    }
+
+    @Test
+    public void testSet4() {
+        setAndCheck(Bit.BIT4, 1 << 4);
+    }
+
+    @Test
+    public void testSet5() {
+        setAndCheck(Bit.BIT5, 1 << 5);
+    }
+
+    @Test
+    public void testSet6() {
+        setAndCheck(Bit.BIT6, 1 << 6);
+    }
+
+    @Test
+    public void testSet7() {
+        setAndCheck(Bit.BIT7, 1 << 7);
+    }
+
+    private void setAndCheck(final Bit bit,
+                             final int expected) {
+        assertEquals((byte) expected,
+                bit.set(),
+                () -> bit + " set");
+    }
+
+    // set.............................................................................................................
+
+    @Test
+    public void testSetByte0True() {
+        setByteAndCheck(Bit.BIT0, 1 << 0);
+    }
+
+    @Test
+    public void testSetByte0False() {
+        setByteAndCheck(Bit.BIT0, ~(1 << 0), 0xff);
+    }
+
+    @Test
+    public void testSetByte1True() {
+        setByteAndCheck(Bit.BIT1, 1 << 1);
+    }
+
+    @Test
+    public void testSetByte1False() {
+        setByteAndCheck(Bit.BIT1, ~(1 << 1), 0xff);
+    }
+
+    @Test
+    public void testSetByte2True() {
+        setByteAndCheck(Bit.BIT2, 1 << 2);
+    }
+
+    @Test
+    public void testSetByte2False() {
+        setByteAndCheck(Bit.BIT2, ~(1 << 2), 0xff);
+    }
+
+    @Test
+    public void testSetByte3True() {
+        setByteAndCheck(Bit.BIT3, 1 << 3);
+    }
+
+    @Test
+    public void testSetByte3False() {
+        setByteAndCheck(Bit.BIT3, ~(1 << 3), 0xff);
+    }
+
+    @Test
+    public void testSetByte4True() {
+        setByteAndCheck(Bit.BIT4, 1 << 4);
+    }
+
+    @Test
+    public void testSetByte4False() {
+        setByteAndCheck(Bit.BIT4, ~(1 << 4), 0xff);
+    }
+
+    @Test
+    public void testSetByte5True() {
+        setByteAndCheck(Bit.BIT5, 1 << 5);
+    }
+
+    @Test
+    public void testSetByte5False() {
+        setByteAndCheck(Bit.BIT5, ~(1 << 5), 0xff);
+    }
+
+    @Test
+    public void testSetByte6True() {
+        setByteAndCheck(Bit.BIT6, 1 << 6);
+    }
+
+    @Test
+    public void testSetByte6False() {
+        setByteAndCheck(Bit.BIT6, ~(1 << 6), 0xff);
+    }
+
+    @Test
+    public void testSetByte7True() {
+        setByteAndCheck(Bit.BIT7, 1 << 7);
+    }
+
+    @Test
+    public void testSetByte7False() {
+        setByteAndCheck(Bit.BIT7, ~(1 << 7), 0xff);
+    }
+
+    private void setByteAndCheck(final Bit bit, final int value) {
+        this.setByteAndCheck(bit, value, value);
+    }
+
+    private void setByteAndCheck(final Bit bit, final int value, final int expected) {
+        assertEquals((byte) expected,
+                bit.set((byte) value),
+                () -> bit + " set " + Integer.toHexString(value));
+    }
+
+    // clear.............................................................................................................
+
+    @Test
+    public void testClear0True() {
+        clearAndCheck(Bit.BIT0, 0xff, ~(1 << 0));
+    }
+
+    @Test
+    public void testClear0False() {
+        clearAndCheck(Bit.BIT0, 0);
+    }
+
+    @Test
+    public void testClear1True() {
+        clearAndCheck(Bit.BIT1, 0xff, ~(1 << 1));
+    }
+
+    @Test
+    public void testClear1False() {
+        clearAndCheck(Bit.BIT1, ~(1 << 1));
+    }
+
+    @Test
+    public void testClear2True() {
+        clearAndCheck(Bit.BIT2, 0xff, ~(1 << 2));
+    }
+
+    @Test
+    public void testClear2False() {
+        clearAndCheck(Bit.BIT2, 0, 0);
+    }
+
+    @Test
+    public void testClear3True() {
+        clearAndCheck(Bit.BIT3, 0xff, ~(1 << 3));
+    }
+
+    @Test
+    public void testClear3False() {
+        clearAndCheck(Bit.BIT3, 0);
+    }
+
+    @Test
+    public void testClear4True() {
+        clearAndCheck(Bit.BIT4, 0xff, ~(1 << 4));
+    }
+
+    @Test
+    public void testClear4False() {
+        clearAndCheck(Bit.BIT4, 0);
+    }
+
+    @Test
+    public void testClear5True() {
+        clearAndCheck(Bit.BIT5, 0xff, ~(1 << 5));
+    }
+
+    @Test
+    public void testClear5False() {
+        clearAndCheck(Bit.BIT5, 0);
+    }
+
+    @Test
+    public void testClear6True() {
+        clearAndCheck(Bit.BIT6, 0xff, ~(1 << 6));
+    }
+
+    @Test
+    public void testClear6False() {
+        clearAndCheck(Bit.BIT6, 0);
+    }
+
+    @Test
+    public void testClear7True() {
+        clearAndCheck(Bit.BIT7, 0xff, ~(1 << 7));
+    }
+
+    @Test
+    public void testClear7False() {
+        clearAndCheck(Bit.BIT7, 0);
+    }
+
+    private void clearAndCheck(final Bit bit, final int value) {
+        clearAndCheck(bit, value, value);
+    }
+
+    private void clearAndCheck(final Bit bit, final int value, final int expected) {
+        assertEquals((byte) expected,
+                bit.clear((byte) value),
+                () -> bit + " clear " + Integer.toHexString(value));
+    }
+
+    // ClassTesting.....................................................................................................
+
+    @Override
+    public Class<Bit> type() {
+        return Bit.class;
+    }
+
+    @Override
+    public JavaVisibility typeVisibility() {
+        return JavaVisibility.PACKAGE_PRIVATE;
+    }
+}
