@@ -26,6 +26,14 @@ import java.util.List;
 public final class AddressBuses implements PublicStaticHelper {
 
     /**
+     * {@see BaseOffsetAddressBus}
+     */
+    public static AddressBus baseOffset(final int baseOffset,
+                                        final AddressBus bus) {
+        return BaseOffsetAddressBus.with(baseOffset, bus);
+    }
+
+    /**
      * {@see Ciaa}
      */
     public static AddressBus ciaa(final Runnable interrupt) {
