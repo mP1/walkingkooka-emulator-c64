@@ -17,7 +17,7 @@
 
 package walkingkooka.emulator.c64;
 
-public final class CiaaTest extends CiaTestCase2<Ciaa> {
+public final class CiaaTest extends CiaTestCase<Ciaa> {
     @Override
     Ciaa createCia(final Runnable interrupts) {
         return Ciaa.with(interrupts);

@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
-public final class CiabTest extends CiaTestCase2<Ciab> {
+public final class CiabTest extends CiaTestCase<Ciab> {
 
     // setBank..........................................................................................................
 

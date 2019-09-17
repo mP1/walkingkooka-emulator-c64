@@ -17,7 +17,7 @@
 
 package walkingkooka.emulator.c64;
 
-public final class CiaTest extends CiaTestCase<Cia> {
+public final class CiaTest extends AddressBusTestCase<Cia> {
 
     @Override
     public Class<Cia> type() {
