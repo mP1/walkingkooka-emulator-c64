@@ -26,6 +26,20 @@ import java.util.List;
 public final class AddressBuses implements PublicStaticHelper {
 
     /**
+     * {@see Ciaa}
+     */
+    public static AddressBus ciaa(final Runnable interrupt) {
+        return Ciaa.with(interrupt);
+    }
+
+    /**
+     * {@see Ciab}
+     */
+    public static AddressBus ciab(final Runnable interrupt) {
+        return Ciab.with(interrupt);
+    }
+
+    /**
      * {@see FakeAddressBus}
      */
     public static AddressBus fake() {
