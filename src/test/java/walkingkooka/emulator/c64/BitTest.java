@@ -20,6 +20,8 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.type.JavaVisibility;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class BitTest implements ClassTesting2<Bit> {
@@ -391,6 +393,54 @@ public final class BitTest implements ClassTesting2<Bit> {
         assertEquals((byte) expected,
                 bit.clear((byte) value),
                 () -> bit + " clear " + Integer.toHexString(value));
+    }
+
+    // or...............................................................................................................
+
+    @Test
+    public void testOr() {
+        orAndCheck(Bit.BIT0,
+                Bit.BIT1,
+                0x3);
+    }
+
+    @Test
+    public void testOr2() {
+        orAndCheck(Bit.BIT0,
+                Bit.BIT1,
+                new Bit[]{Bit.BIT2},
+                0x7);
+    }
+
+    @Test
+    public void testOr3() {
+        orAndCheck(Bit.BIT0,
+                Bit.BIT1,
+                new Bit[]{Bit.BIT2, Bit.BIT3},
+                0xf);
+    }
+
+    @Test
+    public void testOr4() {
+        orAndCheck(Bit.BIT0,
+                Bit.BIT1,
+                new Bit[]{Bit.BIT2, Bit.BIT3, Bit.BIT4},
+                0x1f);
+    }
+
+    private void orAndCheck(final Bit bit,
+                            final Bit param0,
+                            final int expected) {
+        this.orAndCheck(bit, param0, new Bit[0], expected);
+    }
+
+    private void orAndCheck(final Bit bit,
+                            final Bit param0,
+                            final Bit[] params,
+                            final int expected) {
+        assertEquals((byte) expected,
+                bit.or(param0, params),
+                () -> bit + " or " + bit + ", " + Arrays.toString(params));
     }
 
     // ClassTesting.....................................................................................................

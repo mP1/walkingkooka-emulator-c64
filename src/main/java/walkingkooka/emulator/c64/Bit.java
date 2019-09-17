@@ -66,6 +66,21 @@ enum Bit {
     }
 
     /**
+     * Combines this bit and the parameters into a single byte value.
+     */
+    byte or(final Bit bit,
+            final Bit... bits) {
+        byte value = this.mask;
+        value |= bit.mask;
+
+        for (Bit b : bits) {
+            value |= b.mask;
+        }
+
+        return value;
+    }
+
+    /**
      * Mask that selects this bit.
      */
     private final byte mask;
