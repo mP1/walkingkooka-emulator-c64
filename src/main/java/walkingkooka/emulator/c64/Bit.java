@@ -81,6 +81,21 @@ enum Bit {
     }
 
     /**
+     * Combines this bit and the parameters into a single byte value.
+     */
+    byte andNot(final Bit bit,
+                final Bit... bits) {
+        byte value = this.notMask;
+        value &= bit.notMask;
+
+        for (Bit b : bits) {
+            value &= b.notMask;
+        }
+
+        return value;
+    }
+
+    /**
      * Mask that selects this bit.
      */
     private final byte mask;
