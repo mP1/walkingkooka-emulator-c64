@@ -25,6 +25,20 @@ public abstract class AddressBusTestCase<A extends AddressBus> implements Addres
         ClassTesting2<A>,
         ToStringTesting<A> {
 
+    final static byte ZERO = 0;
+    final static byte ONE = 1;
+    final static byte TWO = 2;
+    final static byte THREE = 3;
+    final static byte FOUR = 4;
+    final static byte FIVE = 5;
+    final static byte SIX = 6;
+    final static byte SEVEN = 7;
+    final static byte EIGHT = 8;
+    final static byte NINE = 9;
+    final static byte FIFTY_EIGHT_BCD = 0x58;
+    final static byte FIFTY_NINE_BCD = 0x59;
+    final static byte NEGATIVE_ONE = -1;
+
     AddressBusTestCase() {
         super();
     }
