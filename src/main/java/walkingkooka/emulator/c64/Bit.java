@@ -17,6 +17,9 @@
 
 package walkingkooka.emulator.c64;
 
+import walkingkooka.ToStringBuilder;
+import walkingkooka.ToStringBuilderOption;
+
 /**
  * Helper that assists reading and writing bits within a byte.
  */
@@ -110,4 +113,31 @@ enum Bit {
      */
     private final byte mask;
     private final byte notMask;
+
+    /**
+     * Returns a string testing all the bits in the bit and using the text for that match separated by a space.
+     */
+    static String byteText(final byte value,
+                           final String bit7,
+                           final String bit6,
+                           final String bit5,
+                           final String bit4,
+                           final String bit3,
+                           final String bit2,
+                           final String bit1,
+                           final String bit0) {
+        return ToStringBuilder.empty()
+                .separator(" ")
+                .enable(ToStringBuilderOption.SKIP_IF_DEFAULT_VALUE)
+                .disable(ToStringBuilderOption.QUOTE)
+                .value(BIT7.read(value) ? bit7 : "")
+                .value(BIT6.read(value) ? bit6 : "")
+                .value(BIT5.read(value) ? bit5 : "")
+                .value(BIT4.read(value) ? bit4 : "")
+                .value(BIT3.read(value) ? bit3 : "")
+                .value(BIT2.read(value) ? bit2 : "")
+                .value(BIT1.read(value) ? bit1 : "")
+                .value(BIT0.read(value) ? bit0 : "")
+                .build();
+    }
 }
