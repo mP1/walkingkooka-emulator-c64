@@ -18,6 +18,7 @@ package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.test.ClassTesting2;
+import walkingkooka.text.CharSequences;
 import walkingkooka.type.JavaVisibility;
 
 import java.util.Arrays;
@@ -504,7 +505,50 @@ public final class BitTest implements ClassTesting2<Bit> {
                 bit.andNot(param0, params),
                 () -> bit + " andNot " + bit + ", " + Arrays.toString(params));
     }
-    
+
+    // text.........................................................................................................
+
+    @Test
+    public void testTextTrue() {
+        this.textAndCheck2(Bit.BIT0,
+                Bit.BIT0.set(),
+                "MAGIC",
+                "MAGIC");
+    }
+
+    @Test
+    public void testTextTrue2() {
+        this.textAndCheck2(Bit.BIT0,
+                Bit.BIT0.or(Bit.BIT1),
+                "MAGIC",
+                "MAGIC");
+    }
+
+    @Test
+    public void testTextFalse() {
+        this.textAndCheck2(Bit.BIT0,
+                Bit.BIT1.set(),
+                "MAGIC",
+                "");
+    }
+
+    @Test
+    public void testTextFalse2() {
+        this.textAndCheck2(Bit.BIT7,
+                (byte) 0X7F,
+                "MAGIC",
+                "");
+    }
+
+    private void textAndCheck2(final Bit bit,
+                                   final byte value,
+                                   final String text,
+                                   final String expected) {
+        assertEquals(expected,
+                bit.text(value, text),
+                () -> bit + " text " + Integer.toHexString(value) + " " + CharSequences.quoteAndEscape(text));
+    }
+
     // ClassTesting.....................................................................................................
 
     @Override

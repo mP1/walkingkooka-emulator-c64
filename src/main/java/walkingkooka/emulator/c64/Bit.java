@@ -96,6 +96,16 @@ enum Bit {
     }
 
     /**
+     * Returns the text if the bit is set or empty String.
+     */
+    String text(final byte value,
+                final String text) {
+        return this.read(value) ?
+                text :
+                "";
+    }
+
+    /**
      * Mask that selects this bit.
      */
     private final byte mask;
