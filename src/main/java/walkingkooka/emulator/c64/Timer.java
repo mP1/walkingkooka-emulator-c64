@@ -34,6 +34,11 @@ import java.util.Objects;
  */
 final class Timer implements Updatable {
 
+    /**
+     * The initial default value for a {@link Timer} without any {@link #loadLatch()}.
+     */
+    final static int DEFAULT_VALUE = -1;
+
     static Timer with(final Runnable underflow) {
         Objects.requireNonNull(underflow, "underflow");
 
@@ -85,7 +90,7 @@ final class Timer implements Updatable {
     /**
      * The count down value in ticks
      */
-    private int value;
+    private int value = DEFAULT_VALUE;
 
     /**
      * A {@link Runnable} that is notified when an underflow occurs.
