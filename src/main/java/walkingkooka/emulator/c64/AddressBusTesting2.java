@@ -17,18 +17,22 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.test.ClassTesting2;
-import walkingkooka.type.JavaVisibility;
+/**
+ * An interface with default methods that allow mixins
+ */
+public interface AddressBusTesting2<A extends AddressBus> extends AddressBusTesting {
 
-public final class CiaTest implements ClassTesting2<Cia> {
+    A createAddressBus();
 
-    @Override
-    public Class<Cia> type() {
-        return Cia.class;
+    default void readAndCheck(final int offset,
+                              final byte expected) {
+        this.readAndCheck(this.createAddressBus(), offset, expected);
     }
 
-    @Override
-    public final JavaVisibility typeVisibility() {
-        return JavaVisibility.PACKAGE_PRIVATE;
+    default void writeAndReadCheck(final int offset,
+                                   final byte value) {
+        this.writeAndReadCheck(this.createAddressBus(),
+                offset,
+                value);
     }
 }
