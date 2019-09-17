@@ -70,13 +70,11 @@ final class Timer implements Updatable {
     public void update(final int cycles) {
         final int before = this.value;
         if (before >= 0) {
-            int after = before - cycles;
-            if (after < 0) {
+            this.value = before - cycles;
+            if (this.value < 0) {
+                this.value = -1;
                 this.underflow.run();
-                after = -1;
             }
-
-            this.value = after;
         }
     }
 

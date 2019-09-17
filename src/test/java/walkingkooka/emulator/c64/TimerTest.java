@@ -98,6 +98,22 @@ public final class TimerTest implements ClassTesting2<Timer>, ToStringTesting<Ti
         this.checkValue(timer, -1);
     }
 
+    @Test
+    public void testUnderflowInterrupt() {
+        final Timer timer = Timer.with(() -> {
+           checkValue(this.timer, -1);
+        });
+        this.timer = timer;
+
+        timer.setLatch(100);
+        timer.loadLatch();
+
+        timer.update(200);
+        this.checkValue(timer, -1);
+    }
+
+    private Timer timer;
+
     private Timer timerUnderflowFails() {
         return Timer.with(this::underflowFails);
     }
