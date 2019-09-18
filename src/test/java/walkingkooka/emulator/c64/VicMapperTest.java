@@ -118,19 +118,21 @@ public final class VicMapperTest implements AddressBusTesting,
     }
 
     private void readCharacterAndCheck(final int lo, final int hi) {
-        this.lo = lo;
-        this.hi = hi;
-
-        for (int i = lo; i < hi; i++) {
+        // vic memory reads should be between 1000 and 1fff
+        for (int i = lo; i <= hi; i++) {
             this.readAndCheck(this.vicAddressBus, i, (byte) (~i & 0xff));
         }
     }
 
     private void readMemoryAndCheck(final int lo, final int hi) {
-        this.lo = lo;
+        this.lo = lo; // memory behind can see anything between 0 and ffff
         this.hi = hi;
 
-        for (int i = lo; i < hi; i++) {
+        final int from = lo & VicMapper.BANK_MASK;
+        final int to = hi & VicMapper.BANK_MASK;
+
+        // vic memory reads should be between 0 and 4000
+        for (int i = from; i <= to; i++) {
             this.readAndCheck(this.vicAddressBus, i, (byte) (i & 0xff));
         }
     }
@@ -178,9 +180,8 @@ public final class VicMapperTest implements AddressBusTesting,
         return new FakeAddressBus() {
             @Override
             public byte read(final int offset) {
-                final int masked = offset & 0xffff;
-                if (masked < lo || masked > hi) {
-                    fail("Invalid character offset: " + Integer.toHexString(masked));
+                if (offset < 0 || offset > 0x1000) {
+                    fail("Invalid character generator offset: " + Integer.toHexString(offset) + " expected between 0x0000 - 0x0fff");
                 }
                 return (byte) ~offset;
             }
@@ -193,7 +194,7 @@ public final class VicMapperTest implements AddressBusTesting,
             public byte read(final int offset) {
                 final int masked = offset & 0xffff;
                 if (masked < lo || masked > hi) {
-                    fail("Invalid memory offset: " + Integer.toHexString(masked));
+                    fail("Invalid memory offset: " + Integer.toHexString(masked) + " expected between 0x" + Integer.toHexString(lo) + " - 0x" + Integer.toHexString(hi));
                 }
                 return (byte) offset;
             }
