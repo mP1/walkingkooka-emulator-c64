@@ -17,9 +17,6 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.collect.list.Lists;
-
-import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 
@@ -54,31 +51,18 @@ public final class VicMapper {
                       final Consumer<AddressBus> vicAddressBus) {
         super();
 
-        final int bankCount = VicBank.values().length;
-        this.banks = new AddressBus[bankCount];
-        int offset = 0;
-
-        for (int bank = 0; bank < bankCount; bank++) {
-            final List<AddressBus> pages = Lists.array();
-
-            for (int pageNumber = 0; pageNumber < 0x100 / bankCount; pageNumber++) {
-                AddressBus page;
-
-                if ((offset >= 0x1000 && offset < 0x2000) || (offset >= 0x9000 && offset < 0xa000)) {
-                    page = characters;
-                } else {
-                    page = memory;
-                }
-
-                pages.add(page);
-
-                offset += 0x100;
-            }
-            this.banks[bank] = AddressBuses.paged(pages);
-        }
+        this.banks = new AddressBus[]{
+                VicMapperAddressBus.with(0 * BANK_OFFSET, characters, memory), // bank0
+                memory.setBaseOffset(1 * BANK_OFFSET), // bank1
+                VicMapperAddressBus.with(2 * BANK_OFFSET, characters, memory), // bank2
+                memory.setBaseOffset(3 * BANK_OFFSET) // bank3
+        };
 
         this.vicAddressBus = vicAddressBus;
     }
+
+    final static int BANK_OFFSET = 0x4000;
+    final static int BANK_MASK = BANK_OFFSET - 1;
 
     VicBank bank() {
         return this.bank;
