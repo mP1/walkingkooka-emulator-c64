@@ -32,20 +32,23 @@ final class Rom implements AddressBus {
         Objects.requireNonNull(values, "values");
         Objects.requireNonNull(write, "write");
 
-        return new Rom(values, write);
+        return new Rom(values, write, 0);
     }
 
     private Rom(final byte[] values,
-                final AddressBus write) {
+                final AddressBus write,
+                final int baseOffset) {
         super();
         this.values = values.clone();
         this.mask = values.length -1;
         this.write = write;
+
+        this.baseOffset = baseOffset;
     }
 
     @Override
     public byte read(final int offset) {
-        return this.values[offset & this.mask];
+        return this.values[this.offset(offset) & this.mask];
     }
 
     /**
@@ -60,10 +63,23 @@ final class Rom implements AddressBus {
 
     @Override
     public void write(final int offset, final byte value) {
-        this.write.write(offset, value);
+        this.write.write(this.offset(offset), value);
     }
 
     private final AddressBus write;
+
+    private int offset(final int offset) {
+        return (this.baseOffset + offset) & this.mask;
+    }
+
+    private final int baseOffset;
+
+    @Override
+    public Rom setBaseOffset(final int offset) {
+        return 0 == offset ?
+                this :
+                new Rom(this.values, this.write, offset - this.baseOffset);
+    }
 
     /**
      * Dumps the page memory as hex bytes.

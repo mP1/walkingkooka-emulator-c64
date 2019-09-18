@@ -31,4 +31,14 @@ public interface AddressBus {
      * Writes a single byte to the given offset.
      */
     void write(final int offset, final byte value);
+
+    /**
+     * Creates a view of this {@link AddressBus} where reads/writes have the given base offset added.
+     * This is useful to break up a large memory into smaller chunks.
+     */
+    default AddressBus setBaseOffset(final int offset) {
+        return 0 == offset ?
+                this :
+                AddressBuses.baseOffset(offset, this);
+    }
 }

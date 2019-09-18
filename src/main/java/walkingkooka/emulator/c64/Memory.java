@@ -28,26 +28,31 @@ final class Memory implements AddressBus {
      * Creates some memory. The size should be a power of two.
      */
     static Memory with(final int size) {
-        if(size <= 0) {
+        if (size <= 0) {
             throw new IllegalArgumentException("Size " + size + " <= 0");
         }
-        return new Memory(size);
+        return new Memory(new byte[size],
+                size - 1,
+                0);
     }
 
-    private Memory(final int size) {
+    private Memory(final byte[] values,
+                   final int mask,
+                   final int baseOffset) {
         super();
-        this.values = new byte[size];
-        this.mask = size - 1;
+        this.values = values;
+        this.mask = mask;
+        this.baseOffset = baseOffset;
     }
 
     @Override
     public byte read(final int offset) {
-        return this.values[offset & this.mask];
+        return this.values[this.offset(offset)];
     }
 
     @Override
     public void write(final int offset, final byte value) {
-        this.values[offset & this.mask] = value;
+        this.values[this.offset(offset)] = value;
     }
 
     /**
@@ -55,10 +60,26 @@ final class Memory implements AddressBus {
      */
     private final byte[] values;
 
+    private int offset(final int offset) {
+        return (this.baseOffset + offset) & this.mask;
+    }
+
     /**
      * Mask used to mask out unnecessary offset bits.
      */
     private final int mask;
+
+    /**
+     * THe base offset added to the read/write offset before masking.
+     */
+    private final int baseOffset;
+
+    @Override
+    public Memory setBaseOffset(final int offset) {
+        return 0 == offset ?
+                this :
+                new Memory(this.values, this.mask, offset - this.baseOffset);
+    }
 
     /**
      * Reports memory and the read/write mask.

@@ -17,6 +17,7 @@
 
 package walkingkooka.emulator.c64;
 
+import org.junit.jupiter.api.Test;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.ToStringTesting;
 import walkingkooka.type.JavaVisibility;

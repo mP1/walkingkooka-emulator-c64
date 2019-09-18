@@ -54,6 +54,13 @@ final class BaseOffsetAddressBus implements AddressBus {
     private final AddressBus bus;
 
     @Override
+    public AddressBus setBaseOffset(final int offset) {
+        return 0 == offset ?
+                this :
+                new BaseOffsetAddressBus(offset - this.baseOffset, this.bus);
+    }
+
+    @Override
     public String toString() {
         return "baseOffset: " + this.baseOffset + " " + this.bus;
     }
