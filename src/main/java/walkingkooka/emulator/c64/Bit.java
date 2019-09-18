@@ -35,6 +35,7 @@ enum Bit {
     BIT0(0);
 
     Bit(final int bitNumber) {
+        this.number = bitNumber;
         this.mask = (byte)(1 << bitNumber);
         this.notMask = (byte) ~ this.mask;
     }
@@ -114,6 +115,12 @@ enum Bit {
     private final byte mask;
     private final byte notMask;
 
+    int number() {
+        return this.number;
+    }
+
+    private final int number;
+
     /**
      * Returns a string testing all the bits in the bit and using the text for that match separated by a space.
      */
@@ -139,5 +146,24 @@ enum Bit {
                 .value(BIT1.read(value) ? bit1 : "")
                 .value(BIT0.read(value) ? bit0 : "")
                 .build();
+    }
+
+    /**
+     * Returns the {@link Bit} for the given number.
+     */
+    static Bit of(final int number) {
+        return NUMBER[number];
+    }
+
+    private final static Bit[] NUMBER = valuesToNumber();
+
+    private static Bit[] valuesToNumber() {
+        final Bit[] number = new Bit[8];
+
+        for (Bit bit : values()) {
+            number[bit.number] = bit;
+        }
+
+        return number;
     }
 }

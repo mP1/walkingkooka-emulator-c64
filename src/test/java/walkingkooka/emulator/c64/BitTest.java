@@ -634,6 +634,17 @@ public final class BitTest implements ClassTesting2<Bit> {
                         CharSequences.quoteAndEscape(text0));
     }
 
+    // of...............................................................................................................
+
+    @Test
+    public void testOf() {
+        Arrays.stream(Bit.values())
+                .forEach((b) -> {
+                    final int number = b.number();
+                    assertEquals(b, Bit.of(number), () -> "bit number " + number);
+                });
+    }
+
     // ClassTesting.....................................................................................................
 
     @Override
