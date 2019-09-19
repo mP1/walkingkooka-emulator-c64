@@ -19,6 +19,7 @@ package walkingkooka.emulator.c64;
 import walkingkooka.type.PublicStaticHelper;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Collection of factory methods to create devices which provide an {@link AddressBus} for interaction with the CPU.
@@ -36,8 +37,12 @@ public final class AddressBuses implements PublicStaticHelper {
     /**
      * {@see Ciaa}
      */
-    public static AddressBus ciaa(final Runnable interrupt) {
-        return Ciaa.with(interrupt);
+    public static AddressBus ciaa(final Consumer<Consumer<HardwareMatrixKey>> keyPress,
+                                  final Consumer<Consumer<HardwareMatrixKey>> keyRelease,
+                                  final Runnable interrupt) {
+        return Ciaa.with(keyPress,
+                keyRelease,
+                interrupt);
     }
 
     /**
