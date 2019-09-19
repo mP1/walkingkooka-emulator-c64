@@ -645,6 +645,30 @@ public final class BitTest implements ClassTesting2<Bit> {
                 });
     }
 
+    // right............................................................................................................
+
+    @Test
+    public void testRightBit0() {
+        this.rightAndCheck(Bit.BIT0, Bit.BIT7);
+    }
+
+    @Test
+    public void testRightBit1() {
+        this.rightAndCheck(Bit.BIT1, Bit.BIT0);
+    }
+
+    @Test
+    public void testRightBit7() {
+        this.rightAndCheck(Bit.BIT7, Bit.BIT6);
+    }
+
+    private void rightAndCheck(final Bit bit,
+                               final Bit righted) {
+        assertEquals(righted,
+                bit.right(),
+                () -> bit + " right");
+    }
+
     // ClassTesting.....................................................................................................
 
     @Override
