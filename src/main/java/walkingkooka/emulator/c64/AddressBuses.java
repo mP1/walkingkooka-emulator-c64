@@ -54,6 +54,17 @@ public final class AddressBuses implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuAddressBus}
+     */
+    public static AddressBus cpu(final AddressBus memory,
+                                 final AddressBus basic,
+                                 final AddressBus chargen,
+                                 final AddressBus ioDevices,
+                                 final AddressBus kernal) {
+        return CpuAddressBus.with(memory, chargen, basic, ioDevices, kernal);
+    }
+
+    /**
      * {@see FakeAddressBus}
      */
     public static AddressBus fake() {
