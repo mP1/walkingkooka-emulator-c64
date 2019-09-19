@@ -29,7 +29,7 @@ public interface AddressBusTesting extends Testing {
     default void readAndCheck(final AddressBus bus,
                               final int offset,
                               final byte expected) {
-        assertEquals(expected, bus.read(offset), () -> bus + " read " + offset);
+        assertEquals(expected, bus.read(offset), () -> bus + " read " + Integer.toHexString(offset));
     }
 
     default void writeAndReadCheck(final AddressBus bus,
