@@ -669,6 +669,30 @@ public final class BitTest implements ClassTesting2<Bit> {
                 () -> bit + " right");
     }
 
+    // left.............................................................................................................
+
+    @Test
+    public void testLeftBit0() {
+        this.leftAndCheck(Bit.BIT0, Bit.BIT1);
+    }
+
+    @Test
+    public void testLeftBit1() {
+        this.leftAndCheck(Bit.BIT1, Bit.BIT2);
+    }
+
+    @Test
+    public void testLeftBit7() {
+        this.leftAndCheck(Bit.BIT7, Bit.BIT0);
+    }
+
+    private void leftAndCheck(final Bit bit,
+                              final Bit lefted) {
+        assertEquals(lefted,
+                bit.left(),
+                () -> bit + " left");
+    }
+
     // ClassTesting.....................................................................................................
 
     @Override

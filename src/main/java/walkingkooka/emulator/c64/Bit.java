@@ -48,6 +48,13 @@ enum Bit {
     }
 
     /**
+     * Returns the next bit to the left with {@link Bit#BIT7} returning {@link Bit#BIT0}.
+     */
+    final Bit left() {
+        return of(7 & (this.number + 1));
+    }
+
+    /**
      * Read a bit from the byte.
      */
     final boolean read(final byte value) {
