@@ -78,7 +78,7 @@ public final class VicMapper {
 
     private VicBank bank = VicBank.BANK0;
 
-    private AddressBus[] banks;
+    private final AddressBus[] banks;
 
     private final Consumer<AddressBus> vicAddressBus;
 
