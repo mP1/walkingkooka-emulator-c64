@@ -124,23 +124,53 @@ final class CpuAddressBus implements AddressBus {
     @Override
     public void write(final int offset,
                       final byte value) {
-        if (offset >= IO_DEVICES_BEGIN & offset <= IO_DEVICES_END) {
+        final int masked = offset & MASK;
+        if (masked >= IO_DEVICES_BEGIN & masked <= IO_DEVICES_END) {
             if (this.ioDevicesMapped) {
-                this.ioDevices.write(offset, value);
+                this.ioDevices.write(masked, value);
             } else {
-                this.chargen.write(offset, value); // assumes writing to CHARGEN eventually writes to memory
+                this.chargen.write(masked, value); // assumes writing to CHARGEN eventually writes to memory
             }
         } else {
-            if (BANK == offset) {
-                this.basicRomMapped = LORAM.read(value);
-                this.ioDevicesMapped = CHAREN.read(value);
-                this.kernalRomMapped = HIRAM.read(value);
+            switch (masked & MASK) {
+                case DATA_DIRECTION:
+                    this.writeDataDirection(value);
+                    break;
+                case PORT:
+                    this.writePort(value);
+                    break;
             }
-            this.memory.write(offset, value);
+            this.memory.write(masked, value);
         }
     }
 
-    final static int BANK = 1;
+    final static int MASK = 0xffff;
+
+    final static int DATA_DIRECTION = 0;
+    final static int PORT = 1;
+
+    private void writeDataDirection(final byte value) {
+        this.basicRomOutput = LORAM.read(value);
+        this.ioDevicesOutput = CHAREN.read(value);
+        this.kernalRomOutput = HIRAM.read(value);
+    }
+
+    private void writePort(final byte value) {
+        if (this.basicRomOutput) {
+            this.basicRomMapped = LORAM.read(value);
+        }
+        if (this.ioDevicesOutput) {
+            this.ioDevicesMapped = CHAREN.read(value);
+        }
+        if (this.kernalRomOutput) {
+            this.kernalRomMapped = HIRAM.read(value);
+        }
+    }
+
+    boolean basicRomOutput;
+    boolean ioDevicesOutput;
+    boolean kernalRomOutput;
+
     boolean basicRomMapped;
     boolean ioDevicesMapped;
     boolean kernalRomMapped;
