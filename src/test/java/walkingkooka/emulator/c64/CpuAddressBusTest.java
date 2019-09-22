@@ -144,32 +144,75 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
 
     // write............................................................................................................
 
+    private final boolean BASIC_TRUE = true;
+    private final boolean BASIC_FALSE = false;
+
+    private final boolean IO_TRUE = true;
+    private final boolean IO_FALSE = false;
+
+    private final boolean KERNAL_TRUE = true;
+    private final boolean KERNAL_FALSE = false;
+
     @Test
-    public void testWritePort1Zero() {
-        this.writeBankAndCheck(0, false, false, false);
+    public void testWriteDataDirectionZeroPortZero() {
+        this.writeBankAndCheck(0x7,
+                0,
+                BASIC_FALSE,
+                IO_FALSE,
+                KERNAL_FALSE);
     }
 
     @Test
-    public void testWritePort1Basic() {
-        this.writeBankAndCheck(CpuAddressBus.LORAM.set(), true, false, false);
+    public void testWriteDataDirectionBasicPortBasicTrue() {
+        final byte value = CpuAddressBus.LORAM.set();
+        this.writeBankAndCheck(value,
+                value,
+                BASIC_TRUE,
+                IO_FALSE,
+                KERNAL_FALSE);
     }
 
     @Test
-    public void testWritePort1Io() {
-        this.writeBankAndCheck(CpuAddressBus.CHAREN.set(), false, true, false);
+    public void testWriteDataDirectionIoPortIoTrue() {
+        final byte value = CpuAddressBus.CHAREN.set();
+        this.writeBankAndCheck(value,
+                value,
+                BASIC_FALSE,
+                IO_TRUE,
+                KERNAL_FALSE);
     }
 
     @Test
-    public void testWritePort1Kernal() {
-        this.writeBankAndCheck(CpuAddressBus.HIRAM.set(), false, false, true);
+    public void testWriteDataDirectionKernalPortKernalTrue() {
+        final byte value = CpuAddressBus.HIRAM.set();
+        this.writeBankAndCheck(value,
+                value,
+                BASIC_FALSE,
+                IO_FALSE,
+                KERNAL_TRUE);
     }
 
     @Test
-    public void testWritePort1BasicIoKernal() {
-        this.writeBankAndCheck(CpuAddressBus.LORAM.or(CpuAddressBus.CHAREN, CpuAddressBus.HIRAM), true, true, true);
+    public void testWriteDataDirectionFalseAndBasicIoKernalTrueAndIgnored() {
+        this.writeBankAndCheck(0,
+                CpuAddressBus.LORAM.or(CpuAddressBus.CHAREN, CpuAddressBus.HIRAM),
+                BASIC_FALSE,
+                IO_FALSE,
+                KERNAL_FALSE);
     }
 
-    private void writeBankAndCheck(final int value,
+    @Test
+    public void testWriteDataDirectionAndBasicIoKernalAllTrue() {
+        final byte value = CpuAddressBus.LORAM.or(CpuAddressBus.CHAREN, CpuAddressBus.HIRAM);
+        this.writeBankAndCheck(value,
+                value,
+                BASIC_TRUE,
+                IO_TRUE,
+                KERNAL_TRUE);
+    }
+
+    private void writeBankAndCheck(final int dataDirection,
+                                   final int port,
                                    final boolean basic,
                                    final boolean ioDevices,
                                    final boolean kernal) {
@@ -179,9 +222,8 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
                 this.ioDevices(),
                 this.kernal());
 
-        this.writeAndReadCheck(bus,
-                CpuAddressBus.BANK,
-                (byte) value);
+        bus.write(CpuAddressBus.DATA_DIRECTION, (byte) dataDirection);
+        bus.write(CpuAddressBus.PORT, (byte) port);
 
         assertEquals(basic, bus.basicRomMapped, () -> "basicRomMapped " + bus);
         assertEquals(ioDevices, bus.ioDevicesMapped, () -> "ioDevicesMapped " + bus);
