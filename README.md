@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/mP1/walkingkooka-emulator-c64.svg?branch=master)](https://travis-ci.com/mP1/walkingkooka-emulator-c64.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/mP1/walkingkooka-emulator-c64/badge.svg?branch=master)](https://coveralls.io/github/mP1/walkingkooka-emulator-c64?branch=master)
 
 # walkingkooka-emulator-c64
