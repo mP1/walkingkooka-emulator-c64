@@ -17,8 +17,8 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.test.ClassTesting2;
-import walkingkooka.type.JavaVisibility;
+import walkingkooka.reflect.ClassTesting2;
+import walkingkooka.reflect.JavaVisibility;
 
 public final class CiaTest implements ClassTesting2<Cia> {
 
