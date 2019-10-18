@@ -16,8 +16,8 @@
  */
 package walkingkooka.emulator.c64;
 
-import walkingkooka.test.PublicStaticHelperTesting;
-import walkingkooka.type.JavaVisibility;
+import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
 

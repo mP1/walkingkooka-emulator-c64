@@ -16,7 +16,7 @@
  */
 package walkingkooka.emulator.c64;
 
-import walkingkooka.type.PublicStaticHelper;
+import walkingkooka.reflect.PublicStaticHelper;
 
 import java.util.List;
 import java.util.function.Consumer;

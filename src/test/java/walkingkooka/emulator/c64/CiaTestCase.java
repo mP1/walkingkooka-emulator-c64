@@ -18,7 +18,7 @@
 package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.test.ToStringTesting;
+import walkingkooka.ToStringTesting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
