@@ -20,6 +20,7 @@ package walkingkooka.emulator.c64;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.collect.map.Maps;
 import walkingkooka.collect.set.Sets;
+import walkingkooka.collect.set.SortedSets;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -158,8 +159,8 @@ enum HardwareMatrixKey {
         final List<Set<HardwareMatrixKey>> rows = Lists.array();
 
         for (Bit bit : Bit.values()) {
-            rowToKeys.put(bit, Sets.sorted());
-            columnToKeys.put(bit, Sets.sorted());
+            rowToKeys.put(bit, SortedSets.tree());
+            columnToKeys.put(bit, SortedSets.tree());
 
             columns.add(null);
             rows.add(null);
