@@ -17,7 +17,20 @@
 
 package walkingkooka.emulator.c64;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuContextTesting {
+
+    @Test
+    default void testExecuteWithNullContextFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> this.createCpuInstruction()
+                .execute(null)
+        );
+    }
 
     default void executeAccumulatorAndCheck(final I instruction,
                                             final CpuContext context,

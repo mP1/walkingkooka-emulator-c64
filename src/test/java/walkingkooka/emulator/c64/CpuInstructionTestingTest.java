@@ -20,6 +20,7 @@ package walkingkooka.emulator.c64;
 import org.junit.jupiter.api.Test;
 import walkingkooka.emulator.c64.CpuInstructionTestingTest.TestCpuInstruction;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public final class CpuInstructionTestingTest implements CpuInstructionTesting<TestCpuInstruction> {
@@ -426,6 +427,8 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
         @Override
         public void execute(final CpuContext context) {
+            Objects.requireNonNull(context, "context");
+
             this.execute.accept(context);
         }
 
