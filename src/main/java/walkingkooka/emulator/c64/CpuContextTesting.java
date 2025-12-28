@@ -18,8 +18,9 @@
 package walkingkooka.emulator.c64;
 
 import walkingkooka.test.Testing;
+import walkingkooka.text.printer.TreePrintableTesting;
 
-public interface CpuContextTesting extends Testing {
+public interface CpuContextTesting extends TreePrintableTesting {
 
     default void aAndCheck(final CpuContext context,
                            final byte value) {
