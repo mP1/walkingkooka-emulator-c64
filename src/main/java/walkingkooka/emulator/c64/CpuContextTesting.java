@@ -17,7 +17,6 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.test.Testing;
 import walkingkooka.text.printer.TreePrintableTesting;
 
 public interface CpuContextTesting extends TreePrintableTesting {
