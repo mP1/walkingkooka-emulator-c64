@@ -277,7 +277,7 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
 
         this.toStringAndCheck(
             context,
-            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0xabcd, Flags: C----1--"
+            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0xabcd, CpuFlags: C----1--"
         );
     }
 
@@ -296,7 +296,7 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
 
         this.toStringAndCheck(
             context,
-            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0xabcd, Flags: -----1O-"
+            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0xabcd, CpuFlags: -----1O-"
         );
     }
 
@@ -320,7 +320,7 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
 
         this.toStringAndCheck(
             context,
-            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0xabcd, Flags: CZIDB1-N"
+            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0xabcd, CpuFlags: CZIDB1-N"
         );
     }
 
