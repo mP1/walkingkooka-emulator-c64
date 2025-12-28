@@ -227,7 +227,7 @@ public interface CpuContextTesting extends TreePrintableTesting {
 
         this.readByteAndCheck(
             context,
-            (short) (0x100 + stackPointer),
+            (short) (0x100 + (0xff & stackPointer)),
             value
         );
         this.stackPointerAndCheck(
