@@ -129,4 +129,20 @@ public final class CpuContextTestingTest implements CpuContextTesting {
             value
         );
     }
+
+    @Test
+    public void testHexByte() {
+        this.checkEquals(
+            "0xff 255",
+            CpuContextTesting.hex((byte) 0xff)
+        );
+    }
+
+    @Test
+    public void testHexShort() {
+        this.checkEquals(
+            "0xfffe 65534",
+            CpuContextTesting.hex((short) 0xfffe)
+        );
+    }
 }
