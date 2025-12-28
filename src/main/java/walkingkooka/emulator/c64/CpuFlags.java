@@ -35,22 +35,9 @@ public final class CpuFlags implements HasCpuFlags {
         super();
     }
 
-    /**
-     * <pre>
-     * Bit	Flag	Abbreviation	Purpose
-     * 0	Carry Flag	C	Indicates when a bit of the result is to be carried to or borrowed from another byte. Also used for rotate and shift operations.
-     * 1	Zero Flag	Z	A one indicates that the result of an operation is equal to zero.
-     * 2	Interrupt Disable Flag	I	If set IRQ will be prevented (masked), except non-maskable interrupts (NMI).
-     * 3	Decimal Mode Flag	D	If set arithmetic operations are calculated in decimal mode (otherwise usually in binary mode).
-     * 4	Break Command Flag	B	Indicates that interrupt request has been triggered by an BRK opcode (not an IRQ).
-     * 5	Unused	-	Cannot be changed, usually 1.
-     * 6	Overflow Flag	V	Indicates that a result of an signed arithmetic operation exceeds the signed value range (-128 to 127).
-     * 7	Negative Flag	N	A value of 1 indicates that the result is negative (bit 7 is set, for a two's complement representation).
-     * </pre>
-     */
     public byte value() {
 
-        byte flags = Bit.BIT5.set();
+        byte flags = UNUSED.set();
 
         if (this.carry) {
             flags |= CARRY.set();
@@ -107,11 +94,25 @@ public final class CpuFlags implements HasCpuFlags {
         );
     }
 
+    /**
+     * <pre>
+     * Bit	Flag	Abbreviation	Purpose
+     * 0	Carry Flag	C	Indicates when a bit of the result is to be carried to or borrowed from another byte. Also used for rotate and shift operations.
+     * 1	Zero Flag	Z	A one indicates that the result of an operation is equal to zero.
+     * 2	Interrupt Disable Flag	I	If set IRQ will be prevented (masked), except non-maskable interrupts (NMI).
+     * 3	Decimal Mode Flag	D	If set arithmetic operations are calculated in decimal mode (otherwise usually in binary mode).
+     * 4	Break Command Flag	B	Indicates that interrupt request has been triggered by an BRK opcode (not an IRQ).
+     * 5	Unused	-	Cannot be changed, usually 1.
+     * 6	Overflow Flag	V	Indicates that a result of an signed arithmetic operation exceeds the signed value range (-128 to 127).
+     * 7	Negative Flag	N	A value of 1 indicates that the result is negative (bit 7 is set, for a two's complement representation).
+     * </pre>
+     */
     private final Bit CARRY = Bit.BIT0;
     private final Bit ZERO = Bit.BIT1;
     private final Bit INTERRUPT_DISABLED = Bit.BIT2;
     private final Bit DECIMAL_MODE = Bit.BIT3;
-    private final Bit BREAK = Bit.BIT5;
+    private final Bit BREAK = Bit.BIT4;
+    private final Bit UNUSED = Bit.BIT5;
     private final Bit OVERFLOW = Bit.BIT6;
     private final Bit MINUS = Bit.BIT7;
 
