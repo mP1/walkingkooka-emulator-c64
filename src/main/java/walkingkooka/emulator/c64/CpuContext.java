@@ -80,6 +80,13 @@ public interface CpuContext extends Context {
 
     short readAddress(final short address);
 
+    byte readZeroPageByte(final byte offset);
+
+    void writeZeroPageByte(final byte offset,
+                           final byte value);
+
+    short readZeroPageAddress(final byte offset);
+
     void push(final byte value);
 
     byte pop();

@@ -163,6 +163,40 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
+    default void readZeroPageByteAndCheck(final C context,
+                                          final byte offset,
+                                          final byte value) {
+        this.checkEquals(
+            value,
+            context.readZeroPageByte(offset),
+            () -> "readZeroPageByte " + offset
+        );
+    }
+
+    default void writeZeroPageByteAndCheck(final C context,
+                                           final byte offset,
+                                           final byte value) {
+        context.writeZeroPageByte(
+            offset,
+            value
+        );
+        this.readZeroPageByteAndCheck(
+            context,
+            offset,
+            value
+        );
+    }
+
+    default void readZeroPageAddressAndCheck(final C context,
+                                             final byte offset,
+                                             final short address) {
+        this.checkEquals(
+            address,
+            context.readZeroPageAddress(offset),
+            () -> "readZeroPageAddress " + offset
+        );
+    }
+
     default void popAndCheck(final C context,
                              final byte value) {
         this.checkEquals(
