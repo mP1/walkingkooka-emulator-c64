@@ -17,14 +17,14 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.test.Testing;
+import walkingkooka.text.printer.TreePrintableTesting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * An interface with default methods that allow mixins
  */
-public interface AddressBusTesting extends Testing {
+public interface AddressBusTesting extends TreePrintableTesting {
 
     default void readAndCheck(final AddressBus bus,
                               final int offset,
