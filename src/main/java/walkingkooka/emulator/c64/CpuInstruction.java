@@ -36,4 +36,10 @@ public interface CpuInstruction {
      * Execute this instruction, advancing pc, updating memory or flags etc, ready for the next instruction to be executed.
      */
     void execute(final CpuContext context);
+
+    /**
+     * Disassembles the instruction without changing the given {@link CpuContext}, returning the text form as would
+     * appear in the source code for an assembler.
+     */
+    String disassemble(final CpuContext context);
 }

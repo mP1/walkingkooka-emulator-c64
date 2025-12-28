@@ -201,7 +201,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
             final byte opcode = (byte) i;
 
             instructions.add(
-                new CpuInstruction() {
+                new FakeCpuInstruction() {
                     @Override
                     public byte opcode() {
                         return opcode;
