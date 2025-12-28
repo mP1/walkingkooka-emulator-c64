@@ -93,7 +93,7 @@ public final class CpuFlagsTest implements HashCodeEqualsDefinedTesting2<CpuFlag
     public void testToStringCarry() {
         final CpuFlags context = CpuFlags.create();
 
-        context.setCarry(true);
+        context.setValue((byte)0x1);
 
         this.toStringAndCheck(
             context,
@@ -102,14 +102,86 @@ public final class CpuFlagsTest implements HashCodeEqualsDefinedTesting2<CpuFlag
     }
 
     @Test
+    public void testToStringZero() {
+        final CpuFlags context = CpuFlags.create();
+
+        context.setValue((byte)0x2);
+
+        this.toStringAndCheck(
+            context,
+            "-Z---1--"
+        );
+    }
+
+    @Test
+    public void testToStringInterruptDisabled() {
+        final CpuFlags context = CpuFlags.create();
+
+        context.setValue((byte)0x4);
+
+        this.toStringAndCheck(
+            context,
+            "--I--1--"
+        );
+    }
+
+    @Test
+    public void testToStringDecimalMode() {
+        final CpuFlags context = CpuFlags.create();
+
+        context.setValue((byte)0x8);
+
+        this.toStringAndCheck(
+            context,
+            "---D-1--"
+        );
+    }
+
+    @Test
+    public void testToStringBreak() {
+        final CpuFlags context = CpuFlags.create();
+
+        context.setValue((byte)0x10);
+
+        this.toStringAndCheck(
+            context,
+            "----B1--"
+        );
+    }
+
+    @Test
+    public void testToStringUnused() {
+        final CpuFlags context = CpuFlags.create();
+
+        context.setValue((byte)0x20);
+
+        this.toStringAndCheck(
+            context,
+            "-----1--"
+        );
+    }
+
+    @Test
     public void testToStringOverflow() {
         final CpuFlags context = CpuFlags.create();
 
-        context.setOverflow(true);
+        context.setValue((byte)0x40);
 
         this.toStringAndCheck(
             context,
             "-----1O-"
+        );
+    }
+
+    @Test
+    public void testToStringMinus() {
+        final CpuFlags context = CpuFlags.create();
+
+        context.setValue((byte)0x80);
+
+        this.toStringAndCheck(
+            context,
+            "-----1-N"
         );
     }
 
