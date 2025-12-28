@@ -20,4 +20,10 @@ package walkingkooka.emulator.c64;
 public interface Cpu {
 
     void step(final CpuContext context);
+
+    void reset();
+
+    void nmi();
+
+    void irq();
 }
