@@ -87,6 +87,14 @@ public interface CpuContextTesting extends TreePrintableTesting {
     }
 
     default void flagsAndCheck(final CpuContext context,
+                               final String expected) {
+        this.flagsAndCheck(
+            context,
+            CpuFlags.parse(expected)
+        );
+    }
+
+    default void flagsAndCheck(final CpuContext context,
                                final CpuFlags expected) {
         final CpuFlags actual = CpuFlags.create();
         actual.setValue(

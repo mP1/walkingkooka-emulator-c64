@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 public final class CpuContextTestingTest implements CpuContextTesting {
 
     @Test
-    public void testFlagsAndCheck() {
+    public void testFlagsAndCheckWithByte() {
         final byte value = (byte) 0xFF;
         this.flagsAndCheck(
             new FakeCpuContext() {
@@ -33,6 +33,25 @@ public final class CpuContextTestingTest implements CpuContextTesting {
                 }
             },
             value
+        );
+    }
+
+    @Test
+    public void testFlagsAndCheckWithString() {
+        final byte value = (byte) 0xFF;
+
+        final CpuFlags expected = CpuFlags.create();
+        expected.setValue(value);
+
+        this.flagsAndCheck(
+            new FakeCpuContext() {
+
+                @Override
+                public byte flags() {
+                    return value;
+                }
+            },
+            expected
         );
     }
 
