@@ -24,6 +24,7 @@ import walkingkooka.text.printer.TreePrintableTesting;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public interface CpuTesting<C extends Cpu> extends TreePrintableTesting,
+    CpuContextTesting,
     ClassTesting<C> {
 
     @Test

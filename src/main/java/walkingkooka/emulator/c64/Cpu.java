@@ -19,6 +19,16 @@ package walkingkooka.emulator.c64;
 
 public interface Cpu {
 
+    short NMI_VECTOR = (short) 0xfffa;
+
+    short RESET_VECTOR = (short) 0xfffc;
+
+    short IRQ_VECTOR = (short) 0xfffe;
+
+    short BASIC_ROM_BASE = (short) 0xa000;
+
+    short KERNAL_ROM_BASE = (short) 0xe000;
+
     void step(final CpuContext context);
 
     void reset();
