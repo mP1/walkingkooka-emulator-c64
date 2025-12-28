@@ -215,8 +215,18 @@ public interface CpuContextTesting extends TreePrintableTesting {
 
     default void pushAndCheck(final CpuContext context,
                               final byte value) {
-        context.push(
+        final byte stackPointer = context.stackPointer();
+
+        context.push(value);
+
+        this.readByteAndCheck(
+            context,
+            (short) (0x100 + stackPointer),
             value
+        );
+        this.stackPointerAndCheck(
+            context,
+            (byte) (stackPointer - 1)
         );
     }
 }

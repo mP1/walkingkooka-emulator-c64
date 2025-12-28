@@ -59,4 +59,40 @@ public final class CpuContextTestingTest implements CpuContextTesting {
             value
         );
     }
+
+    @Test
+    public void testPushAndCheck() {
+        final byte value = 0x55;
+
+        this.pushAndCheck(
+            new FakeCpuContext() {
+
+                @Override
+                public void push(final byte v) {
+                    checkEquals(value, v);
+                    this.stackPointer = 0x0f;
+                }
+
+                @Override
+                public byte readByte(final short address) {
+                    return 0x110 == address ?
+                        value :
+                        (byte) 0xff;
+                }
+
+                @Override
+                public void setStackPointer(final byte stackPointer) {
+                    this.stackPointer = stackPointer;
+                }
+
+                @Override
+                public byte stackPointer() {
+                    return this.stackPointer;
+                }
+
+                private byte stackPointer = (byte) 0x10;
+            },
+            value
+        );
+    }
 }
