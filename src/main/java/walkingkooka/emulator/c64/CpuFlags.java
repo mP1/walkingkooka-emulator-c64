@@ -180,14 +180,14 @@ public final class CpuFlags implements HasCpuFlags {
      * 7	Negative Flag	N	A value of 1 indicates that the result is negative (bit 7 is set, for a two's complement representation).
      * </pre>
      */
-    private final Bit CARRY = Bit.BIT0;
-    private final Bit ZERO = Bit.BIT1;
-    private final Bit INTERRUPT_DISABLED = Bit.BIT2;
-    private final Bit DECIMAL_MODE = Bit.BIT3;
-    private final Bit BREAK = Bit.BIT4;
-    private final Bit UNUSED = Bit.BIT5;
-    private final Bit OVERFLOW = Bit.BIT6;
-    private final Bit MINUS = Bit.BIT7;
+    public final static Bit CARRY = Bit.BIT0;
+    public final static Bit ZERO = Bit.BIT1;
+    public final static Bit INTERRUPT_DISABLED = Bit.BIT2;
+    public final static Bit DECIMAL_MODE = Bit.BIT3;
+    public final static Bit BREAK = Bit.BIT4;
+    public final static Bit UNUSED = Bit.BIT5;
+    public final static Bit OVERFLOW = Bit.BIT6;
+    public final static Bit MINUS = Bit.BIT7;
 
     @Override
     public boolean isBreak() {

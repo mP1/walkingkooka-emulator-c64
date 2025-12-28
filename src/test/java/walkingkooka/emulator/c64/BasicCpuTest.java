@@ -91,7 +91,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         this.readByteAndCheck(
             context,
             (short) 0x17e,
-            (byte) (flags | 0x20)
+            (byte) (flags | CpuFlags.UNUSED.set())
         );
     }
 
@@ -188,7 +188,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         this.readByteAndCheck(
             context,
             (short) 0x17e,
-            (byte) (flags | 0x20)
+            (byte) (flags | CpuFlags.UNUSED.set())
         );
     }
 
