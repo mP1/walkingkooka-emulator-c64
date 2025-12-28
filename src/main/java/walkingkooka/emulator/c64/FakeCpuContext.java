@@ -154,7 +154,7 @@ public class FakeCpuContext implements CpuContext {
     }
 
     @Override
-    public byte readByte(short address) {
+    public byte readByte(final short address) {
         throw new UnsupportedOperationException();
     }
 
