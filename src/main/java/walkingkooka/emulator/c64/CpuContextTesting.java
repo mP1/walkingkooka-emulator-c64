@@ -212,4 +212,11 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
             value
         );
     }
+
+    // Class............................................................................................................
+
+    @Override
+    default String typeNameSuffix() {
+        return CpuContext.class.getSimpleName();
+    }
 }
