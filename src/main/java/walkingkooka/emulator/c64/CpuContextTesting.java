@@ -24,8 +24,10 @@ public interface CpuContextTesting extends TreePrintableTesting {
     default void aAndCheck(final CpuContext context,
                            final byte expected) {
         this.checkEquals(
-            expected,
-            context.a(),
+            hex(expected),
+            hex(
+                context.a()
+            ),
             context::toString
         );
     }
@@ -42,8 +44,10 @@ public interface CpuContextTesting extends TreePrintableTesting {
     default void xAndCheck(final CpuContext context,
                            final byte expected) {
         this.checkEquals(
-            expected,
-            context.x(),
+            hex(expected),
+            hex(
+                context.x()
+            ),
             context::toString
         );
     }
@@ -60,8 +64,10 @@ public interface CpuContextTesting extends TreePrintableTesting {
     default void yAndCheck(final CpuContext context,
                            final byte expected) {
         this.checkEquals(
-            expected,
-            context.y(),
+            hex(expected),
+            hex(
+                context.y()
+            ),
             context::toString
         );
     }
@@ -120,8 +126,10 @@ public interface CpuContextTesting extends TreePrintableTesting {
     default void stackPointerAndCheck(final CpuContext context,
                                       final byte expected) {
         this.checkEquals(
-            expected,
-            context.stackPointer(),
+            hex(expected),
+            hex(
+                context.stackPointer()
+            ),
             context::toString
         );
     }
@@ -138,8 +146,10 @@ public interface CpuContextTesting extends TreePrintableTesting {
     default void pcAndCheck(final CpuContext context,
                             final short expected) {
         this.checkEquals(
-            expected,
-            context.pc(),
+            hex(expected),
+            hex(
+                context.pc()
+            ),
             context::toString
         );
     }
@@ -157,8 +167,10 @@ public interface CpuContextTesting extends TreePrintableTesting {
                                   final short address,
                                   final byte expected) {
         this.checkEquals(
-            expected,
-            context.readByte(address),
+            hex(expected),
+            hex(
+                context.readByte(address)
+            ),
             () -> "readByte " + address
         );
     }
@@ -167,8 +179,10 @@ public interface CpuContextTesting extends TreePrintableTesting {
                                      final short address,
                                      final short expected) {
         this.checkEquals(
-            expected,
-            context.readAddress(address),
+            hex(expected),
+            hex(
+                context.readAddress(address)
+            ),
             () -> "readAddress " + address
         );
     }
@@ -191,8 +205,10 @@ public interface CpuContextTesting extends TreePrintableTesting {
                                           final byte offset,
                                           final byte expected) {
         this.checkEquals(
-            expected,
-            context.readZeroPageByte(offset),
+            hex(expected),
+            hex(
+                context.readZeroPageByte(offset)
+            ),
             () -> "readZeroPageByte " + offset
         );
     }
@@ -215,8 +231,10 @@ public interface CpuContextTesting extends TreePrintableTesting {
                                              final byte offset,
                                              final short address) {
         this.checkEquals(
-            address,
-            context.readZeroPageAddress(offset),
+            hex(address),
+            hex(
+                context.readZeroPageAddress(offset)
+            ),
             () -> "readZeroPageAddress " + offset
         );
     }
@@ -232,8 +250,8 @@ public interface CpuContextTesting extends TreePrintableTesting {
         );
 
         this.checkEquals(
-            expected,
-            context.pop(),
+            hex(expected),
+            hex(context.pop()),
             () -> "pop"
         );
 
@@ -258,5 +276,9 @@ public interface CpuContextTesting extends TreePrintableTesting {
             context,
             (byte) (stackPointer - 1)
         );
+    }
+
+    private static String hex(final int value) {
+        return "0x" + Integer.toHexString(value) + "-" + value;
     }
 }
