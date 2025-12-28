@@ -36,4 +36,6 @@ public interface CpuTesting<C extends Cpu> extends TreePrintableTesting,
     }
 
     C createCpu();
+
+    CpuContext createCpuContext();
 }
