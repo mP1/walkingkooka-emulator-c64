@@ -198,11 +198,18 @@ public interface CpuContextTesting extends TreePrintableTesting {
     }
 
     default void popAndCheck(final CpuContext context,
-                             final byte value) {
+                             final byte expected) {
+        final byte stackPointer = context.stackPointer();
+
         this.checkEquals(
-            value,
+            expected,
             context.pop(),
             () -> "pop"
+        );
+
+        this.stackPointerAndCheck(
+            context,
+            (byte) (stackPointer + 1)
         );
     }
 
