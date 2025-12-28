@@ -25,7 +25,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class BasicCpuContextTest implements CpuContextTesting<BasicCpuContext>,
+public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuContext>,
     ToStringTesting<BasicCpuContext> {
 
     @Test

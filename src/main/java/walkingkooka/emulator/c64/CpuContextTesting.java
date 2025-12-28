@@ -17,11 +17,11 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.ContextTesting;
+import walkingkooka.test.Testing;
 
-public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<C> {
+public interface CpuContextTesting extends Testing {
 
-    default void aAndCheck(final C context,
+    default void aAndCheck(final CpuContext context,
                            final byte value) {
         this.checkEquals(
             context.a(),
@@ -30,7 +30,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void setAAndCheck(final C context,
+    default void setAAndCheck(final CpuContext context,
                               final byte value) {
         context.setA(value);
         this.aAndCheck(
@@ -39,7 +39,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void xAndCheck(final C context,
+    default void xAndCheck(final CpuContext context,
                            final byte value) {
         this.checkEquals(
             context.x(),
@@ -48,7 +48,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void setXAndCheck(final C context,
+    default void setXAndCheck(final CpuContext context,
                               final byte value) {
         context.setX(value);
         this.xAndCheck(
@@ -57,7 +57,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void yAndCheck(final C context,
+    default void yAndCheck(final CpuContext context,
                            final byte value) {
         this.checkEquals(
             context.y(),
@@ -66,7 +66,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void setYAndCheck(final C context,
+    default void setYAndCheck(final CpuContext context,
                               final byte value) {
         context.setY(value);
         this.yAndCheck(
@@ -75,7 +75,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void flagsAndCheck(final C context,
+    default void flagsAndCheck(final CpuContext context,
                                final byte value) {
         this.checkEquals(
             context.flags(),
@@ -84,7 +84,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void setFlagsAndCheck(final C context,
+    default void setFlagsAndCheck(final CpuContext context,
                                   final byte value) {
         context.setFlags(value);
         this.flagsAndCheck(
@@ -93,7 +93,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void stackPointerAndCheck(final C context,
+    default void stackPointerAndCheck(final CpuContext context,
                                       final byte value) {
         this.checkEquals(
             context.stackPointer(),
@@ -102,7 +102,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void setStackPointerAndCheck(final C context,
+    default void setStackPointerAndCheck(final CpuContext context,
                                          final byte value) {
         context.setStackPointer(value);
         this.stackPointerAndCheck(
@@ -111,7 +111,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void pcAndCheck(final C context,
+    default void pcAndCheck(final CpuContext context,
                             final short value) {
         this.checkEquals(
             context.pc(),
@@ -120,7 +120,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void setPCAndCheck(final C context,
+    default void setPCAndCheck(final CpuContext context,
                                final short value) {
         context.setPc(value);
         this.pcAndCheck(
@@ -129,7 +129,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void readByteAndCheck(final C context,
+    default void readByteAndCheck(final CpuContext context,
                                   final short address,
                                   final byte value) {
         this.checkEquals(
@@ -139,7 +139,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void readAddressAndCheck(final C context,
+    default void readAddressAndCheck(final CpuContext context,
                                      final short address,
                                      final short expected) {
         this.checkEquals(
@@ -149,7 +149,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void writeByteAndCheck(final C context,
+    default void writeByteAndCheck(final CpuContext context,
                                    final short address,
                                    final byte value) {
         context.writeByte(
@@ -163,7 +163,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void readZeroPageByteAndCheck(final C context,
+    default void readZeroPageByteAndCheck(final CpuContext context,
                                           final byte offset,
                                           final byte value) {
         this.checkEquals(
@@ -173,7 +173,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void writeZeroPageByteAndCheck(final C context,
+    default void writeZeroPageByteAndCheck(final CpuContext context,
                                            final byte offset,
                                            final byte value) {
         context.writeZeroPageByte(
@@ -187,7 +187,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void readZeroPageAddressAndCheck(final C context,
+    default void readZeroPageAddressAndCheck(final CpuContext context,
                                              final byte offset,
                                              final short address) {
         this.checkEquals(
@@ -197,7 +197,7 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void popAndCheck(final C context,
+    default void popAndCheck(final CpuContext context,
                              final byte value) {
         this.checkEquals(
             value,
@@ -206,17 +206,10 @@ public interface CpuContextTesting<C extends CpuContext> extends ContextTesting<
         );
     }
 
-    default void pushAndCheck(final C context,
+    default void pushAndCheck(final CpuContext context,
                               final byte value) {
         context.push(
             value
         );
-    }
-
-    // Class............................................................................................................
-
-    @Override
-    default String typeNameSuffix() {
-        return CpuContext.class.getSimpleName();
     }
 }
