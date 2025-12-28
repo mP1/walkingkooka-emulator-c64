@@ -19,8 +19,6 @@ package walkingkooka.emulator.c64;
 
 import walkingkooka.reflect.PublicStaticHelper;
 
-import java.util.Objects;
-
 /**
  * A collection of {@link CpuContext} factory methods.
  */
