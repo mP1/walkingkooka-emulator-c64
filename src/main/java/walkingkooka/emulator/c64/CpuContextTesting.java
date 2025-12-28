@@ -17,7 +17,6 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.text.CharSequences;
 import walkingkooka.text.printer.TreePrintableTesting;
 
 public interface CpuContextTesting extends TreePrintableTesting {
@@ -280,21 +279,17 @@ public interface CpuContextTesting extends TreePrintableTesting {
     }
 
     static String hex(final byte value) {
-        return hex(0xff & value, 2);
+        return hex(0xff & value);
     }
 
     static String hex(final short value) {
-        return hex(0xffff & value, 4);
+        return hex(0xffff & value);
     }
 
-    private static String hex(final int value,
-                              final int length) {
-        return "0x" +
-            CharSequences.padLeft(
-                Integer.toHexString(value),
-                length,
-                '0'
-            ) + " " +
+    // $2000 4096
+    private static String hex(final int value) {
+        return "$" + Integer.toHexString(value) +
+            " " +
             value;
     }
 }
