@@ -224,7 +224,7 @@ abstract class Cia implements AddressBus, Updatable {
         byte icrEnabled = this.icrEnabled;
 
         // 1 = sets, 0 == clear)
-        if(Bit.BIT7.read(value)) {
+        if (Bit.BIT7.read(value)) {
             if (TIMERA_UNDERFLOW.read(value)) {
                 icrEnabled |= TIMERA_UNDERFLOW.set(icrEnabled);
             }
@@ -260,16 +260,16 @@ abstract class Cia implements AddressBus, Updatable {
 
     private static String icrMaskOrEnabledToString(final byte value) {
         return Bit.byteText(value,
-                "IRQ",
-                "",
-                "",
-                "",
-                "",
-                "TIME_ALARM_MATCH",
-                "TIMERB_UNDERFLOW",
-                "TIMERA_UNDERFLOW");
+            "IRQ",
+            "",
+            "",
+            "",
+            "",
+            "TIME_ALARM_MATCH",
+            "TIMERB_UNDERFLOW",
+            "TIMERA_UNDERFLOW");
     }
-    
+
     // timerA...........................................................................................................
 
     /**
@@ -306,14 +306,14 @@ abstract class Cia implements AddressBus, Updatable {
 
     private String craToString() {
         return Bit.byteText(this.cra,
-                "",
-                "",
-                "",
-                "TIMER_LOAD_LATCH",
-                "TIMER_RESTART_AFTER_UNDERFLOW",
-                "",
-                "",
-                "TIMER_START");
+            "",
+            "",
+            "",
+            "TIMER_LOAD_LATCH",
+            "TIMER_RESTART_AFTER_UNDERFLOW",
+            "",
+            "",
+            "TIMER_START");
     }
 
     private byte readTimerALo() {
@@ -402,14 +402,14 @@ abstract class Cia implements AddressBus, Updatable {
 
     private String crbToString() {
         return Bit.byteText(this.crb,
-                "ALARM_WRITE",
-                "",
-                "",
-                "TIMER_LOAD_LATCH",
-                "TIMER_RESTART_AFTER_UNDERFLOW",
-                "",
-                "",
-                "TIMER_START");
+            "ALARM_WRITE",
+            "",
+            "",
+            "TIMER_LOAD_LATCH",
+            "TIMER_RESTART_AFTER_UNDERFLOW",
+            "",
+            "",
+            "TIMER_START");
     }
 
     private byte readTimerBLo() {
@@ -579,16 +579,16 @@ abstract class Cia implements AddressBus, Updatable {
 
     private static byte fromBcd(final int value) {
         final int hi = value / 16;
-        final int lo = value  & 0xf;
+        final int lo = value & 0xf;
 
         return toByte(hi * 10 + lo);
     }
 
     private static byte toBcd(final int value) {
         final int lo = value % 10;
-        final int hi = value  - lo;
+        final int hi = value - lo;
 
-        return toByte((hi / 10  * 16) + lo);
+        return toByte((hi / 10 * 16) + lo);
     }
 
     private static byte toByte(final int value) {
@@ -621,17 +621,17 @@ abstract class Cia implements AddressBus, Updatable {
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-                .disable(ToStringBuilderOption.QUOTE)
-                //.label("portA").value(this.portA)
-                //.label("portB").value(this.portB)
-                .label("dataDirectionA").value(this.dataDirectionPortA)
-                .label("dataDirectionB").value(this.dataDirectionPortB)
-                .label("timerA").value(this.timerA)
-                .label("timerB").value(this.timerB)
-                .label("clock").value(this.clock)
-                .label("icr mask").value(this.icrMaskToString()).label("icr enabled").value(this.icrEnabledToString())
-                .label("cra").value(this.craToString())
-                .label("crb").value(this.crbToString())
-                .build();
+            .disable(ToStringBuilderOption.QUOTE)
+            //.label("portA").value(this.portA)
+            //.label("portB").value(this.portB)
+            .label("dataDirectionA").value(this.dataDirectionPortA)
+            .label("dataDirectionB").value(this.dataDirectionPortB)
+            .label("timerA").value(this.timerA)
+            .label("timerB").value(this.timerB)
+            .label("clock").value(this.clock)
+            .label("icr mask").value(this.icrMaskToString()).label("icr enabled").value(this.icrEnabledToString())
+            .label("cra").value(this.craToString())
+            .label("crb").value(this.crbToString())
+            .build();
     }
 }

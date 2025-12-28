@@ -44,7 +44,7 @@ public final class BaseOffsetAddressBusTest extends AddressBusTestCase<BaseOffse
     @Test
     public void testWriteThenRead() {
         final AddressBus memory = AddressBuses.memory(256);
-        final BaseOffsetAddressBus base = (BaseOffsetAddressBus)BaseOffsetAddressBus.with(BASE_OFFSET, memory);
+        final BaseOffsetAddressBus base = (BaseOffsetAddressBus) BaseOffsetAddressBus.with(BASE_OFFSET, memory);
 
         final int offset = 1;
         this.writeAndReadCheck(base, offset, VALUE);
@@ -54,7 +54,7 @@ public final class BaseOffsetAddressBusTest extends AddressBusTestCase<BaseOffse
     @Test
     public void testWriteAndRead() {
         final AddressBus memory = AddressBuses.memory(256);
-        final BaseOffsetAddressBus base = (BaseOffsetAddressBus)BaseOffsetAddressBus.with(BASE_OFFSET, memory);
+        final BaseOffsetAddressBus base = (BaseOffsetAddressBus) BaseOffsetAddressBus.with(BASE_OFFSET, memory);
 
         for (int i = 0; i < 256; i++) {
             this.writeAndReadCheck(base, BASE_OFFSET + i, (byte) i);
@@ -114,7 +114,7 @@ public final class BaseOffsetAddressBusTest extends AddressBusTestCase<BaseOffse
     @Test
     public void testToString() {
         final AddressBus memory = AddressBuses.memory(256);
-        final BaseOffsetAddressBus base = (BaseOffsetAddressBus)BaseOffsetAddressBus.with(2, memory);
+        final BaseOffsetAddressBus base = (BaseOffsetAddressBus) BaseOffsetAddressBus.with(2, memory);
         base.write(1, (byte) 1);
         base.write(2, (byte) 2);
         this.toStringAndCheck(base, "baseOffset: 2 Memory 0xff");

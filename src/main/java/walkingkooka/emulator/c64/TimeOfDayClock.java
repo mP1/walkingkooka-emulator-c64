@@ -88,9 +88,9 @@ final class TimeOfDayClock implements Updatable {
     }
 
     void setTime(final int hours,
-                  final int minutes,
-                  final int seconds,
-                  final int nano) {
+                 final int minutes,
+                 final int seconds,
+                 final int nano) {
         this.time = computeTicks(hours, minutes, seconds, nano);
     }
 
@@ -99,35 +99,35 @@ final class TimeOfDayClock implements Updatable {
     int alarmHours() {
         final long alarm = this.alarm;
         return -1 == alarm ?
-                -1 :
-                extractHours(alarm);
+            -1 :
+            extractHours(alarm);
     }
 
     int alarmMinutes() {
         final long alarm = this.alarm;
         return -1 == alarm ?
-                -1 :
-                extractMinutes(alarm);
+            -1 :
+            extractMinutes(alarm);
     }
 
     int alarmSeconds() {
         final long alarm = this.alarm;
         return -1 == alarm ?
-                -1 :
-                extractSeconds(alarm);
+            -1 :
+            extractSeconds(alarm);
     }
 
     int alarmNano() {
         final long alarm = this.alarm;
         return -1 == alarm ?
-                -1 :
-                extractNano(alarm);
+            -1 :
+            extractNano(alarm);
     }
 
     void setAlarm(final int hours,
-                 final int minutes,
-                 final int seconds,
-                 final int nano) {
+                  final int minutes,
+                  final int seconds,
+                  final int nano) {
         this.alarm = computeTicks(hours, minutes, seconds, nano);
     }
 
@@ -139,29 +139,29 @@ final class TimeOfDayClock implements Updatable {
     // helpers..........................................................................................................
 
     private static int extractHours(final long value) {
-        return (int)(value / HOURS ) % 24;
+        return (int) (value / HOURS) % 24;
     }
 
     private static int extractMinutes(final long value) {
-        return (int)(value / MINUTES ) % 60;
+        return (int) (value / MINUTES) % 60;
     }
 
     private static int extractSeconds(final long value) {
-        return (int)(value / SECONDS ) % 60;
+        return (int) (value / SECONDS) % 60;
     }
 
     private static int extractNano(final long value) {
-        return (int)(value % SECONDS);
+        return (int) (value % SECONDS);
     }
 
     private static long computeTicks(final int hours,
-                                    final int minutes,
-                                    final int seconds,
-                                    final int nano) {
+                                     final int minutes,
+                                     final int seconds,
+                                     final int nano) {
         return (hours * HOURS +
-                minutes * MINUTES +
-                seconds * SECONDS +
-                nano * NANO) % TICKS_DAY;
+            minutes * MINUTES +
+            seconds * SECONDS +
+            nano * NANO) % TICKS_DAY;
     }
 
     private final static long NANO = 1;
@@ -187,23 +187,23 @@ final class TimeOfDayClock implements Updatable {
     @Override
     public String toString() {
         final ToStringBuilder b = ToStringBuilder.empty()
-                .disable(ToStringBuilderOption.QUOTE)
-                .labelSeparator(": ")
-                .separator(", ");
+            .disable(ToStringBuilderOption.QUOTE)
+            .labelSeparator(": ")
+            .separator(", ");
 
         b.label("time");
         b.value(TIME_FORMATTER.format(LocalTime.of(this.timeHours(),
-                this.timeMinutes(),
-                this.timeSeconds(),
-                this.timeNano())));
+            this.timeMinutes(),
+            this.timeSeconds(),
+            this.timeNano())));
 
         final long alarm = this.alarm;
         if (-1 != alarm) {
             b.label("alarm");
             b.value(TIME_FORMATTER.format(LocalTime.of(this.alarmHours(),
-                    this.alarmMinutes(),
-                    this.alarmSeconds(),
-                    this.alarmNano())));
+                this.alarmMinutes(),
+                this.alarmSeconds(),
+                this.alarmNano())));
         }
 
         return b.build();

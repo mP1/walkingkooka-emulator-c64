@@ -26,8 +26,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public final class VicMapperTest implements AddressBusTesting,
-        ClassTesting2<VicMapper>,
-        ToStringTesting<VicMapper> {
+    ClassTesting2<VicMapper>,
+    ToStringTesting<VicMapper> {
 
     @Test
     public void testWithNullCharactersFails() {

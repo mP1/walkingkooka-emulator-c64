@@ -29,7 +29,7 @@ public final class CiabTest extends CiaTestCase<Ciab> {
     public void testSetBank0() {
         final Ciab ciab = this.createCiaInterruptFails();
 
-        this.writeAndReadCheck(ciab, Cia.PRA, (byte)0x3);
+        this.writeAndReadCheck(ciab, Cia.PRA, (byte) 0x3);
 
         this.readMemoryAndCheck(0x0000, 0x0fff);
         this.readCharacterAndCheck(0x1000, 0x1fff);
@@ -40,7 +40,7 @@ public final class CiabTest extends CiaTestCase<Ciab> {
     public void testSetBank1() {
         final Ciab ciab = this.createCiaInterruptFails();
 
-        this.writeAndReadCheck(ciab, Cia.PRA, (byte)0x2);
+        this.writeAndReadCheck(ciab, Cia.PRA, (byte) 0x2);
 
         this.readMemoryAndCheck(0x4000, 0x7fff);
     }
@@ -49,7 +49,7 @@ public final class CiabTest extends CiaTestCase<Ciab> {
     public void testSetBank2() {
         final Ciab ciab = this.createCiaInterruptFails();
 
-        this.writeAndReadCheck(ciab, Cia.PRA, (byte)0x1);
+        this.writeAndReadCheck(ciab, Cia.PRA, (byte) 0x1);
 
         this.readMemoryAndCheck(0x8000, 0x8fff);
         this.readCharacterAndCheck(0x9000, 0x9fff);
@@ -60,7 +60,7 @@ public final class CiabTest extends CiaTestCase<Ciab> {
     public void testSetBank3() {
         final Ciab ciab = this.createCiaInterruptFails();
 
-        this.writeAndReadCheck(ciab, Cia.PRA, (byte)0x0);
+        this.writeAndReadCheck(ciab, Cia.PRA, (byte) 0x0);
 
         this.readMemoryAndCheck(0xc000, 0xffff);
     }

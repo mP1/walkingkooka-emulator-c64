@@ -38,7 +38,7 @@ public interface AddressBus {
      */
     default AddressBus setBaseOffset(final int offset) {
         return 0 == offset ?
-                this :
-                AddressBuses.baseOffset(offset, this);
+            this :
+            AddressBuses.baseOffset(offset, this);
     }
 }

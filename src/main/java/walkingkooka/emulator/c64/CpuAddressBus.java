@@ -101,8 +101,8 @@ final class CpuAddressBus implements AddressBus {
             }
             if (offset >= IO_DEVICES_BEGIN && offset <= IO_DEVICES_END) {
                 value = this.ioDevicesMapped ?
-                        this.ioDevices.read(offset) :
-                        this.chargen.read(offset);
+                    this.ioDevices.read(offset) :
+                    this.chargen.read(offset);
                 break;
             }
             if (this.kernalRomMapped && offset >= KERNAL_ROM_BEGIN && offset <= KERNAL_ROM_END) {

@@ -32,8 +32,8 @@ final class Memory implements AddressBus {
             throw new IllegalArgumentException("Size " + size + " <= 0");
         }
         return new Memory(new byte[size],
-                size - 1,
-                0);
+            size - 1,
+            0);
     }
 
     private Memory(final byte[] values,
@@ -77,8 +77,8 @@ final class Memory implements AddressBus {
     @Override
     public Memory setBaseOffset(final int offset) {
         return 0 == offset ?
-                this :
-                new Memory(this.values, this.mask, offset - this.baseOffset);
+            this :
+            new Memory(this.values, this.mask, offset - this.baseOffset);
     }
 
     /**

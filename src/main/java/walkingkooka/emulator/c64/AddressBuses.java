@@ -41,8 +41,8 @@ public final class AddressBuses implements PublicStaticHelper {
                                   final Consumer<Consumer<HardwareMatrixKey>> keyRelease,
                                   final Runnable interrupt) {
         return Ciaa.with(keyPress,
-                keyRelease,
-                interrupt);
+            keyRelease,
+            interrupt);
     }
 
     /**

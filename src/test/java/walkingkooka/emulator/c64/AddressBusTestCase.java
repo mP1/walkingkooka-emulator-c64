@@ -22,8 +22,8 @@ import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 
 public abstract class AddressBusTestCase<A extends AddressBus> implements AddressBusTesting2<A>,
-        ClassTesting2<A>,
-        ToStringTesting<A> {
+    ClassTesting2<A>,
+    ToStringTesting<A> {
 
     final static byte ZERO = 0;
     final static byte ONE = 1;
