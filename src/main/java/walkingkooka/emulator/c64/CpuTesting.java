@@ -17,7 +17,23 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.test.Testing;
+import org.junit.jupiter.api.Test;
+import walkingkooka.reflect.ClassTesting;
+import walkingkooka.text.printer.TreePrintableTesting;
 
-public interface CpuTesting extends Testing {
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public interface CpuTesting<C extends Cpu> extends TreePrintableTesting,
+    ClassTesting<C> {
+
+    @Test
+    default void testStepWithNullContextFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> this.createCpu()
+                .step(null)
+        );
+    }
+
+    C createCpu();
 }
