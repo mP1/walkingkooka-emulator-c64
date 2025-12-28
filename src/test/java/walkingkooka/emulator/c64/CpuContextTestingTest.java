@@ -22,6 +22,21 @@ import org.junit.jupiter.api.Test;
 public final class CpuContextTestingTest implements CpuContextTesting {
 
     @Test
+    public void testFlagsAndCheck() {
+        final byte value = (byte) 0xFF;
+        this.flagsAndCheck(
+            new FakeCpuContext() {
+
+                @Override
+                public byte flags() {
+                    return value;
+                }
+            },
+            value
+        );
+    }
+
+    @Test
     public void testPopAndCheck() {
         final byte value = 0x55;
 
