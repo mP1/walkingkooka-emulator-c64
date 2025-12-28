@@ -433,5 +433,12 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
         }
 
         private final Consumer<CpuContext> execute;
+
+        @Override
+        public String disassemble(final CpuContext context) {
+            Objects.requireNonNull(context, "context");
+
+            throw new UnsupportedOperationException();
+        }
     }
 }

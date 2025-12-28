@@ -37,4 +37,9 @@ public class FakeCpuInstruction implements CpuInstruction {
     public void execute(final CpuContext context) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public String disassemble(final CpuContext context) {
+        throw new UnsupportedOperationException();
+    }
 }

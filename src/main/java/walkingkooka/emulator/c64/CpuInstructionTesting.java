@@ -129,4 +129,25 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
     }
 
     I createCpuInstruction();
+
+    // disassemble......................................................................................................
+
+    @Test
+    default void testDisassembleWithNullContextFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> this.createCpuInstruction()
+                .disassemble(null)
+        );
+    }
+
+    default void disassembleAndCheck(final I instruction,
+                                     final CpuContext context,
+                                     final String expected) {
+        this.checkEquals(
+            expected,
+            instruction.disassemble(context),
+            context::toString
+        );
+    }
 }
