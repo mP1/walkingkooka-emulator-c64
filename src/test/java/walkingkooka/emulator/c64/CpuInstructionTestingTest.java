@@ -394,6 +394,16 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
         );
     }
 
+    @Override
+    public TestCpuInstruction createCpuInstruction() {
+        return new TestCpuInstruction(
+            1,
+            (c) -> {
+                throw new UnsupportedOperationException();
+            }
+        );
+    }
+
     final static class TestCpuInstruction implements CpuInstruction {
 
         TestCpuInstruction(final int length,

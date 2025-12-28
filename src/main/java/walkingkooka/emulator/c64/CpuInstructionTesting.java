@@ -114,4 +114,6 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
             pc
         );
     }
+
+    I createCpuInstruction();
 }
