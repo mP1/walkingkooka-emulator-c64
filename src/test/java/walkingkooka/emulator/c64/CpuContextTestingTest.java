@@ -38,8 +38,8 @@ public final class CpuContextTestingTest implements CpuContextTesting {
                 }
 
                 @Override
-                public short readAddress(final short address) {
-                    return 0x11 == address ?
+                public byte readByte(final short address) {
+                    return 0x111 == address ?
                         value :
                         (byte) 0xff;
                 }

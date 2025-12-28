@@ -201,6 +201,12 @@ public interface CpuContextTesting extends TreePrintableTesting {
                              final byte expected) {
         final byte stackPointer = context.stackPointer();
 
+        this.readByteAndCheck(
+            context,
+            (short) (0x101 + (0xff & stackPointer)),
+            expected
+        );
+
         this.checkEquals(
             expected,
             context.pop(),

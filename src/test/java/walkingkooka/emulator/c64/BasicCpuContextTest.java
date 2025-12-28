@@ -118,7 +118,12 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
 
         context.writeByte(
             (short) 0x1fe,
-            (byte) 0xfe
+            (byte) 0xaa
+        );
+
+        context.writeByte(
+            (short) 0x1fd,
+            (byte) 0x55
         );
 
         context.setStackPointer((byte) 0xfe);
