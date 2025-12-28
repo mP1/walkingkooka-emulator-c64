@@ -22,118 +22,118 @@ import walkingkooka.text.printer.TreePrintableTesting;
 public interface CpuContextTesting extends TreePrintableTesting {
 
     default void aAndCheck(final CpuContext context,
-                           final byte value) {
+                           final byte expected) {
         this.checkEquals(
+            expected,
             context.a(),
-            value,
             context::toString
         );
     }
 
     default void setAAndCheck(final CpuContext context,
-                              final byte value) {
-        context.setA(value);
+                              final byte expected) {
+        context.setA(expected);
         this.aAndCheck(
             context,
-            value
+            expected
         );
     }
 
     default void xAndCheck(final CpuContext context,
-                           final byte value) {
+                           final byte expected) {
         this.checkEquals(
+            expected,
             context.x(),
-            value,
             context::toString
         );
     }
 
     default void setXAndCheck(final CpuContext context,
-                              final byte value) {
-        context.setX(value);
+                              final byte expected) {
+        context.setX(expected);
         this.xAndCheck(
             context,
-            value
+            expected
         );
     }
 
     default void yAndCheck(final CpuContext context,
-                           final byte value) {
+                           final byte expected) {
         this.checkEquals(
+            expected,
             context.y(),
-            value,
             context::toString
         );
     }
 
     default void setYAndCheck(final CpuContext context,
-                              final byte value) {
-        context.setY(value);
+                              final byte expected) {
+        context.setY(expected);
         this.yAndCheck(
             context,
-            value
+            expected
         );
     }
 
     default void flagsAndCheck(final CpuContext context,
-                               final byte value) {
+                               final byte expected) {
         this.checkEquals(
+            expected,
             context.flags(),
-            value,
             context::toString
         );
     }
 
     default void setFlagsAndCheck(final CpuContext context,
-                                  final byte value) {
-        context.setFlags(value);
+                                  final byte expected) {
+        context.setFlags(expected);
         this.flagsAndCheck(
             context,
-            value
+            expected
         );
     }
 
     default void stackPointerAndCheck(final CpuContext context,
-                                      final byte value) {
+                                      final byte expected) {
         this.checkEquals(
+            expected,
             context.stackPointer(),
-            value,
             context::toString
         );
     }
 
     default void setStackPointerAndCheck(final CpuContext context,
-                                         final byte value) {
-        context.setStackPointer(value);
+                                         final byte expected) {
+        context.setStackPointer(expected);
         this.stackPointerAndCheck(
             context,
-            value
+            expected
         );
     }
 
     default void pcAndCheck(final CpuContext context,
-                            final short value) {
+                            final short expected) {
         this.checkEquals(
+            expected,
             context.pc(),
-            value,
             context::toString
         );
     }
 
     default void setPCAndCheck(final CpuContext context,
-                               final short value) {
-        context.setPc(value);
+                               final short expected) {
+        context.setPc(expected);
         this.pcAndCheck(
             context,
-            value
+            expected
         );
     }
 
     default void readByteAndCheck(final CpuContext context,
                                   final short address,
-                                  final byte value) {
+                                  final byte expected) {
         this.checkEquals(
-            value,
+            expected,
             context.readByte(address),
             () -> "readByte " + address
         );
@@ -165,9 +165,9 @@ public interface CpuContextTesting extends TreePrintableTesting {
 
     default void readZeroPageByteAndCheck(final CpuContext context,
                                           final byte offset,
-                                          final byte value) {
+                                          final byte expected) {
         this.checkEquals(
-            value,
+            expected,
             context.readZeroPageByte(offset),
             () -> "readZeroPageByte " + offset
         );
