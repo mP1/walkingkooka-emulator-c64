@@ -20,9 +20,78 @@ package walkingkooka.emulator.c64;
 import org.junit.jupiter.api.Test;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
+import walkingkooka.test.ParseStringTesting;
 
-public final class CpuFlagsTest implements HashCodeEqualsDefinedTesting2<CpuFlags>,
+public final class CpuFlagsTest implements ParseStringTesting<CpuFlags>,
+    HashCodeEqualsDefinedTesting2<CpuFlags>,
     ToStringTesting<CpuFlags> {
+
+    // parseString......................................................................................................
+
+    @Test
+    public void testParseInvalidLetterFails() {
+        this.parseStringInvalidCharacterFails(
+            "CZ!DB10N",
+            '!'
+        );
+    }
+
+    @Test
+    public void testParseAllDashes() {
+        this.parseStringAndCheck(
+            "--------",
+            CpuFlags.create()
+        );
+    }
+
+    @Test
+    public void testParseCarry() {
+        final CpuFlags expected = CpuFlags.create();
+        expected.setCarry(true);
+
+        this.parseStringAndCheck(
+            "C-------",
+            expected
+        );
+    }
+
+    @Test
+    public void testParseCarryAndZero() {
+        final CpuFlags expected = CpuFlags.create();
+        expected.setCarry(true);
+        expected.setZero(true);
+
+        this.parseStringAndCheck(
+            "CZ------",
+            expected
+        );
+    }
+
+    @Test
+    public void testParseAllLetters() {
+        final CpuFlags expected = CpuFlags.create();
+        expected.setValue((byte) 0xff);
+
+        this.parseStringAndCheck(
+            "CZIDB10N",
+            expected
+        );
+    }
+
+    @Override
+    public CpuFlags parseString(final String text) {
+        return CpuFlags.parse(text);
+    }
+
+    @Override
+    public Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> expected) {
+        return expected;
+    }
+
+    @Override
+    public RuntimeException parseStringFailedExpected(final RuntimeException expected) {
+        return expected;
+    }
 
     // hashCode/equals..................................................................................................
 

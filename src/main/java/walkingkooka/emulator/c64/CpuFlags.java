@@ -17,12 +17,85 @@
 
 package walkingkooka.emulator.c64;
 
+import walkingkooka.InvalidCharacterException;
+import walkingkooka.InvalidTextLengthException;
+import walkingkooka.NeverError;
+import walkingkooka.text.CharSequences;
+
 import java.util.Objects;
+import java.util.function.Consumer;
 
 /**
  * A mutable value that holds CPU flags.
  */
 public final class CpuFlags implements HasCpuFlags {
+
+    /**
+     * Parses the {@link String} of a {@link #toString()}.
+     * This will make test assertions more readable, than asserting a byte value or building a {@link CpuFlags} with setters.
+     */
+    public static CpuFlags parse(final String flags) {
+        CharSequences.failIfNullOrEmpty(flags, "flags");
+
+        InvalidTextLengthException.throwIfFail(
+            "flags",
+            flags,
+            8,
+            8
+        );
+
+        final CpuFlags cpuFlags = new CpuFlags();
+        final String all = "CZIDB10N";
+
+        for (int i = 0; i < flags.length(); i++) {
+            final Consumer<Boolean> setter;
+
+            switch (i) {
+                case 0:
+                    setter = cpuFlags::setCarry;
+                    break;
+                case 1:
+                    setter = cpuFlags::setZero;
+                    break;
+                case 2:
+                    setter = cpuFlags::setInterruptDisabled;
+                    break;
+                case 3:
+                    setter = cpuFlags::setDecimalMode;
+                    break;
+                case 4:
+                    setter = cpuFlags::setBreak;
+                    break;
+                case 5:
+                    setter = cpuFlags::setUnused;
+                    break;
+                case 6:
+                    setter = cpuFlags::setOverflow;
+                    break;
+                case 7:
+                    setter = cpuFlags::setMinus;
+                    break;
+                default:
+                    throw new NeverError("Unknown bit number: " + i);
+
+            }
+
+            final char c = flags.charAt(i);
+            final char b = all.charAt(i);
+
+            if ('-' == c || b == c) {
+                setter.accept(
+                    b == c
+                );
+            } else {
+                throw new InvalidCharacterException(flags, i);
+            }
+        }
+
+        return cpuFlags;
+    }
+
+    ;
 
     /**
      * Creates a new instance with none of the flags set.
@@ -200,6 +273,11 @@ public final class CpuFlags implements HasCpuFlags {
 
     private boolean zero;
 
+
+    private void setUnused(final boolean unused) {
+        // NOP
+    }
+
     // Object...........................................................................................................
 
     @Override
@@ -230,7 +308,9 @@ public final class CpuFlags implements HasCpuFlags {
             this.overflow == other.overflow &&
             this.zero == other.zero;
     }
-    
+
+    // CZIDB10N
+
     @Override
     public String toString() {
         return (this.carry ? "C" : "-") +
