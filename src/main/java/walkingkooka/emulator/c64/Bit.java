@@ -36,8 +36,8 @@ enum Bit {
 
     Bit(final int bitNumber) {
         this.number = bitNumber;
-        this.mask = (byte)(1 << bitNumber);
-        this.notMask = (byte) ~ this.mask;
+        this.mask = (byte) (1 << bitNumber);
+        this.notMask = (byte) ~this.mask;
     }
 
     /**
@@ -73,14 +73,14 @@ enum Bit {
      * Sets a bit in the byte returning the result
      */
     final byte set(final byte value) {
-        return (byte)(value | this.mask);
+        return (byte) (value | this.mask);
     }
 
     /**
      * Clear a bit in the byte returning the result
      */
     final byte clear(final byte value) {
-        return (byte)(value & this.notMask);
+        return (byte) (value & this.notMask);
     }
 
     /**
@@ -119,8 +119,8 @@ enum Bit {
     String text(final byte value,
                 final String text) {
         return this.read(value) ?
-                text :
-                "";
+            text :
+            "";
     }
 
     /**
@@ -148,18 +148,18 @@ enum Bit {
                            final String bit1,
                            final String bit0) {
         return ToStringBuilder.empty()
-                .separator(" ")
-                .enable(ToStringBuilderOption.SKIP_IF_DEFAULT_VALUE)
-                .disable(ToStringBuilderOption.QUOTE)
-                .value(BIT7.read(value) ? bit7 : "")
-                .value(BIT6.read(value) ? bit6 : "")
-                .value(BIT5.read(value) ? bit5 : "")
-                .value(BIT4.read(value) ? bit4 : "")
-                .value(BIT3.read(value) ? bit3 : "")
-                .value(BIT2.read(value) ? bit2 : "")
-                .value(BIT1.read(value) ? bit1 : "")
-                .value(BIT0.read(value) ? bit0 : "")
-                .build();
+            .separator(" ")
+            .enable(ToStringBuilderOption.SKIP_IF_DEFAULT_VALUE)
+            .disable(ToStringBuilderOption.QUOTE)
+            .value(BIT7.read(value) ? bit7 : "")
+            .value(BIT6.read(value) ? bit6 : "")
+            .value(BIT5.read(value) ? bit5 : "")
+            .value(BIT4.read(value) ? bit4 : "")
+            .value(BIT3.read(value) ? bit3 : "")
+            .value(BIT2.read(value) ? bit2 : "")
+            .value(BIT1.read(value) ? bit1 : "")
+            .value(BIT0.read(value) ? bit0 : "")
+            .build();
     }
 
     /**

@@ -111,8 +111,8 @@ public final class BitTest implements ClassTesting2<Bit> {
 
     private void readAndCheck(final Bit bit, final byte value, final boolean expected) {
         assertEquals(expected,
-                bit.read(value),
-                () -> bit + " read " + Integer.toHexString(value));
+            bit.read(value),
+            () -> bit + " read " + Integer.toHexString(value));
     }
 
     // not.............................................................................................................
@@ -131,7 +131,7 @@ public final class BitTest implements ClassTesting2<Bit> {
     public void testNot2True() {
         notAndCheck(Bit.BIT2, (byte) ~(1 << 2));
     }
-    
+
     @Test
     public void testNot3True() {
         notAndCheck(Bit.BIT3, (byte) ~(1 << 3));
@@ -159,8 +159,8 @@ public final class BitTest implements ClassTesting2<Bit> {
 
     private void notAndCheck(final Bit bit, final byte expected) {
         assertEquals(expected,
-                bit.not(),
-                () -> bit + " not " + Integer.toHexString(expected));
+            bit.not(),
+            () -> bit + " not " + Integer.toHexString(expected));
     }
 
     // set.............................................................................................................
@@ -208,8 +208,8 @@ public final class BitTest implements ClassTesting2<Bit> {
     private void setAndCheck(final Bit bit,
                              final int expected) {
         assertEquals((byte) expected,
-                bit.set(),
-                () -> bit + " set");
+            bit.set(),
+            () -> bit + " set");
     }
 
     // set.............................................................................................................
@@ -300,8 +300,8 @@ public final class BitTest implements ClassTesting2<Bit> {
 
     private void setByteAndCheck(final Bit bit, final int value, final int expected) {
         assertEquals((byte) expected,
-                bit.set((byte) value),
-                () -> bit + " set " + Integer.toHexString(value));
+            bit.set((byte) value),
+            () -> bit + " set " + Integer.toHexString(value));
     }
 
     // clear.............................................................................................................
@@ -392,8 +392,8 @@ public final class BitTest implements ClassTesting2<Bit> {
 
     private void clearAndCheck(final Bit bit, final int value, final int expected) {
         assertEquals((byte) expected,
-                bit.clear((byte) value),
-                () -> bit + " clear " + Integer.toHexString(value));
+            bit.clear((byte) value),
+            () -> bit + " clear " + Integer.toHexString(value));
     }
 
     // or...............................................................................................................
@@ -401,32 +401,32 @@ public final class BitTest implements ClassTesting2<Bit> {
     @Test
     public void testOr() {
         orAndCheck(Bit.BIT0,
-                Bit.BIT1,
-                0x3);
+            Bit.BIT1,
+            0x3);
     }
 
     @Test
     public void testOr2() {
         orAndCheck(Bit.BIT0,
-                Bit.BIT1,
-                new Bit[]{Bit.BIT2},
-                0x7);
+            Bit.BIT1,
+            new Bit[]{Bit.BIT2},
+            0x7);
     }
 
     @Test
     public void testOr3() {
         orAndCheck(Bit.BIT0,
-                Bit.BIT1,
-                new Bit[]{Bit.BIT2, Bit.BIT3},
-                0xf);
+            Bit.BIT1,
+            new Bit[]{Bit.BIT2, Bit.BIT3},
+            0xf);
     }
 
     @Test
     public void testOr4() {
         orAndCheck(Bit.BIT0,
-                Bit.BIT1,
-                new Bit[]{Bit.BIT2, Bit.BIT3, Bit.BIT4},
-                0x1f);
+            Bit.BIT1,
+            new Bit[]{Bit.BIT2, Bit.BIT3, Bit.BIT4},
+            0x1f);
     }
 
     private void orAndCheck(final Bit bit,
@@ -440,8 +440,8 @@ public final class BitTest implements ClassTesting2<Bit> {
                             final Bit[] params,
                             final int expected) {
         assertEquals((byte) expected,
-                bit.or(param0, params),
-                () -> bit + " or " + bit + ", " + Arrays.toString(params));
+            bit.or(param0, params),
+            () -> bit + " or " + bit + ", " + Arrays.toString(params));
     }
 
     // or...............................................................................................................
@@ -449,46 +449,46 @@ public final class BitTest implements ClassTesting2<Bit> {
     @Test
     public void testAndNot() {
         andNotAndCheck(Bit.BIT0,
-                Bit.BIT0,
-                0xfe);
+            Bit.BIT0,
+            0xfe);
     }
 
     @Test
     public void testAndNot2() {
         andNotAndCheck(Bit.BIT0,
-                Bit.BIT1,
-                0xfc);
+            Bit.BIT1,
+            0xfc);
     }
 
     @Test
     public void testAndNot3() {
         andNotAndCheck(Bit.BIT0,
-                Bit.BIT1,
-                new Bit[]{Bit.BIT2},
-                0xf8);
+            Bit.BIT1,
+            new Bit[]{Bit.BIT2},
+            0xf8);
     }
 
     @Test
     public void testAndNot4() {
         andNotAndCheck(Bit.BIT0,
-                Bit.BIT1,
-                new Bit[]{Bit.BIT2, Bit.BIT3},
-                0xf0);
+            Bit.BIT1,
+            new Bit[]{Bit.BIT2, Bit.BIT3},
+            0xf0);
     }
 
     @Test
     public void testAndNot5() {
         andNotAndCheck(Bit.BIT0,
-                Bit.BIT1,
-                new Bit[]{Bit.BIT2, Bit.BIT3, Bit.BIT4},
-                0xe0);
+            Bit.BIT1,
+            new Bit[]{Bit.BIT2, Bit.BIT3, Bit.BIT4},
+            0xe0);
     }
 
     @Test
     public void testAndNot6() {
         andNotAndCheck(Bit.BIT7,
-                Bit.BIT6,
-                0x3f);
+            Bit.BIT6,
+            0x3f);
     }
 
     private void andNotAndCheck(final Bit bit,
@@ -502,8 +502,8 @@ public final class BitTest implements ClassTesting2<Bit> {
                                 final Bit[] params,
                                 final int expected) {
         assertEquals((byte) expected,
-                bit.andNot(param0, params),
-                () -> bit + " andNot " + bit + ", " + Arrays.toString(params));
+            bit.andNot(param0, params),
+            () -> bit + " andNot " + bit + ", " + Arrays.toString(params));
     }
 
     // text.........................................................................................................
@@ -511,42 +511,42 @@ public final class BitTest implements ClassTesting2<Bit> {
     @Test
     public void testTextTrue() {
         this.textAndCheck2(Bit.BIT0,
-                Bit.BIT0.set(),
-                "MAGIC",
-                "MAGIC");
+            Bit.BIT0.set(),
+            "MAGIC",
+            "MAGIC");
     }
 
     @Test
     public void testTextTrue2() {
         this.textAndCheck2(Bit.BIT0,
-                Bit.BIT0.or(Bit.BIT1),
-                "MAGIC",
-                "MAGIC");
+            Bit.BIT0.or(Bit.BIT1),
+            "MAGIC",
+            "MAGIC");
     }
 
     @Test
     public void testTextFalse() {
         this.textAndCheck2(Bit.BIT0,
-                Bit.BIT1.set(),
-                "MAGIC",
-                "");
+            Bit.BIT1.set(),
+            "MAGIC",
+            "");
     }
 
     @Test
     public void testTextFalse2() {
         this.textAndCheck2(Bit.BIT7,
-                (byte) 0X7F,
-                "MAGIC",
-                "");
+            (byte) 0X7F,
+            "MAGIC",
+            "");
     }
 
     private void textAndCheck2(final Bit bit,
-                                   final byte value,
-                                   final String text,
-                                   final String expected) {
+                               final byte value,
+                               final String text,
+                               final String expected) {
         assertEquals(expected,
-                bit.text(value, text),
-                () -> bit + " text " + Integer.toHexString(value) + " " + CharSequences.quoteAndEscape(text));
+            bit.text(value, text),
+            () -> bit + " text " + Integer.toHexString(value) + " " + CharSequences.quoteAndEscape(text));
     }
 
     // byteText..........................................................................................................
@@ -554,53 +554,53 @@ public final class BitTest implements ClassTesting2<Bit> {
     @Test
     public void testByteTextZero() {
         this.byteTextAndCheck2((byte) 0,
-                "");
+            "");
     }
 
     @Test
     public void testByteText0xf0() {
         this.byteTextAndCheck2((byte) 0xf0,
-                "A B C D");
+            "A B C D");
     }
 
     @Test
     public void testByteText0x09() {
         this.byteTextAndCheck2((byte) 0x09,
-                "E H");
+            "E H");
     }
 
     @Test
     public void testByteText255() {
         this.byteTextAndCheck2((byte) 255,
-                "A B C D E F G H");
+            "A B C D E F G H");
     }
 
     @Test
     public void testByteText3() {
         this.byteTextAndCheck2((byte) 0x83,
-                "7",
-                "6",
-                "5",
-                "4",
-                "3",
-                "2",
-                "1",
-                "0",
-                "7 1 0");
+            "7",
+            "6",
+            "5",
+            "4",
+            "3",
+            "2",
+            "1",
+            "0",
+            "7 1 0");
     }
 
     private void byteTextAndCheck2(final byte value,
                                    final String expected) {
         byteTextAndCheck2(value,
-                "A",
-                "B",
-                "C",
-                "D",
-                "E",
-                "F",
-                "G",
-                "H",
-                expected);
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            expected);
     }
 
     private void byteTextAndCheck2(final byte value,
@@ -614,24 +614,24 @@ public final class BitTest implements ClassTesting2<Bit> {
                                    final String text0,
                                    final String expected) {
         assertEquals(expected,
-                Bit.byteText(value,
-                        text7,
-                        text6,
-                        text5,
-                        text4,
-                        text3,
-                        text2,
-                        text1,
-                        text0),
-                () -> "Bit.byteText " + Integer.toHexString(value) + " " +
-                        CharSequences.quoteAndEscape(text7) + ", " +
-                        CharSequences.quoteAndEscape(text6) + ", " +
-                        CharSequences.quoteAndEscape(text5) + ", " +
-                        CharSequences.quoteAndEscape(text4) + ", " +
-                        CharSequences.quoteAndEscape(text3) + ", " +
-                        CharSequences.quoteAndEscape(text2) + ", " +
-                        CharSequences.quoteAndEscape(text1) + ", " +
-                        CharSequences.quoteAndEscape(text0));
+            Bit.byteText(value,
+                text7,
+                text6,
+                text5,
+                text4,
+                text3,
+                text2,
+                text1,
+                text0),
+            () -> "Bit.byteText " + Integer.toHexString(value) + " " +
+                CharSequences.quoteAndEscape(text7) + ", " +
+                CharSequences.quoteAndEscape(text6) + ", " +
+                CharSequences.quoteAndEscape(text5) + ", " +
+                CharSequences.quoteAndEscape(text4) + ", " +
+                CharSequences.quoteAndEscape(text3) + ", " +
+                CharSequences.quoteAndEscape(text2) + ", " +
+                CharSequences.quoteAndEscape(text1) + ", " +
+                CharSequences.quoteAndEscape(text0));
     }
 
     // of...............................................................................................................
@@ -639,10 +639,10 @@ public final class BitTest implements ClassTesting2<Bit> {
     @Test
     public void testOf() {
         Arrays.stream(Bit.values())
-                .forEach((b) -> {
-                    final int number = b.number();
-                    assertEquals(b, Bit.of(number), () -> "bit number " + number);
-                });
+            .forEach((b) -> {
+                final int number = b.number();
+                assertEquals(b, Bit.of(number), () -> "bit number " + number);
+            });
     }
 
     // right............................................................................................................
@@ -665,8 +665,8 @@ public final class BitTest implements ClassTesting2<Bit> {
     private void rightAndCheck(final Bit bit,
                                final Bit righted) {
         assertEquals(righted,
-                bit.right(),
-                () -> bit + " right");
+            bit.right(),
+            () -> bit + " right");
     }
 
     // left.............................................................................................................
@@ -689,8 +689,8 @@ public final class BitTest implements ClassTesting2<Bit> {
     private void leftAndCheck(final Bit bit,
                               final Bit lefted) {
         assertEquals(lefted,
-                bit.left(),
-                () -> bit + " left");
+            bit.left(),
+            () -> bit + " left");
     }
 
     // ClassTesting.....................................................................................................

@@ -31,17 +31,21 @@ public final class CiaaTest extends CiaTestCase<Ciaa> {
     public void testWithNullKeyPressedFails() {
         assertThrows(NullPointerException.class, () -> {
             Ciaa.with(null,
-                    (r) -> {},
-                    () -> {});
+                (r) -> {
+                },
+                () -> {
+                });
         });
     }
 
     @Test
     public void testWithNullKeyReleasedFails() {
         assertThrows(NullPointerException.class, () -> {
-            Ciaa.with((p) -> {},
-                    null,
-                    () -> {});
+            Ciaa.with((p) -> {
+                },
+                null,
+                () -> {
+                });
         });
     }
 
@@ -124,7 +128,7 @@ public final class CiaaTest extends CiaTestCase<Ciaa> {
 
         this.readAndCheck(ciaa, Cia.PRA, NEGATIVE_ONE);
     }
-    
+
     // portB............................................................................................................
 
     @Test
@@ -210,8 +214,8 @@ public final class CiaaTest extends CiaTestCase<Ciaa> {
     @Override
     Ciaa createCia(final Runnable interrupts) {
         return Ciaa.with((p) -> this.keyPressed = p,
-                (r) -> this.keyReleased = r,
-                interrupts);
+            (r) -> this.keyReleased = r,
+            interrupts);
     }
 
     private Consumer<HardwareMatrixKey> keyPressed;

@@ -101,7 +101,7 @@ public final class TimerTest implements ClassTesting2<Timer>, ToStringTesting<Ti
     @Test
     public void testUnderflowInterrupt() {
         final Timer timer = Timer.with(() -> {
-           checkValue(this.timer, -1);
+            checkValue(this.timer, -1);
         });
         this.timer = timer;
 

@@ -65,7 +65,7 @@ final class PagedAddressBus implements AddressBus {
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-                .value(this.pages)
-                .build();
+            .value(this.pages)
+            .build();
     }
 }

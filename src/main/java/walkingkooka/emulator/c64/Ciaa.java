@@ -41,8 +41,8 @@ final class Ciaa extends Cia {
         Objects.requireNonNull(interrupt, "interrupt");
 
         return new Ciaa(keyPress,
-                keyRelease,
-                interrupt);
+            keyRelease,
+            interrupt);
     }
 
     private Ciaa(final Consumer<Consumer<HardwareMatrixKey>> keyPress,
@@ -74,10 +74,10 @@ final class Ciaa extends Cia {
 
     private byte readKeyboardRowKeys() {
         return readKeyboardMatrix(this.dataDirectionPortB,
-                this.dataDirectionPortA,
-                this.dataPortB,
-                KEYS_IN_ROW,
-                KEY_COLUMN);
+            this.dataDirectionPortA,
+            this.dataPortB,
+            KEYS_IN_ROW,
+            KEY_COLUMN);
     }
 
     private final static Function<Bit, Set<HardwareMatrixKey>> KEYS_IN_ROW = HardwareMatrixKey::keysInRow;
@@ -85,10 +85,10 @@ final class Ciaa extends Cia {
 
     private byte readKeyboardColumnKeys() {
         return this.readKeyboardMatrix(this.dataDirectionPortA,
-                this.dataDirectionPortB,
-                this.dataPortA,
-                KEYS_IN_COLUMN,
-                KEY_ROW);
+            this.dataDirectionPortB,
+            this.dataPortA,
+            KEYS_IN_COLUMN,
+            KEY_ROW);
     }
 
     private final static Function<Bit, Set<HardwareMatrixKey>> KEYS_IN_COLUMN = HardwareMatrixKey::keysInColumn;

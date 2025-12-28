@@ -42,8 +42,8 @@ public final class VicMapper {
         Objects.requireNonNull(vicAddressBus, "vicAddressBus");
 
         return new VicMapper(characters,
-                memory,
-                vicAddressBus);
+            memory,
+            vicAddressBus);
     }
 
     private VicMapper(final AddressBus characters,
@@ -52,10 +52,10 @@ public final class VicMapper {
         super();
 
         this.banks = new AddressBus[]{
-                VicMapperAddressBus.with(0 * BANK_OFFSET, characters, memory), // bank0
-                memory.setBaseOffset(1 * BANK_OFFSET), // bank1
-                VicMapperAddressBus.with(2 * BANK_OFFSET, characters, memory), // bank2
-                memory.setBaseOffset(3 * BANK_OFFSET) // bank3
+            VicMapperAddressBus.with(0 * BANK_OFFSET, characters, memory), // bank0
+            memory.setBaseOffset(1 * BANK_OFFSET), // bank1
+            VicMapperAddressBus.with(2 * BANK_OFFSET, characters, memory), // bank2
+            memory.setBaseOffset(3 * BANK_OFFSET) // bank3
         };
 
         this.vicAddressBus = vicAddressBus;

@@ -54,7 +54,7 @@ public interface AddressBusTesting2<A extends AddressBus> extends AddressBusTest
     default void writeAndReadCheck(final int offset,
                                    final byte value) {
         this.writeAndReadCheck(this.createAddressBus(),
-                offset,
-                value);
+            offset,
+            value);
     }
 }

@@ -32,8 +32,8 @@ final class VicMapperAddressBus implements AddressBus {
                                     final AddressBus characters,
                                     final AddressBus memory) {
         return new VicMapperAddressBus(baseOffset,
-                characters,
-                memory);
+            characters,
+            memory);
     }
 
     private VicMapperAddressBus(final int baseOffset,

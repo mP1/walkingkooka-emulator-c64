@@ -40,7 +40,7 @@ final class Rom implements AddressBus {
                 final int baseOffset) {
         super();
         this.values = values.clone();
-        this.mask = values.length -1;
+        this.mask = values.length - 1;
         this.write = write;
 
         this.baseOffset = baseOffset;
@@ -77,8 +77,8 @@ final class Rom implements AddressBus {
     @Override
     public Rom setBaseOffset(final int offset) {
         return 0 == offset ?
-                this :
-                new Rom(this.values, this.write, offset - this.baseOffset);
+            this :
+            new Rom(this.values, this.write, offset - this.baseOffset);
     }
 
     /**
@@ -87,9 +87,9 @@ final class Rom implements AddressBus {
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-                .disable(ToStringBuilderOption.SKIP_IF_DEFAULT_VALUE)
-                .enable(ToStringBuilderOption.HEX_BYTES)
-                .value(this.values)
-                .build();
+            .disable(ToStringBuilderOption.SKIP_IF_DEFAULT_VALUE)
+            .enable(ToStringBuilderOption.HEX_BYTES)
+            .value(this.values)
+            .build();
     }
 }

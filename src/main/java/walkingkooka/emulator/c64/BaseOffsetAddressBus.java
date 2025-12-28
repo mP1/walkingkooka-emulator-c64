@@ -28,8 +28,8 @@ final class BaseOffsetAddressBus implements AddressBus {
                            final AddressBus bus) {
         Objects.requireNonNull(bus, "bus");
         return 0 == baseOffset ?
-                bus :
-                new BaseOffsetAddressBus(baseOffset, bus);
+            bus :
+            new BaseOffsetAddressBus(baseOffset, bus);
     }
 
     private BaseOffsetAddressBus(final int baseOffset,
@@ -47,7 +47,7 @@ final class BaseOffsetAddressBus implements AddressBus {
     public void write(final int offset,
                       final byte value) {
         this.bus.write(this.baseOffset + offset,
-                value);
+            value);
     }
 
     private final int baseOffset;
@@ -56,8 +56,8 @@ final class BaseOffsetAddressBus implements AddressBus {
     @Override
     public AddressBus setBaseOffset(final int offset) {
         return 0 == offset ?
-                this :
-                new BaseOffsetAddressBus(offset - this.baseOffset, this.bus);
+            this :
+            new BaseOffsetAddressBus(offset - this.baseOffset, this.bus);
     }
 
     @Override

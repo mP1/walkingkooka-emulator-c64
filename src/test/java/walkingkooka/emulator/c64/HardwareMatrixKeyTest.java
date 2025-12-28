@@ -32,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public final class HardwareMatrixKeyTest implements SetTesting {
     @Test
     public void testKeysInColumns() {
-        for(Bit bit : Bit.values()) {
+        for (Bit bit : Bit.values()) {
             final Set<HardwareMatrixKey> keys = HardwareMatrixKey.keysInColumn(bit);
             assertEquals(8, keys.size(), () -> "keys for " + bit);
         }
@@ -40,7 +40,7 @@ public final class HardwareMatrixKeyTest implements SetTesting {
 
     @Test
     public void testKeysInRows() {
-        for(Bit bit : Bit.values()) {
+        for (Bit bit : Bit.values()) {
             final Set<HardwareMatrixKey> keys = HardwareMatrixKey.keysInRow(bit);
             assertEquals(8, keys.size(), () -> "keys for " + bit);
         }
@@ -50,10 +50,10 @@ public final class HardwareMatrixKeyTest implements SetTesting {
     public void testAllKeysHaveUniqueColumnAndRow() {
         final Map<String, Set<HardwareMatrixKey>> columnAndRowToKeys = Maps.ordered();
 
-        for(HardwareMatrixKey key : HardwareMatrixKey.values()) {
+        for (HardwareMatrixKey key : HardwareMatrixKey.values()) {
             final String columnAndRow = key.column() + "," + key.row();
             Set<HardwareMatrixKey> keys = columnAndRowToKeys.get(columnAndRow);
-            if(null == keys) {
+            if (null == keys) {
                 keys = Sets.ordered();
                 columnAndRowToKeys.put(columnAndRow, keys);
             }
@@ -64,14 +64,14 @@ public final class HardwareMatrixKeyTest implements SetTesting {
 
         final List<HardwareMatrixKey> duplicates = Lists.array();
         columnAndRowToKeys.values()
-                .forEach(keys -> {
-                    if(keys.size() > 1) {
-                        duplicates.addAll(keys);
-                    }
-                });
+            .forEach(keys -> {
+                if (keys.size() > 1) {
+                    duplicates.addAll(keys);
+                }
+            });
 
         assertEquals(Lists.empty(),
-                duplicates,
-                "Keys with column/rows also used by other keys");
+            duplicates,
+            "Keys with column/rows also used by other keys");
     }
 }
