@@ -19,7 +19,16 @@ package walkingkooka.emulator.c64;
 
 import walkingkooka.reflect.PublicStaticHelper;
 
+import java.util.Collection;
+
 public final class Cpus implements PublicStaticHelper {
+
+    /**
+     * {@see BasicCpu}
+     */
+    public static Cpu basic(final Collection<CpuInstruction> instructions) {
+        return BasicCpu.with(instructions);
+    }
 
     /**
      * Stop creation
