@@ -169,6 +169,22 @@ public class FakeCpuContext implements CpuContext {
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public byte readZeroPageByte(final byte offset) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void writeZeroPageByte(final byte offset,
+                                  final byte value) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public short readZeroPageAddress(final byte offset) {
+        throw new UnsupportedOperationException();
+    }
+
     @Override 
     public void push(final byte value) {
         throw new UnsupportedOperationException();
