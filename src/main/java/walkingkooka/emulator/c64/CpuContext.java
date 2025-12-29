@@ -90,4 +90,18 @@ public interface CpuContext extends Context {
     void push(final byte value);
 
     byte pop();
+
+    short NMI_VECTOR = (short) 0xfffa;
+
+    short RESET_VECTOR = (short) 0xfffc;
+
+    short IRQ_VECTOR = (short) 0xfffe;
+
+    void reset();
+
+    void nmi();
+
+    void irq();
+
+    void handleInterrupts();
 }
