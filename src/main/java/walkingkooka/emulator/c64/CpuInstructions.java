@@ -46,6 +46,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionBranchBne}
+     */
+    public static CpuInstruction bne() {
+        return CpuInstructionBranchBne.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionBranchBpl}
      */
     public static CpuInstruction bpl() {
