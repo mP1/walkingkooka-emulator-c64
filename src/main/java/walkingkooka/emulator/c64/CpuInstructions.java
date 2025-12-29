@@ -58,6 +58,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction bvc() {
         return CpuInstructionBranchBvc.INSTANCE;
     }
+
+    /**
+     * {@see CpuInstructionBranchBvs}
+     */
+    public static CpuInstruction bvs() {
+        return CpuInstructionBranchBvs.INSTANCE;
+    }
     
     /**
      * {@see FakeCpuInstruction}
