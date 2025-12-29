@@ -110,6 +110,7 @@ final class BasicCpuContext implements CpuContext {
     public void setDecimalMode(final boolean decimalMode) {
         this.flags.setDecimalMode(decimalMode);
     }
+
     @Override
     public boolean isInterruptDisabled() {
         return this.flags.isInterruptDisabled();
@@ -119,6 +120,7 @@ final class BasicCpuContext implements CpuContext {
     public void setInterruptDisabled(final boolean interruptDisabled) {
         this.flags.setInterruptDisabled(interruptDisabled);
     }
+
     @Override
     public boolean isMinus() {
         return this.flags.isMinus();
@@ -196,7 +198,7 @@ final class BasicCpuContext implements CpuContext {
 
         return (short) (
             fromByte(lo) +
-            fromByte(hi) * PAGE_SIZE
+                fromByte(hi) * PAGE_SIZE
         );
     }
 
@@ -244,12 +246,113 @@ final class BasicCpuContext implements CpuContext {
 
     private AddressBus addressBus;
 
+    @Override
+    public void reset() {
+        this.mode = this.mode | RESET;
+    }
+
+    @Override
+    public void nmi() {
+        this.mode = this.mode | NMI;
+    }
+
+    @Override
+    public void irq() {
+        this.mode = this.mode | IRQ;
+    }
+
+    @Override
+    public void handleInterrupts() {
+        int mode = this.mode;
+
+        if (NONE != mode) {
+            if ((mode & RESET) != 0) {
+                this.setA((byte) 0);
+                this.setX((byte) 0);
+                this.setY((byte) 0);
+
+                this.setFlags((byte) 0);
+
+                this.setStackPointer((byte) 0xff);
+
+                this.setPc(
+                    this.readAddress(RESET_VECTOR)
+                );
+                this.mode = NONE;
+            }
+
+            if ((mode & NMI) != 0) {
+                final short pc = this.pc;
+
+                // push hi(pc), lo(pc), flags with break=0
+                this.push(
+                    hi(pc)
+                );
+                this.push(
+                    lo(pc)
+                );
+                this.setBreak(false); // clear
+                this.push(
+                    this.flags()
+                );
+
+                this.setPc(
+                    this.readAddress(NMI_VECTOR)
+                );
+
+                this.mode = mode & ~NMI;
+            }
+
+            if ((mode & IRQ) != 0) {
+                // if interrupts are enabled push hi(pc), lo(pc), flags with break=0
+                if (false == this.isInterruptDisabled()) {
+                    final short pc = this.pc;
+
+                    this.push(
+                        hi(pc)
+                    );
+                    this.push(
+                        lo(pc)
+                    );
+                    this.setBreak(false); // clear
+                    this.push(
+                        this.flags()
+                    );
+
+                    this.setPc(
+                        this.readAddress(IRQ_VECTOR)
+                    );
+
+                    this.setInterruptDisabled(true); // disable interrupts
+                    this.mode = mode & ~IRQ;
+                }
+            }
+        }
+    }
+
+    private final static int NONE = 0;
+    private final static int RESET = 1;
+    private final static int NMI = 2;
+    private final static int IRQ = 4;
+
+    private int mode = NONE;
+
+    // helpers..........................................................................................................
+
+    private byte hi(final short value) {
+        return (byte) (value >> 8);
+    }
+
+    private byte lo(final short value) {
+        return (byte) (0xff & value);
+    }
+
     private static int fromByte(final byte value) {
         return BYTE_MASK & value;
     }
 
     private static byte toByte(final int value) {
-        return (byte)(BYTE_MASK & value);
+        return (byte) (BYTE_MASK & value);
     }
 
     // Object...........................................................................................................

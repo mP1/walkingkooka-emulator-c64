@@ -194,4 +194,24 @@ public class FakeCpuContext implements CpuContext {
     public byte pop() {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public void handleInterrupts() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void irq() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void nmi() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void reset() {
+        throw new UnsupportedOperationException();
+    }
 }

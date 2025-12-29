@@ -46,61 +46,6 @@ final class BasicCpu implements Cpu {
     public void step(final CpuContext context) {
         short pc = context.pc();
 
-        switch (this.mode) {
-            case NONE:
-                break;
-            case RESET:
-                context.setA((byte) 0);
-                context.setX((byte) 0);
-                context.setY((byte) 0);
-
-                context.setFlags((byte) 0);
-
-                context.setStackPointer((byte) 0xff);
-
-                pc = context.readAddress(RESET_VECTOR);
-                this.mode = NONE;
-                break;
-            case NMI:
-                // push hi(pc), lo(pc), flags with break=0
-                context.push(
-                    hi(pc)
-                );
-                context.push(
-                    lo(pc)
-                );
-                context.setBreak(false); // clear
-                context.push(
-                    context.flags()
-                );
-
-                pc = context.readAddress(NMI_VECTOR);
-                this.mode = NONE;
-                break;
-            case IRQ:
-                // if interrupts are enabled push hi(pc), lo(pc), flags with break=0
-                if (false == context.isInterruptDisabled()) {
-                    context.push(
-                        hi(pc)
-                    );
-                    context.push(
-                        lo(pc)
-                    );
-                    context.setBreak(false); // clear
-                    context.push(
-                        context.flags()
-                    );
-
-                    pc = context.readAddress(IRQ_VECTOR);
-
-                    context.setInterruptDisabled(true); // disable interrupts
-                    this.mode = NONE;
-                }
-                break;
-            default:
-                throw new IllegalStateException("Unknown mode: " + this.mode);
-        }
-
         final byte opcode = context.readByte(pc);
         context.setPc(
             (short) (pc + 1)
@@ -110,36 +55,6 @@ final class BasicCpu implements Cpu {
     }
 
     private final CpuInstruction[] instructions;
-
-    @Override
-    public void reset() {
-        this.mode = RESET;
-    }
-
-    @Override
-    public void nmi() {
-        this.mode = NMI;
-    }
-
-    @Override
-    public void irq() {
-        this.mode = IRQ;
-    }
-
-    private final static int NONE = 0;
-    private final static int RESET = 1;
-    private final static int NMI = 2;
-    private final static int IRQ = 3;
-
-    private int mode = NONE;
-
-    private byte hi(final short value) {
-        return (byte) (value >> 8);
-    }
-
-    private byte lo(final short value) {
-        return (byte) (0xff & value);
-    }
 
     private int mask(final byte value) {
         return 0xff & value;

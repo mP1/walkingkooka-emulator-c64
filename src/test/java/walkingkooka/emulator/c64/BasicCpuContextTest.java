@@ -20,7 +20,10 @@ package walkingkooka.emulator.c64;
 import org.junit.jupiter.api.Test;
 import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.text.CharSequences;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -258,11 +261,197 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
         );
     }
 
+    @Test
+    public void testIrq() {
+        final CpuContext context = this.createCpuContextWithRoms();
+        context.setA((byte) 0xff);
+        context.setX((byte) 0xfe);
+        context.setY((byte) 0xfd);
+        context.setInterruptDisabled(false);
+        context.setStackPointer((byte) 0x80);
+        context.setPc((short) 0x1234);
+
+        final int flags = context.flags();
+
+        context.irq();
+
+        context.handleInterrupts();
+
+        this.pcAndCheck(
+            context,
+            (short) 0xff48
+        );
+        this.flagsAndCheck(
+            context,
+            "--I--1--"
+        );
+
+        this.aAndCheck(
+            context,
+            (byte) 0xff
+        );
+        this.xAndCheck(
+            context,
+            (byte) 0xfe
+        );
+        this.yAndCheck(
+            context,
+            (byte) 0xfd
+        );
+        this.stackPointerAndCheck(
+            context,
+            (byte) (0x80 - 3) // pc + flags
+        );
+
+        this.readAddressAndCheck(
+            context,
+            (short) 0x17f,
+            (short) 0x1234
+        );
+        this.readByteAndCheck(
+            context,
+            (short) 0x17e,
+            (byte) (flags | CpuFlags.UNUSED.set())
+        );
+    }
+
+    @Test
+    public void testReset() {
+        final BasicCpuContext context = this.createCpuContextWithRoms();
+        context.setA((byte) 0xff);
+        context.setX((byte) 0xfe);
+        context.setY((byte) 0xfd);
+        context.setStackPointer((byte) 0x80);
+        context.setPc((short) 0x1234);
+
+        context.reset();
+
+        context.handleInterrupts();
+
+        this.pcAndCheck(
+            context,
+            (short) 0xfce2
+        );
+        this.flagsAndCheck(
+            context,
+            (byte) 0
+        );
+
+        this.aAndCheck(
+            context,
+            (byte) 0
+        );
+        this.xAndCheck(
+            context,
+            (byte) 0
+        );
+        this.yAndCheck(
+            context,
+            (byte) 0
+        );
+        this.stackPointerAndCheck(
+            context,
+            (byte) 0xff
+        );
+    }
+
+    @Test
+    public void testNmi() {
+        final BasicCpuContext context = this.createCpuContextWithRoms();
+        context.setA((byte) 0xff);
+        context.setX((byte) 0xfe);
+        context.setY((byte) 0xfd);
+        context.setStackPointer((byte) 0x80);
+        context.setPc((short) 0x1234);
+
+        context.setCarry(true);
+        final int flags = context.flags();
+
+        context.nmi();
+
+        context.handleInterrupts();
+
+        this.pcAndCheck(
+            context,
+            (short) 0xfe43
+        );
+
+        this.flagsAndCheck(
+            context,
+            "C----1--"
+        );
+
+        this.aAndCheck(
+            context,
+            (byte) 0xff
+        );
+        this.xAndCheck(
+            context,
+            (byte) 0x0fe
+        );
+        this.yAndCheck(
+            context,
+            (byte) 0xfd
+        );
+        this.stackPointerAndCheck(
+            context,
+            (byte) (0x80 - 3) // pc + flags
+        );
+
+        this.readAddressAndCheck(
+            context,
+            (short) 0x17f,
+            (short) 0x1234
+        );
+        this.readByteAndCheck(
+            context,
+            (short) 0x17e,
+            (byte) (flags | CpuFlags.UNUSED.set())
+        );
+    }
+
     @Override
     public BasicCpuContext createContext() {
         return BasicCpuContext.with(
             AddressBuses.memory(256 * 256)
         );
+    }
+
+    private BasicCpuContext createCpuContextWithRoms() {
+        final BasicCpuContext context = this.createContext();
+
+        this.loadAndCopyRom("basic.901226-01.bin", Cpu.BASIC_ROM_BASE, context);
+        this.loadAndCopyRom("kernal.901227-03.bin", Cpu.KERNAL_ROM_BASE, context);
+
+        return context;
+    }
+
+    private void loadAndCopyRom(final String name,
+                                final short base,
+                                final CpuContext context) {
+        final byte[] bytes = this.loadRom(name);
+
+        for (int i = 0; i < bytes.length; i++) {
+            context.writeByte(
+                (short) (base + i),
+                bytes[i]
+            );
+        }
+    }
+
+    private byte[] loadRom(final String name) {
+        try {
+            final InputStream inputStream = this.getClass()
+                .getResourceAsStream(
+                    "/walkingkooka/emulator/c64/" + name
+                );
+            if (null == inputStream) {
+                throw new IllegalStateException("Unable to load ROM file " + CharSequences.quote(name));
+            }
+            return inputStream.readAllBytes();
+        } catch (final IOException cause) {
+            throw new IllegalStateException("Reading ROM file " + CharSequences.quote(name) + " failed: " + cause.getMessage(), cause);
+        }
     }
 
     // toString.........................................................................................................
