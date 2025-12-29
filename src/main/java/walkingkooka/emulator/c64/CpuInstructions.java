@@ -32,6 +32,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionBranchBcs}
+     */
+    public static CpuInstruction bcs() {
+        return CpuInstructionBranchBcs.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionBranchBmi}
      */
     public static CpuInstruction bmi() {
