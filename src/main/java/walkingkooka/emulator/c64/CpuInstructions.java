@@ -67,6 +67,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionBrk}
+     */
+    public static CpuInstruction brk() {
+        return CpuInstructionBrk.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionBranchBvc}
      */
     public static CpuInstruction bvc() {
