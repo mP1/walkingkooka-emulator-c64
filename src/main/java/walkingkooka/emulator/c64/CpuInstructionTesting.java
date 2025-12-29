@@ -44,11 +44,8 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
             context.a(),
             context.x(),
             context.y(),
-            cpuFlags
-        );
-
-        this.pcAndCheck(
-            context,
+            cpuFlags,
+            context.stackPointer(),
             expected
         );
     }
