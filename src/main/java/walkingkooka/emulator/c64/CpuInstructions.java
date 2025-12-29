@@ -25,6 +25,13 @@ import walkingkooka.reflect.PublicStaticHelper;
 public final class CpuInstructions implements PublicStaticHelper {
 
     /**
+     * {@see CpuInstructionBranchBcc}
+     */
+    public static CpuInstruction bcc() {
+        return CpuInstructionBranchBcc.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionBranchBmi}
      */
     public static CpuInstruction bmi() {
