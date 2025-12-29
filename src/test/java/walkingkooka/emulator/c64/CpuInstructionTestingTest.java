@@ -29,6 +29,30 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     private final static short PC_PLUS_1 = (short) (PC + 1);
 
+    // executeBranchOrJumpAndCheck......................................................................................
+
+    @Test
+    public void testExecuteBranchOrJumpAndCheck() {
+        final short begin = 0x1000;
+        final byte length = 5;
+
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.fake()
+        );
+        context.setPc(begin);
+
+        this.executeBranchOrJumpAndCheck(
+            new TestCpuInstruction(
+                length,
+                (c) -> c.setPc(
+                    (short) (c.pc() + length)
+                )
+            ),
+            context,
+            (short) (begin + length)
+        );
+    }
+
     // executeAccumulatorAndCheck.......................................................................................
 
     @Test

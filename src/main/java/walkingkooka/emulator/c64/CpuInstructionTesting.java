@@ -32,6 +32,27 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
         );
     }
 
+    default void executeBranchOrJumpAndCheck(final I instruction,
+                                             final CpuContext context,
+                                             final short expected) {
+        final CpuFlags cpuFlags = CpuFlags.create();
+        cpuFlags.setValue(context.flags());
+
+        this.executeAndCheck(
+            instruction,
+            context,
+            context.a(),
+            context.x(),
+            context.y(),
+            cpuFlags
+        );
+
+        this.pcAndCheck(
+            context,
+            expected
+        );
+    }
+
     default void executeAccumulatorAndCheck(final I instruction,
                                             final CpuContext context,
                                             final byte a,
