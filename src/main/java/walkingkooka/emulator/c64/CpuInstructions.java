@@ -95,6 +95,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionClearOrSetClv}
+     */
+    public static CpuInstruction clv() {
+        return CpuInstructionClearOrSetClv.INSTANCE;
+    }
+
+    /**
      * {@see FakeCpuInstruction}
      */
     public static FakeCpuInstruction fake() {
