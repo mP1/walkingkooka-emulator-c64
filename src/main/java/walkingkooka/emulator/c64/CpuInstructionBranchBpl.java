@@ -17,31 +17,29 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.reflect.PublicStaticHelper;
-
-/**
- * A collection of {@link CpuInstruction} factory methods.
- */
-public final class CpuInstructions implements PublicStaticHelper {
+final class CpuInstructionBranchBpl extends CpuInstructionBranch {
 
     /**
-     * {@see CpuInstructionBranchBpl}
+     * Singleton
      */
-    public static CpuInstruction bpl() {
-        return CpuInstructionBranchBpl.INSTANCE;
+    final static CpuInstructionBranchBpl INSTANCE = new CpuInstructionBranchBpl();
+
+    private CpuInstructionBranchBpl() {
+        super();
     }
 
-    /**
-     * {@see FakeCpuInstruction}
-     */
-    public static FakeCpuInstruction fake() {
-        return new FakeCpuInstruction();
+    @Override
+    public byte opcode() {
+        return 0x10;
     }
 
-    /**
-     * Stop creation
-     */
-    private CpuInstructions() {
-        throw new UnsupportedOperationException();
+    @Override
+    boolean testFlag(final CpuContext context) {
+        return false == context.isMinus();
+    }
+
+    @Override
+    String conditionText() {
+        return "BPL";
     }
 }
