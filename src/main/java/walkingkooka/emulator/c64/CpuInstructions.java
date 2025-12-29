@@ -88,6 +88,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionClearOrSetCld}
+     */
+    public static CpuInstruction cld() {
+        return CpuInstructionClearOrSetCld.INSTANCE;
+    }
+
+    /**
      * {@see FakeCpuInstruction}
      */
     public static FakeCpuInstruction fake() {
