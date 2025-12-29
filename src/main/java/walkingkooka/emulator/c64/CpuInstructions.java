@@ -137,6 +137,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionClearOrSetSei}
+     */
+    public static CpuInstruction sei() {
+        return CpuInstructionClearOrSetSei.INSTANCE;
+    }
+
+    /**
      * Stop creation
      */
     private CpuInstructions() {
