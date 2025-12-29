@@ -39,6 +39,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionNop}
+     */
+    public static CpuInstruction nop() {
+        return CpuInstructionNop.INSTANCE;
+    }
+
+    /**
      * Stop creation
      */
     private CpuInstructions() {
