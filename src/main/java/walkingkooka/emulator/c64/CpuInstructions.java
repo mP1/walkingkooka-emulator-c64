@@ -151,6 +151,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionRts}
+     */
+    public static CpuInstruction rts() {
+        return CpuInstructionRts.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionClearOrSetSec}
      */
     public static CpuInstruction sec() {
