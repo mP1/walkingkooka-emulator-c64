@@ -45,7 +45,7 @@ public final class CpuFlags implements HasCpuFlags {
         );
 
         final CpuFlags cpuFlags = new CpuFlags();
-        final String all = "CZIDB10N";
+        final String all = "CZIDB1ON";
 
         for (int i = 0; i < flags.length(); i++) {
             final Consumer<Boolean> setter;

@@ -73,7 +73,7 @@ public final class CpuFlagsTest implements ParseStringTesting<CpuFlags>,
         expected.setValue((byte) 0xff);
 
         this.parseStringAndCheck(
-            "CZIDB10N",
+            "CZIDB1ON",
             expected
         );
     }
