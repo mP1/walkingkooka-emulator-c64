@@ -29,7 +29,7 @@ final class CpuInstructionSharedJmpIndirect extends CpuInstructionShared {
 
     @Override
     public byte opcode() {
-        return (byte) 0x6C;
+        return JMP_IND;
     }
 
     @Override

@@ -27,7 +27,7 @@ final class CpuInstructionSharedTransferPhp extends CpuInstructionSharedTransfer
 
     @Override
     public byte opcode() {
-        return (byte) 0x08;
+        return PHP;
     }
 
     @Override

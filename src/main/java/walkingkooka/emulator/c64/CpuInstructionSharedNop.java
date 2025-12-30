@@ -29,7 +29,7 @@ final class CpuInstructionSharedNop extends CpuInstructionShared {
 
     @Override
     public byte opcode() {
-        return (byte) 0xEA;
+        return NOP;
     }
 
     @Override

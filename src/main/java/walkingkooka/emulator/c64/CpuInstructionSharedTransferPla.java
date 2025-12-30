@@ -27,7 +27,7 @@ final class CpuInstructionSharedTransferPla extends CpuInstructionSharedTransfer
 
     @Override
     public byte opcode() {
-        return (byte) 0x68;
+        return PLA;
     }
 
     @Override

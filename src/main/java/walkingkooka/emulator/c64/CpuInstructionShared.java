@@ -17,7 +17,8 @@
 
 package walkingkooka.emulator.c64;
 
-abstract class CpuInstructionShared implements CpuInstruction {
+abstract class CpuInstructionShared implements CpuInstruction,
+    CpuInstructionOpcodes {
 
     CpuInstructionShared() {
         super();

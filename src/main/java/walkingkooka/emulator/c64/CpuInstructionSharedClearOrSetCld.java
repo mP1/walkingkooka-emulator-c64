@@ -32,7 +32,7 @@ final class CpuInstructionSharedClearOrSetCld extends CpuInstructionSharedClearO
 
     @Override
     public byte opcode() {
-        return (byte) 0xD8;
+        return CLD;
     }
 
     @Override

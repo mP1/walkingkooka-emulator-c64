@@ -30,7 +30,7 @@ final class CpuInstructionSharedBranchBpl extends CpuInstructionSharedBranch {
 
     @Override
     public byte opcode() {
-        return 0x10;
+        return BPL;
     }
 
     @Override

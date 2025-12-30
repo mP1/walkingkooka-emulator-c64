@@ -32,7 +32,7 @@ final class CpuInstructionSharedClearOrSetSei extends CpuInstructionSharedClearO
 
     @Override
     public byte opcode() {
-        return (byte) 0x78;
+        return SEI;
     }
 
     @Override

@@ -29,7 +29,7 @@ final class CpuInstructionSharedJsr extends CpuInstructionShared {
 
     @Override
     public byte opcode() {
-        return (byte) 0x20;
+        return JSR;
     }
 
     @Override

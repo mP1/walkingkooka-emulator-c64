@@ -29,7 +29,7 @@ final class CpuInstructionSharedBrk extends CpuInstructionShared {
 
     @Override
     public byte opcode() {
-        return (byte) 0x00;
+        return BRK;
     }
 
     @Override

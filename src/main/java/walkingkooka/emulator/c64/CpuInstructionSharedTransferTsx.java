@@ -27,7 +27,7 @@ final class CpuInstructionSharedTransferTsx extends CpuInstructionSharedTransfer
 
     @Override
     public byte opcode() {
-        return (byte) 0xBA;
+        return TSX;
     }
 
     @Override

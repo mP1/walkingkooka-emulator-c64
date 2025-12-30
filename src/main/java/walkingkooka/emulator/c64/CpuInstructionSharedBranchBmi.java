@@ -30,7 +30,7 @@ final class CpuInstructionSharedBranchBmi extends CpuInstructionSharedBranch {
 
     @Override
     public byte opcode() {
-        return 0x30;
+        return BMI;
     }
 
     @Override
