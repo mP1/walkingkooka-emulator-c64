@@ -19,7 +19,7 @@ package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
 
-public final class CpuInstructionSharedNopTest extends CpuInstructionTestCase<CpuInstructionSharedNop> {
+public final class CpuInstructionSharedNopTest extends CpuInstructionSharedTestCase<CpuInstructionSharedNop> {
 
     @Test
     public void testStep() {

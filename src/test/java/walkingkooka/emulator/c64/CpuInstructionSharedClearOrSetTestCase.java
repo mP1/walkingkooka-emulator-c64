@@ -19,7 +19,7 @@ package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
 
-public abstract class CpuInstructionSharedClearOrSetTestCase<I extends CpuInstructionSharedClearOrSet> extends CpuInstructionTestCase<I> {
+public abstract class CpuInstructionSharedClearOrSetTestCase<I extends CpuInstructionSharedClearOrSet> extends CpuInstructionSharedTestCase<I> {
 
     CpuInstructionSharedClearOrSetTestCase() {
         super();

@@ -20,10 +20,11 @@ package walkingkooka.emulator.c64;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
-public abstract class CpuInstructionTestCase<I extends CpuInstruction> implements CpuInstructionTesting<I>,
+public abstract class CpuInstructionSharedTestCase<I extends CpuInstruction> implements CpuInstructionTesting<I>,
+    CpuInstructionOpcodes,
     ClassTesting<I> {
 
-    CpuInstructionTestCase() {
+    CpuInstructionSharedTestCase() {
         super();
     }
 
