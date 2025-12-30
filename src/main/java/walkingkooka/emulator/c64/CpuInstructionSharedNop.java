@@ -46,6 +46,6 @@ final class CpuInstructionSharedNop extends CpuInstructionShared {
     @Override
     public String disassemble(final CpuContext context) {
         Objects.requireNonNull(context, "context");
-        return "nop";
+        return "NOP";
     }
 }
