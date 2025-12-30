@@ -115,6 +115,26 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
                                  final byte a,
                                  final byte x,
                                  final byte y,
+                                 final String flags,
+                                 final byte stackPointer,
+                                 final short pc) {
+        this.executeAndCheck(
+            instruction,
+            context,
+            a,
+            x,
+            y,
+            CpuFlags.parse(flags),
+            stackPointer,
+            pc
+        );
+    }
+
+    default void executeAndCheck(final I instruction,
+                                 final CpuContext context,
+                                 final byte a,
+                                 final byte x,
+                                 final byte y,
                                  final CpuFlags flags,
                                  final byte stackPointer,
                                  final short pc) {
