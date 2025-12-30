@@ -45,7 +45,7 @@ public final class CpuFlags implements HasCpuFlags {
         );
 
         final CpuFlags cpuFlags = new CpuFlags();
-        final String all = "CZIDB1ON";
+        final String all = "CZIDB1VN";
 
         for (int i = 0; i < flags.length(); i++) {
             final Consumer<Boolean> setter;
@@ -319,7 +319,7 @@ public final class CpuFlags implements HasCpuFlags {
             (this.decimalMode ? "D" : "-") +
             (this.breakFlag ? "B" : "-") +
             "1" +
-            (this.overflow ? "O" : "-") +
+            (this.overflow ? "V" : "-") +
             (this.minus ? "N" : "-");
     }
 }

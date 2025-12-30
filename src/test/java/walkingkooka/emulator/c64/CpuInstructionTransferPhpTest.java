@@ -43,7 +43,7 @@ public final class CpuInstructionTransferPhpTest extends CpuInstructionTransferT
             context.a(),
             context.x(),
             context.y(),
-            "C-I-B1O-",
+            "C-I-B1V-",
             (byte) 0x3f, // stackPointer
             pc
         );
@@ -77,7 +77,7 @@ public final class CpuInstructionTransferPhpTest extends CpuInstructionTransferT
             context.a(),
             context.x(),
             context.y(),
-            "----B1ON",
+            "----B1VN",
             (byte) 0x3f, // stackPointer
             pc
         );
