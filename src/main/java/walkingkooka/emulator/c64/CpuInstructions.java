@@ -137,6 +137,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedJsr}
+     */
+    public static CpuInstruction jsr() {
+        return CpuInstructionSharedJsr.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedNop}
      */
     public static CpuInstruction nop() {
