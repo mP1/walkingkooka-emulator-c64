@@ -12,7 +12,9 @@ A C64 java emulator with unit tests for each and every individual component.
 [Hardware technical documentation](https://www.c64-wiki.com)
 
 ## Hardware completion status
-- 6510 CPU: Nothing
+
+- 6510 CPU: *DONE*
+- 6510 Instructions *WIP*
 - CIAA: TimerA, TimerB, TOD, INTS: TimerA underflow, TimerB underflow Clock=Alarm
 - CIAB: TimerA, TimerB, TOD, INTS: TimerA underflow, TimerB underflow Clock=Alarm, VIC Mapper switch on PRA. 
 - VICII: Nothing
