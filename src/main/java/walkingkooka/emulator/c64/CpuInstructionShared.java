@@ -29,6 +29,18 @@ abstract class CpuInstructionShared implements CpuInstruction {
             (mask(hi) * 256 + mask(lo));
     }
 
+    static String hexAddress(final short address) {
+        return "$" + Integer.toHexString(
+            (0xFFFF & address)
+        );
+    }
+
+    static String hexByte(final byte value) {
+        return "$" + Integer.toHexString(
+            mask(value)
+        );
+    }
+
     static byte hi(final short value) {
         return (byte) (value >> 8);
     }

@@ -57,9 +57,13 @@ abstract class CpuInstructionSharedBranch extends CpuInstructionShared {
 
         // BPL $FF ($F000)
         return this.conditionText() +
-            " $" +
-            Integer.toHexString(offset) +
-            " ($" + Integer.toHexString(pc + 2 + offset) + ")";
+            " " +
+            hexByte(offset) +
+            " (" +
+            hexAddress(
+                (short) (pc + 2 + mask(offset))
+            ) +
+            ")";
     }
 
     abstract String conditionText();
