@@ -23,6 +23,14 @@ abstract class CpuInstructionShared implements CpuInstruction {
         super();
     }
 
+    static byte hi(final short value) {
+        return (byte) (value >> 8);
+    }
+
+    static byte lo(final short value) {
+        return (byte) (0xff & value);
+    }
+
     static void setMinusAndZero(final byte value,
                                 final CpuContext context) {
         context.setZero(0 == value);

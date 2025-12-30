@@ -63,14 +63,6 @@ final class CpuInstructionSharedBrk extends CpuInstructionShared {
         context.setInterruptDisabled(true); // disable interrupts
     }
 
-    private byte hi(final short value) {
-        return (byte) (value >> 8);
-    }
-
-    private byte lo(final short value) {
-        return (byte) (0xff & value);
-    }
-
     @Override
     public String disassemble(final CpuContext context) {
         Objects.requireNonNull(context, "context");
