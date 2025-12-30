@@ -123,17 +123,17 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
-     * {@see CpuInstructionSharedNop}
+     * {@see CpuInstructionSharedJmpAbs}
      */
-    public static CpuInstruction jmpDirect() {
-        return CpuInstructionSharedJmpDirect.INSTANCE;
+    public static CpuInstruction jmpAbs() {
+        return CpuInstructionSharedJmpAbs.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionSharedJmpDirect}
+     * {@see CpuInstructionSharedJmpAbs}
      */
     public static CpuInstruction jmpIndirect() {
-        return CpuInstructionSharedJmpDirect.INSTANCE;
+        return CpuInstructionSharedJmpAbs.INSTANCE;
     }
 
     /**

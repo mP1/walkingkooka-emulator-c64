@@ -19,11 +19,11 @@ package walkingkooka.emulator.c64;
 
 import java.util.Objects;
 
-final class CpuInstructionSharedJmpDirect extends CpuInstructionShared {
+final class CpuInstructionSharedJmpAbs extends CpuInstructionShared {
 
-    final static CpuInstructionSharedJmpDirect INSTANCE = new CpuInstructionSharedJmpDirect();
+    final static CpuInstructionSharedJmpAbs INSTANCE = new CpuInstructionSharedJmpAbs();
 
-    private CpuInstructionSharedJmpDirect() {
+    private CpuInstructionSharedJmpAbs() {
         super();
     }
 

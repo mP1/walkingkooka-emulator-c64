@@ -19,7 +19,7 @@ package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
 
-public final class CpuInstructionSharedJmpDirectTest extends CpuInstructionTestCase<CpuInstructionSharedJmpDirect> {
+public final class CpuInstructionSharedJmpAbsTest extends CpuInstructionTestCase<CpuInstructionSharedJmpAbs> {
 
     @Test
     public void testStep() {
@@ -44,7 +44,7 @@ public final class CpuInstructionSharedJmpDirectTest extends CpuInstructionTestC
         context.setPc(pc);
 
         this.executeAndCheck(
-            CpuInstructionSharedJmpDirect.INSTANCE,
+            CpuInstructionSharedJmpAbs.INSTANCE,
             context,
             context.a(),
             context.x(),
@@ -78,21 +78,21 @@ public final class CpuInstructionSharedJmpDirectTest extends CpuInstructionTestC
         context.setPc(pc);
 
         this.disassembleAndCheck(
-            CpuInstructionSharedJmpDirect.INSTANCE,
+            CpuInstructionSharedJmpAbs.INSTANCE,
             context,
             "JMP $1234"
         );
     }
 
     @Override
-    public CpuInstructionSharedJmpDirect createCpuInstruction() {
-        return CpuInstructionSharedJmpDirect.INSTANCE;
+    public CpuInstructionSharedJmpAbs createCpuInstruction() {
+        return CpuInstructionSharedJmpAbs.INSTANCE;
     }
 
     // class............................................................................................................
 
     @Override
-    public Class<CpuInstructionSharedJmpDirect> type() {
-        return CpuInstructionSharedJmpDirect.class;
+    public Class<CpuInstructionSharedJmpAbs> type() {
+        return CpuInstructionSharedJmpAbs.class;
     }
 }
