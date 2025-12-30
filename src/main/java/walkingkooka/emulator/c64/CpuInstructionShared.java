@@ -23,6 +23,12 @@ abstract class CpuInstructionShared implements CpuInstruction {
         super();
     }
 
+    static void setMinusAndZero(final byte value,
+                                final CpuContext context) {
+        context.setZero(0 == value);
+        context.setMinus(value < 0);
+    }
+
     static int mask(final byte value) {
         return value & 0xFF;
     }

@@ -49,12 +49,6 @@ abstract class CpuInstructionSharedTransfer extends CpuInstructionShared {
     abstract void write(final byte value,
                         final CpuContext context);
 
-    final void setMinusAndZero(final byte value,
-                               final CpuContext context) {
-        context.setZero(0 == value);
-        context.setMinus(value < 0);
-    }
-
     @Override
     public final String disassemble(final CpuContext context) {
         Objects.requireNonNull(context, "context");
