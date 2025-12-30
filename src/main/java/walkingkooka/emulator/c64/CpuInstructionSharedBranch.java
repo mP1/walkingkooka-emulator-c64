@@ -51,9 +51,7 @@ abstract class CpuInstructionSharedBranch extends CpuInstructionShared {
     public final String disassemble(final CpuContext context) {
         final short pc = context.pc();
 
-        final byte offset = context.readByte(
-            (short) (pc + 1)
-        );
+        final byte offset = context.readByte(pc);
 
         // BPL $FF ($F000)
         return this.conditionText() +
