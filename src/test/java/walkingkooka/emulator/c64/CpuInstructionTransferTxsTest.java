@@ -44,7 +44,7 @@ public final class CpuInstructionTransferTxsTest extends CpuInstructionTransferT
             context.a(),
             x,
             context.y(),
-            CpuFlags.parse("-----1--"),
+            "-----1--",
             x,
             pc
         );
@@ -73,7 +73,7 @@ public final class CpuInstructionTransferTxsTest extends CpuInstructionTransferT
             context.a(),
             x,
             context.y(),
-            CpuFlags.parse("-----1--"),
+            "-----1--",
             x,
             pc
         );
@@ -102,7 +102,7 @@ public final class CpuInstructionTransferTxsTest extends CpuInstructionTransferT
             context.a(),
             x,
             context.y(),
-            CpuFlags.parse("-----1--"),
+            "-----1--",
             x,
             pc
         );

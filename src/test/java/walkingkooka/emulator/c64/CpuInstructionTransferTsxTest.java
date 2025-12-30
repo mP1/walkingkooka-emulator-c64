@@ -44,7 +44,7 @@ public final class CpuInstructionTransferTsxTest extends CpuInstructionTransferT
             context.a(),
             stackPointer,
             context.y(),
-            CpuFlags.parse("-Z---1--"),
+            "-Z---1--",
             stackPointer,
             pc
         );
@@ -73,7 +73,7 @@ public final class CpuInstructionTransferTsxTest extends CpuInstructionTransferT
             context.a(),
             stackPointer,
             context.y(),
-            CpuFlags.parse("-----1--"),
+            "-----1--",
             stackPointer,
             pc
         );
@@ -102,7 +102,7 @@ public final class CpuInstructionTransferTsxTest extends CpuInstructionTransferT
             context.a(),
             stackPointer,
             context.y(),
-            CpuFlags.parse("-----1-N"),
+            "-----1-N",
             stackPointer,
             pc
         );
