@@ -37,7 +37,7 @@ public final class CpuInstructionSharedBranchBccTest extends CpuInstructionShare
             new FakeAddressBus() {
                 @Override
                 public byte read(final int o) {
-                    checkEquals(0x1001, o);
+                    checkEquals(0x1000, o);
                     return 0x12;
                 }
             }
