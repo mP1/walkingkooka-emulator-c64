@@ -137,6 +137,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionTransferPhp}
+     */
+    public static CpuInstruction php() {
+        return CpuInstructionTransferPhp.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionClearOrSetSec}
      */
     public static CpuInstruction sec() {
