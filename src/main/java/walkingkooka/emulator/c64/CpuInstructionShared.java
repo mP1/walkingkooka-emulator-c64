@@ -23,6 +23,11 @@ abstract class CpuInstructionShared implements CpuInstruction {
         super();
     }
 
+    static short add(final short address,
+                     final int offset) {
+        return (short) (address + mask(offset));
+    }
+
     static short address(final byte hi,
                          final byte lo) {
         return (short)
@@ -56,6 +61,10 @@ abstract class CpuInstructionShared implements CpuInstruction {
     }
 
     static int mask(final byte value) {
+        return value & 0xFF;
+    }
+
+    static int mask(final int value) {
         return value & 0xFF;
     }
 }
