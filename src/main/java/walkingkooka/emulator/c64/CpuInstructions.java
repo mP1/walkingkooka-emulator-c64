@@ -25,94 +25,94 @@ import walkingkooka.reflect.PublicStaticHelper;
 public final class CpuInstructions implements PublicStaticHelper {
 
     /**
-     * {@see CpuInstructionBranchBcc}
+     * {@see CpuInstructionSharedBranchBcc}
      */
     public static CpuInstruction bcc() {
-        return CpuInstructionBranchBcc.INSTANCE;
+        return CpuInstructionSharedBranchBcc.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionBranchBcs}
+     * {@see CpuInstructionSharedBranchBcs}
      */
     public static CpuInstruction bcs() {
-        return CpuInstructionBranchBcs.INSTANCE;
+        return CpuInstructionSharedBranchBcs.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionBranchBeq}
+     * {@see CpuInstructionSharedBranchBeq}
      */
     public static CpuInstruction beq() {
-        return CpuInstructionBranchBeq.INSTANCE;
+        return CpuInstructionSharedBranchBeq.INSTANCE;
     }
     
     /**
-     * {@see CpuInstructionBranchBmi}
+     * {@see CpuInstructionSharedBranchBmi}
      */
     public static CpuInstruction bmi() {
-        return CpuInstructionBranchBmi.INSTANCE;
+        return CpuInstructionSharedBranchBmi.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionBranchBne}
+     * {@see CpuInstructionSharedBranchBne}
      */
     public static CpuInstruction bne() {
-        return CpuInstructionBranchBne.INSTANCE;
+        return CpuInstructionSharedBranchBne.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionBranchBpl}
+     * {@see CpuInstructionSharedBranchBpl}
      */
     public static CpuInstruction bpl() {
-        return CpuInstructionBranchBpl.INSTANCE;
+        return CpuInstructionSharedBranchBpl.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionBrk}
+     * {@see CpuInstructionSharedBrk}
      */
     public static CpuInstruction brk() {
-        return CpuInstructionBrk.INSTANCE;
+        return CpuInstructionSharedBrk.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionBranchBvc}
+     * {@see CpuInstructionSharedBranchBvc}
      */
     public static CpuInstruction bvc() {
-        return CpuInstructionBranchBvc.INSTANCE;
+        return CpuInstructionSharedBranchBvc.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionBranchBvs}
+     * {@see CpuInstructionSharedBranchBvs}
      */
     public static CpuInstruction bvs() {
-        return CpuInstructionBranchBvs.INSTANCE;
+        return CpuInstructionSharedBranchBvs.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionClearOrSetClc}
+     * {@see CpuInstructionSharedClearOrSetClc}
      */
     public static CpuInstruction clc() {
-        return CpuInstructionClearOrSetClc.INSTANCE;
+        return CpuInstructionSharedClearOrSetClc.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionClearOrSetCld}
+     * {@see CpuInstructionSharedClearOrSetCld}
      */
     public static CpuInstruction cld() {
-        return CpuInstructionClearOrSetCld.INSTANCE;
+        return CpuInstructionSharedClearOrSetCld.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionClearOrSetCli}
+     * {@see CpuInstructionSharedClearOrSetCli}
      */
     public static CpuInstruction cli() {
-        return CpuInstructionClearOrSetCli.INSTANCE;
+        return CpuInstructionSharedClearOrSetCli.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionClearOrSetClv}
+     * {@see CpuInstructionSharedClearOrSetClv}
      */
     public static CpuInstruction clv() {
-        return CpuInstructionClearOrSetClv.INSTANCE;
+        return CpuInstructionSharedClearOrSetClv.INSTANCE;
     }
 
     /**
@@ -123,108 +123,108 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
-     * {@see CpuInstructionNop}
+     * {@see CpuInstructionSharedNop}
      */
     public static CpuInstruction nop() {
-        return CpuInstructionNop.INSTANCE;
+        return CpuInstructionSharedNop.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionTransferPha}
+     * {@see CpuInstructionSharedTransferPha}
      */
     public static CpuInstruction pha() {
-        return CpuInstructionTransferPha.INSTANCE;
+        return CpuInstructionSharedTransferPha.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionTransferPhp}
+     * {@see CpuInstructionSharedTransferPhp}
      */
     public static CpuInstruction php() {
-        return CpuInstructionTransferPhp.INSTANCE;
+        return CpuInstructionSharedTransferPhp.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionTransferPla}
+     * {@see CpuInstructionSharedTransferPla}
      */
     public static CpuInstruction pla() {
-        return CpuInstructionTransferPla.INSTANCE;
+        return CpuInstructionSharedTransferPla.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionRti}
+     * {@see CpuInstructionSharedRti}
      */
     public static CpuInstruction rti() {
-        return CpuInstructionRti.INSTANCE;
+        return CpuInstructionSharedRti.INSTANCE;
     }
     
     /**
-     * {@see CpuInstructionRts}
+     * {@see CpuInstructionSharedRts}
      */
     public static CpuInstruction rts() {
-        return CpuInstructionRts.INSTANCE;
+        return CpuInstructionSharedRts.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionClearOrSetSec}
+     * {@see CpuInstructionSharedClearOrSetSec}
      */
     public static CpuInstruction sec() {
-        return CpuInstructionClearOrSetSec.INSTANCE;
+        return CpuInstructionSharedClearOrSetSec.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionClearOrSetSed}
+     * {@see CpuInstructionSharedClearOrSetSed}
      */
     public static CpuInstruction sed() {
-        return CpuInstructionClearOrSetSed.INSTANCE;
+        return CpuInstructionSharedClearOrSetSed.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionClearOrSetSei}
+     * {@see CpuInstructionSharedClearOrSetSei}
      */
     public static CpuInstruction sei() {
-        return CpuInstructionClearOrSetSei.INSTANCE;
+        return CpuInstructionSharedClearOrSetSei.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionTransferTax}
+     * {@see CpuInstructionSharedTransferTax}
      */
     public static CpuInstruction tax() {
-        return CpuInstructionTransferTax.INSTANCE;
+        return CpuInstructionSharedTransferTax.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionTransferTay}
+     * {@see CpuInstructionSharedTransferTay}
      */
     public static CpuInstruction tay() {
-        return CpuInstructionTransferTay.INSTANCE;
+        return CpuInstructionSharedTransferTay.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionTransferTsx}
+     * {@see CpuInstructionSharedTransferTsx}
      */
     public static CpuInstruction tsx() {
-        return CpuInstructionTransferTsx.INSTANCE;
+        return CpuInstructionSharedTransferTsx.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionTransferTxa}
+     * {@see CpuInstructionSharedTransferTxa}
      */
     public static CpuInstruction txa() {
-        return CpuInstructionTransferTxa.INSTANCE;
+        return CpuInstructionSharedTransferTxa.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionTransferTxs}
+     * {@see CpuInstructionSharedTransferTxs}
      */
     public static CpuInstruction txs() {
-        return CpuInstructionTransferTxs.INSTANCE;
+        return CpuInstructionSharedTransferTxs.INSTANCE;
     }
 
     /**
-     * {@see CpuInstructionTransferTya}
+     * {@see CpuInstructionSharedTransferTya}
      */
     public static CpuInstruction tya() {
-        return CpuInstructionTransferTya.INSTANCE;
+        return CpuInstructionSharedTransferTya.INSTANCE;
     }
 
     /**
