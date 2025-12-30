@@ -33,13 +33,15 @@ public interface CpuInstruction {
     int length();
 
     /**
-     * Execute this instruction, advancing pc, updating memory or flags etc, ready for the next instruction to be executed.
+     * Execute this instruction, advancing pc, updating memory or flags etc, ready for the next instruction to be executed.<br>
+     * Note this assumes the {@link CpuContext#pc()} has been advanced to the byte following the opcode
      */
     void execute(final CpuContext context);
 
     /**
      * Disassembles the instruction without changing the given {@link CpuContext}, returning the text form as would
-     * appear in the source code for an assembler.
+     * appear in the source code for an assembler.<br>
+     * Note this assumes the {@link CpuContext#pc()} has been advanced to the byte following the opcode
      */
     String disassemble(final CpuContext context);
 }
