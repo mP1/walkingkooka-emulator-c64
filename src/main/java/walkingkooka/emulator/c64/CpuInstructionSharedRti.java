@@ -29,7 +29,7 @@ final class CpuInstructionSharedRti extends CpuInstructionShared {
 
     @Override
     public byte opcode() {
-        return (byte) 0x40;
+        return RTI;
     }
 
     @Override

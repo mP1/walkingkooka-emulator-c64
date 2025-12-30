@@ -29,7 +29,7 @@ final class CpuInstructionSharedJmpAbs extends CpuInstructionShared {
 
     @Override
     public byte opcode() {
-        return (byte) 0x4C;
+        return JMP_ABS;
     }
 
     @Override

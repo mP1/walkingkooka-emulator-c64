@@ -30,7 +30,7 @@ final class CpuInstructionSharedBranchBcc extends CpuInstructionSharedBranch {
 
     @Override
     public byte opcode() {
-        return (byte) 0x90;
+        return BCC;
     }
 
     @Override

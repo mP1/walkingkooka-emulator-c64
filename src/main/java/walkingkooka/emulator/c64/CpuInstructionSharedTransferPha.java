@@ -27,7 +27,7 @@ final class CpuInstructionSharedTransferPha extends CpuInstructionSharedTransfer
 
     @Override
     public byte opcode() {
-        return (byte) 0x48;
+        return PHA;
     }
 
     @Override

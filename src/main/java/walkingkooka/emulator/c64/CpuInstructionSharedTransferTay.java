@@ -27,7 +27,7 @@ final class CpuInstructionSharedTransferTay extends CpuInstructionSharedTransfer
 
     @Override
     public byte opcode() {
-        return (byte) 0xA8;
+        return TAY;
     }
 
     @Override

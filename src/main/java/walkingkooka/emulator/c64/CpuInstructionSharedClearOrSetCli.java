@@ -32,7 +32,7 @@ final class CpuInstructionSharedClearOrSetCli extends CpuInstructionSharedClearO
 
     @Override
     public byte opcode() {
-        return (byte) 0x58;
+        return CLI;
     }
 
     @Override

@@ -27,7 +27,7 @@ final class CpuInstructionSharedTransferTya extends CpuInstructionSharedTransfer
 
     @Override
     public byte opcode() {
-        return (byte) 0x98;
+        return TYA;
     }
 
     @Override

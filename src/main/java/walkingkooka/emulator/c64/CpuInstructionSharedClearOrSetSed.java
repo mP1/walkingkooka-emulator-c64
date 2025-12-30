@@ -32,7 +32,7 @@ final class CpuInstructionSharedClearOrSetSed extends CpuInstructionSharedClearO
 
     @Override
     public byte opcode() {
-        return (byte) 0xF8;
+        return SED;
     }
 
     @Override

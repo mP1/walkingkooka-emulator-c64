@@ -27,7 +27,7 @@ final class CpuInstructionSharedTransferTax extends CpuInstructionSharedTransfer
 
     @Override
     public byte opcode() {
-        return (byte) 0xAA;
+        return TAX;
     }
 
     @Override
