@@ -38,7 +38,7 @@ public final class CpuInstructionSharedNopTest extends CpuInstructionTestCase<Cp
         this.disassembleAndCheck(
             CpuInstructionSharedNop.INSTANCE,
             CpuContexts.fake(),
-            "nop"
+            "NOP"
         );
     }
 
