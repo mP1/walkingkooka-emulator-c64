@@ -47,7 +47,7 @@ public final class CpuInstructionSharedRtsTest extends CpuInstructionTestCase<Cp
             context.y(),
             CpuFlags.parse("-----1--"),
             stackPointer,
-            (short) 0xFFEE
+            (short) 0xFFEF
         );
     }
 
@@ -79,7 +79,7 @@ public final class CpuInstructionSharedRtsTest extends CpuInstructionTestCase<Cp
             context.y(),
             CpuFlags.parse("CZIDB1VN"),
             stackPointer,
-            (short) 0xFFEE
+            (short) 0xFFEF
         );
     }
 
@@ -111,7 +111,7 @@ public final class CpuInstructionSharedRtsTest extends CpuInstructionTestCase<Cp
             context.y(),
             CpuFlags.parse("CZIDB1VN"),
             stackPointer,
-            (short) 0x1234
+            (short) 0x1235
         );
     }
 
@@ -122,7 +122,7 @@ public final class CpuInstructionSharedRtsTest extends CpuInstructionTestCase<Cp
         );
 
         final byte hi = 0x02;
-        final byte lo = 0x01;
+        final byte lo = 0x03;
 
         final byte stackPointer = (byte) 0xf3;
 
@@ -143,7 +143,7 @@ public final class CpuInstructionSharedRtsTest extends CpuInstructionTestCase<Cp
             context.y(),
             CpuFlags.parse("CZIDB1VN"),
             stackPointer,
-            (short) 0x0201
+            (short) 0x0204
         );
     }
 

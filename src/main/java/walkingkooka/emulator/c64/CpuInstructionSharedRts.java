@@ -45,7 +45,10 @@ final class CpuInstructionSharedRts extends CpuInstructionShared {
         final byte hi = context.pop();
 
         context.setPc(
-            address(hi, lo)
+            add(
+                address(hi, lo),
+                1
+            )
         );
     }
 

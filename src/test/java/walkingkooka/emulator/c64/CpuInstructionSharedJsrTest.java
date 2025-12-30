@@ -18,6 +18,7 @@
 package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.collect.list.Lists;
 
 public final class CpuInstructionSharedJsrTest extends CpuInstructionTestCase<CpuInstructionSharedJsr> {
 
@@ -58,15 +59,70 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionTestCase<Cp
         );
 
         this.checkEquals(
-            Integer.toHexString(0x5678),
+            Integer.toHexString(0x5679),
             Integer.toHexString(
-                context.readByte(
-                    (short) 0x1F1
-                ) * 256 +
-                    context.readByte(
-                        (short) 0x1F2
-                    )
+                context.readAddress(
+                    (short) 0x1f1
+                )
             )
+        );
+    }
+
+    // 5000: JSR 1234
+    // 1234: RTS
+    @Test
+    public void testJsrThenRts() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x5005;
+
+        final byte hi = 0x12;
+        final byte lo = 0x34;
+
+        context.writeByte(
+            pc,
+            (byte) 0x20 // JSR $1234
+        );
+
+        context.writeByte(
+            (short) (pc + 1),
+            lo
+        );
+        context.writeByte(
+            (short) (pc + 2),
+            hi
+        );
+
+        context.setPc(pc);
+
+        final byte stackPointer = (byte) 0xF0;
+        context.setStackPointer(stackPointer);
+
+        context.writeByte(
+            (short) 0x1234,
+            (byte) 0x60 // RTS
+        );
+
+        final Cpu cpu = Cpus.basic(
+            Lists.of(
+                CpuInstructionSharedJsr.INSTANCE,
+                CpuInstructions.rts()
+            )
+        );
+
+        cpu.step(context);
+        cpu.step(context);
+
+        this.pcAndCheck(
+            context,
+            (short) 0x5008
+        );
+
+        this.stackPointerAndCheck(
+            context,
+            stackPointer
         );
     }
 

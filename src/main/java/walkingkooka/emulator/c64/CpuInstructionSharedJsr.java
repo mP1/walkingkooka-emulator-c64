@@ -50,18 +50,18 @@ final class CpuInstructionSharedJsr extends CpuInstructionShared {
 
         final short pc = context.pc();
 
-        final byte lo = context.readByte(
-            add(pc, 0)
-        );
+        final byte lo = context.readByte(pc);
         final byte hi = context.readByte(
             add(pc, 1)
         );
 
+        final short save = add(pc, 1);
+
         context.push(
-            lo(pc)
+            hi(save)
         );
         context.push(
-            hi(pc)
+            lo(save)
         );
 
         context.setPc(
@@ -75,9 +75,7 @@ final class CpuInstructionSharedJsr extends CpuInstructionShared {
 
         final short pc = context.pc();
 
-        final byte lo = context.readByte(
-            pc
-        );
+        final byte lo = context.readByte(pc);
         final byte hi = context.readByte(
             add(pc, 1)
         );
