@@ -81,9 +81,10 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
         final byte hi = 0x12;
         final byte lo = 0x34;
 
+        // JSR $1234
         context.writeByte(
             pc,
-            (byte) 0x20 // JSR $1234
+            JSR
         );
 
         context.writeByte(
@@ -102,7 +103,7 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
 
         context.writeByte(
             (short) 0x1234,
-            (byte) 0x60 // RTS
+            RTS
         );
 
         final Cpu cpu = Cpus.basic(
