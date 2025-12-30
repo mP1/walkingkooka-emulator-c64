@@ -165,6 +165,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionTransferTsx}
+     */
+    public static CpuInstruction tsx() {
+        return CpuInstructionTransferTsx.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionTransferTxa}
      */
     public static CpuInstruction txa() {
