@@ -144,6 +144,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionTransferPla}
+     */
+    public static CpuInstruction pla() {
+        return CpuInstructionTransferPla.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionClearOrSetSec}
      */
     public static CpuInstruction sec() {
