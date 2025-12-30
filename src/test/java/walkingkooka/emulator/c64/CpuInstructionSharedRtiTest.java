@@ -18,6 +18,7 @@
 package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.collect.list.Lists;
 
 public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestCase<CpuInstructionSharedRti> {
 
@@ -136,6 +137,75 @@ public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestC
             CpuInstructionSharedRti.INSTANCE,
             CpuContexts.fake(),
             "RTI"
+        );
+    }
+
+    @Test
+    public void testNmiHandleInterruptRti() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x5005;
+        final byte stackPointer = (byte) 0xf0;
+
+        context.setPc(pc);
+        context.setStackPointer(stackPointer);
+
+        // IRQ vector = $1234
+        context.writeByte(
+            CpuContext.IRQ_VECTOR,
+            (byte) 0x34
+        );
+        context.writeByte(
+            (short) (CpuContext.IRQ_VECTOR + 1),
+            (byte) 0x12
+        );
+
+        // RTI at IRQ vector
+        final short handler = 0x1234;
+        context.writeByte(
+            handler,
+            RTI
+        );
+
+        final CpuFlags flags = CpuFlags.parse("CZ------");
+        context.setFlags(flags.value());
+
+        context.irq();
+
+        this.pcAndCheck(
+            context,
+            pc // irq() doesnt update pc
+        );
+
+        context.handleInterrupts();
+        this.pcAndCheck(
+            context,
+            handler
+        );
+
+        final Cpu cpu = Cpus.basic(
+            Lists.of(
+                CpuInstructionSharedJsr.INSTANCE,
+                CpuInstructions.rti()
+            )
+        );
+
+        cpu.step(context); // RTI
+
+        this.pcAndCheck(
+            context,
+            pc
+        );
+
+        this.stackPointerAndCheck(
+            context,
+            stackPointer
+        );
+        this.flagsAndCheck(
+            context,
+            flags
         );
     }
 
