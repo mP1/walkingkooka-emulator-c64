@@ -23,6 +23,12 @@ abstract class CpuInstructionShared implements CpuInstruction {
         super();
     }
 
+    static short address(final byte hi,
+                         final byte lo) {
+        return (short)
+            (mask(hi) * 256 + mask(lo));
+    }
+
     static byte hi(final short value) {
         return (byte) (value >> 8);
     }
