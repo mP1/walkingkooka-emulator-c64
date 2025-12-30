@@ -490,7 +490,7 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
 
         this.toStringAndCheck(
             context,
-            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0xabcd, CpuFlags: -----1O-"
+            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0xabcd, CpuFlags: -----1V-"
         );
     }
 
