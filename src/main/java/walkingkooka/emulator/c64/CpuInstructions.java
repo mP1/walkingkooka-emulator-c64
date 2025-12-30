@@ -130,6 +130,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionTransferPha}
+     */
+    public static CpuInstruction pha() {
+        return CpuInstructionTransferPha.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionClearOrSetSec}
      */
     public static CpuInstruction sec() {
