@@ -151,6 +151,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionTransferTax}
+     */
+    public static CpuInstruction tax() {
+        return CpuInstructionTransferTax.INSTANCE;
+    }
+
+    /**
      * Stop creation
      */
     private CpuInstructions() {
