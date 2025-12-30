@@ -46,7 +46,7 @@ final class CpuInstructionSharedRts extends CpuInstructionShared {
 
         context.setPc(
             (short)
-                ((0xff & hi) * 256 + (0xff & lo))
+                (mask(hi) * 256 + mask(lo))
         );
     }
 

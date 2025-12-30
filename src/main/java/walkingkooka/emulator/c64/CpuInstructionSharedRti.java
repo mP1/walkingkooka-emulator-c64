@@ -49,7 +49,7 @@ final class CpuInstructionSharedRti extends CpuInstructionShared {
         context.setBreak(false); // clear break flag
         context.setPc(
             (short)
-                ((0xff & hi) * 256 + (0xff & lo))
+                (mask(hi) * 256 + mask(lo))
         );
     }
 

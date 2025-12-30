@@ -22,4 +22,8 @@ abstract class CpuInstructionShared implements CpuInstruction {
     CpuInstructionShared() {
         super();
     }
+
+    static int mask(final byte value) {
+        return value & 0xFF;
+    }
 }
