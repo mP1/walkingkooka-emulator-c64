@@ -158,6 +158,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionTransferTay}
+     */
+    public static CpuInstruction tay() {
+        return CpuInstructionTransferTay.INSTANCE;
+    }
+
+    /**
      * Stop creation
      */
     private CpuInstructions() {
