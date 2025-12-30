@@ -19,7 +19,7 @@ package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
 
-public final class CpuInstructionSharedRtiTest extends CpuInstructionTestCase<CpuInstructionSharedRti> {
+public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestCase<CpuInstructionSharedRti> {
 
     @Test
     public void testStepWithBreak() {

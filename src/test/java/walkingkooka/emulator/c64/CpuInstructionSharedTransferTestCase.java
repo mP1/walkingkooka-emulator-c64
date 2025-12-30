@@ -19,8 +19,7 @@ package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
 
-public abstract class CpuInstructionSharedTransferTestCase<I extends CpuInstructionSharedTransfer> extends CpuInstructionTestCase<I>
-    implements CpuInstructionOpcodes {
+public abstract class CpuInstructionSharedTransferTestCase<I extends CpuInstructionSharedTransfer> extends CpuInstructionSharedTestCase<I> {
 
     CpuInstructionSharedTransferTestCase() {
         super();

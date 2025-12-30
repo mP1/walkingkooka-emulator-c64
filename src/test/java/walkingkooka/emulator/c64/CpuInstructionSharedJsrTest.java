@@ -20,7 +20,7 @@ package walkingkooka.emulator.c64;
 import org.junit.jupiter.api.Test;
 import walkingkooka.collect.list.Lists;
 
-public final class CpuInstructionSharedJsrTest extends CpuInstructionTestCase<CpuInstructionSharedJsr> {
+public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestCase<CpuInstructionSharedJsr> {
 
     @Test
     public void testStep() {
