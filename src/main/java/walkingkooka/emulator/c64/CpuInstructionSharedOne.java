@@ -17,9 +17,9 @@
 
 package walkingkooka.emulator.c64;
 
-abstract class CpuInstructionSharedTemplate extends CpuInstructionShared {
+abstract class CpuInstructionSharedOne extends CpuInstructionShared {
 
-    CpuInstructionSharedTemplate() {
+    CpuInstructionSharedOne() {
         super();
     }
 

@@ -24,7 +24,7 @@ import walkingkooka.reflect.JavaVisibility;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
-public final class CpuInstructionSharedTemplateTest implements ClassTesting<CpuInstructionSharedTemplate> {
+public final class CpuInstructionSharedOneTest implements ClassTesting<CpuInstructionSharedOne> {
 
     // asl..............................................................................................................
 
@@ -93,7 +93,7 @@ public final class CpuInstructionSharedTemplateTest implements ClassTesting<CpuI
                              final byte expectedValue,
                              final String expectedFlags) {
         this.processValueAndCheck(
-            CpuInstructionSharedTemplate::asl,
+            CpuInstructionSharedOne::asl,
             value,
             flags,
             expectedValue,
@@ -168,7 +168,7 @@ public final class CpuInstructionSharedTemplateTest implements ClassTesting<CpuI
                              final byte expectedValue,
                              final String expectedFlags) {
         this.processValueAndCheck(
-            CpuInstructionSharedTemplate::lsr,
+            CpuInstructionSharedOne::lsr,
             value,
             flags,
             expectedValue,
@@ -243,7 +243,7 @@ public final class CpuInstructionSharedTemplateTest implements ClassTesting<CpuI
                              final byte expectedValue,
                              final String expectedFlags) {
         this.processValueAndCheck(
-            CpuInstructionSharedTemplate::rol,
+            CpuInstructionSharedOne::rol,
             value,
             flags,
             expectedValue,
@@ -338,7 +338,7 @@ public final class CpuInstructionSharedTemplateTest implements ClassTesting<CpuI
                              final byte expectedValue,
                              final String expectedFlags) {
         this.processValueAndCheck(
-            CpuInstructionSharedTemplate::ror,
+            CpuInstructionSharedOne::ror,
             value,
             flags,
             expectedValue,
@@ -404,8 +404,8 @@ public final class CpuInstructionSharedTemplateTest implements ClassTesting<CpuI
     // class............................................................................................................
 
     @Override
-    public Class<CpuInstructionSharedTemplate> type() {
-        return CpuInstructionSharedTemplate.class;
+    public Class<CpuInstructionSharedOne> type() {
+        return CpuInstructionSharedOne.class;
     }
 
     @Override
