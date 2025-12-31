@@ -35,6 +35,11 @@ abstract class CpuInstructionSharedUnaryFunction {
     final static CpuInstructionSharedUnaryFunction INC = CpuInstructionSharedUnaryFunctionInc.INSTANCE;
 
     /**
+     * {@see CpuInstructionSharedUnaryFunctionLoad}
+     */
+    final static CpuInstructionSharedUnaryFunction LOAD = CpuInstructionSharedUnaryFunctionLoad.INSTANCE;
+
+    /**
      * {@see CpuInstructionSharedUnaryFunctionLsr}
      */
     final static CpuInstructionSharedUnaryFunction LSR = CpuInstructionSharedUnaryFunctionLsr.INSTANCE;
