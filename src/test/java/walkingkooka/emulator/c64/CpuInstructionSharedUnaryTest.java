@@ -24,7 +24,7 @@ import walkingkooka.reflect.JavaVisibility;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
-public final class CpuInstructionSharedOneTest implements ClassTesting<CpuInstructionSharedOne> {
+public final class CpuInstructionSharedUnaryTest implements ClassTesting<CpuInstructionSharedUnary> {
 
     // asl..............................................................................................................
 
@@ -93,7 +93,7 @@ public final class CpuInstructionSharedOneTest implements ClassTesting<CpuInstru
                              final byte expectedValue,
                              final String expectedFlags) {
         this.processValueAndCheck(
-            CpuInstructionSharedOne::asl,
+            CpuInstructionSharedUnary::asl,
             value,
             flags,
             expectedValue,
@@ -168,7 +168,7 @@ public final class CpuInstructionSharedOneTest implements ClassTesting<CpuInstru
                              final byte expectedValue,
                              final String expectedFlags) {
         this.processValueAndCheck(
-            CpuInstructionSharedOne::dec,
+            CpuInstructionSharedUnary::dec,
             value,
             flags,
             expectedValue,
@@ -243,7 +243,7 @@ public final class CpuInstructionSharedOneTest implements ClassTesting<CpuInstru
                              final byte expectedValue,
                              final String expectedFlags) {
         this.processValueAndCheck(
-            CpuInstructionSharedOne::inc,
+            CpuInstructionSharedUnary::inc,
             value,
             flags,
             expectedValue,
@@ -318,7 +318,7 @@ public final class CpuInstructionSharedOneTest implements ClassTesting<CpuInstru
                              final byte expectedValue,
                              final String expectedFlags) {
         this.processValueAndCheck(
-            CpuInstructionSharedOne::lsr,
+            CpuInstructionSharedUnary::lsr,
             value,
             flags,
             expectedValue,
@@ -393,7 +393,7 @@ public final class CpuInstructionSharedOneTest implements ClassTesting<CpuInstru
                              final byte expectedValue,
                              final String expectedFlags) {
         this.processValueAndCheck(
-            CpuInstructionSharedOne::rol,
+            CpuInstructionSharedUnary::rol,
             value,
             flags,
             expectedValue,
@@ -488,7 +488,7 @@ public final class CpuInstructionSharedOneTest implements ClassTesting<CpuInstru
                              final byte expectedValue,
                              final String expectedFlags) {
         this.processValueAndCheck(
-            CpuInstructionSharedOne::ror,
+            CpuInstructionSharedUnary::ror,
             value,
             flags,
             expectedValue,
@@ -554,8 +554,8 @@ public final class CpuInstructionSharedOneTest implements ClassTesting<CpuInstru
     // class............................................................................................................
 
     @Override
-    public Class<CpuInstructionSharedOne> type() {
-        return CpuInstructionSharedOne.class;
+    public Class<CpuInstructionSharedUnary> type() {
+        return CpuInstructionSharedUnary.class;
     }
 
     @Override
