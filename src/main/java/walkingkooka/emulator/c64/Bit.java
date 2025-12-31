@@ -41,6 +41,13 @@ enum Bit {
     }
 
     /**
+     * Tests if this bit is set in the given value.
+     */
+    boolean test(final byte value) {
+        return (this.mask & value) != 0;
+    }
+
+    /**
      * Returns the next bit to the right with {@link Bit#BIT0} returning {@link Bit#BIT7}.
      */
     final Bit right() {
