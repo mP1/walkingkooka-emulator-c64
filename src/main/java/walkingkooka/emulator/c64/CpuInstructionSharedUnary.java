@@ -19,11 +19,6 @@ package walkingkooka.emulator.c64;
 
 abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
 
-    /**
-     * {@see CpuInstructionSharedUnaryFunctionAsl}
-     */
-    final static CpuInstructionSharedUnaryFunction ASL = CpuInstructionSharedUnaryFunctionAsl.INSTANCE;
-
     CpuInstructionSharedUnary() {
         super();
     }
