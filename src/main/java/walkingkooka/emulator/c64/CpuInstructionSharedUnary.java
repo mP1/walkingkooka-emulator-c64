@@ -25,33 +25,4 @@ abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
 
     abstract byte process(final byte value,
                           final CpuContext context);
-
-    // https://www.masswerk.at/6502/6502_instruction_set.html#ROR
-    //
-    // ROR
-    // Rotate One Bit Right (Memory or Accumulator)
-    //
-    // C -> [76543210] -> C
-    // N	Z	C	I	D	V
-    // +	+	+	-	-	-
-    static byte ror(final byte value,
-                    final CpuContext context) {
-        final byte in = context.isCarry() ?
-            (byte) 0x80 :
-            0;
-
-        final byte out = (byte) (in |
-            ((value & 0xff) >> 1));
-
-        setMinusAndZero(
-            out,
-            context
-        );
-
-        context.setCarry(
-            Bit.BIT0.test(value)
-        );
-
-        return out;
-    }
 }
