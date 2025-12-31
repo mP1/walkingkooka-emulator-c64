@@ -39,7 +39,21 @@ abstract class CpuInstructionSharedBinaryFunction {
      */
     final static CpuInstructionSharedBinaryFunction OR = CpuInstructionSharedBinaryFunctionOr.INSTANCE;
 
+    /**
+     * {@see CpuInstructionSharedBinaryFunctionSbc}
+     */
+    final static CpuInstructionSharedBinaryFunction SBC = CpuInstructionSharedBinaryFunctionAdc.INSTANCE;
+
     abstract byte handle(final byte left,
                          final byte right,
                          final CpuContext context);
+
+
+    final int units(final byte value) {
+        return 0x0f & value;
+    }
+
+    final int tens(final byte value) {
+        return ((((int) value) & 0xf0) >> 4) & 0x0f;
+    }
 }
