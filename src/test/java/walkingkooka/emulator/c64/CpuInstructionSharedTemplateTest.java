@@ -100,6 +100,81 @@ public final class CpuInstructionSharedTemplateTest implements ClassTesting<CpuI
             expectedFlags
         );
     }
+
+    // lsr..............................................................................................................
+
+    @Test
+    public void testLsrCarryClear() {
+        this.lsrAndCheck(
+            (byte) 0,
+            "-----1--",
+            (byte) 0,
+            "-Z---1--"
+        );
+    }
+
+    @Test
+    public void testLsrCarryClear2() {
+        this.lsrAndCheck(
+            (byte) 0x01,
+            "-----1--",
+            (byte) 0,
+            "CZ---1--"
+        );
+    }
+
+    @Test
+    public void testLsrCarrySet() {
+        this.lsrAndCheck(
+            (byte) 0,
+            "C----1--",
+            (byte) 0x00,
+            "-Z------"
+        );
+    }
+
+    @Test
+    public void testLsrCarrySet2() {
+        this.lsrAndCheck(
+            (byte) 0x01,
+            "C----1--",
+            (byte) 0x00,
+            "CZ------"
+        );
+    }
+
+    @Test
+    public void testLsr() {
+        this.lsrAndCheck(
+            (byte) 0xF0,
+            "C----1--",
+            (byte) 0x78,
+            "--------"
+        );
+    }
+
+    @Test
+    public void testLsr2() {
+        this.lsrAndCheck(
+            (byte) 0x0F,
+            "-----1--",
+            (byte) 0x07,
+            "C-------"
+        );
+    }
+
+    private void lsrAndCheck(final byte value,
+                             final String flags,
+                             final byte expectedValue,
+                             final String expectedFlags) {
+        this.processValueAndCheck(
+            CpuInstructionSharedTemplate::lsr,
+            value,
+            flags,
+            expectedValue,
+            expectedFlags
+        );
+    }
     
     // rol..............................................................................................................
 
