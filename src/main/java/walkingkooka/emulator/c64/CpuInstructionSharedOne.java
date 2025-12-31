@@ -49,6 +49,26 @@ abstract class CpuInstructionSharedOne extends CpuInstructionShared {
         return out;
     }
 
+    // https://www.masswerk.at/6502/6502_instruction_set.html#INC
+    //
+    // INC
+    // Increment Memory by One
+    //
+    // M + 1 -> M
+    // N	Z	C	I	D	V
+    // +	+	-	-	-	-
+    static byte inc(final byte value,
+                    final CpuContext context) {
+        final byte out = (byte) (value + 1);
+
+        setMinusAndZero(
+            out,
+            context
+        );
+
+        return out;
+    }
+
     // https://www.masswerk.at/6502/6502_instruction_set.html#LSR
     //
     // LSR
