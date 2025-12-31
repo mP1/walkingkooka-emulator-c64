@@ -29,6 +29,11 @@ abstract class CpuInstructionSharedUnaryFunction {
      */
     final static CpuInstructionSharedUnaryFunction DEC = CpuInstructionSharedUnaryFunctionDec.INSTANCE;
 
+    /**
+     * {@see CpuInstructionSharedUnaryFunctionInc}
+     */
+    final static CpuInstructionSharedUnaryFunction INC = CpuInstructionSharedUnaryFunctionInc.INSTANCE;
+
     CpuInstructionSharedUnaryFunction() {
         super();
     }
