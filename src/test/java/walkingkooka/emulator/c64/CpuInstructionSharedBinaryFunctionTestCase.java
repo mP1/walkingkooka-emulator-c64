@@ -28,11 +28,11 @@ public abstract class CpuInstructionSharedBinaryFunctionTestCase<T extends CpuIn
         super();
     }
 
-    void handleAndCheck(final byte left,
-                        final byte right,
-                        final String flags,
-                        final byte expectedValue,
-                        final String expectedFlags) {
+    final void handleAndCheck(final byte left,
+                              final byte right,
+                              final String flags,
+                              final byte expectedValue,
+                              final String expectedFlags) {
         this.handleAndCheck(
             left,
             right,
@@ -42,11 +42,11 @@ public abstract class CpuInstructionSharedBinaryFunctionTestCase<T extends CpuIn
         );
     }
 
-    void handleAndCheck(final byte left,
-                        final byte right,
-                        final CpuFlags flags,
-                        final byte expectedValue,
-                        final CpuFlags expectedFlags) {
+    final void handleAndCheck(final byte left,
+                              final byte right,
+                              final CpuFlags flags,
+                              final byte expectedValue,
+                              final CpuFlags expectedFlags) {
         this.handleAndCheck(
             this.createCpuInstructionSharedBinaryFunction(),
             left,
@@ -57,12 +57,12 @@ public abstract class CpuInstructionSharedBinaryFunctionTestCase<T extends CpuIn
         );
     }
 
-    void handleAndCheck(final T function,
-                        final byte left,
-                        final byte right,
-                        final CpuFlags flags,
-                        final byte expectedValue,
-                        final CpuFlags expectedFlags) {
+    final void handleAndCheck(final T function,
+                              final byte left,
+                              final byte right,
+                              final CpuFlags flags,
+                              final byte expectedValue,
+                              final CpuFlags expectedFlags) {
         final CpuContext context = CpuContexts.basic(
             AddressBuses.fake()
         );
@@ -90,9 +90,9 @@ public abstract class CpuInstructionSharedBinaryFunctionTestCase<T extends CpuIn
         );
     }
 
-    void checkEquals(final Byte expected,
-                     final Byte actual,
-                     final Supplier<String> message) {
+    final void checkEquals(final Byte expected,
+                           final Byte actual,
+                           final Supplier<String> message) {
         this.checkEquals(
             "$" + Integer.toHexString(0xff & expected),
             "$" + Integer.toHexString(0xff & actual),
