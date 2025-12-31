@@ -73,9 +73,14 @@ abstract class CpuInstructionSharedTemplate extends CpuInstructionShared {
         return out;
     }
 
-    // https://www.masswerk.at/6502/6502_instruction_set.html
+    // https://www.masswerk.at/6502/6502_instruction_set.html#ROL
     //
-    // C <- shift byte left <- C
+    // ROL
+    // Rotate One Bit Left (Memory or Accumulator)
+    //
+    // C <- [76543210] <- C
+    // N	Z	C	I	D	V
+    // +	+	+	-	-	-
     static byte rol(final byte value,
                     final CpuContext context) {
         final byte in = context.isCarry() ?
@@ -99,9 +104,14 @@ abstract class CpuInstructionSharedTemplate extends CpuInstructionShared {
     }
 
 
-    // https://www.masswerk.at/6502/6502_instruction_set.html
+    // https://www.masswerk.at/6502/6502_instruction_set.html#ROR
     //
-    // C -> shift byte right -> C
+    // ROR
+    // Rotate One Bit Right (Memory or Accumulator)
+    //
+    // C -> [76543210] -> C
+    // N	Z	C	I	D	V
+    // +	+	+	-	-	-
     static byte ror(final byte value,
                     final CpuContext context) {
         final byte in = context.isCarry() ?
