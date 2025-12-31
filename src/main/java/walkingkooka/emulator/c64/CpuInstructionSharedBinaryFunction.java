@@ -20,6 +20,11 @@ package walkingkooka.emulator.c64;
 abstract class CpuInstructionSharedBinaryFunction {
 
     /**
+     * {@see CpuInstructionSharedBinaryFunctionAdc}
+     */
+    final static CpuInstructionSharedBinaryFunction ADC = CpuInstructionSharedBinaryFunctionAdc.INSTANCE;
+
+    /**
      * {@see CpuInstructionSharedBinaryFunctionAnd}
      */
     final static CpuInstructionSharedBinaryFunction AND = CpuInstructionSharedBinaryFunctionAnd.INSTANCE;
