@@ -101,6 +101,81 @@ public final class CpuInstructionSharedOneTest implements ClassTesting<CpuInstru
         );
     }
 
+    // dec..............................................................................................................
+
+    @Test
+    public void testDecCarryClear() {
+        this.decAndCheck(
+            (byte) 2,
+            "-----1--",
+            (byte) 1,
+            "-----1--"
+        );
+    }
+
+    @Test
+    public void testDecCarrySet() {
+        this.decAndCheck(
+            (byte) 4,
+            "C----1--",
+            (byte) 0x03,
+            "C----1--"
+        );
+    }
+
+    @Test
+    public void testDecDecimalModeSet() {
+        this.decAndCheck(
+            (byte) 2,
+            "---D-1--",
+            (byte) 0x01,
+            "---D-1--"
+        );
+    }
+
+    @Test
+    public void testDecZero() {
+        this.decAndCheck(
+            (byte) 1,
+            "C----1--",
+            (byte) 0x00,
+            "CZ---1--"
+        );
+    }
+
+    @Test
+    public void testDecPositive() {
+        this.decAndCheck(
+            (byte) 0x06,
+            "-----1--",
+            (byte) 0x05,
+            "-----1--"
+        );
+    }
+
+    @Test
+    public void testDecNegative() {
+        this.decAndCheck(
+            (byte) 0xFF,
+            "-----1--",
+            (byte) 0xFE,
+            "-----1-N"
+        );
+    }
+
+    private void decAndCheck(final byte value,
+                             final String flags,
+                             final byte expectedValue,
+                             final String expectedFlags) {
+        this.processValueAndCheck(
+            CpuInstructionSharedOne::dec,
+            value,
+            flags,
+            expectedValue,
+            expectedFlags
+        );
+    }
+    
     // inc..............................................................................................................
 
     @Test
