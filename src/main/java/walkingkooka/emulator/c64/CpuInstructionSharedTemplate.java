@@ -49,6 +49,30 @@ abstract class CpuInstructionSharedTemplate extends CpuInstructionShared {
         return out;
     }
 
+    // https://www.masswerk.at/6502/6502_instruction_set.html#LSR
+    //
+    // LSR
+    //Shift One Bit Right (Memory or Accumulator)
+    //
+    //0 -> [76543210] -> C
+    //N	Z	C	I	D	V
+    //0	+	+	-	-	-
+    static byte lsr(final byte value,
+                    final CpuContext context) {
+        final byte out = (byte) ((value >> 1) & 0x7f);
+
+        setMinusAndZero(
+            out,
+            context
+        );
+
+        context.setCarry(
+            Bit.BIT0.test(value)
+        );
+
+        return out;
+    }
+
     // https://www.masswerk.at/6502/6502_instruction_set.html
     //
     // C <- shift byte left <- C
