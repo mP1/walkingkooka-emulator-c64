@@ -19,6 +19,11 @@ package walkingkooka.emulator.c64;
 
 abstract class CpuInstructionSharedBinaryFunction {
 
+    /**
+     * {@see CpuInstructionSharedBinaryFunctionOr}
+     */
+    final static CpuInstructionSharedBinaryFunction OR = CpuInstructionSharedBinaryFunctionOr.INSTANCE;
+
     abstract byte handle(final byte left,
                          final byte right,
                          final CpuContext context);
