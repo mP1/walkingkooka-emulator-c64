@@ -21,12 +21,13 @@ import static walkingkooka.emulator.c64.CpuInstructionShared.setMinusAndZero;
 
 /**
  * <pre>
- * https://www.masswerk.at/6502/6502_instruction_set.html#ADC
+ * https://www.masswerk.at/6502/6502_instruction_set.html#SBC
  *
- * ADC
- * Add Memory to Accumulator with Carry
+ * SBC
  *
- * A + M + C -> A, C
+ * Subtract Memory from Accumulator with Borrow
+ *
+ * A - M - C̅ -> A
  * N	Z	C	I	D	V
  * +	+	+	-	-	+
  *
@@ -118,14 +119,14 @@ import static walkingkooka.emulator.c64.CpuInstructionShared.setMinusAndZero;
  * interrupt, while the original NMOS version of the 6502 does not.)
  * </pre>
  */
-final class CpuInstructionSharedBinaryFunctionAdc extends CpuInstructionSharedBinaryFunction {
+final class CpuInstructionSharedBinaryFunctionSbc extends CpuInstructionSharedBinaryFunction {
 
     /**
      * Singleton
      */
-    final static CpuInstructionSharedBinaryFunctionAdc INSTANCE = new CpuInstructionSharedBinaryFunctionAdc();
+    final static CpuInstructionSharedBinaryFunctionSbc INSTANCE = new CpuInstructionSharedBinaryFunctionSbc();
 
-    private CpuInstructionSharedBinaryFunctionAdc() {
+    private CpuInstructionSharedBinaryFunctionSbc() {
         super();
     }
 
@@ -141,9 +142,9 @@ final class CpuInstructionSharedBinaryFunctionAdc extends CpuInstructionSharedBi
                 context
             );
         } else {
-            value = this.binaryMode(
+            value = ADC.handle(
                 left,
-                right,
+                (byte) ~right,
                 context
             );
         }
@@ -151,56 +152,24 @@ final class CpuInstructionSharedBinaryFunctionAdc extends CpuInstructionSharedBi
         return value;
     }
 
-    private byte binaryMode(final byte left,
-                            final byte right,
-                            final CpuContext context) {
-        final int value = (0xff & left) +
-            (0xff & right) +
-            (context.isCarry() ? 1 : 0);
-
-        final byte byteValue = (byte) value;
-
-        setMinusAndZero(
-            byteValue,
-            context
-        );
-
-        context.setCarry(
-            (value & 0x100) != 0
-        );
-
-        // http://6502.org/tutorials/vflag.html
-        context.setOverflow(
-            (
-                (left ^ value) &
-                    (right ^ value) &
-                    0x80
-            ) != 0
-        );
-
-        return byteValue;
-    }
-
     private byte decimalMode(final byte left,
                              final byte right,
                              final CpuContext context) {
-        int units = units(left) + units(right); // ignore carry
-        if (units > 9) {
-            units = units + 6;
-        }
+        int units = units(left) - units(right); // ignore carry
+        int tens = tens(left) - tens(right);
 
-        int tens = tens(left) + tens(right);
-        if (units > 9) {
-            tens++;
+        if (units < 0) {
+            units = units + 10;
+            tens--;
         }
 
         boolean carry = false;
-        if (tens > 9) {
-            tens = tens + 6;
+        if (tens < 0) {
+            tens = tens + 10;
             carry = true;
         }
 
-        final int value = (tens << 4) + (units & 0xf);
+        final int value = (tens << 4) | (units & 0xf);
 
         final byte byteValue = (byte) value;
 
