@@ -26,6 +26,29 @@ abstract class CpuInstructionSharedTemplate extends CpuInstructionShared {
     abstract byte process(final byte value,
                           final CpuContext context);
 
+    // https://www.masswerk.at/6502/6502_instruction_set.html#ASL
+    //
+    // Shift Left One Bit (Memory or Accumulator)
+    //
+    // C <- [76543210] <- 0
+    // N	Z	C	I	D	V
+    // +	+	+	-	-	-
+    static byte asl(final byte value,
+                    final CpuContext context) {
+        final byte out = (byte) (value << 1);
+
+        setMinusAndZero(
+            out,
+            context
+        );
+
+        context.setCarry(
+            Bit.BIT7.test(value)
+        );
+
+        return out;
+    }
+
     // https://www.masswerk.at/6502/6502_instruction_set.html
     //
     // C <- shift byte left <- C
