@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *    http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,31 +17,36 @@
 
 package walkingkooka.emulator.c64;
 
-abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
+import static walkingkooka.emulator.c64.CpuInstructionShared.setMinusAndZero;
 
-    CpuInstructionSharedUnary() {
+/**
+ * https://www.masswerk.at/6502/6502_instruction_set.html#ROL
+ * <p>
+ * ROL
+ * Rotate One Bit Left (Memory or Accumulator)
+ * <p>
+ * C <- [76543210] <- C
+ * N	Z	C	I	D	V
+ * +	+	+	-	-	-
+ */
+final class CpuInstructionSharedUnaryFunctionRol extends CpuInstructionSharedUnaryFunction {
+
+    final static CpuInstructionSharedUnaryFunctionRol INSTANCE = new CpuInstructionSharedUnaryFunctionRol();
+
+    private CpuInstructionSharedUnaryFunctionRol() {
         super();
     }
 
-    abstract byte process(final byte value,
-                          final CpuContext context);
-
-    // https://www.masswerk.at/6502/6502_instruction_set.html#ROR
-    //
-    // ROR
-    // Rotate One Bit Right (Memory or Accumulator)
-    //
-    // C -> [76543210] -> C
-    // N	Z	C	I	D	V
-    // +	+	+	-	-	-
-    static byte ror(final byte value,
-                    final CpuContext context) {
+    @Override
+    byte handle(final byte value,
+                final CpuContext context) {
         final byte in = context.isCarry() ?
-            (byte) 0x80 :
+            (byte) 0x1 :
             0;
 
         final byte out = (byte) (in |
-            ((value & 0xff) >> 1));
+            (value << 1)
+        );
 
         setMinusAndZero(
             out,
@@ -49,7 +54,7 @@ abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
         );
 
         context.setCarry(
-            Bit.BIT0.test(value)
+            Bit.BIT7.test(value)
         );
 
         return out;
