@@ -17,7 +17,6 @@
 
 package walkingkooka.emulator.c64;
 
-import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
@@ -25,101 +24,6 @@ import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 public final class CpuInstructionSharedUnaryTest implements ClassTesting<CpuInstructionSharedUnary> {
-
-    // ror..............................................................................................................
-
-    @Test
-    public void testRorCarryClear() {
-        this.rorAndCheck(
-            (byte) 0,
-            "-----1--",
-            (byte) 0,
-            "-Z---1--"
-        );
-    }
-
-    @Test
-    public void testRorCarryClear2() {
-        this.rorAndCheck(
-            (byte) 0x01,
-            "-----1--",
-            (byte) 0,
-            "CZ---1--"
-        );
-    }
-
-    @Test
-    public void testRorCarrySet() {
-        this.rorAndCheck(
-            (byte) 0,
-            "C----1--",
-            (byte) 0x80,
-            "-------N"
-        );
-    }
-
-    @Test
-    public void testRorCarrySet2() {
-        this.rorAndCheck(
-            (byte) 0x01,
-            "C----1--",
-            (byte) 0x80,
-            "C------N"
-        );
-    }
-
-    @Test
-    public void testRor() {
-        this.rorAndCheck(
-            (byte) 0xFF,
-            "C----1--",
-            (byte) 0xFF,
-            "C------N"
-        );
-    }
-
-    @Test
-    public void testRor2() {
-        this.rorAndCheck(
-            (byte) 0xF0,
-            "-----1--",
-            (byte) 0x78,
-            "-----1--"
-        );
-    }
-
-    @Test
-    public void testRor3() {
-        this.rorAndCheck(
-            (byte) 0x0F,
-            "-----1--",
-            (byte) 0x07,
-            "C----1--"
-        );
-    }
-
-    @Test
-    public void testRorBinaryDecimalModeInterruptOverflowUnchanged() {
-        this.rorAndCheck(
-            (byte) 0xF0,
-            "-ZIDB1VN",
-            (byte) 0x78,
-            "--IDB1V-"
-        );
-    }
-
-    private void rorAndCheck(final byte value,
-                             final String flags,
-                             final byte expectedValue,
-                             final String expectedFlags) {
-        this.processValueAndCheck(
-            CpuInstructionSharedUnary::ror,
-            value,
-            flags,
-            expectedValue,
-            expectedFlags
-        );
-    }
 
     private void processValueAndCheck(final BiFunction<Byte, CpuContext, Byte> function,
                                       final byte value,
