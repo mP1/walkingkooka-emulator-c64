@@ -20,65 +20,7 @@ package walkingkooka.emulator.c64;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
-
 public final class CpuInstructionSharedUnaryTest implements ClassTesting<CpuInstructionSharedUnary> {
-
-    private void processValueAndCheck(final BiFunction<Byte, CpuContext, Byte> function,
-                                      final byte value,
-                                      final String flags,
-                                      final byte expectedValue,
-                                      final String expectedFlags) {
-        this.processValueAndCheck(
-            function,
-            value,
-            CpuFlags.parse(flags),
-            expectedValue,
-            CpuFlags.parse(expectedFlags)
-        );
-    }
-
-    private void processValueAndCheck(final BiFunction<Byte, CpuContext, Byte> function,
-                                      final byte value,
-                                      final CpuFlags flags,
-                                      final byte expectedValue,
-                                      final CpuFlags expectedFlags) {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
-
-        context.setFlags(
-            flags.value()
-        );
-
-        this.checkEquals(
-            expectedValue,
-            function.apply(
-                value,
-                context
-            ),
-            () -> function + " " + Integer.toHexString(value)
-        );
-
-        final CpuFlags actualFlags = CpuFlags.create();
-        actualFlags.setValue(context.flags());
-
-        this.checkEquals(
-            expectedFlags,
-            actualFlags
-        );
-    }
-
-    private void checkEquals(final Byte expected,
-                             final Byte actual,
-                             final Supplier<String> message) {
-        this.checkEquals(
-            "$" + Integer.toHexString(0xff & expected),
-            "$" + Integer.toHexString(0xff & actual),
-            message
-        );
-    }
 
     // class............................................................................................................
 
