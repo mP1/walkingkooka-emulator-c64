@@ -26,6 +26,81 @@ import java.util.function.Supplier;
 
 public final class CpuInstructionSharedTemplateTest implements ClassTesting<CpuInstructionSharedTemplate> {
 
+    // rol..............................................................................................................
+
+    @Test
+    public void testRolCarryClear() {
+        this.rolAndCheck(
+            (byte) 0,
+            "-----1--",
+            (byte) 0,
+            "-Z---1--"
+        );
+    }
+
+    @Test
+    public void testRolCarryClear2() {
+        this.rolAndCheck(
+            (byte) 0x80,
+            "-----1--",
+            (byte) 0,
+            "CZ---1--"
+        );
+    }
+
+    @Test
+    public void testRolCarrySet() {
+        this.rolAndCheck(
+            (byte) 0,
+            "C----1--",
+            (byte) 0x01,
+            "--------"
+        );
+    }
+
+    @Test
+    public void testRolCarrySet2() {
+        this.rolAndCheck(
+            (byte) 0x80,
+            "C----1--",
+            (byte) 0x01,
+            "C-------"
+        );
+    }
+
+    @Test
+    public void testRol() {
+        this.rolAndCheck(
+            (byte) 0xF0,
+            "C----1--",
+            (byte) 0xE1,
+            "C------N"
+        );
+    }
+
+    @Test
+    public void testRol2() {
+        this.rolAndCheck(
+            (byte) 0x0F,
+            "-----1--",
+            (byte) 0x1E,
+            "--------"
+        );
+    }
+
+    private void rolAndCheck(final byte value,
+                             final String flags,
+                             final byte expectedValue,
+                             final String expectedFlags) {
+        this.processValueAndCheck(
+            CpuInstructionSharedTemplate::rol,
+            value,
+            flags,
+            expectedValue,
+            expectedFlags
+        );
+    }
+    
     // ror..............................................................................................................
 
     @Test
