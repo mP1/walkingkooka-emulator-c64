@@ -20,74 +20,7 @@ package walkingkooka.emulator.c64;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
-import java.util.function.Supplier;
-
 public final class CpuInstructionSharedBinaryTest implements ClassTesting<CpuInstructionSharedBinary> {
-
-    private void processValueAndCheck(final BinaryFunction function,
-                                      final byte left,
-                                      final byte right,
-                                      final String flags,
-                                      final byte expectedValue,
-                                      final String expectedFlags) {
-        this.processValueAndCheck(
-            function,
-            left,
-            right,
-            CpuFlags.parse(flags),
-            expectedValue,
-            CpuFlags.parse(expectedFlags)
-        );
-    }
-
-    private void processValueAndCheck(final BinaryFunction function,
-                                      final byte left,
-                                      final byte right,
-                                      final CpuFlags flags,
-                                      final byte expectedValue,
-                                      final CpuFlags expectedFlags) {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
-
-        context.setFlags(
-            flags.value()
-        );
-
-        this.checkEquals(
-            expectedValue,
-            function.apply(
-                left,
-                right,
-                context
-            ),
-            () -> function + " " + Integer.toHexString(left) + " " + Integer.toHexString(right)
-        );
-
-        final CpuFlags actualFlags = CpuFlags.create();
-        actualFlags.setValue(context.flags());
-
-        this.checkEquals(
-            expectedFlags,
-            actualFlags
-        );
-    }
-
-    interface BinaryFunction {
-        byte apply(final byte left,
-                   final byte right,
-                   final CpuContext context);
-    }
-
-    private void checkEquals(final Byte expected,
-                             final Byte actual,
-                             final Supplier<String> message) {
-        this.checkEquals(
-            "$" + Integer.toHexString(0xff & expected),
-            "$" + Integer.toHexString(0xff & actual),
-            message
-        );
-    }
 
     // class............................................................................................................
 
