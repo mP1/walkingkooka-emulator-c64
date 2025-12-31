@@ -27,6 +27,63 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class BitTest implements ClassTesting2<Bit> {
 
+    // test.............................................................................................................
+
+    @Test
+    public void testBit0WithCleared() {
+        this.testAndCheck(
+            Bit.BIT0,
+            (byte) 0xFE,
+            false
+        );
+    }
+
+    @Test
+    public void testBit0WithSet() {
+        this.testAndCheck(
+            Bit.BIT0,
+            (byte) 0x01,
+            true
+        );
+    }
+
+    @Test
+    public void testBit1WithCleared() {
+        this.testAndCheck(
+            Bit.BIT1,
+            (byte) 0xF0,
+            false
+        );
+    }
+
+    @Test
+    public void testBit1WithSet() {
+        this.testAndCheck(
+            Bit.BIT1,
+            (byte) 0x02,
+            true
+        );
+    }
+
+    @Test
+    public void testBit7WithSet() {
+        this.testAndCheck(
+            Bit.BIT7,
+            (byte) 0x80,
+            true
+        );
+    }
+
+    private void testAndCheck(final Bit bit,
+                              final byte value,
+                              final boolean expected) {
+        this.checkEquals(
+            expected,
+            bit.test(value),
+            bit + " test " + Integer.toHexString(value)
+        );
+    }
+
     // read.............................................................................................................
 
     @Test
