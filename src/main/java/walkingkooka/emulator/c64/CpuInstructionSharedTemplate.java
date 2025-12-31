@@ -28,6 +28,32 @@ abstract class CpuInstructionSharedTemplate extends CpuInstructionShared {
 
     // https://www.masswerk.at/6502/6502_instruction_set.html
     //
+    // C <- shift byte left <- C
+    static byte rol(final byte value,
+                    final CpuContext context) {
+        final byte in = context.isCarry() ?
+            (byte) 0x1 :
+            0;
+
+        final byte out = (byte) (in |
+            (value << 1)
+        );
+
+        setMinusAndZero(
+            out,
+            context
+        );
+
+        context.setCarry(
+            Bit.BIT7.test(value)
+        );
+
+        return out;
+    }
+
+
+    // https://www.masswerk.at/6502/6502_instruction_set.html
+    //
     // C -> shift byte right -> C
     static byte ror(final byte value,
                     final CpuContext context) {
