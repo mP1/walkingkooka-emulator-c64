@@ -171,7 +171,11 @@ final class CpuInstructionSharedBinaryFunctionAdc extends CpuInstructionSharedBi
 
         // http://6502.org/tutorials/vflag.html
         context.setOverflow(
-            value <= -128 | value >= 127
+            (
+                (left ^ value) &
+                    (right ^ value) &
+                    0x80
+            ) != 0
         );
 
         return byteValue;

@@ -61,7 +61,7 @@ public final class CpuInstructionSharedBinaryFunctionAdcTest extends CpuInstruct
             (byte) 0x0F,
             "-----1V-",
             (byte) 0xFF,
-            "-----1VN"
+            "-----1-N"
         );
     }
 
@@ -72,7 +72,7 @@ public final class CpuInstructionSharedBinaryFunctionAdcTest extends CpuInstruct
             (byte) 0xF0,
             "-----1V-",
             (byte) 0xFF,
-            "-----1VN"
+            "-----1-N"
         );
     }
 
