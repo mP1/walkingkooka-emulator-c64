@@ -20,6 +20,11 @@ package walkingkooka.emulator.c64;
 abstract class CpuInstructionSharedUnaryFunction {
 
     /**
+     * {@see CpuInstructionSharedUnaryFunctionAsl}
+     */
+    final static CpuInstructionSharedUnaryFunction ASL = CpuInstructionSharedUnaryFunctionAsl.INSTANCE;
+
+    /**
      * {@see CpuInstructionSharedUnaryFunctionDec}
      */
     final static CpuInstructionSharedUnaryFunction DEC = CpuInstructionSharedUnaryFunctionDec.INSTANCE;
