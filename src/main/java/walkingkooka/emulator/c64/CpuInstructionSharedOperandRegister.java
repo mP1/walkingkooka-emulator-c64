@@ -25,7 +25,7 @@ abstract class CpuInstructionSharedOperandRegister extends CpuInstructionSharedO
 
     @Override //
     final int length() {
-        return 1;
+        return 0;
     }
 
     @Override //
