@@ -43,7 +43,7 @@ final class CpuInstructionSharedUnaryAslA extends CpuInstructionSharedUnaryAsl {
 
     @Override
     public byte opcode() {
-        return 0x0a;
+        return ASLA;
     }
 
     @Override

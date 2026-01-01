@@ -19,6 +19,8 @@ package walkingkooka.emulator.c64;
 
 public interface CpuInstructionOpcodes {
 
+    byte ASLA = (byte) 0x0a;
+
     byte BCC = (byte) 0x90;
 
     byte BCS = (byte) 0xB0;
