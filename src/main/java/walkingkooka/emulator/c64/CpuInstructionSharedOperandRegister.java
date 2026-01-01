@@ -22,4 +22,39 @@ abstract class CpuInstructionSharedOperandRegister extends CpuInstructionSharedO
     CpuInstructionSharedOperandRegister() {
         super();
     }
+
+    @Override //
+    final void handleBinaryConsumer(final CpuInstructionSharedBinaryConsumer consumer,
+                                    final CpuContext context) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    void handleBinaryFunction(final CpuInstructionSharedBinaryFunction function,
+                              final CpuContext context) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    void handleUnaryFunction(final CpuInstructionSharedUnaryFunction function,
+                             final CpuContext context) {
+        this.writeRegister(
+            function.handle(
+                this.readRegister(context),
+                context
+            ),
+            context
+        );
+    }
+
+    /**
+     * Getter that returns the A, X or Y
+     */
+    abstract byte readRegister(final CpuContext context);
+
+    /**
+     * Writes the A, X, Y and probably sets the N and V flags
+     */
+    abstract void writeRegister(final byte value,
+                                final CpuContext context);
 }
