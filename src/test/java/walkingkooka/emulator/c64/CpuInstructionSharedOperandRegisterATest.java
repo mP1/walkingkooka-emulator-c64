@@ -21,7 +21,7 @@ public final class CpuInstructionSharedOperandRegisterATest extends CpuInstructi
 
     @Override
     CpuInstructionSharedOperandRegisterA createCpuInstructionSharedOperand() {
-        return CpuInstructionSharedOperandRegisterA.INSTANCE;
+        return CpuInstructionSharedOperandRegisterA.instance();
     }
 
     // class............................................................................................................
