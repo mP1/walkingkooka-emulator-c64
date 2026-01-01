@@ -25,6 +25,13 @@ import walkingkooka.reflect.PublicStaticHelper;
 public final class CpuInstructions implements PublicStaticHelper {
 
     /**
+     * {@see CpuInstructionSharedUnaryAslA}
+     */
+    public static CpuInstruction asla() {
+        return CpuInstructionSharedUnaryAslA.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedBranchBcc}
      */
     public static CpuInstruction bcc() {
