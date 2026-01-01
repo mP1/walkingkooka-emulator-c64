@@ -51,4 +51,9 @@ final class CpuInstructionSharedUnaryFunctionAsl extends CpuInstructionSharedUna
 
         return out;
     }
+
+    @Override
+    String mnemonic() {
+        return "ASL";
+    }
 }

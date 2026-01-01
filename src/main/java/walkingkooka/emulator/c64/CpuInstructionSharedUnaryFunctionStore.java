@@ -40,4 +40,9 @@ final class CpuInstructionSharedUnaryFunctionStore extends CpuInstructionSharedU
                 final CpuContext context) {
         return value;
     }
+
+    @Override
+    String mnemonic() {
+        return "STORE";
+    }
 }

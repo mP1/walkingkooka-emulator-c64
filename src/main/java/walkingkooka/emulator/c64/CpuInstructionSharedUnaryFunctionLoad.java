@@ -44,4 +44,9 @@ final class CpuInstructionSharedUnaryFunctionLoad extends CpuInstructionSharedUn
         );
         return value;
     }
+
+    @Override
+    String mnemonic() {
+        return "LOAD";
+    }
 }
