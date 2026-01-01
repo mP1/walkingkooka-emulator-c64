@@ -19,7 +19,9 @@ package walkingkooka.emulator.c64;
 
 final class CpuInstructionSharedOperandRegisterA extends CpuInstructionSharedOperandRegister {
 
-    final static CpuInstructionSharedOperandRegisterA INSTANCE = new CpuInstructionSharedOperandRegisterA();
+    static CpuInstructionSharedOperandRegisterA instance() {
+        return new CpuInstructionSharedOperandRegisterA();
+    }
 
     private CpuInstructionSharedOperandRegisterA() {
         super();

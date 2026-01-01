@@ -41,7 +41,7 @@ abstract class CpuInstructionSharedOperand {
     /**
      * {@see CpuInstructionSharedOperand}
      */
-    final static CpuInstructionSharedOperand A = CpuInstructionSharedOperandRegisterA.INSTANCE;
+    final static CpuInstructionSharedOperand A = CpuInstructionSharedOperandRegisterA.instance();
 
     CpuInstructionSharedOperand() {
         super();
