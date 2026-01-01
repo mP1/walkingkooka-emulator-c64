@@ -17,12 +17,43 @@
 
 package walkingkooka.emulator.c64;
 
+import java.util.Objects;
+
 abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
 
     CpuInstructionSharedUnary() {
         super();
     }
 
-    abstract byte handle(final byte value,
-                         final CpuContext context);
+    @Override
+    public final int length() {
+        return 1 + this.operand()
+            .length();
+    }
+
+    @Override
+    public final void execute(final CpuContext context) {
+        Objects.requireNonNull(context, "context");
+
+        this.operand()
+            .handleUnaryFunction(
+                this.function(),
+                context
+            );
+    }
+
+    @Override
+    public final String disassemble(CpuContext context) {
+        return this.function()
+            .mnemonic() +
+            " " +
+            this.operand()
+                .disassemble(
+                    context
+                );
+    }
+
+    abstract CpuInstructionSharedUnaryFunction function();
+
+    abstract CpuInstructionSharedOperand operand();
 }
