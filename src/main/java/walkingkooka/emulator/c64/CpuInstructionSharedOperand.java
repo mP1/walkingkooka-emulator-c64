@@ -39,7 +39,7 @@ package walkingkooka.emulator.c64;
 abstract class CpuInstructionSharedOperand {
 
     /**
-     * {@see CpuInstructionSharedOperand}
+     * {@see CpuInstructionSharedOperandRegisterA}
      */
     final static CpuInstructionSharedOperand A = CpuInstructionSharedOperandRegisterA.instance();
 
