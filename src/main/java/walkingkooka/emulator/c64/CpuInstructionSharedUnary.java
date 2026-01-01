@@ -23,6 +23,6 @@ abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
         super();
     }
 
-    abstract byte process(final byte value,
-                          final CpuContext context);
+    abstract byte handle(final byte value,
+                         final CpuContext context);
 }
