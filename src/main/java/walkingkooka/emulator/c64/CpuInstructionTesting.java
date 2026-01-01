@@ -106,7 +106,7 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
             y,
             flags,
             context.stackPointer(),
-            (short) (context.pc() + instruction.length())
+            (short) (context.pc() + instruction.length() - 1)
         );
     }
 
