@@ -47,6 +47,11 @@ abstract class CpuInstructionSharedOperand {
         super();
     }
 
+    /**
+     * The length of bytes for this operand.
+     */
+    abstract int length();
+
     abstract void handleBinaryConsumer(final CpuInstructionSharedBinaryConsumer consumer,
                                        final CpuContext context);
 
@@ -55,4 +60,6 @@ abstract class CpuInstructionSharedOperand {
 
     abstract void handleUnaryFunction(final CpuInstructionSharedUnaryFunction function,
                                       final CpuContext context);
+
+    abstract String disassemble(final CpuContext context);
 }
