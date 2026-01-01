@@ -43,7 +43,9 @@ abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
     }
 
     @Override
-    public final String disassemble(CpuContext context) {
+    public final String disassemble(final CpuContext context) {
+        Objects.requireNonNull(context, "context");
+
         return this.function()
             .mnemonic() +
             " " +
