@@ -161,7 +161,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
                 (c) -> {
                     c.setA(value);
                     c.setBreak(true);
-                    c.setPc(PC_PLUS_1);
+                    c.setPc(PC);
                 }
             ),
             context,
@@ -278,7 +278,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
                 (c) -> {
                     c.setX(value);
                     c.setBreak(true);
-                    c.setPc(PC_PLUS_1);
+                    c.setPc(PC);
                 }
             ),
             context,
@@ -395,7 +395,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
                 (c) -> {
                     c.setY(value);
                     c.setBreak(true);
-                    c.setPc(PC_PLUS_1);
+                    c.setPc(PC);
                 }
             ),
             context,
