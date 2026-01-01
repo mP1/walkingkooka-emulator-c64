@@ -53,6 +53,11 @@ abstract class CpuInstructionSharedOperand {
      */
     final static CpuInstructionSharedOperand Y = CpuInstructionSharedOperandRegisterY.instance();
 
+    /**
+     * {@see CpuInstructionSharedOperandMemoryZeroPageUnindexed}
+     */
+    final static CpuInstructionSharedOperandMemoryZeroPageUnindexed ZP = CpuInstructionSharedOperandMemoryZeroPageUnindexed.instance();
+
     CpuInstructionSharedOperand() {
         super();
     }
