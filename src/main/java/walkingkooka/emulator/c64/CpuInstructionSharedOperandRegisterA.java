@@ -39,4 +39,9 @@ final class CpuInstructionSharedOperandRegisterA extends CpuInstructionSharedOpe
             context
         );
     }
+
+    @Override
+    String disassemble(final CpuContext context) {
+        return "A";
+    }
 }

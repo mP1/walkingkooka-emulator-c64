@@ -17,9 +17,19 @@
 
 package walkingkooka.emulator.c64;
 
+import org.junit.jupiter.api.Test;
+
 public abstract class CpuInstructionSharedOperandRegisterTestCase<T extends CpuInstructionSharedOperandRegister> extends CpuInstructionSharedOperandTestCase<T> {
 
     CpuInstructionSharedOperandRegisterTestCase() {
         super();
+    }
+
+    @Test
+    public final void testLength() {
+        this.lengthAndCheck(
+            this.createCpuInstructionSharedOperand(),
+            1
+        );
     }
 }

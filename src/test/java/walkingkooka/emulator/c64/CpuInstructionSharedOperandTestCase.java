@@ -26,6 +26,29 @@ public abstract class CpuInstructionSharedOperandTestCase<T extends CpuInstructi
         super();
     }
 
+    // length...........................................................................................................
+
+    final void lengthAndCheck(final T operand,
+                              final int expected) {
+        this.checkEquals(
+            expected,
+            operand.length(),
+            operand::toString
+        );
+    }
+
+    // disssemble.......................................................................................................
+
+    final void disassembleAndCheck(final T operand,
+                                   final CpuContext context,
+                                   final String expected) {
+        this.checkEquals(
+            operand.disassemble(context),
+            expected,
+            operand::toString
+        );
+    }
+
     abstract T createCpuInstructionSharedOperand();
 
     // class............................................................................................................
