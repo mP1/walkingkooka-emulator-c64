@@ -29,7 +29,7 @@ public abstract class CpuInstructionSharedOperandRegisterTestCase<T extends CpuI
     public final void testLength() {
         this.lengthAndCheck(
             this.createCpuInstructionSharedOperand(),
-            1
+            0
         );
     }
 }
