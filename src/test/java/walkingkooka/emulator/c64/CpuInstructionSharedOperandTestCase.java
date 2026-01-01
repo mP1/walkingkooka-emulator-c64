@@ -26,6 +26,8 @@ public abstract class CpuInstructionSharedOperandTestCase<T extends CpuInstructi
         super();
     }
 
+    abstract T createCpuInstructionSharedOperand();
+
     // class............................................................................................................
 
     @Override

@@ -17,7 +17,14 @@
 
 package walkingkooka.emulator.c64;
 
-public final class CpuInstructionSharedOperandRegisterATest extends CpuInstructionSharedOperandTestCase<CpuInstructionSharedOperandRegisterA> {
+public final class CpuInstructionSharedOperandRegisterATest extends CpuInstructionSharedOperandRegisterTestCase<CpuInstructionSharedOperandRegisterA> {
+
+    @Override
+    CpuInstructionSharedOperandRegisterA createCpuInstructionSharedOperand() {
+        return CpuInstructionSharedOperandRegisterA.INSTANCE;
+    }
+
+    // class............................................................................................................
 
     @Override
     public Class<CpuInstructionSharedOperandRegisterA> type() {
