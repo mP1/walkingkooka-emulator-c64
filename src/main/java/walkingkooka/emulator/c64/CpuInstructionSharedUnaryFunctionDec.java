@@ -49,4 +49,9 @@ final class CpuInstructionSharedUnaryFunctionDec extends CpuInstructionSharedUna
 
         return out;
     }
+
+    @Override
+    String mnemonic() {
+        return "DEC";
+    }
 }

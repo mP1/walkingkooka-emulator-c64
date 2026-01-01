@@ -49,4 +49,9 @@ final class CpuInstructionSharedUnaryFunctionInc extends CpuInstructionSharedUna
 
         return out;
     }
+
+    @Override
+    String mnemonic() {
+        return "INC";
+    }
 }

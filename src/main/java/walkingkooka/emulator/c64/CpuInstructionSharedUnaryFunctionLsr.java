@@ -53,4 +53,9 @@ final class CpuInstructionSharedUnaryFunctionLsr extends CpuInstructionSharedUna
 
         return out;
     }
+
+    @Override
+    String mnemonic() {
+        return "LSR";
+    }
 }

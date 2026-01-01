@@ -65,4 +65,6 @@ abstract class CpuInstructionSharedUnaryFunction {
 
     abstract byte handle(final byte value,
                          final CpuContext context);
+
+    abstract String mnemonic();
 }

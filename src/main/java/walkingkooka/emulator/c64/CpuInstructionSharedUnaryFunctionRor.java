@@ -58,4 +58,9 @@ final class CpuInstructionSharedUnaryFunctionRor extends CpuInstructionSharedUna
 
         return out;
     }
+
+    @Override
+    String mnemonic() {
+        return "ROR";
+    }
 }
