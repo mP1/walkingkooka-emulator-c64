@@ -112,8 +112,7 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
             context.x(),
             context.y(),
             flags,
-            context.stackPointer(),
-            (short) (context.pc() + instruction.length() - 1)
+            context.stackPointer()
         );
     }
 
@@ -130,7 +129,43 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
             x,
             y,
             flags,
-            context.stackPointer(),
+            context.stackPointer()
+        );
+    }
+
+    default void executeAndCheck(final I instruction,
+                                 final CpuContext context,
+                                 final byte a,
+                                 final byte x,
+                                 final byte y,
+                                 final String flags,
+                                 final byte stackPointer) {
+        this.executeAndCheck(
+            instruction,
+            context,
+            a,
+            x,
+            y,
+            CpuFlags.parse(flags),
+            stackPointer
+        );
+    }
+
+    default void executeAndCheck(final I instruction,
+                                 final CpuContext context,
+                                 final byte a,
+                                 final byte x,
+                                 final byte y,
+                                 final CpuFlags flags,
+                                 final byte stackPointer) {
+        this.executeAndCheck(
+            instruction,
+            context,
+            a,
+            x,
+            y,
+            flags,
+            stackPointer,
             (short) (context.pc() + instruction.length() - 1)
         );
     }
