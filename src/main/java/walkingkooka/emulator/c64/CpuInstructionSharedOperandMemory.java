@@ -27,11 +27,6 @@ abstract class CpuInstructionSharedOperandMemory extends CpuInstructionSharedOpe
     }
 
     @Override //
-    final int length() {
-        return 0;
-    }
-
-    @Override //
     final void handleBinaryConsumer(final CpuInstructionSharedBinaryConsumer consumer,
                                     final CpuContext context) {
         throw new UnsupportedOperationException();
