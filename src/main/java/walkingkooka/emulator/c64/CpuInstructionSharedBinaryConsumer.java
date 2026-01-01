@@ -23,6 +23,11 @@ package walkingkooka.emulator.c64;
 abstract class CpuInstructionSharedBinaryConsumer {
 
     /**
+     * {see CpuInstructionSharedBinaryConsumerBit}
+     */
+    final static CpuInstructionSharedBinaryConsumer BIT = CpuInstructionSharedBinaryConsumerBit.INSTANCE;
+
+    /**
      * {see CpuInstructionSharedBinaryConsumerCompare}
      */
     final static CpuInstructionSharedBinaryConsumer COMPARE = CpuInstructionSharedBinaryConsumerCompare.INSTANCE;
