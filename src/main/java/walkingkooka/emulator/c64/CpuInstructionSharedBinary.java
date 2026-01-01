@@ -23,7 +23,7 @@ abstract class CpuInstructionSharedBinary extends CpuInstructionShared {
         super();
     }
 
-    abstract byte process(final byte left,
-                          final byte right,
-                          final CpuContext context);
+    abstract byte handle(final byte left,
+                         final byte right,
+                         final CpuContext context);
 }
