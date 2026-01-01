@@ -27,8 +27,8 @@ abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
 
     @Override
     public final int length() {
-        return 1 + this.operand()
-            .length();
+        return this.operand()
+            .length() + 1;
     }
 
     @Override
