@@ -17,7 +17,48 @@
 
 package walkingkooka.emulator.c64;
 
+import org.junit.jupiter.api.Test;
+
 public final class CpuInstructionSharedOperandMemoryZeroPageUnindexedTest extends CpuInstructionSharedOperandMemoryZeroPageTestCase<CpuInstructionSharedOperandMemoryZeroPageUnindexed> {
+
+    @Test
+    public void testHandleUnaryFunction() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1234;
+        context.setPc(pc);
+
+        final byte offset = (byte) 0x80;
+        context.writeByte(
+            pc,
+            offset
+        );
+
+        final byte value = (byte) 0x34;
+        context.writeZeroPageByte(
+            offset,
+            value
+        );
+
+        this.createCpuInstructionSharedOperand()
+            .handleUnaryFunction(
+                CpuInstructionSharedUnaryFunction.INC,
+                context
+            );
+
+        this.checkEquals(
+            (byte) (value + 1),
+            context.readZeroPageByte(offset),
+            "zp"
+        );
+
+        this.pcAndCheck(
+            context,
+            (short) (pc + 1)
+        );
+    }
 
     @Override
     CpuInstructionSharedOperandMemoryZeroPageUnindexed createCpuInstructionSharedOperand() {
