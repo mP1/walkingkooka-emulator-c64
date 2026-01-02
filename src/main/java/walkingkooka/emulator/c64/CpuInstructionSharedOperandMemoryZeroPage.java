@@ -48,11 +48,10 @@ abstract class CpuInstructionSharedOperandMemoryZeroPage extends CpuInstructionS
     final String disassemble(final CpuContext context) {
         // zp $3F
         // zp $3F,x
-        return "zp " +
-            CpuInstructionShared.hexByte(
+        return CpuInstructionShared.hexByte(
                 this.zeroPageOffset(context)
             ) +
-            this.disassembleIndex(context);
+            this.disassembleIndex();
     }
 
     final byte zeroPageOffset(final CpuContext context) {
@@ -64,5 +63,5 @@ abstract class CpuInstructionSharedOperandMemoryZeroPage extends CpuInstructionS
         return context.readByte(pc);
     }
 
-    abstract String disassembleIndex(final CpuContext context);
+    abstract String disassembleIndex();
 }

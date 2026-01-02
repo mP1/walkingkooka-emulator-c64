@@ -33,7 +33,7 @@ final class CpuInstructionSharedOperandMemoryZeroPageUnindexed extends CpuInstru
     }
 
     @Override//
-    String disassembleIndex(final CpuContext context) {
+    String disassembleIndex() {
         return "";
     }
 }
