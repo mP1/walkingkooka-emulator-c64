@@ -201,6 +201,21 @@ public interface CpuContextTesting extends TreePrintableTesting {
         );
     }
 
+    default void writeAddressAndCheck(final CpuContext context,
+                                      final short address,
+                                      final short value) {
+        context.writeAddress(
+            address,
+            value
+        );
+
+        this.readAddressAndCheck(
+            context,
+            address,
+            value
+        );
+    }
+
     default void readZeroPageByteAndCheck(final CpuContext context,
                                           final byte offset,
                                           final byte expected) {
