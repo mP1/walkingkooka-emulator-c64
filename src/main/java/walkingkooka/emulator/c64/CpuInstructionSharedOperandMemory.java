@@ -55,4 +55,17 @@ abstract class CpuInstructionSharedOperandMemory extends CpuInstructionSharedOpe
      * Reads the operand address and advances the PC.
      */
     abstract short operandAddress(final CpuContext context);
+
+    static short zeroPageOffsetAddress(final byte offset) {
+        return (short) (0xff & offset);
+    }
+
+    static short zeroPageOffsetAddress(final byte offset,
+                                       final byte offset2) {
+        return zeroPageOffsetAddress(
+            (byte) (
+                0xff & (offset + offset2)
+            )
+        );
+    }
 }

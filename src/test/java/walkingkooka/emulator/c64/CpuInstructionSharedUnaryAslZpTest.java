@@ -69,6 +69,7 @@ public final class CpuInstructionSharedUnaryAslZpTest extends CpuInstructionShar
         );
 
         final byte offset = (byte) 0x81;
+        final short address = 0xff & offset;
 
         context.writeByte(
             (short) 0x1000,
@@ -76,7 +77,7 @@ public final class CpuInstructionSharedUnaryAslZpTest extends CpuInstructionShar
         );
 
         context.writeByte(
-            offset,
+            address,
             (byte) 0x0f
         );
 
@@ -88,7 +89,7 @@ public final class CpuInstructionSharedUnaryAslZpTest extends CpuInstructionShar
 
         this.readByteAndCheck(
             context,
-            offset,
+            address,
             (byte) 0x1E
         );
     }

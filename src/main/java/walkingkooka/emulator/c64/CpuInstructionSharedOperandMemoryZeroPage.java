@@ -33,11 +33,10 @@ abstract class CpuInstructionSharedOperandMemoryZeroPage extends CpuInstructionS
 
     @Override //
     final short operandAddress(final CpuContext context) {
-        return (short)
-            (
-                this.zeroPageOffset(context) +
-                    this.operandAddressIndex(context)
-            );
+        return zeroPageOffsetAddress(
+            this.zeroPageOffset(context),
+            this.operandAddressIndex(context)
+        );
     }
 
     /**
