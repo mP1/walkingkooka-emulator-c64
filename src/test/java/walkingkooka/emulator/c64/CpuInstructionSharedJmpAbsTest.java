@@ -29,16 +29,10 @@ public final class CpuInstructionSharedJmpAbsTest extends CpuInstructionSharedTe
 
         final short pc = 0x5000;
 
-        final byte hi = 0x12;
-        final byte lo = 0x34;
-
-        context.writeByte(
+        final short jmpTarget = 0x1234;
+        context.writeAddress(
             pc,
-            lo
-        );
-        context.writeByte(
-            (short) (pc + 1),
-            hi
+            jmpTarget
         );
 
         context.setPc(pc);
@@ -51,7 +45,7 @@ public final class CpuInstructionSharedJmpAbsTest extends CpuInstructionSharedTe
             context.y(),
             CpuFlags.parse("-----1--"),
             context.stackPointer(), // stackPointer
-            (short) 0x1234
+            jmpTarget
         );
     }
 
@@ -63,16 +57,9 @@ public final class CpuInstructionSharedJmpAbsTest extends CpuInstructionSharedTe
 
         final short pc = 0x5000;
 
-        final byte hi = 0x12;
-        final byte lo = 0x34;
-
-        context.writeByte(
+        context.writeAddress(
             pc,
-            lo
-        );
-        context.writeByte(
-            (short) (pc + 1),
-            hi
+            (short) 0x1234
         );
 
         context.setPc(pc);

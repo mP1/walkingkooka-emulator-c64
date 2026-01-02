@@ -34,14 +34,9 @@ public final class CpuInstructionSharedUnaryAslAbsTest extends CpuInstructionSha
 
         final short valueAddress = 0x4567;
 
-        context.writeByte(
+        context.writeAddress(
             (short) 0x1000,
-            (byte) valueAddress
-        );
-
-        context.writeByte(
-            (short) 0x1001,
-            (byte) (valueAddress / 256)
+            valueAddress
         );
 
         context.writeByte(
@@ -75,14 +70,9 @@ public final class CpuInstructionSharedUnaryAslAbsTest extends CpuInstructionSha
 
         final short valueAddress = 0x4567;
 
-        context.writeByte(
+        context.writeAddress(
             (short) 0x1000,
-            (byte) valueAddress
-        );
-
-        context.writeByte(
-            (short) 0x1001,
-            (byte) (valueAddress / 256)
+            valueAddress
         );
 
         context.writeByte(
