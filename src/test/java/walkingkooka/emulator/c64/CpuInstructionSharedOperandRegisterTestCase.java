@@ -32,30 +32,4 @@ public abstract class CpuInstructionSharedOperandRegisterTestCase<T extends CpuI
             0
         );
     }
-
-    final void pcAndCheck(final CpuContext context,
-                          final short expected) {
-        this.checkEquals(
-            hex(expected),
-            hex(
-                context.pc()
-            ),
-            context::toString
-        );
-    }
-
-    static String hex(final byte value) {
-        return hex(0xff & value);
-    }
-
-    static String hex(final short value) {
-        return hex(0xffff & value);
-    }
-
-    // $2000 4096
-    private static String hex(final int value) {
-        return "$" + Integer.toHexString(value) +
-            " " +
-            value;
-    }
 }
