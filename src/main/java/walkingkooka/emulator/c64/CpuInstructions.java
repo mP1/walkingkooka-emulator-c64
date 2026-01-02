@@ -261,6 +261,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction rora() {
         return CpuInstructionSharedUnaryRorA.INSTANCE;
     }
+
+    /**
+     * {@see CpuInstructionSharedUnaryRorAbs}
+     */
+    public static CpuInstruction rorabs() {
+        return CpuInstructionSharedUnaryRorAbs.INSTANCE;
+    }
     
     /**
      * {@see CpuInstructionSharedRti}
