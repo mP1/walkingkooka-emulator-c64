@@ -56,6 +56,9 @@ abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
 
         // special-cases
         return disassemble.replace(
+            "DEC X",
+            "DEX"
+        ).replace(
             "INC X",
             "INX"
         ).replace(

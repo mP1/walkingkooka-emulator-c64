@@ -63,6 +63,8 @@ public interface CpuInstructionOpcodes {
 
     byte DECZPX = (byte) 0xD6;
 
+    byte DEX = (byte) 0xCA;
+
     byte INCABS = (byte) 0xEE;
 
     byte INCABSX = (byte) 0xFE;
