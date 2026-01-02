@@ -228,6 +228,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedUnaryRolA}
+     */
+    public static CpuInstruction rola() {
+        return CpuInstructionSharedUnaryRolA.INSTANCE;
+    }
+    
+    /**
      * {@see CpuInstructionSharedRti}
      */
     public static CpuInstruction rti() {
