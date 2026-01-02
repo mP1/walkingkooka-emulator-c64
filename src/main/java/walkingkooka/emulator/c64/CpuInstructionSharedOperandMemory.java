@@ -68,4 +68,11 @@ abstract class CpuInstructionSharedOperandMemory extends CpuInstructionSharedOpe
             )
         );
     }
+
+    static short address(final short address,
+                         final byte offset) {
+        return (short) (
+            (address + ((0xff) & offset))
+        );
+    }
 }
