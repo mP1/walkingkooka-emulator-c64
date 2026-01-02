@@ -55,6 +55,8 @@ public interface CpuInstructionOpcodes {
 
     byte INX = (byte) 0xE8;
 
+    byte INY = (byte) 0xC8;
+
     byte JMP_ABS = (byte) 0x4C;
 
     byte JMP_IND = (byte) 0x6C;
