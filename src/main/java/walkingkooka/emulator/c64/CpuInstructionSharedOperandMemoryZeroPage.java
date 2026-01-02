@@ -36,14 +36,14 @@ abstract class CpuInstructionSharedOperandMemoryZeroPage extends CpuInstructionS
         return (short)
             (
                 this.zeroPageOffset(context) +
-                    this.operandAddressIndex()
+                    this.operandAddressIndex(context)
             );
     }
 
     /**
      * Only ZP,X and ZP,Y will return either the X or Y register, plain ZP will return 0
      */
-    abstract byte operandAddressIndex();
+    abstract byte operandAddressIndex(final CpuContext context);
 
     @Override //
     final String disassemble(final CpuContext context) {
@@ -53,7 +53,7 @@ abstract class CpuInstructionSharedOperandMemoryZeroPage extends CpuInstructionS
             CpuInstructionShared.hexByte(
                 this.zeroPageOffset(context)
             ) +
-            this.disassembleIndex();
+            this.disassembleIndex(context);
     }
 
     final byte zeroPageOffset(final CpuContext context) {
@@ -65,5 +65,5 @@ abstract class CpuInstructionSharedOperandMemoryZeroPage extends CpuInstructionS
         return context.readByte(pc);
     }
 
-    abstract String disassembleIndex();
+    abstract String disassembleIndex(final CpuContext context);
 }

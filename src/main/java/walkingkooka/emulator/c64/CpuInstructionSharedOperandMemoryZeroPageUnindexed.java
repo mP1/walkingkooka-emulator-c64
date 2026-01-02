@@ -28,12 +28,12 @@ final class CpuInstructionSharedOperandMemoryZeroPageUnindexed extends CpuInstru
     }
 
     @Override//
-    byte operandAddressIndex() {
+    byte operandAddressIndex(final CpuContext context) {
         return 0;
     }
 
     @Override//
-    String disassembleIndex() {
+    String disassembleIndex(final CpuContext context) {
         return "";
     }
 }
