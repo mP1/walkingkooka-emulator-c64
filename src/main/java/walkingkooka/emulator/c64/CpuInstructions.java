@@ -172,6 +172,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedUnaryLsrA}
+     */
+    public static CpuInstruction lsra() {
+        return CpuInstructionSharedUnaryLsrA.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedNop}
      */
     public static CpuInstruction nop() {

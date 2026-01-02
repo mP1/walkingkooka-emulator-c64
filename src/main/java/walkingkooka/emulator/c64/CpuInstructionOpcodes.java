@@ -59,6 +59,8 @@ public interface CpuInstructionOpcodes {
 
     byte JSR = (byte) 0x20;
 
+    byte LSRA = (byte) 0x4A;
+
     byte NOP = (byte) 0xEA;
 
     byte PHA = (byte) 0x48;
