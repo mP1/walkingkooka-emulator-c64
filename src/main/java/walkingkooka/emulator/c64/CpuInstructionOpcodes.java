@@ -63,6 +63,8 @@ public interface CpuInstructionOpcodes {
 
     byte LSRZP = (byte) 0x46;
 
+    byte LSRZPX = (byte) 0x56;
+
     byte NOP = (byte) 0xEA;
 
     byte PHA = (byte) 0x48;
