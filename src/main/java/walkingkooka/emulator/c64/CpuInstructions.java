@@ -268,6 +268,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction rorabs() {
         return CpuInstructionSharedUnaryRorAbs.INSTANCE;
     }
+
+    /**
+     * {@see CpuInstructionSharedUnaryRorZp}
+     */
+    public static CpuInstruction rorzo() {
+        return CpuInstructionSharedUnaryRorZp.INSTANCE;
+    }
     
     /**
      * {@see CpuInstructionSharedRti}

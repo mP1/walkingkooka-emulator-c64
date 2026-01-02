@@ -87,6 +87,8 @@ public interface CpuInstructionOpcodes {
 
     byte RORABS = (byte) 0x6E;
 
+    byte RORZP = (byte) 0x66;
+
     byte RTI = (byte) 0x40;
 
     byte RTS = (byte) 0x60;
