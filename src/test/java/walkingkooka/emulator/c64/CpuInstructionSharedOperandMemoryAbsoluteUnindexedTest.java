@@ -17,7 +17,48 @@
 
 package walkingkooka.emulator.c64;
 
+import org.junit.jupiter.api.Test;
+
 public final class CpuInstructionSharedOperandMemoryAbsoluteUnindexedTest extends CpuInstructionSharedOperandMemoryAbsoluteTestCase<CpuInstructionSharedOperandMemoryAbsoluteUnindexed> {
+
+    @Test
+    public void testHandleUnaryFunction() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1234;
+        context.setPc(pc);
+
+        final short address = (short) 0x4000;
+        context.writeAddress(
+            pc,
+            address
+        );
+
+        final byte value = (byte) 0x34;
+        context.writeByte(
+            address,
+            value
+        );
+
+        this.createCpuInstructionSharedOperand()
+            .handleUnaryFunction(
+                CpuInstructionSharedUnaryFunction.INC,
+                context
+            );
+
+        this.checkEquals(
+            (byte) (value + 1),
+            context.readByte(address),
+            "incremented addressed byte"
+        );
+
+        this.pcAndCheck(
+            context,
+            (short) (pc + 2)
+        );
+    }
 
     @Override
     CpuInstructionSharedOperandMemoryAbsoluteUnindexed createCpuInstructionSharedOperand() {
