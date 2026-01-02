@@ -38,8 +38,9 @@ abstract class CpuInstructionSharedOperandMemory extends CpuInstructionSharedOpe
         throw new UnsupportedOperationException();
     }
 
-    @Override final void handleUnaryFunction(final CpuInstructionSharedUnaryFunction function,
-                                             final CpuContext context) {
+    @Override //
+    final void handleUnaryFunction(final CpuInstructionSharedUnaryFunction function,
+                                   final CpuContext context) {
         final short address = this.operandAddress(context);
 
         context.writeByte(
