@@ -220,6 +220,61 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
     }
 
     @Test
+    public void testReadZeroPageAddress3() {
+        final BasicCpuContext context = this.createContext();
+
+        // lo-byte
+        context.writeByte(
+            (short) 0xf1,
+            (byte) 0x0
+        );
+
+        // hi-byte
+        context.writeByte(
+            (short) 0xf2,
+            (byte) 0x12
+        );
+
+        this.readAddressAndCheck(
+            context,
+            (short) 0xf1,
+            (short) 0x1200
+        );
+    }
+
+    @Test
+    public void testReadZeroPageByte() {
+        final BasicCpuContext context = this.createContext();
+
+        context.writeByte(
+            (short) 0x1,
+            (byte) 0xff
+        );
+
+        this.readByteAndCheck(
+            context,
+            (short) 0x1,
+            (byte) 0xff
+        );
+    }
+
+    @Test
+    public void testReadZeroPageByte2() {
+        final BasicCpuContext context = this.createContext();
+
+        context.writeByte(
+            (short) 0xf0,
+            (byte) 0xff
+        );
+
+        this.readByteAndCheck(
+            context,
+            (short) 0xf0,
+            (byte) 0xff
+        );
+    }
+    
+    @Test
     public void testReadAddress() {
         final BasicCpuContext context = this.createContext();
 
@@ -258,6 +313,38 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
             context,
             (short) 0xf001,
             (short) 0x12fe
+        );
+    }
+
+    @Test
+    public void testWriteZeroPageByte() {
+        final BasicCpuContext context = this.createContext();
+
+        context.writeByte(
+            (short) 0x1,
+            (byte) 0xff
+        );
+
+        this.readByteAndCheck(
+            context,
+            (short) 0x1,
+            (byte) 0xff
+        );
+    }
+
+    @Test
+    public void testWriteZeroPageByte2() {
+        final BasicCpuContext context = this.createContext();
+
+        context.writeByte(
+            (short) 0xf0,
+            (byte) 0xff
+        );
+
+        this.readByteAndCheck(
+            context,
+            (short) 0xf0,
+            (byte) 0xff
         );
     }
 
