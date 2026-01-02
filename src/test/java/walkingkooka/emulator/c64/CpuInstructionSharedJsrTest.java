@@ -30,16 +30,10 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
 
         final short pc = 0x5678;
 
-        final byte hi = 0x12;
-        final byte lo = 0x34;
-
-        context.writeByte(
+        final short jmpTarget = 0x1234;
+        context.writeAddress(
             pc,
-            lo
-        );
-        context.writeByte(
-            (short) (pc + 1),
-            hi
+            jmpTarget
         );
 
         context.setPc(pc);
@@ -55,7 +49,7 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
             context.y(),
             CpuFlags.parse("-----1--"),
             (byte) 0xF0, // stackPointer
-            (short) 0x1234
+            jmpTarget
         );
 
         this.checkEquals(
@@ -78,22 +72,16 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
 
         final short pc = 0x5005;
 
-        final byte hi = 0x12;
-        final byte lo = 0x34;
-
         // JSR $1234
         context.writeByte(
             pc,
             JSR
         );
 
-        context.writeByte(
+        final short jmpTarget = 0x1234;
+        context.writeAddress(
             (short) (pc + 1),
-            lo
-        );
-        context.writeByte(
-            (short) (pc + 2),
-            hi
+            jmpTarget
         );
 
         context.setPc(pc);
@@ -102,7 +90,7 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
         context.setStackPointer(stackPointer);
 
         context.writeByte(
-            (short) 0x1234,
+            jmpTarget,
             RTS
         );
 
@@ -135,16 +123,10 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
 
         final short pc = 0x5000;
 
-        final byte hi = 0x12;
-        final byte lo = 0x34;
-
-        context.writeByte(
+        final short jmpTarget = 0x1234;
+        context.writeAddress(
             pc,
-            lo
-        );
-        context.writeByte(
-            (short) (pc + 1),
-            hi
+            jmpTarget
         );
 
         context.setPc(pc);

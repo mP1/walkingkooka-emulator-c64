@@ -29,23 +29,16 @@ public final class CpuInstructionSharedJmpIndirectTest extends CpuInstructionSha
 
         final short pc = (byte) 0xF000;
 
-        context.writeByte(
+        final short indirect = 0x1234;
+        context.writeAddress(
             pc,
-            (byte) 0x34
-        );
-        context.writeByte(
-            (short) (pc + 1),
-            (byte) 0x12
+            indirect
         );
 
-        context.writeByte(
-            (short) 0x1234,
-            (byte) 0x78
-        );
-
-        context.writeByte(
-            (short) 0x1235,
-            (byte) 0x56
+        final short indirectTarget = 0x5678;
+        context.writeAddress(
+            indirect,
+            indirectTarget
         );
 
         context.setPc(pc);
@@ -58,7 +51,7 @@ public final class CpuInstructionSharedJmpIndirectTest extends CpuInstructionSha
             context.y(),
             CpuFlags.parse("-----1--"),
             context.stackPointer(), // stackPointer
-            (short) 0x5678
+            indirectTarget
         );
     }
 
@@ -70,23 +63,16 @@ public final class CpuInstructionSharedJmpIndirectTest extends CpuInstructionSha
 
         final short pc = (byte) 0xF000;
 
-        context.writeByte(
+        final short indirect = 0x1234;
+        context.writeAddress(
             pc,
-            (byte) 0x34
-        );
-        context.writeByte(
-            (short) (pc + 1),
-            (byte) 0x12
+            indirect
         );
 
-        context.writeByte(
-            (short) 0x1234,
-            (byte) 0x78
-        );
-
-        context.writeByte(
-            (short) 0x1235,
-            (byte) 0x56
+        final short indirectTarget = 0x5678;
+        context.writeAddress(
+            indirect,
+            indirectTarget
         );
 
         context.setPc(pc);
