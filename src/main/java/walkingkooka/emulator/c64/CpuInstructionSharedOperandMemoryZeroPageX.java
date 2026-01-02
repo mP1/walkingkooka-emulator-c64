@@ -33,7 +33,7 @@ final class CpuInstructionSharedOperandMemoryZeroPageX extends CpuInstructionSha
     }
 
     @Override//
-    String disassembleIndex(final CpuContext context) {
-        return " " + CpuInstructionShared.hexByte(context.x());
+    String disassembleIndex() {
+        return ",X";
     }
 }
