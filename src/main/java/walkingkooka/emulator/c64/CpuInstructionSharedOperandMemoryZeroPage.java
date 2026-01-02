@@ -44,11 +44,12 @@ abstract class CpuInstructionSharedOperandMemoryZeroPage extends CpuInstructionS
      */
     abstract byte operandAddressIndex();
 
-    @Override final String disassemble(final CpuContext context) {
+    @Override //
+    final String disassemble(final CpuContext context) {
         // zp $3F
         // zp $3F,x
         return "zp " +
-            CpuInstructionShared.hexAddress(
+            CpuInstructionShared.hexByte(
                 this.zeroPageOffset(context)
             ) +
             this.disassembleIndex();
