@@ -46,13 +46,19 @@ abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
     public final String disassemble(final CpuContext context) {
         Objects.requireNonNull(context, "context");
 
-        return this.function()
+        final String disassemble = this.function()
             .mnemonic() +
             " " +
             this.operand()
                 .disassemble(
                     context
                 );
+
+        // special-cases
+        return disassemble.replace(
+            "INC X",
+            "INX"
+        );
     }
 
     abstract CpuInstructionSharedUnaryFunction function();
