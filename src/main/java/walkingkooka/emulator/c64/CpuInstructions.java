@@ -158,6 +158,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedIny}
+     */
+    public static CpuInstruction iny() {
+        return CpuInstructionSharedUnaryIny.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedJmpAbs}
      */
     public static CpuInstruction jmpAbs() {

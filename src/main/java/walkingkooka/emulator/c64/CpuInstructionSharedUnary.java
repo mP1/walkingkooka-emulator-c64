@@ -58,6 +58,9 @@ abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
         return disassemble.replace(
             "INC X",
             "INX"
+        ).replace(
+            "INC Y",
+            "INY"
         );
     }
 
