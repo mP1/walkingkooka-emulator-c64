@@ -25,6 +25,8 @@ public interface CpuInstructionOpcodes {
 
     byte ASLZPX = (byte) 0x16;
 
+    byte ASLABS = (byte) 0x0E;
+
     byte BCC = (byte) 0x90;
 
     byte BCS = (byte) 0xB0;
