@@ -78,6 +78,11 @@ abstract class CpuInstructionSharedOperand {
      */
     final static CpuInstructionSharedOperand ZPX = CpuInstructionSharedOperandMemoryZeroPageX.instance();
 
+    /**
+     * {@see CpuInstructionSharedOperandMemoryZeroPageY}
+     */
+    final static CpuInstructionSharedOperand ZPY = CpuInstructionSharedOperandMemoryZeroPageY.instance();
+
     CpuInstructionSharedOperand() {
         super();
     }
