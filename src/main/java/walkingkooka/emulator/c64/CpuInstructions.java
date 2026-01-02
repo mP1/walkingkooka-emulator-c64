@@ -193,6 +193,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedUnaryLsrZpx}
+     */
+    public static CpuInstruction lsrzpx() {
+        return CpuInstructionSharedUnaryLsrZpx.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedNop}
      */
     public static CpuInstruction nop() {
