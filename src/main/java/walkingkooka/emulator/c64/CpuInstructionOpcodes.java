@@ -53,6 +53,8 @@ public interface CpuInstructionOpcodes {
 
     byte CLV = (byte) 0xB8;
 
+    byte INX = (byte) 0xE8;
+
     byte JMP_ABS = (byte) 0x4C;
 
     byte JMP_IND = (byte) 0x6C;

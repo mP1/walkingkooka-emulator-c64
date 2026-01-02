@@ -151,6 +151,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedInx}
+     */
+    public static CpuInstruction inx() {
+        return CpuInstructionSharedUnaryInx.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedJmpAbs}
      */
     public static CpuInstruction jmpAbs() {
