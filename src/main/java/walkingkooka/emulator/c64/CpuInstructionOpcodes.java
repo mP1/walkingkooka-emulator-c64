@@ -75,6 +75,8 @@ public interface CpuInstructionOpcodes {
 
     byte PLA = (byte) 0x68;
 
+    byte ROLA = (byte) 0x2A;
+
     byte RTI = (byte) 0x40;
 
     byte RTS = (byte) 0x60;
