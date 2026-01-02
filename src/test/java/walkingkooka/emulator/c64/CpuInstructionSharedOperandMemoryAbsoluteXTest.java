@@ -17,7 +17,90 @@
 
 package walkingkooka.emulator.c64;
 
+import org.junit.jupiter.api.Test;
+
 public final class CpuInstructionSharedOperandMemoryAbsoluteXTest extends CpuInstructionSharedOperandMemoryAbsoluteTestCase<CpuInstructionSharedOperandMemoryAbsoluteX> {
+
+    @Test
+    public void testHandleUnaryFunction() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1234;
+        context.setPc(pc);
+
+        final short address = 0x4000;
+        context.writeAddress(
+            pc,
+            address
+        );
+
+        context.setX((byte) 1);
+
+        final byte value = (byte) 0x34;
+        context.writeByte(
+            (short) 0x4001,
+            value
+        );
+
+        this.createCpuInstructionSharedOperand()
+            .handleUnaryFunction(
+                CpuInstructionSharedUnaryFunction.INC,
+                context
+            );
+
+        this.checkEquals(
+            (byte) (value + 1),
+            context.readByte((short) 0x4001),
+            "absolute,x byte"
+        );
+
+        this.pcAndCheck(
+            context,
+            (short) (pc + 2)
+        );
+    }
+
+    @Test
+    public void testHandleUnaryFunctionDoesntWrap() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1234;
+        context.setPc(pc);
+
+        context.writeAddress(
+            pc,
+            (short) 0x4081
+        );
+
+        context.setX((byte) 0x82);
+
+        final byte value = (byte) 0x34;
+        context.writeByte(
+            (short) 0x4103,
+            value
+        );
+
+        this.createCpuInstructionSharedOperand()
+            .handleUnaryFunction(
+                CpuInstructionSharedUnaryFunction.INC,
+                context
+            );
+
+        this.checkEquals(
+            (byte) (value + 1),
+            context.readByte((short) 0x4103),
+            "absolute,x byte"
+        );
+
+        this.pcAndCheck(
+            context,
+            (short) (pc + 2)
+        );
+    }
 
     @Override
     CpuInstructionSharedOperandMemoryAbsoluteX createCpuInstructionSharedOperand() {
