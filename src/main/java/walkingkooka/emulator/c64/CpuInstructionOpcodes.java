@@ -77,6 +77,8 @@ public interface CpuInstructionOpcodes {
 
     byte ROLA = (byte) 0x2A;
 
+    byte ROLZP = (byte) 0x26;
+
     byte RTI = (byte) 0x40;
 
     byte RTS = (byte) 0x60;
