@@ -204,21 +204,29 @@ final class BasicCpuContext implements CpuContext {
 
     @Override
     public byte readZeroPageByte(final byte offset) {
-        return this.addressBus.read(offset);
+        return this.addressBus.read(
+            zeroPageAddress(offset)
+        );
     }
 
     @Override
     public void writeZeroPageByte(final byte offset,
                                   final byte value) {
         this.addressBus.write(
-            offset,
+            zeroPageAddress(offset),
             value
         );
     }
 
     @Override
     public short readZeroPageAddress(final byte offset) {
-        return this.readAddress(offset);
+        return this.readAddress(
+            zeroPageAddress(offset)
+        );
+    }
+
+    private static short zeroPageAddress(final byte offset) {
+        return (short) (offset & BYTE_MASK);
     }
 
     @Override
