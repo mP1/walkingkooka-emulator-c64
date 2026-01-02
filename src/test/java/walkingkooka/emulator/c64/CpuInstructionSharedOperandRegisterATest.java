@@ -17,7 +17,38 @@
 
 package walkingkooka.emulator.c64;
 
+import org.junit.jupiter.api.Test;
+
 public final class CpuInstructionSharedOperandRegisterATest extends CpuInstructionSharedOperandRegisterTestCase<CpuInstructionSharedOperandRegisterA> {
+
+    @Test
+    public void testHandleUnaryFunction() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.fake()
+        );
+
+        final short pc = 0x1234;
+        context.setPc(pc);
+
+        context.setA((byte) 0x1);
+
+        this.createCpuInstructionSharedOperand()
+            .handleUnaryFunction(
+                CpuInstructionSharedUnaryFunction.INC,
+                context
+            );
+
+        this.checkEquals(
+            (byte) 0x2,
+            context.a(),
+            "a"
+        );
+
+        this.pcAndCheck(
+            context,
+            pc
+        );
+    }
 
     @Override
     CpuInstructionSharedOperandRegisterA createCpuInstructionSharedOperand() {
