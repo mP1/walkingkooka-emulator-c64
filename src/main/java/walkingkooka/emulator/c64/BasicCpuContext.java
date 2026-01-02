@@ -203,6 +203,19 @@ final class BasicCpuContext implements CpuContext {
     }
 
     @Override
+    public void writeAddress(final short address,
+                             final short value) {
+        this.writeByte(
+            address,
+            lo(value)
+        );
+        this.writeByte(
+            (short) (address + 1),
+            hi(value)
+        );
+    }
+
+    @Override
     public byte readZeroPageByte(final byte offset) {
         return this.addressBus.read(
             zeroPageAddress(offset)

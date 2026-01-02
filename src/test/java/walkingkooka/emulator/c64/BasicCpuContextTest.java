@@ -349,6 +349,28 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
     }
 
     @Test
+    public void testWriteAddress() {
+        final BasicCpuContext context = this.createContext();
+
+        this.writeAddressAndCheck(
+            context,
+            (short) 0x0001,
+            (byte) 0x2345
+        );
+    }
+
+    @Test
+    public void testWriteAddress2() {
+        final BasicCpuContext context = this.createContext();
+
+        this.writeAddressAndCheck(
+            context,
+            (short) 0x1234,
+            (byte) 0x0506
+        );
+    }
+
+    @Test
     public void testIrq() {
         final CpuContext context = this.createCpuContextWithRoms();
         context.setA((byte) 0xff);
