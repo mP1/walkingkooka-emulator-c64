@@ -34,13 +34,13 @@ package walkingkooka.emulator.c64;
  * The following 8 machine language instructions support indexed-indirect addressing: ADC, AND, CMP, EOR, LDA, ORA, SBC, STA.
  * </pre>
  */
-final class CpuInstructionSharedOperandMemoryIndexedDirectX extends CpuInstructionSharedOperandMemory {
+final class CpuInstructionSharedOperandMemoryIndexedIndirectX extends CpuInstructionSharedOperandMemory {
 
-    static CpuInstructionSharedOperandMemoryIndexedDirectX instance() {
-        return new CpuInstructionSharedOperandMemoryIndexedDirectX();
+    static CpuInstructionSharedOperandMemoryIndexedIndirectX instance() {
+        return new CpuInstructionSharedOperandMemoryIndexedIndirectX();
     }
 
-    private CpuInstructionSharedOperandMemoryIndexedDirectX() {
+    private CpuInstructionSharedOperandMemoryIndexedIndirectX() {
         super();
     }
 

@@ -19,7 +19,7 @@ package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
 
-public final class CpuInstructionSharedOperandMemoryIndexedDirectXTest extends CpuInstructionSharedOperandMemoryTestCase<CpuInstructionSharedOperandMemoryIndexedDirectX> {
+public final class CpuInstructionSharedOperandMemoryIndexedIndirectXTest extends CpuInstructionSharedOperandMemoryTestCase<CpuInstructionSharedOperandMemoryIndexedIndirectX> {
 
     @Test
     public void testHandleUnaryFunction() {
@@ -112,14 +112,14 @@ public final class CpuInstructionSharedOperandMemoryIndexedDirectXTest extends C
     }
 
     @Override
-    CpuInstructionSharedOperandMemoryIndexedDirectX createCpuInstructionSharedOperand() {
-        return CpuInstructionSharedOperandMemoryIndexedDirectX.instance();
+    CpuInstructionSharedOperandMemoryIndexedIndirectX createCpuInstructionSharedOperand() {
+        return CpuInstructionSharedOperandMemoryIndexedIndirectX.instance();
     }
 
     // class............................................................................................................
 
     @Override
-    public Class<CpuInstructionSharedOperandMemoryIndexedDirectX> type() {
-        return CpuInstructionSharedOperandMemoryIndexedDirectX.class;
+    public Class<CpuInstructionSharedOperandMemoryIndexedIndirectX> type() {
+        return CpuInstructionSharedOperandMemoryIndexedIndirectX.class;
     }
 }
