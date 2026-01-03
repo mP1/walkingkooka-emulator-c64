@@ -34,7 +34,7 @@ abstract class CpuInstructionSharedOperandMemoryZeroPage extends CpuInstructionS
     @Override //
     final short operandAddress(final CpuContext context) {
         return zeroPageOffset(
-            this.readZeroPageOffset(context),
+            this.readByte(context),
             this.operandAddressIndex(context)
         );
     }
@@ -49,7 +49,7 @@ abstract class CpuInstructionSharedOperandMemoryZeroPage extends CpuInstructionS
         // zp $3F
         // zp $3F,x
         return CpuInstructionShared.hexByte(
-            this.readZeroPageOffset(context)
+            this.readByte(context)
             ) +
             this.disassembleIndex();
     }
