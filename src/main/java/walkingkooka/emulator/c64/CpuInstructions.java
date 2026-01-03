@@ -27,35 +27,35 @@ public final class CpuInstructions implements PublicStaticHelper {
     /**
      * {@see CpuInstructionSharedUnaryAslA}
      */
-    public static CpuInstruction asla() {
+    public static CpuInstruction aslA() {
         return CpuInstructionSharedUnaryAslA.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryAslZp}
      */
-    public static CpuInstruction aslzp() {
+    public static CpuInstruction aslZp() {
         return CpuInstructionSharedUnaryAslZp.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryAslZpx}
      */
-    public static CpuInstruction aslzpx() {
+    public static CpuInstruction aslZpx() {
         return CpuInstructionSharedUnaryAslZpx.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryAslAbs}
      */
-    public static CpuInstruction aslabs() {
+    public static CpuInstruction aslAbs() {
         return CpuInstructionSharedUnaryAslAbs.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryAslAbsX}
      */
-    public static CpuInstruction aslabsx() {
+    public static CpuInstruction aslAbsX() {
         return CpuInstructionSharedUnaryAslAbsX.INSTANCE;
     }
 
@@ -195,35 +195,35 @@ public final class CpuInstructions implements PublicStaticHelper {
     /**
      * {@see CpuInstructionSharedUnaryLsrA}
      */
-    public static CpuInstruction lsra() {
+    public static CpuInstruction lsrA() {
         return CpuInstructionSharedUnaryLsrA.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryLsrAbs}
      */
-    public static CpuInstruction lsrabs() {
+    public static CpuInstruction lsrAbs() {
         return CpuInstructionSharedUnaryLsrAbs.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryLsrAbsX}
      */
-    public static CpuInstruction lsrabsx() {
+    public static CpuInstruction lsrAbsx() {
         return CpuInstructionSharedUnaryLsrAbsX.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryLsrZp}
      */
-    public static CpuInstruction lsrzp() {
+    public static CpuInstruction lsrZp() {
         return CpuInstructionSharedUnaryLsrZp.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryLsrZpx}
      */
-    public static CpuInstruction lsrzpx() {
+    public static CpuInstruction lsrZpx() {
         return CpuInstructionSharedUnaryLsrZpx.INSTANCE;
     }
 
@@ -258,63 +258,63 @@ public final class CpuInstructions implements PublicStaticHelper {
     /**
      * {@see CpuInstructionSharedUnaryRolA}
      */
-    public static CpuInstruction rola() {
+    public static CpuInstruction rolA() {
         return CpuInstructionSharedUnaryRolA.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryRolAbs}
      */
-    public static CpuInstruction rolabs() {
+    public static CpuInstruction rolAbs() {
         return CpuInstructionSharedUnaryRolAbs.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryRolAbsX}
      */
-    public static CpuInstruction rolabsx() {
+    public static CpuInstruction rolAbsX() {
         return CpuInstructionSharedUnaryRolAbsX.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryRolZp}
      */
-    public static CpuInstruction rolzp() {
+    public static CpuInstruction rolZp() {
         return CpuInstructionSharedUnaryRolZp.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryRolZpx}
      */
-    public static CpuInstruction rolzpx() {
+    public static CpuInstruction rolZpx() {
         return CpuInstructionSharedUnaryRolZpx.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryRorA}
      */
-    public static CpuInstruction rora() {
+    public static CpuInstruction rorA() {
         return CpuInstructionSharedUnaryRorA.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryRorAbs}
      */
-    public static CpuInstruction rorabs() {
+    public static CpuInstruction rorAbs() {
         return CpuInstructionSharedUnaryRorAbs.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryRorZp}
      */
-    public static CpuInstruction rorzo() {
+    public static CpuInstruction rorZp() {
         return CpuInstructionSharedUnaryRorZp.INSTANCE;
     }
 
     /**
      * {@see CpuInstructionSharedUnaryRorZpx}
      */
-    public static CpuInstruction rorzox() {
+    public static CpuInstruction rorZpx() {
         return CpuInstructionSharedUnaryRorZpx.INSTANCE;
     }
     
