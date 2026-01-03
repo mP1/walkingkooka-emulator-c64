@@ -179,6 +179,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedIncZpx}
+     */
+    public static CpuInstruction incZpx() {
+        return CpuInstructionSharedUnaryIncZpx.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedInx}
      */
     public static CpuInstruction inx() {

@@ -61,6 +61,8 @@ public interface CpuInstructionOpcodes {
 
     byte INCZP = (byte) 0xE6;
 
+    byte INCZPX = (byte) 0xF6;
+
     byte INX = (byte) 0xE8;
 
     byte INY = (byte) 0xC8;
