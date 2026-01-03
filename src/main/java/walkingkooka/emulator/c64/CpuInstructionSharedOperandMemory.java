@@ -57,7 +57,7 @@ abstract class CpuInstructionSharedOperandMemory extends CpuInstructionSharedOpe
      */
     abstract short operandAddress(final CpuContext context);
 
-    final byte readZeroPageOffset(final CpuContext context) {
+    final byte readByte(final CpuContext context) {
         final short pc = context.pc();
 
         context.setPc(
