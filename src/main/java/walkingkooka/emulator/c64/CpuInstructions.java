@@ -170,6 +170,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction decZp() {
         return CpuInstructionSharedUnaryDecZp.INSTANCE;
     }
+
+    /**
+     * {@see CpuInstructionSharedDecZpx}
+     */
+    public static CpuInstruction decZpx() {
+        return CpuInstructionSharedUnaryDecZpx.INSTANCE;
+    }
     
     /**
      * {@see FakeCpuInstruction}
