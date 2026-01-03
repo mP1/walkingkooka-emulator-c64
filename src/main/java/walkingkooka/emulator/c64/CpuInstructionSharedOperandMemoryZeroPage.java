@@ -54,14 +54,5 @@ abstract class CpuInstructionSharedOperandMemoryZeroPage extends CpuInstructionS
             this.disassembleIndex();
     }
 
-    final byte zeroPageOffset(final CpuContext context) {
-        final short pc = context.pc();
-
-        context.setPc(
-            (short) (pc + 1)
-        );
-        return context.readByte(pc);
-    }
-
     abstract String disassembleIndex();
 }
