@@ -37,14 +37,14 @@ final class CpuInstructionSharedOperandMemoryImmediate extends CpuInstructionSha
 
     @Override //
     short operandAddress(final CpuContext context) {
-        return readByte(context);
+        return readPcByte(context);
     }
 
     @Override //
     String disassemble(final CpuContext context) {
         // #$3F
         return CpuInstructionShared.hexByte(
-            this.readByte(context)
+            this.readPcByte(context)
         );
     }
 }

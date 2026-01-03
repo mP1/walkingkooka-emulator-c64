@@ -53,7 +53,7 @@ final class CpuInstructionSharedOperandMemoryIndexedIndirectX extends CpuInstruc
     short operandAddress(final CpuContext context) {
         return context.readZeroPageAddress(
             (byte) zeroPageOffset(
-                readByte(context),
+                readPcByte(context),
                 context.x()
             )
         );
@@ -61,6 +61,6 @@ final class CpuInstructionSharedOperandMemoryIndexedIndirectX extends CpuInstruc
 
     @Override
     String disassemble(final CpuContext context) {
-        return "(" + this.readByte(context) + ",X)";
+        return "(" + this.readPcByte(context) + ",X)";
     }
 }
