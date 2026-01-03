@@ -59,6 +59,11 @@ abstract class CpuInstructionSharedOperand {
     final static CpuInstructionSharedOperand ABSY = CpuInstructionSharedOperandMemoryAbsoluteY.instance();
 
     /**
+     * {@see CpuInstructionSharedOperandMemoryIndexedDirectX}
+     */
+    final static CpuInstructionSharedOperand INDX = CpuInstructionSharedOperandMemoryIndexedDirectX.instance();
+
+    /**
      * {@see CpuInstructionSharedOperandRegisterX}
      */
     final static CpuInstructionSharedOperand X = CpuInstructionSharedOperandRegisterX.instance();
