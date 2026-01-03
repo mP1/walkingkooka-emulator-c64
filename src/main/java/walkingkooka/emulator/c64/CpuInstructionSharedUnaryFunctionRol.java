@@ -31,7 +31,9 @@ import static walkingkooka.emulator.c64.CpuInstructionShared.setMinusAndZero;
  */
 final class CpuInstructionSharedUnaryFunctionRol extends CpuInstructionSharedUnaryFunction {
 
-    final static CpuInstructionSharedUnaryFunctionRol INSTANCE = new CpuInstructionSharedUnaryFunctionRol();
+    static CpuInstructionSharedUnaryFunctionRol instance() {
+        return new CpuInstructionSharedUnaryFunctionRol();
+    }
 
     private CpuInstructionSharedUnaryFunctionRol() {
         super();

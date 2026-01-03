@@ -33,7 +33,7 @@ public final class CpuInstructionSharedUnaryFunctionStoreTest extends CpuInstruc
 
     @Override
     CpuInstructionSharedUnaryFunctionStore createCpuInstructionSharedUnaryFunction() {
-        return CpuInstructionSharedUnaryFunctionStore.INSTANCE;
+        return CpuInstructionSharedUnaryFunctionStore.instance();
     }
 
     // class............................................................................................................

@@ -29,7 +29,9 @@ package walkingkooka.emulator.c64;
  */
 final class CpuInstructionSharedUnaryFunctionStore extends CpuInstructionSharedUnaryFunction {
 
-    final static CpuInstructionSharedUnaryFunctionStore INSTANCE = new CpuInstructionSharedUnaryFunctionStore();
+    static CpuInstructionSharedUnaryFunctionStore instance() {
+        return new CpuInstructionSharedUnaryFunctionStore();
+    }
 
     private CpuInstructionSharedUnaryFunctionStore() {
         super();

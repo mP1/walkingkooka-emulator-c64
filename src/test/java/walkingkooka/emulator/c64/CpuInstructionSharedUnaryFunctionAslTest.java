@@ -83,7 +83,7 @@ public final class CpuInstructionSharedUnaryFunctionAslTest extends CpuInstructi
 
     @Override
     CpuInstructionSharedUnaryFunctionAsl createCpuInstructionSharedUnaryFunction() {
-        return CpuInstructionSharedUnaryFunctionAsl.INSTANCE;
+        return CpuInstructionSharedUnaryFunctionAsl.instance();
     }
 
     // class............................................................................................................
