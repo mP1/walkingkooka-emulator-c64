@@ -263,6 +263,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedUnaryRolAbsX}
+     */
+    public static CpuInstruction rolabsx() {
+        return CpuInstructionSharedUnaryRolAbsX.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedUnaryRolZp}
      */
     public static CpuInstruction rolzp() {
