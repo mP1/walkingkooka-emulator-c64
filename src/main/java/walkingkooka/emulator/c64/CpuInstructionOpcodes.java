@@ -57,6 +57,8 @@ public interface CpuInstructionOpcodes {
 
     byte INCABS = (byte) 0xEE;
 
+    byte INCABSX = (byte) 0xFE;
+
     byte INX = (byte) 0xE8;
 
     byte INY = (byte) 0xC8;
