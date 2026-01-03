@@ -19,7 +19,7 @@ package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
 
-public final class CpuInstructionSharedUnaryIncZpxTest extends CpuInstructionSharedUnaryIncTestCase<CpuInstructionSharedUnaryIncZpx> {
+public final class CpuInstructionSharedUnaryRorZpXTest extends CpuInstructionSharedUnaryRorTestCase<CpuInstructionSharedUnaryRorZpX> {
 
     @Test
     public void testExecute() {
@@ -46,7 +46,7 @@ public final class CpuInstructionSharedUnaryIncZpxTest extends CpuInstructionSha
 
         context.writeZeroPageByte(
             valueAddress,
-            (byte) 0x80
+            (byte) 0x83
         );
 
         this.executeAndCheck(
@@ -58,7 +58,7 @@ public final class CpuInstructionSharedUnaryIncZpxTest extends CpuInstructionSha
         this.readZeroPageByteAndCheck(
             context,
             valueAddress,
-            (byte) 0x81
+            (byte) 0xC1
         );
     }
 
@@ -87,19 +87,19 @@ public final class CpuInstructionSharedUnaryIncZpxTest extends CpuInstructionSha
 
         context.writeZeroPageByte(
             valueAddress,
-            (byte) 0x0F
+            (byte) 0x88
         );
 
         this.executeAndCheck(
             this.createCpuInstruction(),
             context,
-            CpuFlags.parse("C-IDB1V-")
+            CpuFlags.parse("--IDB1VN")
         );
 
         this.readZeroPageByteAndCheck(
             context,
             valueAddress,
-            (byte) 0x10
+            (byte) 0xC4
         );
     }
 
@@ -134,19 +134,19 @@ public final class CpuInstructionSharedUnaryIncZpxTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "INC $81,X"
+            "ROR $81,X"
         );
     }
 
     @Override
-    public CpuInstructionSharedUnaryIncZpx createCpuInstruction() {
-        return CpuInstructionSharedUnaryIncZpx.INSTANCE;
+    public CpuInstructionSharedUnaryRorZpX createCpuInstruction() {
+        return CpuInstructionSharedUnaryRorZpX.INSTANCE;
     }
 
     // class............................................................................................................
 
     @Override
-    public Class<CpuInstructionSharedUnaryIncZpx> type() {
-        return CpuInstructionSharedUnaryIncZpx.class;
+    public Class<CpuInstructionSharedUnaryRorZpX> type() {
+        return CpuInstructionSharedUnaryRorZpX.class;
     }
 }

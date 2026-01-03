@@ -19,7 +19,7 @@ package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
 
-public final class CpuInstructionSharedUnaryDecZpxTest extends CpuInstructionSharedUnaryDecTestCase<CpuInstructionSharedUnaryDecZpx> {
+public final class CpuInstructionSharedUnaryAslZpXTest extends CpuInstructionSharedUnaryAslTestCase<CpuInstructionSharedUnaryAslZpX> {
 
     @Test
     public void testExecute() {
@@ -46,19 +46,19 @@ public final class CpuInstructionSharedUnaryDecZpxTest extends CpuInstructionSha
 
         context.writeZeroPageByte(
             valueAddress,
-            (byte) 0x80
+            (byte) 0x01
         );
 
         this.executeAndCheck(
             this.createCpuInstruction(),
             context,
-            CpuFlags.parse("C-IDB1V-")
+            CpuFlags.parse("--IDB1V-")
         );
 
         this.readZeroPageByteAndCheck(
             context,
             valueAddress,
-            (byte) 0x7f
+            (byte) 2
         );
     }
 
@@ -93,13 +93,13 @@ public final class CpuInstructionSharedUnaryDecZpxTest extends CpuInstructionSha
         this.executeAndCheck(
             this.createCpuInstruction(),
             context,
-            CpuFlags.parse("C-IDB1V-")
+            CpuFlags.parse("--IDB1V-")
         );
 
         this.readZeroPageByteAndCheck(
             context,
             valueAddress,
-            (byte) 0x0E
+            (byte) 0x1e
         );
     }
 
@@ -134,19 +134,19 @@ public final class CpuInstructionSharedUnaryDecZpxTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "DEC $81,X"
+            "ASL $81,X"
         );
     }
 
     @Override
-    public CpuInstructionSharedUnaryDecZpx createCpuInstruction() {
-        return CpuInstructionSharedUnaryDecZpx.INSTANCE;
+    public CpuInstructionSharedUnaryAslZpX createCpuInstruction() {
+        return CpuInstructionSharedUnaryAslZpX.INSTANCE;
     }
 
     // class............................................................................................................
 
     @Override
-    public Class<CpuInstructionSharedUnaryDecZpx> type() {
-        return CpuInstructionSharedUnaryDecZpx.class;
+    public Class<CpuInstructionSharedUnaryAslZpX> type() {
+        return CpuInstructionSharedUnaryAslZpX.class;
     }
 }
