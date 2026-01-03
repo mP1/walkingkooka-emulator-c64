@@ -83,7 +83,7 @@ public final class CpuInstructionSharedUnaryFunctionRolTest extends CpuInstructi
 
     @Override
     CpuInstructionSharedUnaryFunctionRol createCpuInstructionSharedUnaryFunction() {
-        return CpuInstructionSharedUnaryFunctionRol.INSTANCE;
+        return CpuInstructionSharedUnaryFunctionRol.instance();
     }
 
     // class............................................................................................................

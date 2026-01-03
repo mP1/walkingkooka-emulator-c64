@@ -22,42 +22,42 @@ abstract class CpuInstructionSharedUnaryFunction {
     /**
      * {@see CpuInstructionSharedUnaryFunctionAsl}
      */
-    final static CpuInstructionSharedUnaryFunction ASL = CpuInstructionSharedUnaryFunctionAsl.INSTANCE;
+    final static CpuInstructionSharedUnaryFunction ASL = CpuInstructionSharedUnaryFunctionAsl.instance();
 
     /**
      * {@see CpuInstructionSharedUnaryFunctionDec}
      */
-    final static CpuInstructionSharedUnaryFunction DEC = CpuInstructionSharedUnaryFunctionDec.INSTANCE;
+    final static CpuInstructionSharedUnaryFunction DEC = CpuInstructionSharedUnaryFunctionDec.instance();
 
     /**
      * {@see CpuInstructionSharedUnaryFunctionInc}
      */
-    final static CpuInstructionSharedUnaryFunction INC = CpuInstructionSharedUnaryFunctionInc.INSTANCE;
+    final static CpuInstructionSharedUnaryFunction INC = CpuInstructionSharedUnaryFunctionInc.instance();
 
     /**
      * {@see CpuInstructionSharedUnaryFunctionLoad}
      */
-    final static CpuInstructionSharedUnaryFunction LOAD = CpuInstructionSharedUnaryFunctionLoad.INSTANCE;
+    final static CpuInstructionSharedUnaryFunction LOAD = CpuInstructionSharedUnaryFunctionLoad.instance();
 
     /**
      * {@see CpuInstructionSharedUnaryFunctionLsr}
      */
-    final static CpuInstructionSharedUnaryFunction LSR = CpuInstructionSharedUnaryFunctionLsr.INSTANCE;
+    final static CpuInstructionSharedUnaryFunction LSR = CpuInstructionSharedUnaryFunctionLsr.instance();
 
     /**
      * {@see CpuInstructionSharedUnaryFunctionRol}
      */
-    final static CpuInstructionSharedUnaryFunction ROL = CpuInstructionSharedUnaryFunctionRol.INSTANCE;
+    final static CpuInstructionSharedUnaryFunction ROL = CpuInstructionSharedUnaryFunctionRol.instance();
 
     /**
      * {@see CpuInstructionSharedUnaryFunctionRor}
      */
-    final static CpuInstructionSharedUnaryFunction ROR = CpuInstructionSharedUnaryFunctionRor.INSTANCE;
+    final static CpuInstructionSharedUnaryFunction ROR = CpuInstructionSharedUnaryFunctionRor.instance();
 
     /**
      * {@see CpuInstructionSharedUnaryFunctionStore}
      */
-    final static CpuInstructionSharedUnaryFunction STORE = CpuInstructionSharedUnaryFunctionStore.INSTANCE;
+    final static CpuInstructionSharedUnaryFunction STORE = CpuInstructionSharedUnaryFunctionStore.instance();
 
     CpuInstructionSharedUnaryFunction() {
         super();

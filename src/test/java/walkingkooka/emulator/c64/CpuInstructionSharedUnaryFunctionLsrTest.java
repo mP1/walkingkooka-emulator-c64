@@ -83,7 +83,7 @@ public final class CpuInstructionSharedUnaryFunctionLsrTest extends CpuInstructi
 
     @Override
     CpuInstructionSharedUnaryFunctionLsr createCpuInstructionSharedUnaryFunction() {
-        return CpuInstructionSharedUnaryFunctionLsr.INSTANCE;
+        return CpuInstructionSharedUnaryFunctionLsr.instance();
     }
 
     // class............................................................................................................
