@@ -151,6 +151,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedDecAbs}
+     */
+    public static CpuInstruction decAbs() {
+        return CpuInstructionSharedUnaryDecAbs.INSTANCE;
+    }
+    
+    /**
      * {@see FakeCpuInstruction}
      */
     public static FakeCpuInstruction fake() {
