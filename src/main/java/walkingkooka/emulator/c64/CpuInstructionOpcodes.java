@@ -55,6 +55,8 @@ public interface CpuInstructionOpcodes {
 
     byte CLV = (byte) 0xB8;
 
+    byte DECABS = (byte) 0xCE;
+
     byte INCABS = (byte) 0xEE;
 
     byte INCABSX = (byte) 0xFE;
