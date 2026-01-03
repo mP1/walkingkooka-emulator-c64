@@ -53,6 +53,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedUnaryAslAbsX}
+     */
+    public static CpuInstruction aslabsx() {
+        return CpuInstructionSharedUnaryAslAbsX.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedBranchBcc}
      */
     public static CpuInstruction bcc() {
