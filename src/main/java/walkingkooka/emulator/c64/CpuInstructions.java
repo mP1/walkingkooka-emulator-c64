@@ -186,6 +186,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedDey}
+     */
+    public static CpuInstruction dey() {
+        return CpuInstructionSharedUnaryDey.INSTANCE;
+    }
+
+    /**
      * {@see FakeCpuInstruction}
      */
     public static FakeCpuInstruction fake() {
