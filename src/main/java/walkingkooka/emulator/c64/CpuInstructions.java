@@ -263,6 +263,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedUnaryRolAbs}
+     */
+    public static CpuInstruction rolabs() {
+        return CpuInstructionSharedUnaryRolAbs.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedUnaryRolAbsX}
      */
     public static CpuInstruction rolabsx() {
@@ -281,13 +288,6 @@ public final class CpuInstructions implements PublicStaticHelper {
      */
     public static CpuInstruction rolzpx() {
         return CpuInstructionSharedUnaryRolZpx.INSTANCE;
-    }
-
-    /**
-     * {@see CpuInstructionSharedUnaryRolAbs}
-     */
-    public static CpuInstruction rolabs() {
-        return CpuInstructionSharedUnaryRolAbs.INSTANCE;
     }
 
     /**
