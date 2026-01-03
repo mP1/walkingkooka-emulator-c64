@@ -34,7 +34,7 @@ abstract class CpuInstructionSharedOperandMemoryAbsolute extends CpuInstructionS
     @Override //
     final short operandAddress(final CpuContext context) {
         return address(
-            this.readAbsoluteAddress(
+            this.readPcAddress(
                 context
             ),
             this.operandAddressIndex(context)
@@ -51,12 +51,12 @@ abstract class CpuInstructionSharedOperandMemoryAbsolute extends CpuInstructionS
         // $1234
         // $ABCD,X
         return CpuInstructionShared.hexAddress(
-            this.readAbsoluteAddress(context)
+            this.readPcAddress(context)
         ) +
             this.disassembleIndex();
     }
 
-    final short readAbsoluteAddress(final CpuContext context) {
+    final short readPcAddress(final CpuContext context) {
         final short pc = context.pc();
 
         context.setPc(
