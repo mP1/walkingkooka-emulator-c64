@@ -207,6 +207,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedUnaryLsrAbsX}
+     */
+    public static CpuInstruction lsrabsx() {
+        return CpuInstructionSharedUnaryLsrAbsX.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedUnaryLsrZp}
      */
     public static CpuInstruction lsrzp() {
