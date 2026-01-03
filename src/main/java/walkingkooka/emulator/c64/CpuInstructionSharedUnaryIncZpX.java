@@ -18,32 +18,32 @@
 package walkingkooka.emulator.c64;
 
 /**
- * https://www.masswerk.at/6502/6502_instruction_set.html#LSR
+ * https://www.masswerk.at/6502/6502_instruction_set.html#INC
  * <pre>
- * LSR
- * Shift One Bit Right (Memory or Accumulator)
+ * INC
+ * Increment Memory by One
  *
- * 0 -> [76543210] -> C
+ * M + 1 -> M
  * N	Z	C	I	D	V
- * 0	+	+	-	-	-
+ * +	+	-	-	-	-
  * addressing	assembler	opc	bytes	cycles
- * zeropage,X	LSR oper,X	56	2	6
+ * zeropage,X	INC oper,X	F6	2	6
  * </pre>
  */
-final class CpuInstructionSharedUnaryLsrZpx extends CpuInstructionSharedUnaryLsr {
+final class CpuInstructionSharedUnaryIncZpX extends CpuInstructionSharedUnaryInc {
 
     /**
      * Singleton
      */
-    final static CpuInstructionSharedUnaryLsrZpx INSTANCE = new CpuInstructionSharedUnaryLsrZpx();
+    final static CpuInstructionSharedUnaryIncZpX INSTANCE = new CpuInstructionSharedUnaryIncZpX();
 
-    private CpuInstructionSharedUnaryLsrZpx() {
+    private CpuInstructionSharedUnaryIncZpX() {
         super();
     }
 
     @Override
     public byte opcode() {
-        return LSRZPX;
+        return INCZPX;
     }
 
     @Override

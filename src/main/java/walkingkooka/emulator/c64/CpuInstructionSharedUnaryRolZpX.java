@@ -18,31 +18,32 @@
 package walkingkooka.emulator.c64;
 
 /**
- * https://www.masswerk.at/6502/6502_instruction_set.html#ROR
+ * https://www.masswerk.at/6502/6502_instruction_set.html#ROL
  * <pre>
- * ROR
- * Rotate One Bit Right (Memory or Accumulator)
+ * ROL
+ * Rotate One Bit Left (Memory or Accumulator)
  *
- * C -> [76543210] -> C
+ * C <- [76543210] <- C
  * N	Z	C	I	D	V
  * +	+	+	-	-	-
- * absolute	ROR oper	6E	3	6
+ * addressing	assembler	opc	bytes	cycles
+ * zeropage,X	ROL oper,X	36	2	6
  * </pre>
  */
-final class CpuInstructionSharedUnaryRorZpx extends CpuInstructionSharedUnaryRor {
+final class CpuInstructionSharedUnaryRolZpX extends CpuInstructionSharedUnaryRol {
 
     /**
      * Singleton
      */
-    final static CpuInstructionSharedUnaryRorZpx INSTANCE = new CpuInstructionSharedUnaryRorZpx();
+    final static CpuInstructionSharedUnaryRolZpX INSTANCE = new CpuInstructionSharedUnaryRolZpX();
 
-    private CpuInstructionSharedUnaryRorZpx() {
+    private CpuInstructionSharedUnaryRolZpX() {
         super();
     }
 
     @Override
     public byte opcode() {
-        return RORZPX;
+        return ROLZPX;
     }
 
     @Override

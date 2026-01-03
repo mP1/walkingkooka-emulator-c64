@@ -30,14 +30,14 @@ package walkingkooka.emulator.c64;
  * zeropage,X	ASL oper,X	16	2	6
  * </pre>
  */
-final class CpuInstructionSharedUnaryAslZpx extends CpuInstructionSharedUnaryAsl {
+final class CpuInstructionSharedUnaryAslZpX extends CpuInstructionSharedUnaryAsl {
 
     /**
      * Singleton
      */
-    final static CpuInstructionSharedUnaryAslZpx INSTANCE = new CpuInstructionSharedUnaryAslZpx();
+    final static CpuInstructionSharedUnaryAslZpX INSTANCE = new CpuInstructionSharedUnaryAslZpX();
 
-    private CpuInstructionSharedUnaryAslZpx() {
+    private CpuInstructionSharedUnaryAslZpX() {
         super();
     }
 

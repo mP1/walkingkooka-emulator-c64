@@ -19,7 +19,7 @@ package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
 
-public final class CpuInstructionSharedUnaryLsrZpxTest extends CpuInstructionSharedUnaryLsrTestCase<CpuInstructionSharedUnaryLsrZpx> {
+public final class CpuInstructionSharedUnaryIncZpXTest extends CpuInstructionSharedUnaryIncTestCase<CpuInstructionSharedUnaryIncZpX> {
 
     @Test
     public void testExecute() {
@@ -52,13 +52,13 @@ public final class CpuInstructionSharedUnaryLsrZpxTest extends CpuInstructionSha
         this.executeAndCheck(
             this.createCpuInstruction(),
             context,
-            CpuFlags.parse("--IDB1V-")
+            CpuFlags.parse("C-IDB1VN")
         );
 
         this.readZeroPageByteAndCheck(
             context,
             valueAddress,
-            (byte) 0x40
+            (byte) 0x81
         );
     }
 
@@ -99,7 +99,7 @@ public final class CpuInstructionSharedUnaryLsrZpxTest extends CpuInstructionSha
         this.readZeroPageByteAndCheck(
             context,
             valueAddress,
-            (byte) 0x7
+            (byte) 0x10
         );
     }
 
@@ -134,19 +134,19 @@ public final class CpuInstructionSharedUnaryLsrZpxTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "LSR $81,X"
+            "INC $81,X"
         );
     }
 
     @Override
-    public CpuInstructionSharedUnaryLsrZpx createCpuInstruction() {
-        return CpuInstructionSharedUnaryLsrZpx.INSTANCE;
+    public CpuInstructionSharedUnaryIncZpX createCpuInstruction() {
+        return CpuInstructionSharedUnaryIncZpX.INSTANCE;
     }
 
     // class............................................................................................................
 
     @Override
-    public Class<CpuInstructionSharedUnaryLsrZpx> type() {
-        return CpuInstructionSharedUnaryLsrZpx.class;
+    public Class<CpuInstructionSharedUnaryIncZpX> type() {
+        return CpuInstructionSharedUnaryIncZpX.class;
     }
 }

@@ -39,10 +39,10 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
-     * {@see CpuInstructionSharedUnaryAslZpx}
+     * {@see CpuInstructionSharedUnaryAslZpX}
      */
-    public static CpuInstruction aslZpx() {
-        return CpuInstructionSharedUnaryAslZpx.INSTANCE;
+    public static CpuInstruction aslZpX() {
+        return CpuInstructionSharedUnaryAslZpX.INSTANCE;
     }
 
     /**
@@ -174,8 +174,8 @@ public final class CpuInstructions implements PublicStaticHelper {
     /**
      * {@see CpuInstructionSharedDecZpx}
      */
-    public static CpuInstruction decZpx() {
-        return CpuInstructionSharedUnaryDecZpx.INSTANCE;
+    public static CpuInstruction decZpX() {
+        return CpuInstructionSharedUnaryDecZpX.INSTANCE;
     }
     
     /**
@@ -209,8 +209,8 @@ public final class CpuInstructions implements PublicStaticHelper {
     /**
      * {@see CpuInstructionSharedIncZpx}
      */
-    public static CpuInstruction incZpx() {
-        return CpuInstructionSharedUnaryIncZpx.INSTANCE;
+    public static CpuInstruction incZpX() {
+        return CpuInstructionSharedUnaryIncZpX.INSTANCE;
     }
 
     /**
@@ -277,10 +277,10 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
-     * {@see CpuInstructionSharedUnaryLsrZpx}
+     * {@see CpuInstructionSharedUnaryLsrZpX}
      */
-    public static CpuInstruction lsrZpx() {
-        return CpuInstructionSharedUnaryLsrZpx.INSTANCE;
+    public static CpuInstruction lsrZpX() {
+        return CpuInstructionSharedUnaryLsrZpX.INSTANCE;
     }
 
     /**
@@ -340,10 +340,10 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
-     * {@see CpuInstructionSharedUnaryRolZpx}
+     * {@see CpuInstructionSharedUnaryRolZpX}
      */
-    public static CpuInstruction rolZpx() {
-        return CpuInstructionSharedUnaryRolZpx.INSTANCE;
+    public static CpuInstruction rolZpX() {
+        return CpuInstructionSharedUnaryRolZpX.INSTANCE;
     }
 
     /**
@@ -375,10 +375,10 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
-     * {@see CpuInstructionSharedUnaryRorZpx}
+     * {@see CpuInstructionSharedUnaryRorZpX}
      */
-    public static CpuInstruction rorZpx() {
-        return CpuInstructionSharedUnaryRorZpx.INSTANCE;
+    public static CpuInstruction rorZpX() {
+        return CpuInstructionSharedUnaryRorZpX.INSTANCE;
     }
     
     /**
