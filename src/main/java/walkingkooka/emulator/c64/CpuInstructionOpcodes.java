@@ -91,6 +91,8 @@ public interface CpuInstructionOpcodes {
 
     byte ROLABS = (byte) 0x2E;
 
+    byte ROLABSX = (byte) 0x3E;
+
     byte RORA = (byte) 0x6A;
 
     byte RORABS = (byte) 0x6E;
