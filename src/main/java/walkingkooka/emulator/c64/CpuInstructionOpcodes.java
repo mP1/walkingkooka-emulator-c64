@@ -73,6 +73,8 @@ public interface CpuInstructionOpcodes {
 
     byte LSRABS = (byte) 0x4E;
 
+    byte LSRABSX = (byte) 0x5E;
+
     byte NOP = (byte) 0xEA;
 
     byte PHA = (byte) 0x48;
