@@ -66,13 +66,13 @@ abstract class CpuInstructionSharedOperandMemory extends CpuInstructionSharedOpe
         return context.readByte(pc);
     }
 
-    static short zeroPageOffsetAddress(final byte offset) {
+    static short zeroPageOffset(final byte offset) {
         return (short) (0xff & offset);
     }
 
-    static short zeroPageOffsetAddress(final byte offset,
-                                       final byte offset2) {
-        return zeroPageOffsetAddress(
+    static short zeroPageOffset(final byte offset,
+                                final byte offset2) {
+        return zeroPageOffset(
             (byte) (
                 0xff & (offset + offset2)
             )
