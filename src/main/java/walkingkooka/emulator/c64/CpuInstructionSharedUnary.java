@@ -59,6 +59,9 @@ abstract class CpuInstructionSharedUnary extends CpuInstructionShared {
             "DEC X",
             "DEX"
         ).replace(
+            "DEC Y",
+            "DEY"
+        ).replace(
             "INC X",
             "INX"
         ).replace(
