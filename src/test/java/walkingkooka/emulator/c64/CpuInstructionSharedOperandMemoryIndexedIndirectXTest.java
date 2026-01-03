@@ -111,6 +111,76 @@ public final class CpuInstructionSharedOperandMemoryIndexedIndirectXTest extends
         );
     }
 
+    @Test
+    public void testReadValue() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.writeByte(
+            pc,
+            (byte) 0x1
+        );
+
+        context.setX((byte) 0x2);
+
+        final short address = (short) 0x2000;
+
+        context.writeAddress(
+            (byte) 0x03,
+            address
+        );
+
+        final byte value = (byte) 0x34;
+        context.writeByte(
+            address,
+            value
+        );
+
+        this.readValueAndCheck(
+            context,
+            value
+        );
+    }
+
+    @Test
+    public void testReadValueZeroPageWrap() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.writeByte(
+            pc,
+            (byte) 0x81
+        );
+
+        context.setX((byte) 0x82);
+
+        final short address = (short) 0x2000;
+
+        context.writeAddress(
+            (byte) 0x03,
+            address
+        );
+
+        final byte value = (byte) 0x34;
+        context.writeByte(
+            address,
+            value
+        );
+
+        this.readValueAndCheck(
+            context,
+            value
+        );
+    }
+
     @Override
     CpuInstructionSharedOperandMemoryIndexedIndirectX createCpuInstructionSharedOperand() {
         return CpuInstructionSharedOperandMemoryIndexedIndirectX.instance();

@@ -37,6 +37,33 @@ public abstract class CpuInstructionSharedOperandTestCase<T extends CpuInstructi
         );
     }
 
+    // readValue........................................................................................................
+
+    final void readValueAndCheck(final CpuContext context,
+                                 final byte expected) {
+        this.readValueAndCheck(
+            this.createCpuInstructionSharedOperand(),
+            context,
+            expected
+        );
+    }
+
+    final void readValueAndCheck(final T operand,
+                                 final CpuContext context,
+                                 final byte expected) {
+        final short pc = context.pc();
+
+        this.checkEquals(
+            expected,
+            operand.readValue(context)
+        );
+
+        this.pcAndCheck(
+            context,
+            (short) (pc + operand.length())
+        );
+    }
+
     // disssemble.......................................................................................................
 
     final void disassembleAndCheck(final T operand,

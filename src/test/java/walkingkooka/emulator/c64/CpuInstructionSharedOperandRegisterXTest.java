@@ -50,6 +50,24 @@ public final class CpuInstructionSharedOperandRegisterXTest extends CpuInstructi
         );
     }
 
+    @Test
+    public void testReadValue() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.fake()
+        );
+
+        final short pc = 0x1234;
+        context.setPc(pc);
+
+        final byte value = 0x12;
+        context.setX(value);
+
+        this.readValueAndCheck(
+            context,
+            value
+        );
+    }
+
     @Override
     CpuInstructionSharedOperandRegisterX createCpuInstructionSharedOperand() {
         return CpuInstructionSharedOperandRegisterX.instance();

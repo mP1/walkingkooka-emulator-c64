@@ -57,6 +57,15 @@ abstract class CpuInstructionSharedOperandMemory extends CpuInstructionSharedOpe
      */
     abstract short operandAddress(final CpuContext context);
 
+    @Override //
+    final byte readValue(final CpuContext context) {
+        return context.readByte(
+            this.operandAddress(context)
+        );
+    }
+
+    // helpers..........................................................................................................
+
     final byte readPcByte(final CpuContext context) {
         final short pc = context.pc();
 

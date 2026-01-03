@@ -60,6 +60,33 @@ public final class CpuInstructionSharedOperandMemoryZeroPageUnindexedTest extend
         );
     }
 
+    @Test
+    public void testReadValue() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        final byte offset = (byte) 0x80;
+        context.writeByte(
+            pc,
+            offset
+        );
+
+        final byte value = (byte) 0x34;
+        context.writeZeroPageByte(
+            offset,
+            value
+        );
+
+        this.readValueAndCheck(
+            context,
+            value
+        );
+    }
+
     @Override
     CpuInstructionSharedOperandMemoryZeroPageUnindexed createCpuInstructionSharedOperand() {
         return CpuInstructionSharedOperandMemoryZeroPageUnindexed.ZP;
