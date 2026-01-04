@@ -242,6 +242,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedBinaryBinaryConsumerCpyImm}
+     */
+    public static CpuInstruction cpyImm() {
+        return CpuInstructionSharedBinaryBinaryConsumerCpyImm.INSTANCE;
+    }
+    
+    /**
      * {@see CpuInstructionSharedDecAbs}
      */
     public static CpuInstruction decAbs() {
