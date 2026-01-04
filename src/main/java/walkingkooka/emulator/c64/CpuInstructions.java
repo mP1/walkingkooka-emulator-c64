@@ -247,6 +247,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction cpyImm() {
         return CpuInstructionSharedBinaryBinaryConsumerCpyImm.INSTANCE;
     }
+
+    /**
+     * {@see CpuInstructionSharedBinaryBinaryConsumerCpyZp}
+     */
+    public static CpuInstruction cpyZp() {
+        return CpuInstructionSharedBinaryBinaryConsumerCpyZp.INSTANCE;
+    }
     
     /**
      * {@see CpuInstructionSharedDecAbs}
