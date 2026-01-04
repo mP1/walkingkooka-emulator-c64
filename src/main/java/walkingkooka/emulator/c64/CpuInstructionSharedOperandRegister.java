@@ -62,7 +62,7 @@ abstract class CpuInstructionSharedOperandRegister extends CpuInstructionSharedO
     abstract byte readRegister(final CpuContext context);
 
     /**
-     * Writes the A, X, Y and probably sets the N and V flags
+     * Writes the A, X, Y without updating any flags.
      */
     abstract void writeRegister(final byte value,
                                 final CpuContext context);
