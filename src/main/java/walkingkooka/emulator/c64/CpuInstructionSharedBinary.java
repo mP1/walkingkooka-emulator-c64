@@ -42,7 +42,7 @@ abstract class CpuInstructionSharedBinary extends CpuInstructionShared {
 
     abstract CpuInstructionSharedOperandRegister register();
 
-    abstract CpuInstructionSharedOperandMemory memory();
+    abstract CpuInstructionSharedOperand memory();
 
     abstract String mnemonic();
 }
