@@ -221,6 +221,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedBinaryBinaryConsumerCpxAbs}
+     */
+    public static CpuInstruction cpxAbs() {
+        return CpuInstructionSharedBinaryBinaryConsumerCpxAbs.INSTANCE;
+    }
+    
+    /**
      * {@see CpuInstructionSharedBinaryBinaryConsumerCpxImm}
      */
     public static CpuInstruction cpxImm() {
