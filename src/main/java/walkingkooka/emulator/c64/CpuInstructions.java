@@ -228,6 +228,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedBinaryBinaryConsumerCpxZp}
+     */
+    public static CpuInstruction cpxZp() {
+        return CpuInstructionSharedBinaryBinaryConsumerCpxZp.INSTANCE;
+    }
+
+    /**
      * {@see CpuInstructionSharedDecAbs}
      */
     public static CpuInstruction decAbs() {

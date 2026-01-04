@@ -77,6 +77,8 @@ public interface CpuInstructionOpcodes {
 
     byte CPXIMM = (byte) 0xE0;
 
+    byte CPXZP = (byte) 0xE4;
+
     byte DECABS = (byte) 0xCE;
 
     byte DECABSX = (byte) 0xDE;
