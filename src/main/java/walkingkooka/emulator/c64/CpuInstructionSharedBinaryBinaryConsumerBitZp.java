@@ -48,7 +48,7 @@ final class CpuInstructionSharedBinaryBinaryConsumerBitZp extends CpuInstruction
 
     @Override
     public byte opcode() {
-        return 0x24;
+        return BITZP;
     }
 
     @Override
