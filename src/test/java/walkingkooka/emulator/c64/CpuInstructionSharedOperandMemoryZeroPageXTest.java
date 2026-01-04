@@ -101,6 +101,34 @@ public final class CpuInstructionSharedOperandMemoryZeroPageXTest extends CpuIns
         );
     }
 
+    @Test
+    public void testReadValue() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.writeByte(
+            pc,
+            (byte) 0x81
+        );
+
+        context.setX((byte) 0x82);
+
+        final byte value = (byte) 0x34;
+        context.writeZeroPageByte(
+            (byte) 0x03,
+            value
+        );
+
+        this.readValueAndCheck(
+            context,
+            value
+        );
+    }
+
     @Override
     CpuInstructionSharedOperandMemoryZeroPageX createCpuInstructionSharedOperand() {
         return CpuInstructionSharedOperandMemoryZeroPageX.instance();

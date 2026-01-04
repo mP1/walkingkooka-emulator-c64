@@ -35,6 +35,27 @@ public final class CpuInstructionSharedOperandMemoryImmediateTest extends CpuIns
         );
     }
 
+    @Test
+    public void testReadValue() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        final byte value = 0x34;
+        context.writeByte(
+            pc,
+            value
+        );
+
+        this.readValueAndCheck(
+            context,
+            value
+        );
+    }
+
     @Override
     CpuInstructionSharedOperandMemoryImmediate createCpuInstructionSharedOperand() {
         return CpuInstructionSharedOperandMemoryImmediate.instance();

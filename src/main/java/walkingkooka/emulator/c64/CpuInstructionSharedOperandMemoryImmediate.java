@@ -37,7 +37,11 @@ final class CpuInstructionSharedOperandMemoryImmediate extends CpuInstructionSha
 
     @Override //
     short operandAddress(final CpuContext context) {
-        return readPcByte(context);
+        final short pc = context.pc();
+        context.setPc(
+            (short) (pc + 1)
+        );
+        return pc;
     }
 
     @Override //

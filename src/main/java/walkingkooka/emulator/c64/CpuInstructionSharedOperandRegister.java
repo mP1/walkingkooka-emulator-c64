@@ -28,6 +28,10 @@ abstract class CpuInstructionSharedOperandRegister extends CpuInstructionSharedO
         return 0;
     }
 
+    @Override final byte readValue(final CpuContext context) {
+        return this.readRegister(context);
+    }
+
     @Override //
     final void handleBinaryConsumer(final CpuInstructionSharedBinaryConsumer consumer,
                                     final CpuContext context) {

@@ -107,6 +107,12 @@ abstract class CpuInstructionSharedOperand {
      */
     abstract int length();
 
+    /**
+     * Read the value for this operand, this might be a register, bytes following opcode for immediate addressing or a
+     * byte in memory.
+     */
+    abstract byte readValue(final CpuContext context);
+
     abstract void handleBinaryConsumer(final CpuInstructionSharedBinaryConsumer consumer,
                                        final CpuContext context);
 

@@ -60,6 +60,33 @@ public final class CpuInstructionSharedOperandMemoryAbsoluteUnindexedTest extend
         );
     }
 
+    @Test
+    public void testReadValue() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.writeAddress(
+            pc,
+            (short) 0x2000
+        );
+
+        final byte value = (byte) 0x34;
+
+        context.writeByte(
+            (short) 0x2000,
+            value
+        );
+
+        this.readValueAndCheck(
+            context,
+            value
+        );
+    }
+
     @Override
     CpuInstructionSharedOperandMemoryAbsoluteUnindexed createCpuInstructionSharedOperand() {
         return CpuInstructionSharedOperandMemoryAbsoluteUnindexed.instance();

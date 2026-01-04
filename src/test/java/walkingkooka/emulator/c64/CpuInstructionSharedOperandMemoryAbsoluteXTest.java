@@ -102,6 +102,64 @@ public final class CpuInstructionSharedOperandMemoryAbsoluteXTest extends CpuIns
         );
     }
 
+    @Test
+    public void testReadValue() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.writeAddress(
+            pc,
+            (short) 0x2000
+        );
+
+        context.setX((byte) 0x82);
+
+        final byte value = (byte) 0x34;
+
+        context.writeByte(
+            (short) 0x2082,
+            value
+        );
+
+        this.readValueAndCheck(
+            context,
+            value
+        );
+    }
+
+    @Test
+    public void testReadValuePageOverflow() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.writeAddress(
+            pc,
+            (short) 0x2081
+        );
+
+        context.setX((byte) 0x82);
+
+        final byte value = (byte) 0x34;
+
+        context.writeByte(
+            (short) 0x2103,
+            value
+        );
+
+        this.readValueAndCheck(
+            context,
+            value
+        );
+    }
+
     @Override
     CpuInstructionSharedOperandMemoryAbsoluteX createCpuInstructionSharedOperand() {
         return CpuInstructionSharedOperandMemoryAbsoluteX.instance();
