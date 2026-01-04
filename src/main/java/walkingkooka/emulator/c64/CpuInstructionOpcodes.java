@@ -81,6 +81,8 @@ public interface CpuInstructionOpcodes {
 
     byte CPXZP = (byte) 0xE4;
 
+    byte CPYABS = (byte) 0xCC;
+
     byte CPYIMM = (byte) 0xC0;
 
     byte CPYZP = (byte) 0xC4;
