@@ -38,7 +38,7 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpIndXTest extends C
         final short address = 0x2000;
 
         context.writeAddress(
-            (byte) 0x85,
+            (short) 0x85,
             address
         );
 
@@ -57,7 +57,7 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpIndXTest extends C
         this.executeAndCheck(
             CpuInstructionSharedBinaryBinaryConsumerCmpIndX.INSTANCE,
             context,
-            "C----1-N"
+            "C----1--"
         );
     }
 
@@ -78,7 +78,7 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpIndXTest extends C
         final short address = 0x2000;
 
         context.writeAddress(
-            (byte) 0x85,
+            (short) 0x85,
             address
         );
 
@@ -118,7 +118,7 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpIndXTest extends C
         final short address = 0x2000;
 
         context.writeAddress(
-            (byte) 0x85,
+            (short) 0x85,
             address
         );
 
@@ -137,7 +137,7 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpIndXTest extends C
         this.executeAndCheck(
             CpuInstructionSharedBinaryBinaryConsumerCmpIndX.INSTANCE,
             context,
-            "C----1-N"
+            "-----1--"
         );
     }
 
