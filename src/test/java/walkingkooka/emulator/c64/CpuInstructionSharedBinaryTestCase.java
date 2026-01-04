@@ -17,9 +17,9 @@
 
 package walkingkooka.emulator.c64;
 
-public abstract class CpuInstructionSharedBinaryBinaryTestCase<T extends CpuInstructionSharedBinaryBinaryConsumer> extends CpuInstructionSharedTestCase<T> {
+public abstract class CpuInstructionSharedBinaryTestCase<T extends CpuInstructionSharedBinaryBinaryConsumer> extends CpuInstructionSharedTestCase<T> {
 
-    CpuInstructionSharedBinaryBinaryTestCase() {
+    CpuInstructionSharedBinaryTestCase() {
         super();
     }
 }
