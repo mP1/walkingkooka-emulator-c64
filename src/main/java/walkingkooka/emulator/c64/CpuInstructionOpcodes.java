@@ -67,6 +67,8 @@ public interface CpuInstructionOpcodes {
 
     byte CMPABSY = (byte) 0xD9;
 
+    byte CMPINDX = (byte) 0xC1;
+
     byte CMPZP = (byte) 0xC5;
 
     byte CMPZPX = (byte) 0xD5;
