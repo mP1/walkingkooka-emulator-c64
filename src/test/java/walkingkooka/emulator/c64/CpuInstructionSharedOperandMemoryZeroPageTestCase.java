@@ -17,7 +17,7 @@
 
 package walkingkooka.emulator.c64;
 
-public abstract class CpuInstructionSharedOperandMemoryZeroPageTestCase<T extends CpuInstructionSharedOperandMemoryZeroPage> extends CpuInstructionSharedOperandTestCase<T> {
+public abstract class CpuInstructionSharedOperandMemoryZeroPageTestCase<T extends CpuInstructionSharedOperandMemoryZeroPage> extends CpuInstructionSharedOperandMemoryTestCase<T> {
 
     CpuInstructionSharedOperandMemoryZeroPageTestCase() {
         super();
