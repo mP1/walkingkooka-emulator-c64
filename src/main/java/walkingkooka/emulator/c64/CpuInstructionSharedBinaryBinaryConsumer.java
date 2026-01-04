@@ -28,7 +28,7 @@ abstract class CpuInstructionSharedBinaryBinaryConsumer extends CpuInstructionSh
     }
 
     @Override
-    public void execute(final CpuContext context) {
+    public final void execute(final CpuContext context) {
         this.consumer()
             .handle(
                 this.register()
