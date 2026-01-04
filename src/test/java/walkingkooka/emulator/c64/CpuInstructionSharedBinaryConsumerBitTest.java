@@ -73,7 +73,7 @@ public final class CpuInstructionSharedBinaryConsumerBitTest extends CpuInstruct
 
     @Override
     CpuInstructionSharedBinaryConsumerBit createCpuInstructionSharedBinaryConsumer() {
-        return CpuInstructionSharedBinaryConsumerBit.INSTANCE;
+        return CpuInstructionSharedBinaryConsumerBit.instance();
     }
 
     @Override

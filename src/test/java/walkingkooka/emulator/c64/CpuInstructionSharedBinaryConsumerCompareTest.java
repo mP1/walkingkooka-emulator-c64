@@ -53,7 +53,7 @@ public final class CpuInstructionSharedBinaryConsumerCompareTest extends CpuInst
 
     @Override
     CpuInstructionSharedBinaryConsumerCompare createCpuInstructionSharedBinaryConsumer() {
-        return CpuInstructionSharedBinaryConsumerCompare.INSTANCE;
+        return CpuInstructionSharedBinaryConsumerCompare.instance();
     }
 
     @Override
