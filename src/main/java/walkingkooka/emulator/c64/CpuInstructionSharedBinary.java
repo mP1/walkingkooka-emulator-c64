@@ -26,9 +26,11 @@ abstract class CpuInstructionSharedBinary extends CpuInstructionShared {
         super();
     }
 
+    // opcode + memory operand length
     @Override
     public final int length() {
-        return this.memory()
+        return 1 +
+            this.memory()
             .length();
     }
 
