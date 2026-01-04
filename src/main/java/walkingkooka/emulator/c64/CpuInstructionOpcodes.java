@@ -35,6 +35,8 @@ public interface CpuInstructionOpcodes {
 
     byte BEQ = (byte) 0xF0;
 
+    byte BITABS = (byte) 0x2C;
+
     byte BITZP = (byte) 0x24;
 
     byte BMI = (byte) 0x30;

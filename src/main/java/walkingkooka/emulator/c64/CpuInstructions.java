@@ -81,6 +81,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedBinaryBinaryConsumerBitAbs}
+     */
+    public static CpuInstruction bitAbs() {
+        return CpuInstructionSharedBinaryBinaryConsumerBitAbs.INSTANCE;
+    }
+    
+    /**
      * {@see CpuInstructionSharedBinaryBinaryConsumerBitZp}
      */
     public static CpuInstruction bitZp() {
