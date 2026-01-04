@@ -17,13 +17,32 @@
 
 package walkingkooka.emulator.c64;
 
+/**
+ * Base class for instructions that use a {@link CpuInstructionSharedBinaryConsumer} or {@link CpuInstructionSharedBinaryFunction}.
+ */
 abstract class CpuInstructionSharedBinary extends CpuInstructionShared {
 
     CpuInstructionSharedBinary() {
         super();
     }
 
-    abstract byte handle(final byte left,
-                         final byte right,
-                         final CpuContext context);
+    @Override
+    public final int length() {
+        return this.memory()
+            .length();
+    }
+
+    @Override
+    public final String disassemble(final CpuContext context) {
+        return this.mnemonic() +
+            " " +
+            this.memory()
+                .disassemble(context);
+    }
+
+    abstract CpuInstructionSharedOperandRegister register();
+
+    abstract CpuInstructionSharedOperandMemory memory();
+
+    abstract String mnemonic();
 }
