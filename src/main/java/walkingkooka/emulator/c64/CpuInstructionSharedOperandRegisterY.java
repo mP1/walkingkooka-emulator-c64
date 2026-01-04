@@ -36,10 +36,6 @@ final class CpuInstructionSharedOperandRegisterY extends CpuInstructionSharedOpe
     void writeRegister(final byte value,
                        final CpuContext context) {
         context.setY(value);
-        CpuInstructionShared.setMinusAndZero(
-            value,
-            context
-        );
     }
 
     @Override
