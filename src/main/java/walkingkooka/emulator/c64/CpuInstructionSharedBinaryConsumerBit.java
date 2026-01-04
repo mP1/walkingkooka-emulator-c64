@@ -39,7 +39,14 @@ final class CpuInstructionSharedBinaryConsumerBit extends CpuInstructionSharedBi
     /**
      * Singleton
      */
-    final static CpuInstructionSharedBinaryConsumerBit INSTANCE = new CpuInstructionSharedBinaryConsumerBit();
+    static CpuInstructionSharedBinaryConsumerBit instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedBinaryConsumerBit();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedBinaryConsumerBit INSTANCE;
 
     private CpuInstructionSharedBinaryConsumerBit() {
         super();

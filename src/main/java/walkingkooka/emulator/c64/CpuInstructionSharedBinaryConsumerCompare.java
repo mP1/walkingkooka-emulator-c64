@@ -32,7 +32,14 @@ final class CpuInstructionSharedBinaryConsumerCompare extends CpuInstructionShar
     /**
      * Singleton
      */
-    final static CpuInstructionSharedBinaryConsumerCompare INSTANCE = new CpuInstructionSharedBinaryConsumerCompare();
+    static CpuInstructionSharedBinaryConsumerCompare instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedBinaryConsumerCompare();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedBinaryConsumerCompare INSTANCE;
 
     private CpuInstructionSharedBinaryConsumerCompare() {
         super();

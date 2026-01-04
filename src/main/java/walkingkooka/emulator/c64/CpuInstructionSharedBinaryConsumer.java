@@ -25,12 +25,12 @@ abstract class CpuInstructionSharedBinaryConsumer {
     /**
      * {see CpuInstructionSharedBinaryConsumerBit}
      */
-    final static CpuInstructionSharedBinaryConsumer BIT = CpuInstructionSharedBinaryConsumerBit.INSTANCE;
+    final static CpuInstructionSharedBinaryConsumer BIT = CpuInstructionSharedBinaryConsumerBit.instance();
 
     /**
      * {see CpuInstructionSharedBinaryConsumerCompare}
      */
-    final static CpuInstructionSharedBinaryConsumer COMPARE = CpuInstructionSharedBinaryConsumerCompare.INSTANCE;
+    final static CpuInstructionSharedBinaryConsumer COMPARE = CpuInstructionSharedBinaryConsumerCompare.instance();
 
     abstract void handle(final byte left,
                          final byte right,
