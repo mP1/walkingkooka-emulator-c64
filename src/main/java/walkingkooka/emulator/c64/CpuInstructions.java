@@ -79,7 +79,14 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction beq() {
         return CpuInstructionSharedBranchBeq.INSTANCE;
     }
-    
+
+    /**
+     * {@see CpuInstructionSharedBinaryBinaryConsumerBitZp}
+     */
+    public static CpuInstruction bitZp() {
+        return CpuInstructionSharedBinaryBinaryConsumerBitZp.INSTANCE;
+    }
+
     /**
      * {@see CpuInstructionSharedBranchBmi}
      */
