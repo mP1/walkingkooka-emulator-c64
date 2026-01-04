@@ -32,7 +32,7 @@ final class CpuInstructionSharedOperandMemoryImmediate extends CpuInstructionSha
 
     @Override //
     int length() {
-        return 1; // just the zero page offset
+        return 1; // just the immediate value
     }
 
     @Override //
