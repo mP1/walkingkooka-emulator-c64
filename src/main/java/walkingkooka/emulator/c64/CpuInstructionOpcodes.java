@@ -59,6 +59,8 @@ public interface CpuInstructionOpcodes {
 
     byte CLV = (byte) 0xB8;
 
+    byte CMPIMM = (byte) 0xC9;
+
     byte DECABS = (byte) 0xCE;
 
     byte DECABSX = (byte) 0xDE;
