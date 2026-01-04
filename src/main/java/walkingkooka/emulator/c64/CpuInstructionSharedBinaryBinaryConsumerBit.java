@@ -24,7 +24,17 @@ abstract class CpuInstructionSharedBinaryBinaryConsumerBit extends CpuInstructio
     }
 
     @Override //
+    final String mnemonic() {
+        return "BIT";
+    }
+
+    @Override //
     final CpuInstructionSharedBinaryConsumer consumer() {
         return CpuInstructionSharedBinaryConsumer.BIT;
+    }
+
+    @Override //
+    final CpuInstructionSharedOperandRegister register() {
+        return CpuInstructionSharedOperandRegister.A;
     }
 }
