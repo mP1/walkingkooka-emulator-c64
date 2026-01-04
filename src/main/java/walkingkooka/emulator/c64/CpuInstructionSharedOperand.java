@@ -41,7 +41,7 @@ abstract class CpuInstructionSharedOperand {
     /**
      * {@see CpuInstructionSharedOperandRegisterA}
      */
-    final static CpuInstructionSharedOperand A = CpuInstructionSharedOperandRegisterA.instance();
+    final static CpuInstructionSharedOperandRegister A = CpuInstructionSharedOperandRegisterA.instance();
 
     /**
      * {@see CpuInstructionSharedOperandMemoryAbsoluteUnindexed}
@@ -76,12 +76,12 @@ abstract class CpuInstructionSharedOperand {
     /**
      * {@see CpuInstructionSharedOperandRegisterX}
      */
-    final static CpuInstructionSharedOperand X = CpuInstructionSharedOperandRegisterX.instance();
+    final static CpuInstructionSharedOperandRegister X = CpuInstructionSharedOperandRegisterX.instance();
 
     /**
      * {@see CpuInstructionSharedOperandRegisterY}
      */
-    final static CpuInstructionSharedOperand Y = CpuInstructionSharedOperandRegisterY.instance();
+    final static CpuInstructionSharedOperandRegister Y = CpuInstructionSharedOperandRegisterY.instance();
 
     /**
      * {@see CpuInstructionSharedOperandMemoryZeroPageUnindexed}
