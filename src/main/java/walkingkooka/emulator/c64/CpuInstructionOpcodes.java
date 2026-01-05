@@ -39,6 +39,8 @@ public interface CpuInstructionOpcodes {
 
     byte ANDABSX = (byte) 0x3D;
 
+    byte ANDABSY = (byte) 0x39;
+
     byte ANDIMM = (byte) 0x29;
 
     byte ANDZP = (byte) 0x25;
