@@ -751,6 +751,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction sbcImm() {
         return CpuInstructionSharedBinaryBinaryFunctionSbcImm.instance();
     }
+
+    /**
+     * {@see CpuInstructionSharedBinaryBinaryFunctionSbcZp}
+     */
+    public static CpuInstruction sbcZp() {
+        return CpuInstructionSharedBinaryBinaryFunctionSbcZp.instance();
+    }
     
     /**
      * {@see CpuInstructionSharedClearOrSetSec}
