@@ -156,7 +156,7 @@ final class CpuInstructionSharedBinaryFunctionAdc extends CpuInstructionSharedBi
                             final CpuContext context) {
         final int value = (0xff & left) +
             (0xff & right) +
-            (context.isCarry() ? 1 : 0);
+            carryToUnit(context);
 
         final byte byteValue = (byte) value;
 
@@ -184,7 +184,7 @@ final class CpuInstructionSharedBinaryFunctionAdc extends CpuInstructionSharedBi
     private byte decimalMode(final byte left,
                              final byte right,
                              final CpuContext context) {
-        int units = units(left) + units(right); // ignore carry
+        int units = units(left) + units(right) + carryToUnit(context);
         if (units > 9) {
             units = units + 6;
         }
@@ -214,5 +214,11 @@ final class CpuInstructionSharedBinaryFunctionAdc extends CpuInstructionSharedBi
         context.setOverflow(false); // never sets overflow, always clears
 
         return byteValue;
+    }
+
+    private static int carryToUnit(final CpuContext context) {
+        return context.isCarry() ?
+            1 :
+            0;
     }
 }
