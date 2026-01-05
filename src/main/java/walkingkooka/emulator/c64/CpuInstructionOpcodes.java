@@ -23,6 +23,8 @@ public interface CpuInstructionOpcodes {
 
     byte ADCABSX = (byte) 0x7D;
 
+    byte ADCABSY = (byte) 0x79;
+
     byte ADCIMM = (byte) 0x69;
 
     byte ADCZP = (byte) 0x65;
