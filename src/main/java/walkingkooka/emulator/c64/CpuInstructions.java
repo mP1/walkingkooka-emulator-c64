@@ -51,7 +51,14 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction adcAbsY() {
         return CpuInstructionSharedBinaryBinaryFunctionAdcAbsY.INSTANCE;
     }
-    
+
+    /**
+     * {@see CpuInstructionSharedBinaryBinaryFunctionAdcIndX}
+     */
+    public static CpuInstruction adcIndX() {
+        return CpuInstructionSharedBinaryBinaryFunctionAdcIndX.INSTANCE;
+    }
+
     /**
      * {@see CpuInstructionSharedBinaryBinaryFunctionAdcZp}
      */
