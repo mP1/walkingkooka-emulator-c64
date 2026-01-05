@@ -35,7 +35,7 @@ public final class CpuInstructionSharedUnaryDeyTest extends CpuInstructionShared
             this.createCpuInstruction(),
             context,
             (byte) 0x0e,
-            CpuFlags.parse("C----1--")
+            "C----1--"
         );
     }
 
