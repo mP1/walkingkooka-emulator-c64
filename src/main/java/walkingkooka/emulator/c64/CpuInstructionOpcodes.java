@@ -131,6 +131,8 @@ public interface CpuInstructionOpcodes {
 
     byte DEY = (byte) 0x88;
 
+    byte EORABS = (byte) 0x4D;
+
     byte EORIMM = (byte) 0x49;
 
     byte EORZP = (byte) 0x45;
