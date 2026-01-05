@@ -20,13 +20,11 @@ package walkingkooka.emulator.c64;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
-public final class CpuInstructionSharedBinaryConsumerTest implements ClassTesting<CpuInstructionSharedBinaryConsumer> {
-
-    // class............................................................................................................
+public final class CpuInstructionSharedBinaryBinaryConsumerCompareTest implements ClassTesting<CpuInstructionSharedBinaryBinaryConsumerCompare> {
 
     @Override
-    public Class<CpuInstructionSharedBinaryConsumer> type() {
-        return CpuInstructionSharedBinaryConsumer.class;
+    public Class<CpuInstructionSharedBinaryBinaryConsumerCompare> type() {
+        return CpuInstructionSharedBinaryBinaryConsumerCompare.class;
     }
 
     @Override

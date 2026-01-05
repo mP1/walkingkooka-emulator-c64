@@ -113,9 +113,6 @@ abstract class CpuInstructionSharedOperand {
      */
     abstract byte readValue(final CpuContext context);
 
-    abstract void handleBinaryConsumer(final CpuInstructionSharedBinaryConsumer consumer,
-                                       final CpuContext context);
-
     abstract void handleUnaryFunction(final CpuInstructionSharedUnaryFunction function,
                                       final CpuContext context);
 

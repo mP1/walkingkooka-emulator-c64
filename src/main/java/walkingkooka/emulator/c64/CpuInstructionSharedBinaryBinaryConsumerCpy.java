@@ -17,7 +17,7 @@
 
 package walkingkooka.emulator.c64;
 
-abstract class CpuInstructionSharedBinaryBinaryConsumerCpy extends CpuInstructionSharedBinaryBinaryConsumer {
+abstract class CpuInstructionSharedBinaryBinaryConsumerCpy extends CpuInstructionSharedBinaryBinaryConsumerCompare {
 
     CpuInstructionSharedBinaryBinaryConsumerCpy() {
         super();
@@ -26,11 +26,6 @@ abstract class CpuInstructionSharedBinaryBinaryConsumerCpy extends CpuInstructio
     @Override //
     final String mnemonic() {
         return "CPY";
-    }
-
-    @Override //
-    final CpuInstructionSharedBinaryConsumer consumer() {
-        return CpuInstructionSharedBinaryConsumer.COMPARE;
     }
 
     @Override //

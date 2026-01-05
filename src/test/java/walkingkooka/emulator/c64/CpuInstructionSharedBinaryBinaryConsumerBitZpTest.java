@@ -22,37 +22,59 @@ import org.junit.jupiter.api.Test;
 public final class CpuInstructionSharedBinaryBinaryConsumerBitZpTest extends CpuInstructionSharedBinaryBinaryConsumerBitTestCase<CpuInstructionSharedBinaryBinaryConsumerBitZp> {
 
     @Test
-    public void testExecute() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
-        );
-
-        final short pc = 0x1000;
-        context.setPc(pc);
-
-        final byte offset = 0x40;
-        context.writeByte(
-            pc,
-            offset
-        );
-
-        context.writeZeroPageByte(
-            offset,
-            (byte) 0xc0
-        );
-
-        context.setA(
-            (byte) 0xff
-        );
-
-        this.executeAndCheck(
-            context,
-            "-----1VN"
+    public void testExecuteZero() {
+        this.executeZeroPageAndCheck(
+            (byte) 0x0,
+            (byte) 0x0,
+            "CZ---1VN",
+            "CZ---1--"
         );
     }
 
     @Test
-    public void testExecuteZero() {
+    public void testExecuteZero2() {
+        this.executeZeroPageAndCheck(
+            (byte) 0x0,
+            (byte) 0x1,
+            "CZ---1VN",
+            "CZ---1--"
+        );
+    }
+
+    @Test
+    public void testExecuteNonZero() {
+        this.executeZeroPageAndCheck(
+            (byte) 0xF0,
+            (byte) 0x55,
+            "CZ---1VN",
+            "C----1V-"
+        );
+    }
+
+    @Test
+    public void testExecuteBit67() {
+        this.executeZeroPageAndCheck(
+            (byte) 0x0,
+            (byte) 0xC0,
+            "CZ---1VN",
+            "CZ---1VN"
+        );
+    }
+
+    @Test
+    public void testExecuteBit672() {
+        this.executeZeroPageAndCheck(
+            (byte) 0xFF,
+            (byte) 0xC0,
+            "CZ---1VN",
+            "C----1VN"
+        );
+    }
+
+    private void executeZeroPageAndCheck(final byte a,
+                                         final byte value,
+                                         final String flags,
+                                         final String expected) {
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(256 * 256)
         );
@@ -68,16 +90,18 @@ public final class CpuInstructionSharedBinaryBinaryConsumerBitZpTest extends Cpu
 
         context.writeZeroPageByte(
             offset,
-            (byte) 0xc0
+            value
         );
 
-        context.setA(
-            (byte) 0
+        context.setA(a);
+        context.setFlags(
+            CpuFlags.parse(flags)
+                .value()
         );
 
         this.executeAndCheck(
             context,
-            "-Z---1VN"
+            expected
         );
     }
 
