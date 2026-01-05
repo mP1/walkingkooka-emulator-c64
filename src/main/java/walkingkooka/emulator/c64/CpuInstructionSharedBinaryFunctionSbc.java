@@ -155,7 +155,7 @@ final class CpuInstructionSharedBinaryFunctionSbc extends CpuInstructionSharedBi
     private byte decimalMode(final byte left,
                              final byte right,
                              final CpuContext context) {
-        int units = units(left) - units(right); // ignore carry
+        int units = units(left) - units(right) - carryToUnit(context);
         int tens = tens(left) - tens(right);
 
         if (units < 0) {
@@ -183,5 +183,11 @@ final class CpuInstructionSharedBinaryFunctionSbc extends CpuInstructionSharedBi
         context.setOverflow(false); // never sets overflow, always clears
 
         return byteValue;
+    }
+
+    private static int carryToUnit(final CpuContext context) {
+        return context.isCarry() ?
+            0 :
+            1;
     }
 }
