@@ -22,13 +22,35 @@ import org.junit.jupiter.api.Test;
 public final class CpuInstructionSharedBinaryBinaryFunctionAndImmTest extends CpuInstructionSharedBinaryBinaryFunctionAndTestCase<CpuInstructionSharedBinaryBinaryFunctionAndImm> {
 
     @Test
-    public void testExecute() {
+    public void testExecuteZero() {
         this.executeImmediateAndCheck(
-            (byte) 0xAA, // a
-            (byte) 0x0F, // immediate
-            "C--D-1--",
-            (byte) 0x0A, // expected A
-            "C--D-1--" // expectedFlags
+            (byte) 0xF,
+            (byte) 0xF0,
+            "-----1--",
+            (byte) 0,
+            "-Z---1--"
+        );
+    }
+
+    @Test
+    public void testExecutePositive() {
+        this.executeImmediateAndCheck(
+            (byte) 0x0F,
+            (byte) 0x03,
+            "-----1--",
+            (byte) 0x03,
+            "-----1--"
+        );
+    }
+
+    @Test
+    public void testExecuteNegative() {
+        this.executeImmediateAndCheck(
+            (byte) 0xF0,
+            (byte) 0x8F,
+            "-----1--",
+            (byte) 0x80,
+            "-----1-N"
         );
     }
 

@@ -39,12 +39,6 @@ abstract class CpuInstructionSharedOperandRegister extends CpuInstructionSharedO
     }
 
     @Override
-    void handleBinaryFunction(final CpuInstructionSharedBinaryFunction function,
-                              final CpuContext context) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     void handleUnaryFunction(final CpuInstructionSharedUnaryFunction function,
                              final CpuContext context) {
         this.writeRegister(

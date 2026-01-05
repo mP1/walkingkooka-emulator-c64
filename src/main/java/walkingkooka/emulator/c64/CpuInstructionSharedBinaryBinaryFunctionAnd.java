@@ -24,13 +24,22 @@ abstract class CpuInstructionSharedBinaryBinaryFunctionAnd extends CpuInstructio
     }
 
     @Override //
-    final CpuInstructionSharedBinaryFunction function() {
-        return CpuInstructionSharedBinaryFunction.AND;
+    final CpuInstructionSharedOperandRegister register() {
+        return CpuInstructionSharedOperand.A;
     }
 
     @Override //
-    final CpuInstructionSharedOperandRegister register() {
-        return CpuInstructionSharedOperand.A;
+    final byte handle(final byte left,
+                      final byte right,
+                      final CpuContext context) {
+        final byte value = (byte) (left & right);
+
+        setMinusAndZero(
+            value,
+            context
+        );
+
+        return value;
     }
 
     @Override //
