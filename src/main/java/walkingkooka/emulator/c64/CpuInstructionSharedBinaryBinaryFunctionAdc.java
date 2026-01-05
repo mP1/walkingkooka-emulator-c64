@@ -27,4 +27,14 @@ abstract class CpuInstructionSharedBinaryBinaryFunctionAdc extends CpuInstructio
     final CpuInstructionSharedBinaryFunction function() {
         return CpuInstructionSharedBinaryFunction.ADC;
     }
+
+    @Override //
+    final CpuInstructionSharedOperandRegister register() {
+        return CpuInstructionSharedOperand.A;
+    }
+
+    @Override //
+    final String mnemonic() {
+        return "ADC";
+    }
 }
