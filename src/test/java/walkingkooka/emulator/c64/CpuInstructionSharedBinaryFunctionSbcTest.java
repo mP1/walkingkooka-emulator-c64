@@ -129,7 +129,7 @@ public final class CpuInstructionSharedBinaryFunctionSbcTest extends CpuInstruct
             (byte) 0x0,
             "C--D-1VN",
             (byte) 0,
-            "-Z-D-1--"
+            "CZ-D-1--"
         );
     }
 
@@ -140,7 +140,7 @@ public final class CpuInstructionSharedBinaryFunctionSbcTest extends CpuInstruct
             (byte) 0x0,
             "---D-1VN",
             (byte) 0x99,
-            "C--D-1-N"
+            "---D-1-N"
         );
     }
 
@@ -151,7 +151,7 @@ public final class CpuInstructionSharedBinaryFunctionSbcTest extends CpuInstruct
             (byte) 0x03,
             "C--D-1--",
             (byte) 0x02,
-            "---D-1--"
+            "C--D-1--"
         );
     }
 
@@ -162,7 +162,7 @@ public final class CpuInstructionSharedBinaryFunctionSbcTest extends CpuInstruct
             (byte) 0x12,
             "C--D-1--",
             (byte) 0x22,
-            "---D-1--"
+            "C--D-1--"
         );
     }
 
@@ -173,7 +173,7 @@ public final class CpuInstructionSharedBinaryFunctionSbcTest extends CpuInstruct
             (byte) 0x12,
             "---D-1--",
             (byte) 0x21,
-            "---D-1--"
+            "C--D-1--"
         );
     }
 
@@ -184,7 +184,7 @@ public final class CpuInstructionSharedBinaryFunctionSbcTest extends CpuInstruct
             (byte) 0x01,
             "C--D-1VN",
             (byte) 0x79,
-            "---D-1--"
+            "C--D-1--"
         );
     }
 
@@ -195,7 +195,7 @@ public final class CpuInstructionSharedBinaryFunctionSbcTest extends CpuInstruct
             (byte) 0x60,
             "C--D-1VN",
             (byte) 0x90,
-            "C--D-1-N"
+            "---D-1-N"
         );
     }
 

@@ -163,10 +163,10 @@ final class CpuInstructionSharedBinaryFunctionSbc extends CpuInstructionSharedBi
             tens--;
         }
 
-        boolean carry = false;
+        boolean carry = true;
         if (tens < 0) {
             tens = tens + 10;
-            carry = true;
+            carry = false;
         }
 
         final int value = (tens << 4) | (units & 0xf);
