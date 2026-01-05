@@ -185,6 +185,8 @@ public interface CpuInstructionOpcodes {
 
     byte ORIMM = (byte) 0x09;
 
+    byte ORINDX = (byte) 0x01;
+
     byte ORZP = (byte) 0x05;
 
     byte ORZPX = (byte) 0x15;
