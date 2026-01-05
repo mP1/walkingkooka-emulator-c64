@@ -25,115 +25,115 @@ import walkingkooka.reflect.PublicStaticHelper;
 public final class CpuInstructions implements PublicStaticHelper {
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAdcAbs}
+     * {@see CpuInstructionSharedBinaryFunctionAdcAbs}
      */
     public static CpuInstruction adcAbs() {
-        return CpuInstructionSharedBinaryBinaryFunctionAdcAbs.instance();
+        return CpuInstructionSharedBinaryFunctionAdcAbs.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAdcAbsX}
+     * {@see CpuInstructionSharedBinaryFunctionAdcAbsX}
      */
     public static CpuInstruction adcAbsX() {
-        return CpuInstructionSharedBinaryBinaryFunctionAdcAbsX.instance();
+        return CpuInstructionSharedBinaryFunctionAdcAbsX.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAdcAbsY}
+     * {@see CpuInstructionSharedBinaryFunctionAdcAbsY}
      */
     public static CpuInstruction adcAbsY() {
-        return CpuInstructionSharedBinaryBinaryFunctionAdcAbsY.instance();
+        return CpuInstructionSharedBinaryFunctionAdcAbsY.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAdcImm}
+     * {@see CpuInstructionSharedBinaryFunctionAdcImm}
      */
     public static CpuInstruction adcImm() {
-        return CpuInstructionSharedBinaryBinaryFunctionAdcImm.instance();
+        return CpuInstructionSharedBinaryFunctionAdcImm.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAdcIndX}
+     * {@see CpuInstructionSharedBinaryFunctionAdcIndX}
      */
     public static CpuInstruction adcIndX() {
-        return CpuInstructionSharedBinaryBinaryFunctionAdcIndX.instance();
+        return CpuInstructionSharedBinaryFunctionAdcIndX.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAdcIndY}
+     * {@see CpuInstructionSharedBinaryFunctionAdcIndY}
      */
     public static CpuInstruction adcIndY() {
-        return CpuInstructionSharedBinaryBinaryFunctionAdcIndY.instance();
+        return CpuInstructionSharedBinaryFunctionAdcIndY.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAdcZp}
+     * {@see CpuInstructionSharedBinaryFunctionAdcZp}
      */
     public static CpuInstruction adcZp() {
-        return CpuInstructionSharedBinaryBinaryFunctionAdcZp.instance();
+        return CpuInstructionSharedBinaryFunctionAdcZp.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAdcZpX}
+     * {@see CpuInstructionSharedBinaryFunctionAdcZpX}
      */
     public static CpuInstruction adcZpX() {
-        return CpuInstructionSharedBinaryBinaryFunctionAdcZpX.instance();
+        return CpuInstructionSharedBinaryFunctionAdcZpX.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAndAbs}
+     * {@see CpuInstructionSharedBinaryFunctionAndAbs}
      */
     public static CpuInstruction andAbs() {
-        return CpuInstructionSharedBinaryBinaryFunctionAndAbs.instance();
+        return CpuInstructionSharedBinaryFunctionAndAbs.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAndAbsX}
+     * {@see CpuInstructionSharedBinaryFunctionAndAbsX}
      */
     public static CpuInstruction andAbsX() {
-        return CpuInstructionSharedBinaryBinaryFunctionAndAbsX.instance();
+        return CpuInstructionSharedBinaryFunctionAndAbsX.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAndAbsY}
+     * {@see CpuInstructionSharedBinaryFunctionAndAbsY}
      */
     public static CpuInstruction andAbsY() {
-        return CpuInstructionSharedBinaryBinaryFunctionAndAbsY.instance();
+        return CpuInstructionSharedBinaryFunctionAndAbsY.instance();
     }
     
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAndImm}
+     * {@see CpuInstructionSharedBinaryFunctionAndImm}
      */
     public static CpuInstruction andImm() {
-        return CpuInstructionSharedBinaryBinaryFunctionAndImm.instance();
+        return CpuInstructionSharedBinaryFunctionAndImm.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAndIndX}
+     * {@see CpuInstructionSharedBinaryFunctionAndIndX}
      */
     public static CpuInstruction andIndX() {
-        return CpuInstructionSharedBinaryBinaryFunctionAndIndX.instance();
+        return CpuInstructionSharedBinaryFunctionAndIndX.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAndIndY}
+     * {@see CpuInstructionSharedBinaryFunctionAndIndY}
      */
     public static CpuInstruction andIndY() {
-        return CpuInstructionSharedBinaryBinaryFunctionAndIndY.instance();
+        return CpuInstructionSharedBinaryFunctionAndIndY.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAndZp}
+     * {@see CpuInstructionSharedBinaryFunctionAndZp}
      */
     public static CpuInstruction andZp() {
-        return CpuInstructionSharedBinaryBinaryFunctionAndZp.instance();
+        return CpuInstructionSharedBinaryFunctionAndZp.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAndZpX}
+     * {@see CpuInstructionSharedBinaryFunctionAndZpX}
      */
     public static CpuInstruction andZpX() {
-        return CpuInstructionSharedBinaryBinaryFunctionAndZpX.instance();
+        return CpuInstructionSharedBinaryFunctionAndZpX.instance();
     }
 
     /**
@@ -417,59 +417,59 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionEorAbs}
+     * {@see CpuInstructionSharedBinaryFunctionEorAbs}
      */
     public static CpuInstruction eorAbs() {
-        return CpuInstructionSharedBinaryBinaryFunctionEorAbs.instance();
+        return CpuInstructionSharedBinaryFunctionEorAbs.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionEorAbsX}
+     * {@see CpuInstructionSharedBinaryFunctionEorAbsX}
      */
     public static CpuInstruction eorAbsX() {
-        return CpuInstructionSharedBinaryBinaryFunctionEorAbsX.instance();
+        return CpuInstructionSharedBinaryFunctionEorAbsX.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionEorAbsY}
+     * {@see CpuInstructionSharedBinaryFunctionEorAbsY}
      */
     public static CpuInstruction eorAbsY() {
-        return CpuInstructionSharedBinaryBinaryFunctionEorAbsY.instance();
+        return CpuInstructionSharedBinaryFunctionEorAbsY.instance();
     }
     
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionEorImm}
+     * {@see CpuInstructionSharedBinaryFunctionEorImm}
      */
     public static CpuInstruction eorImm() {
-        return CpuInstructionSharedBinaryBinaryFunctionEorImm.instance();
+        return CpuInstructionSharedBinaryFunctionEorImm.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionEorIndX}
+     * {@see CpuInstructionSharedBinaryFunctionEorIndX}
      */
     public static CpuInstruction eorIndX() {
-        return CpuInstructionSharedBinaryBinaryFunctionEorIndX.instance();
+        return CpuInstructionSharedBinaryFunctionEorIndX.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionEorIndY}
+     * {@see CpuInstructionSharedBinaryFunctionEorIndY}
      */
     public static CpuInstruction eorIndY() {
-        return CpuInstructionSharedBinaryBinaryFunctionEorIndY.instance();
+        return CpuInstructionSharedBinaryFunctionEorIndY.instance();
     }
     
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionEorZp}
+     * {@see CpuInstructionSharedBinaryFunctionEorZp}
      */
     public static CpuInstruction eorZp() {
-        return CpuInstructionSharedBinaryBinaryFunctionEorZp.instance();
+        return CpuInstructionSharedBinaryFunctionEorZp.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionEorZpX}
+     * {@see CpuInstructionSharedBinaryFunctionEorZpX}
      */
     public static CpuInstruction eorZpX() {
-        return CpuInstructionSharedBinaryBinaryFunctionEorZpX.instance();
+        return CpuInstructionSharedBinaryFunctionEorZpX.instance();
     }
 
     /**
@@ -585,59 +585,59 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionOrAbs}
+     * {@see CpuInstructionSharedBinaryFunctionOrAbs}
      */
     public static CpuInstruction orAbs() {
-        return CpuInstructionSharedBinaryBinaryFunctionOrAbs.instance();
+        return CpuInstructionSharedBinaryFunctionOrAbs.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionOrAbsX}
+     * {@see CpuInstructionSharedBinaryFunctionOrAbsX}
      */
     public static CpuInstruction orAbsX() {
-        return CpuInstructionSharedBinaryBinaryFunctionOrAbsX.instance();
+        return CpuInstructionSharedBinaryFunctionOrAbsX.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionOrAbsY}
+     * {@see CpuInstructionSharedBinaryFunctionOrAbsY}
      */
     public static CpuInstruction orAbsY() {
-        return CpuInstructionSharedBinaryBinaryFunctionOrAbsY.instance();
+        return CpuInstructionSharedBinaryFunctionOrAbsY.instance();
     }
     
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionOrImm}
+     * {@see CpuInstructionSharedBinaryFunctionOrImm}
      */
     public static CpuInstruction orImm() {
-        return CpuInstructionSharedBinaryBinaryFunctionOrImm.instance();
+        return CpuInstructionSharedBinaryFunctionOrImm.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionOrIndX}
+     * {@see CpuInstructionSharedBinaryFunctionOrIndX}
      */
     public static CpuInstruction orIndX() {
-        return CpuInstructionSharedBinaryBinaryFunctionOrIndX.instance();
+        return CpuInstructionSharedBinaryFunctionOrIndX.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionOrIndY}
+     * {@see CpuInstructionSharedBinaryFunctionOrIndY}
      */
     public static CpuInstruction orIndY() {
-        return CpuInstructionSharedBinaryBinaryFunctionOrIndY.instance();
+        return CpuInstructionSharedBinaryFunctionOrIndY.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionOrZp}
+     * {@see CpuInstructionSharedBinaryFunctionOrZp}
      */
     public static CpuInstruction orZp() {
-        return CpuInstructionSharedBinaryBinaryFunctionOrZp.instance();
+        return CpuInstructionSharedBinaryFunctionOrZp.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionOrZpX}
+     * {@see CpuInstructionSharedBinaryFunctionOrZpX}
      */
     public static CpuInstruction orZpX() {
-        return CpuInstructionSharedBinaryBinaryFunctionOrZpX.instance();
+        return CpuInstructionSharedBinaryFunctionOrZpX.instance();
     }
 
     /**
@@ -746,59 +746,59 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionSbcAbs}
+     * {@see CpuInstructionSharedBinaryFunctionSbcAbs}
      */
     public static CpuInstruction sbcAbs() {
-        return CpuInstructionSharedBinaryBinaryFunctionSbcAbs.instance();
+        return CpuInstructionSharedBinaryFunctionSbcAbs.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionSbcAbsX}
+     * {@see CpuInstructionSharedBinaryFunctionSbcAbsX}
      */
     public static CpuInstruction sbcAbsX() {
-        return CpuInstructionSharedBinaryBinaryFunctionSbcAbsX.instance();
+        return CpuInstructionSharedBinaryFunctionSbcAbsX.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionSbcAbsY}
+     * {@see CpuInstructionSharedBinaryFunctionSbcAbsY}
      */
     public static CpuInstruction sbcAbsY() {
-        return CpuInstructionSharedBinaryBinaryFunctionSbcAbsY.instance();
+        return CpuInstructionSharedBinaryFunctionSbcAbsY.instance();
     }
     
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionSbcImm}
+     * {@see CpuInstructionSharedBinaryFunctionSbcImm}
      */
     public static CpuInstruction sbcImm() {
-        return CpuInstructionSharedBinaryBinaryFunctionSbcImm.instance();
+        return CpuInstructionSharedBinaryFunctionSbcImm.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionSbcIndX}
+     * {@see CpuInstructionSharedBinaryFunctionSbcIndX}
      */
     public static CpuInstruction sbcIndX() {
-        return CpuInstructionSharedBinaryBinaryFunctionSbcIndX.instance();
+        return CpuInstructionSharedBinaryFunctionSbcIndX.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionSbcIndY}
+     * {@see CpuInstructionSharedBinaryFunctionSbcIndY}
      */
     public static CpuInstruction sbcIndY() {
-        return CpuInstructionSharedBinaryBinaryFunctionSbcIndY.instance();
+        return CpuInstructionSharedBinaryFunctionSbcIndY.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionSbcZp}
+     * {@see CpuInstructionSharedBinaryFunctionSbcZp}
      */
     public static CpuInstruction sbcZp() {
-        return CpuInstructionSharedBinaryBinaryFunctionSbcZp.instance();
+        return CpuInstructionSharedBinaryFunctionSbcZp.instance();
     }
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionSbcZpX}
+     * {@see CpuInstructionSharedBinaryFunctionSbcZpX}
      */
     public static CpuInstruction sbcZpX() {
-        return CpuInstructionSharedBinaryBinaryFunctionSbcZpX.instance();
+        return CpuInstructionSharedBinaryFunctionSbcZpX.instance();
     }
     
     /**
