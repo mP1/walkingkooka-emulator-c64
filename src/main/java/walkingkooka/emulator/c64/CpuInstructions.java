@@ -751,6 +751,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction sbcAbs() {
         return CpuInstructionSharedBinaryBinaryFunctionSbcAbs.instance();
     }
+
+    /**
+     * {@see CpuInstructionSharedBinaryBinaryFunctionSbcAbsX}
+     */
+    public static CpuInstruction sbcAbsX() {
+        return CpuInstructionSharedBinaryBinaryFunctionSbcAbsX.instance();
+    }
     
     /**
      * {@see CpuInstructionSharedBinaryBinaryFunctionSbcImm}
