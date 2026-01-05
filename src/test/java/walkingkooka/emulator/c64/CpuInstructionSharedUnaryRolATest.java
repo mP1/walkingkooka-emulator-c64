@@ -35,7 +35,7 @@ public final class CpuInstructionSharedUnaryRolATest extends CpuInstructionShare
             this.createCpuInstruction(),
             context,
             (byte) 0x83,
-            CpuFlags.parse("C----1-N")
+            "C----1-N"
         );
     }
 

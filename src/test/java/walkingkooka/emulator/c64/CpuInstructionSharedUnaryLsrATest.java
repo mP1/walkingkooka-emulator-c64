@@ -35,7 +35,7 @@ public final class CpuInstructionSharedUnaryLsrATest extends CpuInstructionShare
             this.createCpuInstruction(),
             context,
             (byte) 0x07,
-            CpuFlags.parse("C----1--")
+            "C----1--"
         );
     }
 

@@ -35,7 +35,7 @@ public final class CpuInstructionSharedUnaryRorATest extends CpuInstructionShare
             this.createCpuInstruction(),
             context,
             (byte) 0xC1,
-            CpuFlags.parse("C----1-N")
+            "C----1-N"
         );
     }
 
