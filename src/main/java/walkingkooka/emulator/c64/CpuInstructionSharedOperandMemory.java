@@ -32,12 +32,6 @@ abstract class CpuInstructionSharedOperandMemory extends CpuInstructionSharedOpe
         throw new UnsupportedOperationException();
     }
 
-    @Override
-    void handleBinaryFunction(final CpuInstructionSharedBinaryFunction function,
-                              final CpuContext context) {
-        throw new UnsupportedOperationException();
-    }
-
     @Override //
     final void handleUnaryFunction(final CpuInstructionSharedUnaryFunction function,
                                    final CpuContext context) {

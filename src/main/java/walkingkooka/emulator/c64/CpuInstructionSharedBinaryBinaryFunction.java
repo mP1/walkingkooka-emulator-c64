@@ -32,16 +32,25 @@ abstract class CpuInstructionSharedBinaryBinaryFunction extends CpuInstructionSh
         final CpuInstructionSharedOperandRegister register = this.register();
 
         register.writeRegister(
-            this.function()
-                .handle(
-                    register.readValue(context),
-                    this.memory()
-                        .readValue(context),
-                    context
-                ),
+            this.handle(
+                register.readValue(context),
+                this.memory()
+                    .readValue(context),
+                context
+            ),
             context
         );
     }
 
-    abstract CpuInstructionSharedBinaryFunction function();
+    abstract byte handle(final byte left,
+                         final byte right,
+                         final CpuContext context);
+
+    static int units(final byte value) {
+        return 0x0f & value;
+    }
+
+    static int tens(final byte value) {
+        return ((((int) value) & 0xf0) >> 4) & 0x0f;
+    }
 }
