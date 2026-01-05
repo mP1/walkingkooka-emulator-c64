@@ -223,6 +223,8 @@ public interface CpuInstructionOpcodes {
 
     byte RTS = (byte) 0x60;
 
+    byte SBCABS = (byte) 0xED;
+
     byte SBCIMM = (byte) 0xE9;
 
     byte SBCZP = (byte) 0xE5;
