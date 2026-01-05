@@ -93,7 +93,14 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction andZp() {
         return CpuInstructionSharedBinaryBinaryFunctionAndZp.INSTANCE;
     }
-    
+
+    /**
+     * {@see CpuInstructionSharedBinaryBinaryFunctionAndZpX}
+     */
+    public static CpuInstruction andZpX() {
+        return CpuInstructionSharedBinaryBinaryFunctionAndZpX.INSTANCE;
+    }
+
     /**
      * {@see CpuInstructionSharedUnaryAslA}
      */
