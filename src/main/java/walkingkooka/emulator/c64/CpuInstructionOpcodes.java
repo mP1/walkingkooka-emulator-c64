@@ -177,6 +177,8 @@ public interface CpuInstructionOpcodes {
 
     byte NOP = (byte) 0xEA;
 
+    byte ORIMM = (byte) 0x09;
+
     byte PHA = (byte) 0x48;
 
     byte PHP = (byte) 0x08;
