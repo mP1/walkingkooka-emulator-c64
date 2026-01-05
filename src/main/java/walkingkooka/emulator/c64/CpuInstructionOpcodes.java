@@ -233,6 +233,8 @@ public interface CpuInstructionOpcodes {
 
     byte SBCINDX = (byte) 0xE1;
 
+    byte SBCINDY = (byte) 0xF1;
+
     byte SBCZP = (byte) 0xE5;
 
     byte SBCZPX = (byte) 0xF5;
