@@ -39,6 +39,8 @@ public interface CpuInstructionOpcodes {
 
     byte ANDZP = (byte) 0x25;
 
+    byte ANDZPX = (byte) 0x35;
+
     byte ASLA = (byte) 0x0a;
 
     byte ASLZP = (byte) 0x06;
