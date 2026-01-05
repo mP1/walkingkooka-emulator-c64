@@ -227,6 +227,8 @@ public interface CpuInstructionOpcodes {
 
     byte SBCABSX = (byte) 0xFD;
 
+    byte SBCABSY = (byte) 0xF9;
+
     byte SBCIMM = (byte) 0xE9;
 
     byte SBCZP = (byte) 0xE5;
