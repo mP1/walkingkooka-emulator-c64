@@ -23,54 +23,23 @@ public final class CpuInstructionSharedBinaryBinaryFunctionSbcImmTest extends Cp
 
     @Test
     public void testExecute() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
-        );
-
-        final short pc = 0x1000;
-        context.setPc(pc);
-
-        context.writeByte(
-            pc,
-            (byte) 0x22
-        );
-
-        context.setA(
-            (byte) 0x34
-        );
-        context.setCarry(true);
-
-        this.executeAccumulatorAndCheck(
-            context,
-            (byte) 0x12,
-            "C----1--"
+        this.executeImmediateAndCheck(
+            (byte) 0x34, // a
+            (byte) 0x22, // immediate
+            "C----1--",
+            (byte) 0x12, // expected A
+            "C----1--" // expectedFlags
         );
     }
 
     @Test
     public void testExecuteWithDecimalMode() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
-        );
-
-        final short pc = 0x1000;
-        context.setPc(pc);
-
-        context.writeByte(
-            pc,
-            (byte) 0x19
-        );
-
-        context.setA(
-            (byte) 0x25
-        );
-        context.setCarry(true);
-        context.setDecimalMode(true);
-
-        this.executeAccumulatorAndCheck(
-            context,
-            (byte) 0x06,
-            "C--D-1--"
+        this.executeImmediateAndCheck(
+            (byte) 0x25, // a
+            (byte) 0x19, // immediate
+            "C--D-1--",
+            (byte) 0x06, // expected A
+            "C--D-1--" // expectedFlags
         );
     }
 
