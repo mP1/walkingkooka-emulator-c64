@@ -23,27 +23,12 @@ public final class CpuInstructionSharedBinaryBinaryFunctionEorImmTest extends Cp
 
     @Test
     public void testExecute() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
-        );
-
-        final short pc = 0x1000;
-        context.setPc(pc);
-
-        context.writeByte(
-            pc,
-            (byte) 0xA0
-        );
-
-        context.setA(
-            (byte) 0x0F
-        );
-        context.setCarry(true);
-
-        this.executeAccumulatorAndCheck(
-            context,
-            (byte) 0xAF,
-            "C----1-N"
+        this.executeImmediateAndCheck(
+            (byte) 0x0F, // a
+            (byte) 0xA0, // immediate
+            "C--D-1--",
+            (byte) 0xAF, // expected A
+            "C--D-1-N" // expectedFlags
         );
     }
 

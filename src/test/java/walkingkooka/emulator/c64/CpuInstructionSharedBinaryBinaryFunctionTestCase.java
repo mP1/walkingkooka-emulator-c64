@@ -22,4 +22,34 @@ public abstract class CpuInstructionSharedBinaryBinaryFunctionTestCase<T extends
     CpuInstructionSharedBinaryBinaryFunctionTestCase() {
         super();
     }
+
+    final void executeImmediateAndCheck(final byte a,
+                                        final byte immediateValue,
+                                        final String flags,
+                                        final byte expectedA,
+                                        final String expectedFlags) {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.setA(a);
+        context.setFlags(
+            CpuFlags.parse(flags)
+                .value()
+        );
+
+        context.writeByte(
+            pc,
+            immediateValue
+        );
+
+        this.executeAccumulatorAndCheck(
+            context,
+            expectedA,
+            expectedFlags
+        );
+    }
 }
