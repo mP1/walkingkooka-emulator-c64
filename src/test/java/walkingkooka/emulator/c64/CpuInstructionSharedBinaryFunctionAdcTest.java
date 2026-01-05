@@ -105,9 +105,20 @@ public final class CpuInstructionSharedBinaryFunctionAdcTest extends CpuInstruct
         this.handleAndCheck(
             (byte) 0x0,
             (byte) 0x0,
-            "C--D-1VN",
+            "---D-1VN",
             (byte) 0,
             "-Z-D-1--"
+        );
+    }
+
+    @Test
+    public void testHandleDecimalZeroWithCarry() {
+        this.handleAndCheck(
+            (byte) 0x0,
+            (byte) 0x0,
+            "C--D-1VN",
+            (byte) 1,
+            "---D-1--"
         );
     }
 
@@ -129,6 +140,17 @@ public final class CpuInstructionSharedBinaryFunctionAdcTest extends CpuInstruct
             (byte) 0x33,
             "---D-1--",
             (byte) 0x58,
+            "---D-1--"
+        );
+    }
+
+    @Test
+    public void testHandleDecimalWithCarry() {
+        this.handleAndCheck(
+            (byte) 0x25,
+            (byte) 0x33,
+            "C--D-1--",
+            (byte) 0x59,
             "---D-1--"
         );
     }

@@ -48,7 +48,6 @@ abstract class CpuInstructionSharedBinaryFunction {
                          final byte right,
                          final CpuContext context);
 
-
     final int units(final byte value) {
         return 0x0f & value;
     }
