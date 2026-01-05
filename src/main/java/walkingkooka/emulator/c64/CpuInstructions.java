@@ -25,13 +25,6 @@ import walkingkooka.reflect.PublicStaticHelper;
 public final class CpuInstructions implements PublicStaticHelper {
 
     /**
-     * {@see CpuInstructionSharedBinaryBinaryFunctionAdcImm}
-     */
-    public static CpuInstruction adcImm() {
-        return CpuInstructionSharedBinaryBinaryFunctionAdcImm.INSTANCE;
-    }
-
-    /**
      * {@see CpuInstructionSharedBinaryBinaryFunctionAdcAbs}
      */
     public static CpuInstruction adcAbs() {
@@ -50,6 +43,13 @@ public final class CpuInstructions implements PublicStaticHelper {
      */
     public static CpuInstruction adcAbsY() {
         return CpuInstructionSharedBinaryBinaryFunctionAdcAbsY.INSTANCE;
+    }
+
+    /**
+     * {@see CpuInstructionSharedBinaryBinaryFunctionAdcImm}
+     */
+    public static CpuInstruction adcImm() {
+        return CpuInstructionSharedBinaryBinaryFunctionAdcImm.INSTANCE;
     }
 
     /**
