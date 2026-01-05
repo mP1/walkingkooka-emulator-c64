@@ -42,7 +42,7 @@ abstract class CpuInstructionSharedBinaryFunction {
     /**
      * {@see CpuInstructionSharedBinaryFunctionSbc}
      */
-    final static CpuInstructionSharedBinaryFunction SBC = CpuInstructionSharedBinaryFunctionAdc.INSTANCE;
+    final static CpuInstructionSharedBinaryFunction SBC = CpuInstructionSharedBinaryFunctionSbc.INSTANCE;
 
     abstract byte handle(final byte left,
                          final byte right,
