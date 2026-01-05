@@ -27,12 +27,6 @@ abstract class CpuInstructionSharedOperandMemory extends CpuInstructionSharedOpe
     }
 
     @Override //
-    final void handleBinaryConsumer(final CpuInstructionSharedBinaryConsumer consumer,
-                                    final CpuContext context) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override //
     final void handleUnaryFunction(final CpuInstructionSharedUnaryFunction function,
                                    final CpuContext context) {
         final short address = this.operandAddress(context);

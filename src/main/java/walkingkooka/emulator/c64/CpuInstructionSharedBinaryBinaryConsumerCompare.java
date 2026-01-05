@@ -17,38 +17,16 @@
 
 package walkingkooka.emulator.c64;
 
-import static walkingkooka.emulator.c64.CpuInstructionShared.setMinusAndZero;
+abstract class CpuInstructionSharedBinaryBinaryConsumerCompare extends CpuInstructionSharedBinaryBinaryConsumer {
 
-/**
- * Compare Memory with Accumulator
- * <pre>
- * A - M
- * N	Z	C	I	D	V
- * +	+	+	-	-	-
- * </pre>
- */
-final class CpuInstructionSharedBinaryConsumerCompare extends CpuInstructionSharedBinaryConsumer {
-
-    /**
-     * Singleton
-     */
-    static CpuInstructionSharedBinaryConsumerCompare instance() {
-        if (null == INSTANCE) {
-            INSTANCE = new CpuInstructionSharedBinaryConsumerCompare();
-        }
-        return INSTANCE;
-    }
-
-    private static CpuInstructionSharedBinaryConsumerCompare INSTANCE;
-
-    private CpuInstructionSharedBinaryConsumerCompare() {
+    CpuInstructionSharedBinaryBinaryConsumerCompare() {
         super();
     }
 
-    @Override
-    void handle(final byte left,
-                final byte right,
-                final CpuContext context) {
+    @Override //
+    final void handle(final byte left,
+                      final byte right,
+                      final CpuContext context) {
         setMinusAndZero(
             (byte) (mask(left) - mask(right)),
             context
@@ -56,9 +34,5 @@ final class CpuInstructionSharedBinaryConsumerCompare extends CpuInstructionShar
         context.setCarry(
             mask(left) >= mask(right)
         );
-    }
-
-    private static int mask(final byte value) {
-        return 0xff & value;
     }
 }

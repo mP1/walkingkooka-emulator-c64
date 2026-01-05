@@ -29,8 +29,7 @@ abstract class CpuInstructionSharedBinaryBinaryConsumer extends CpuInstructionSh
 
     @Override
     public final void execute(final CpuContext context) {
-        this.consumer()
-            .handle(
+        this.handle(
                 this.register()
                     .readValue(context),
                 this.memory()
@@ -39,5 +38,7 @@ abstract class CpuInstructionSharedBinaryBinaryConsumer extends CpuInstructionSh
             );
     }
 
-    abstract CpuInstructionSharedBinaryConsumer consumer();
+    abstract void handle(final byte left,
+                         final byte right,
+                         final CpuContext context);
 }

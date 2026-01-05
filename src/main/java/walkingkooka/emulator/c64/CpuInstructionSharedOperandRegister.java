@@ -32,12 +32,6 @@ abstract class CpuInstructionSharedOperandRegister extends CpuInstructionSharedO
         return this.readRegister(context);
     }
 
-    @Override //
-    final void handleBinaryConsumer(final CpuInstructionSharedBinaryConsumer consumer,
-                                    final CpuContext context) {
-        throw new UnsupportedOperationException();
-    }
-
     @Override
     void handleUnaryFunction(final CpuInstructionSharedUnaryFunction function,
                              final CpuContext context) {

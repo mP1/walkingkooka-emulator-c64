@@ -29,12 +29,22 @@ abstract class CpuInstructionSharedBinaryBinaryConsumerBit extends CpuInstructio
     }
 
     @Override //
-    final CpuInstructionSharedBinaryConsumer consumer() {
-        return CpuInstructionSharedBinaryConsumer.BIT;
+    final CpuInstructionSharedOperandRegister register() {
+        return CpuInstructionSharedOperandRegister.A;
     }
 
     @Override //
-    final CpuInstructionSharedOperandRegister register() {
-        return CpuInstructionSharedOperandRegister.A;
+    final void handle(final byte left,
+                      final byte right,
+                      final CpuContext context) {
+        context.setZero(
+            0 == (left & right)
+        );
+        context.setMinus(
+            Bit.BIT7.test(right)
+        );
+        context.setOverflow(
+            Bit.BIT6.test(right)
+        );
     }
 }
