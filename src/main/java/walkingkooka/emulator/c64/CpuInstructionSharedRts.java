@@ -21,7 +21,14 @@ import java.util.Objects;
 
 final class CpuInstructionSharedRts extends CpuInstructionShared {
 
-    final static CpuInstructionSharedRts INSTANCE = new CpuInstructionSharedRts();
+    static CpuInstructionSharedRts instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedRts();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedRts INSTANCE;
 
     private CpuInstructionSharedRts() {
         super();

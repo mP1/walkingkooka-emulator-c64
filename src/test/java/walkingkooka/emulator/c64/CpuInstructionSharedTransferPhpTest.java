@@ -91,7 +91,7 @@ public final class CpuInstructionSharedTransferPhpTest extends CpuInstructionSha
 
     @Override
     public CpuInstructionSharedTransferPhp createCpuInstruction() {
-        return CpuInstructionSharedTransferPhp.INSTANCE;
+        return CpuInstructionSharedTransferPhp.instance();
     }
 
     @Override

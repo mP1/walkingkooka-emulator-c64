@@ -83,7 +83,7 @@ public final class CpuInstructionSharedBinaryBinaryConsumerBitAbsTest extends Cp
 
     @Override
     public CpuInstructionSharedBinaryBinaryConsumerBitAbs createCpuInstruction() {
-        return CpuInstructionSharedBinaryBinaryConsumerBitAbs.INSTANCE;
+        return CpuInstructionSharedBinaryBinaryConsumerBitAbs.instance();
     }
 
     // class............................................................................................................

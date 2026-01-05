@@ -48,7 +48,7 @@ public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestC
         cpuFlags.setBreak(false);
 
         this.executeAndCheck(
-            CpuInstructionSharedRti.INSTANCE,
+            CpuInstructionSharedRti.instance(),
             context,
             context.a(),
             context.x(),
@@ -84,7 +84,7 @@ public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestC
         context.setPc(pc);
 
         this.executeAndCheck(
-            CpuInstructionSharedRti.INSTANCE,
+            CpuInstructionSharedRti.instance(),
             context,
             context.a(),
             context.x(),
@@ -120,7 +120,7 @@ public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestC
         context.setPc(pc);
 
         this.executeAndCheck(
-            CpuInstructionSharedRti.INSTANCE,
+            CpuInstructionSharedRti.instance(),
             context,
             context.a(),
             context.x(),
@@ -134,7 +134,7 @@ public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestC
     @Test
     public void testDisassemble() {
         this.disassembleAndCheck(
-            CpuInstructionSharedRti.INSTANCE,
+            CpuInstructionSharedRti.instance(),
             CpuContexts.fake(),
             "RTI"
         );
@@ -187,7 +187,7 @@ public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestC
 
         final Cpu cpu = Cpus.basic(
             Lists.of(
-                CpuInstructionSharedJsr.INSTANCE,
+                CpuInstructionSharedJsr.instance(),
                 CpuInstructions.rti()
             )
         );
@@ -211,7 +211,7 @@ public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestC
 
     @Override
     public CpuInstructionSharedRti createCpuInstruction() {
-        return CpuInstructionSharedRti.INSTANCE;
+        return CpuInstructionSharedRti.instance();
     }
 
     // class............................................................................................................

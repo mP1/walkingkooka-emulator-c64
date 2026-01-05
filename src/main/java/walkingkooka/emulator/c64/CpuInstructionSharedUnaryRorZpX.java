@@ -31,10 +31,14 @@ package walkingkooka.emulator.c64;
  */
 final class CpuInstructionSharedUnaryRorZpX extends CpuInstructionSharedUnaryRor {
 
-    /**
-     * Singleton
-     */
-    final static CpuInstructionSharedUnaryRorZpX INSTANCE = new CpuInstructionSharedUnaryRorZpX();
+    static CpuInstructionSharedUnaryRorZpX instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedUnaryRorZpX();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedUnaryRorZpX INSTANCE;
 
     private CpuInstructionSharedUnaryRorZpX() {
         super();

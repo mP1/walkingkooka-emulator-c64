@@ -19,7 +19,14 @@ package walkingkooka.emulator.c64;
 
 final class CpuInstructionSharedTransferTax extends CpuInstructionSharedTransfer {
 
-    final static CpuInstructionSharedTransferTax INSTANCE = new CpuInstructionSharedTransferTax();
+    static CpuInstructionSharedTransferTax instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedTransferTax();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedTransferTax INSTANCE;
 
     private CpuInstructionSharedTransferTax() {
         super();

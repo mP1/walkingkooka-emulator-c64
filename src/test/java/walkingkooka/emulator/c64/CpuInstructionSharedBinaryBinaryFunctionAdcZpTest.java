@@ -90,7 +90,7 @@ public final class CpuInstructionSharedBinaryBinaryFunctionAdcZpTest extends Cpu
 
     @Override
     public CpuInstructionSharedBinaryBinaryFunctionAdcZp createCpuInstruction() {
-        return CpuInstructionSharedBinaryBinaryFunctionAdcZp.INSTANCE;
+        return CpuInstructionSharedBinaryBinaryFunctionAdcZp.instance();
     }
 
     // class............................................................................................................

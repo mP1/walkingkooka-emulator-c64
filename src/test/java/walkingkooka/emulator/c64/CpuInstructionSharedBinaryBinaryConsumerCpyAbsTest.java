@@ -116,7 +116,7 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCpyAbsTest extends Cp
 
     @Override
     public CpuInstructionSharedBinaryBinaryConsumerCpyAbs createCpuInstruction() {
-        return CpuInstructionSharedBinaryBinaryConsumerCpyAbs.INSTANCE;
+        return CpuInstructionSharedBinaryBinaryConsumerCpyAbs.instance();
     }
 
     // class............................................................................................................

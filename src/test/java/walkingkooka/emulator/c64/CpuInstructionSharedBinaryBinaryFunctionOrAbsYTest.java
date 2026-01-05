@@ -57,7 +57,7 @@ public final class CpuInstructionSharedBinaryBinaryFunctionOrAbsYTest extends Cp
 
     @Override
     public CpuInstructionSharedBinaryBinaryFunctionOrAbsY createCpuInstruction() {
-        return CpuInstructionSharedBinaryBinaryFunctionOrAbsY.INSTANCE;
+        return CpuInstructionSharedBinaryBinaryFunctionOrAbsY.instance();
     }
 
     // class............................................................................................................

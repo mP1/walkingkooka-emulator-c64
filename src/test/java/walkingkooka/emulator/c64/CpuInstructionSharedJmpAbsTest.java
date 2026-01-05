@@ -38,7 +38,7 @@ public final class CpuInstructionSharedJmpAbsTest extends CpuInstructionSharedTe
         context.setPc(pc);
 
         this.executeAndCheck(
-            CpuInstructionSharedJmpAbs.INSTANCE,
+            CpuInstructionSharedJmpAbs.instance(),
             context,
             context.a(),
             context.x(),
@@ -65,7 +65,7 @@ public final class CpuInstructionSharedJmpAbsTest extends CpuInstructionSharedTe
         context.setPc(pc);
 
         this.disassembleAndCheck(
-            CpuInstructionSharedJmpAbs.INSTANCE,
+            CpuInstructionSharedJmpAbs.instance(),
             context,
             "JMP $1234"
         );
@@ -73,7 +73,7 @@ public final class CpuInstructionSharedJmpAbsTest extends CpuInstructionSharedTe
 
     @Override
     public CpuInstructionSharedJmpAbs createCpuInstruction() {
-        return CpuInstructionSharedJmpAbs.INSTANCE;
+        return CpuInstructionSharedJmpAbs.instance();
     }
 
     // class............................................................................................................

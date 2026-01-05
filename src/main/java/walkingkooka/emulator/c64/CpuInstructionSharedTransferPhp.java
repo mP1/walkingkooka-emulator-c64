@@ -19,7 +19,14 @@ package walkingkooka.emulator.c64;
 
 final class CpuInstructionSharedTransferPhp extends CpuInstructionSharedTransfer {
 
-    final static CpuInstructionSharedTransferPhp INSTANCE = new CpuInstructionSharedTransferPhp();
+    static CpuInstructionSharedTransferPhp instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedTransferPhp();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedTransferPhp INSTANCE;
 
     private CpuInstructionSharedTransferPhp() {
         super();

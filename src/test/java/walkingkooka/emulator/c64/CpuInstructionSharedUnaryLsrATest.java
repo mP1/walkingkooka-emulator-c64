@@ -52,7 +52,7 @@ public final class CpuInstructionSharedUnaryLsrATest extends CpuInstructionShare
 
     @Override
     public CpuInstructionSharedUnaryLsrA createCpuInstruction() {
-        return CpuInstructionSharedUnaryLsrA.INSTANCE;
+        return CpuInstructionSharedUnaryLsrA.instance();
     }
 
     // class............................................................................................................

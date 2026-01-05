@@ -45,7 +45,7 @@ public final class CpuInstructionSharedBrkTest extends CpuInstructionSharedTestC
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBrk.INSTANCE,
+            CpuInstructionSharedBrk.instance(),
             context,
             context.a(),
             context.x(),
@@ -59,7 +59,7 @@ public final class CpuInstructionSharedBrkTest extends CpuInstructionSharedTestC
     @Test
     public void testDisassemble() {
         this.disassembleAndCheck(
-            CpuInstructionSharedBrk.INSTANCE,
+            CpuInstructionSharedBrk.instance(),
             CpuContexts.fake(),
             "BRK"
         );
@@ -67,7 +67,7 @@ public final class CpuInstructionSharedBrkTest extends CpuInstructionSharedTestC
 
     @Override
     public CpuInstructionSharedBrk createCpuInstruction() {
-        return CpuInstructionSharedBrk.INSTANCE;
+        return CpuInstructionSharedBrk.instance();
     }
 
     // class............................................................................................................

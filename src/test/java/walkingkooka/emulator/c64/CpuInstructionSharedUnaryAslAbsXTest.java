@@ -87,7 +87,7 @@ public final class CpuInstructionSharedUnaryAslAbsXTest extends CpuInstructionSh
 
     @Override
     public CpuInstructionSharedUnaryAslAbsX createCpuInstruction() {
-        return CpuInstructionSharedUnaryAslAbsX.INSTANCE;
+        return CpuInstructionSharedUnaryAslAbsX.instance();
     }
 
     // class............................................................................................................

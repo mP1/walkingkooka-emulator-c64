@@ -21,7 +21,14 @@ import java.util.Objects;
 
 final class CpuInstructionSharedBrk extends CpuInstructionShared {
 
-    final static CpuInstructionSharedBrk INSTANCE = new CpuInstructionSharedBrk();
+    static CpuInstructionSharedBrk instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedBrk();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedBrk INSTANCE;
 
     private CpuInstructionSharedBrk() {
         super();

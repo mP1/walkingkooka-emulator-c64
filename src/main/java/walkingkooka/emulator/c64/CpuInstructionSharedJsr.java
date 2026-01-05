@@ -21,7 +21,14 @@ import java.util.Objects;
 
 final class CpuInstructionSharedJsr extends CpuInstructionShared {
 
-    final static CpuInstructionSharedJsr INSTANCE = new CpuInstructionSharedJsr();
+    static CpuInstructionSharedJsr instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedJsr();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedJsr INSTANCE;
 
     private CpuInstructionSharedJsr() {
         super();

@@ -52,7 +52,7 @@ public final class CpuInstructionSharedUnaryInxTest extends CpuInstructionShared
 
     @Override
     public CpuInstructionSharedUnaryInx createCpuInstruction() {
-        return CpuInstructionSharedUnaryInx.INSTANCE;
+        return CpuInstructionSharedUnaryInx.instance();
     }
 
     // class............................................................................................................

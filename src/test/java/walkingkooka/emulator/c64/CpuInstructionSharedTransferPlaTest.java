@@ -151,7 +151,7 @@ public final class CpuInstructionSharedTransferPlaTest extends CpuInstructionSha
 
     @Override
     public CpuInstructionSharedTransferPla createCpuInstruction() {
-        return CpuInstructionSharedTransferPla.INSTANCE;
+        return CpuInstructionSharedTransferPla.instance();
     }
 
     @Override

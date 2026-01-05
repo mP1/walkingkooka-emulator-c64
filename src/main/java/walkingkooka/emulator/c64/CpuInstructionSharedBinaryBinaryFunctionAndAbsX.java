@@ -32,7 +32,14 @@ package walkingkooka.emulator.c64;
  */
 final class CpuInstructionSharedBinaryBinaryFunctionAndAbsX extends CpuInstructionSharedBinaryBinaryFunctionAnd {
 
-    final static CpuInstructionSharedBinaryBinaryFunctionAndAbsX INSTANCE = new CpuInstructionSharedBinaryBinaryFunctionAndAbsX();
+    static CpuInstructionSharedBinaryBinaryFunctionAndAbsX instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedBinaryBinaryFunctionAndAbsX();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedBinaryBinaryFunctionAndAbsX INSTANCE;
 
     private CpuInstructionSharedBinaryBinaryFunctionAndAbsX() {
         super();
