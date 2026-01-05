@@ -19,7 +19,14 @@ package walkingkooka.emulator.c64;
 
 final class CpuInstructionSharedTransferPla extends CpuInstructionSharedTransfer {
 
-    final static CpuInstructionSharedTransferPla INSTANCE = new CpuInstructionSharedTransferPla();
+    static CpuInstructionSharedTransferPla instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedTransferPla();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedTransferPla INSTANCE;
 
     private CpuInstructionSharedTransferPla() {
         super();

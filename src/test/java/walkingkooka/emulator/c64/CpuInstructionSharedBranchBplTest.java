@@ -55,7 +55,7 @@ public final class CpuInstructionSharedBranchBplTest extends CpuInstructionShare
 
     @Override
     public CpuInstructionSharedBranchBpl createCpuInstruction() {
-        return CpuInstructionSharedBranchBpl.INSTANCE;
+        return CpuInstructionSharedBranchBpl.instance();
     }
 
     // class............................................................................................................

@@ -32,10 +32,14 @@ package walkingkooka.emulator.c64;
  */
 final class CpuInstructionSharedUnaryDex extends CpuInstructionSharedUnaryDec {
 
-    /**
-     * Singleton
-     */
-    final static CpuInstructionSharedUnaryDex INSTANCE = new CpuInstructionSharedUnaryDex();
+    static CpuInstructionSharedUnaryDex instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedUnaryDex();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedUnaryDex INSTANCE;
 
     private CpuInstructionSharedUnaryDex() {
         super();

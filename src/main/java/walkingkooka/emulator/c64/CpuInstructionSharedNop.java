@@ -21,7 +21,14 @@ import java.util.Objects;
 
 final class CpuInstructionSharedNop extends CpuInstructionShared {
 
-    final static CpuInstructionSharedNop INSTANCE = new CpuInstructionSharedNop();
+    static CpuInstructionSharedNop instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedNop();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedNop INSTANCE;
 
     private CpuInstructionSharedNop() {
         super();

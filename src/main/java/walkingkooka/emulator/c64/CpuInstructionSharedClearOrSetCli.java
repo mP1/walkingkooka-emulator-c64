@@ -21,10 +21,14 @@ import java.util.Objects;
 
 final class CpuInstructionSharedClearOrSetCli extends CpuInstructionSharedClearOrSet {
 
-    /**
-     * Singleton
-     */
-    final static CpuInstructionSharedClearOrSetCli INSTANCE = new CpuInstructionSharedClearOrSetCli();
+    static CpuInstructionSharedClearOrSetCli instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedClearOrSetCli();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedClearOrSetCli INSTANCE;
 
     private CpuInstructionSharedClearOrSetCli() {
         super();

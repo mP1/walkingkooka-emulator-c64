@@ -42,7 +42,7 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedJsr.INSTANCE,
+            CpuInstructionSharedJsr.instance(),
             context,
             context.a(),
             context.x(),
@@ -96,7 +96,7 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
 
         final Cpu cpu = Cpus.basic(
             Lists.of(
-                CpuInstructionSharedJsr.INSTANCE,
+                CpuInstructionSharedJsr.instance(),
                 CpuInstructions.rts()
             )
         );
@@ -132,7 +132,7 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
         context.setPc(pc);
 
         this.disassembleAndCheck(
-            CpuInstructionSharedJsr.INSTANCE,
+            CpuInstructionSharedJsr.instance(),
             context,
             "JSR $1234"
         );
@@ -140,7 +140,7 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
 
     @Override
     public CpuInstructionSharedJsr createCpuInstruction() {
-        return CpuInstructionSharedJsr.INSTANCE;
+        return CpuInstructionSharedJsr.instance();
     }
 
     // class............................................................................................................

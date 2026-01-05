@@ -102,7 +102,7 @@ public final class CpuInstructionSharedBinaryBinaryFunctionAdcIndYTest extends C
 
     @Override
     public CpuInstructionSharedBinaryBinaryFunctionAdcIndY createCpuInstruction() {
-        return CpuInstructionSharedBinaryBinaryFunctionAdcIndY.INSTANCE;
+        return CpuInstructionSharedBinaryBinaryFunctionAdcIndY.instance();
     }
 
     // class............................................................................................................

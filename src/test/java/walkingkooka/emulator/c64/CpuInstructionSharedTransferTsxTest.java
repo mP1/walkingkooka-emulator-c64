@@ -110,7 +110,7 @@ public final class CpuInstructionSharedTransferTsxTest extends CpuInstructionSha
 
     @Override
     public CpuInstructionSharedTransferTsx createCpuInstruction() {
-        return CpuInstructionSharedTransferTsx.INSTANCE;
+        return CpuInstructionSharedTransferTsx.instance();
     }
 
     @Override

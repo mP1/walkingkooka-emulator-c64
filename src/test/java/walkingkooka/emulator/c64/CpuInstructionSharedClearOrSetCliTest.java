@@ -29,7 +29,7 @@ public final class CpuInstructionSharedClearOrSetCliTest extends CpuInstructionS
 
     @Override
     public CpuInstructionSharedClearOrSetCli createCpuInstruction() {
-        return CpuInstructionSharedClearOrSetCli.INSTANCE;
+        return CpuInstructionSharedClearOrSetCli.instance();
     }
 
     @Override

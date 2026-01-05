@@ -29,7 +29,7 @@ public final class CpuInstructionSharedClearOrSetSedTest extends CpuInstructionS
 
     @Override
     public CpuInstructionSharedClearOrSetSed createCpuInstruction() {
-        return CpuInstructionSharedClearOrSetSed.INSTANCE;
+        return CpuInstructionSharedClearOrSetSed.instance();
     }
 
     @Override

@@ -52,7 +52,7 @@ public final class CpuInstructionSharedUnaryDexTest extends CpuInstructionShared
 
     @Override
     public CpuInstructionSharedUnaryDex createCpuInstruction() {
-        return CpuInstructionSharedUnaryDex.INSTANCE;
+        return CpuInstructionSharedUnaryDex.instance();
     }
 
     // class............................................................................................................

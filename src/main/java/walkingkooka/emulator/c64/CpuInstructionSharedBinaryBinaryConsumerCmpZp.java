@@ -32,7 +32,14 @@ package walkingkooka.emulator.c64;
  */
 final class CpuInstructionSharedBinaryBinaryConsumerCmpZp extends CpuInstructionSharedBinaryBinaryConsumerCmp {
 
-    final static CpuInstructionSharedBinaryBinaryConsumerCmpZp INSTANCE = new CpuInstructionSharedBinaryBinaryConsumerCmpZp();
+    static CpuInstructionSharedBinaryBinaryConsumerCmpZp instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedBinaryBinaryConsumerCmpZp();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedBinaryBinaryConsumerCmpZp INSTANCE;
 
     private CpuInstructionSharedBinaryBinaryConsumerCmpZp() {
         super();

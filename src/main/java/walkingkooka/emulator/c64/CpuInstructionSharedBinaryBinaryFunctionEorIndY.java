@@ -32,7 +32,14 @@ package walkingkooka.emulator.c64;
  */
 final class CpuInstructionSharedBinaryBinaryFunctionEorIndY extends CpuInstructionSharedBinaryBinaryFunctionEor {
 
-    final static CpuInstructionSharedBinaryBinaryFunctionEorIndY INSTANCE = new CpuInstructionSharedBinaryBinaryFunctionEorIndY();
+    static CpuInstructionSharedBinaryBinaryFunctionEorIndY instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedBinaryBinaryFunctionEorIndY();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedBinaryBinaryFunctionEorIndY INSTANCE;
 
     private CpuInstructionSharedBinaryBinaryFunctionEorIndY() {
         super();

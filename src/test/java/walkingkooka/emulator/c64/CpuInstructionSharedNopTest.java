@@ -35,7 +35,7 @@ public final class CpuInstructionSharedNopTest extends CpuInstructionSharedTestC
     @Test
     public void testDisassemble() {
         this.disassembleAndCheck(
-            CpuInstructionSharedNop.INSTANCE,
+            CpuInstructionSharedNop.instance(),
             CpuContexts.fake(),
             "NOP"
         );
@@ -43,7 +43,7 @@ public final class CpuInstructionSharedNopTest extends CpuInstructionSharedTestC
 
     @Override
     public CpuInstructionSharedNop createCpuInstruction() {
-        return CpuInstructionSharedNop.INSTANCE;
+        return CpuInstructionSharedNop.instance();
     }
 
     // class............................................................................................................

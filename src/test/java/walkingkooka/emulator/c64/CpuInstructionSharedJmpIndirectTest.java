@@ -44,7 +44,7 @@ public final class CpuInstructionSharedJmpIndirectTest extends CpuInstructionSha
         context.setPc(pc);
 
         this.executeAndCheck(
-            CpuInstructionSharedJmpIndirect.INSTANCE,
+            CpuInstructionSharedJmpIndirect.instance(),
             context,
             context.a(),
             context.x(),
@@ -78,7 +78,7 @@ public final class CpuInstructionSharedJmpIndirectTest extends CpuInstructionSha
         context.setPc(pc);
 
         this.disassembleAndCheck(
-            CpuInstructionSharedJmpIndirect.INSTANCE,
+            CpuInstructionSharedJmpIndirect.instance(),
             context,
             "JMP ($1234) $5678"
         );
@@ -86,7 +86,7 @@ public final class CpuInstructionSharedJmpIndirectTest extends CpuInstructionSha
 
     @Override
     public CpuInstructionSharedJmpIndirect createCpuInstruction() {
-        return CpuInstructionSharedJmpIndirect.INSTANCE;
+        return CpuInstructionSharedJmpIndirect.instance();
     }
 
     // class............................................................................................................

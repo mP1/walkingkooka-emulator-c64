@@ -19,10 +19,14 @@ package walkingkooka.emulator.c64;
 
 final class CpuInstructionSharedBranchBvs extends CpuInstructionSharedBranch {
 
-    /**
-     * Singleton
-     */
-    final static CpuInstructionSharedBranchBvs INSTANCE = new CpuInstructionSharedBranchBvs();
+    static CpuInstructionSharedBranchBvs instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedBranchBvs();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedBranchBvs INSTANCE;
 
     private CpuInstructionSharedBranchBvs() {
         super();

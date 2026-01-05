@@ -21,11 +21,15 @@ import java.util.Objects;
 
 final class CpuInstructionSharedClearOrSetClv extends CpuInstructionSharedClearOrSet {
 
-    /**
-     * Singleton
-     */
-    final static CpuInstructionSharedClearOrSetClv INSTANCE = new CpuInstructionSharedClearOrSetClv();
+    static CpuInstructionSharedClearOrSetClv instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedClearOrSetClv();
+        }
+        return INSTANCE;
+    }
 
+    private static CpuInstructionSharedClearOrSetClv INSTANCE;
+    
     private CpuInstructionSharedClearOrSetClv() {
         super();
     }

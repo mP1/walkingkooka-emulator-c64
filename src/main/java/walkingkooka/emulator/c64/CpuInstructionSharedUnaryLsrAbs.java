@@ -31,10 +31,14 @@ package walkingkooka.emulator.c64;
  */
 final class CpuInstructionSharedUnaryLsrAbs extends CpuInstructionSharedUnaryLsr {
 
-    /**
-     * Singleton
-     */
-    final static CpuInstructionSharedUnaryLsrAbs INSTANCE = new CpuInstructionSharedUnaryLsrAbs();
+    static CpuInstructionSharedUnaryLsrAbs instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedUnaryLsrAbs();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedUnaryLsrAbs INSTANCE;
 
     private CpuInstructionSharedUnaryLsrAbs() {
         super();

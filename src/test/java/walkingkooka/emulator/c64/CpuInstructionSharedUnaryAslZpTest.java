@@ -146,7 +146,7 @@ public final class CpuInstructionSharedUnaryAslZpTest extends CpuInstructionShar
 
     @Override
     public CpuInstructionSharedUnaryAslZp createCpuInstruction() {
-        return CpuInstructionSharedUnaryAslZp.INSTANCE;
+        return CpuInstructionSharedUnaryAslZp.instance();
     }
 
     // class............................................................................................................

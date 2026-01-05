@@ -55,7 +55,7 @@ public final class CpuInstructionSharedBranchBneTest extends CpuInstructionShare
 
     @Override
     public CpuInstructionSharedBranchBne createCpuInstruction() {
-        return CpuInstructionSharedBranchBne.INSTANCE;
+        return CpuInstructionSharedBranchBne.instance();
     }
 
     // class............................................................................................................

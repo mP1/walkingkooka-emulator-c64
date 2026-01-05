@@ -49,7 +49,7 @@ public final class CpuInstructionSharedBinaryBinaryFunctionAndImmTest extends Cp
 
     @Override
     public CpuInstructionSharedBinaryBinaryFunctionAndImm createCpuInstruction() {
-        return CpuInstructionSharedBinaryBinaryFunctionAndImm.INSTANCE;
+        return CpuInstructionSharedBinaryBinaryFunctionAndImm.instance();
     }
 
     // class............................................................................................................

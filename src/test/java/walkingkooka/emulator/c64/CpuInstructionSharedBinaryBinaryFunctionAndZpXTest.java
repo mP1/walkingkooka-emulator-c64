@@ -57,7 +57,7 @@ public final class CpuInstructionSharedBinaryBinaryFunctionAndZpXTest extends Cp
 
     @Override
     public CpuInstructionSharedBinaryBinaryFunctionAndZpX createCpuInstruction() {
-        return CpuInstructionSharedBinaryBinaryFunctionAndZpX.INSTANCE;
+        return CpuInstructionSharedBinaryBinaryFunctionAndZpX.instance();
     }
 
     // class............................................................................................................

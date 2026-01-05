@@ -110,7 +110,7 @@ public final class CpuInstructionSharedTransferTaxTest extends CpuInstructionSha
 
     @Override
     public CpuInstructionSharedTransferTax createCpuInstruction() {
-        return CpuInstructionSharedTransferTax.INSTANCE;
+        return CpuInstructionSharedTransferTax.instance();
     }
 
     @Override

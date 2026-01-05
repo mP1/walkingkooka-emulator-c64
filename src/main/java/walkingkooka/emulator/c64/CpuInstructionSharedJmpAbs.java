@@ -21,7 +21,14 @@ import java.util.Objects;
 
 final class CpuInstructionSharedJmpAbs extends CpuInstructionShared {
 
-    final static CpuInstructionSharedJmpAbs INSTANCE = new CpuInstructionSharedJmpAbs();
+    static CpuInstructionSharedJmpAbs instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedJmpAbs();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedJmpAbs INSTANCE;
 
     private CpuInstructionSharedJmpAbs() {
         super();

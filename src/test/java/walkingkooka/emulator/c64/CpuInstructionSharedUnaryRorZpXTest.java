@@ -140,7 +140,7 @@ public final class CpuInstructionSharedUnaryRorZpXTest extends CpuInstructionSha
 
     @Override
     public CpuInstructionSharedUnaryRorZpX createCpuInstruction() {
-        return CpuInstructionSharedUnaryRorZpX.INSTANCE;
+        return CpuInstructionSharedUnaryRorZpX.instance();
     }
 
     // class............................................................................................................

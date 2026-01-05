@@ -57,7 +57,7 @@ public final class CpuInstructionSharedBinaryBinaryFunctionEorAbsYTest extends C
 
     @Override
     public CpuInstructionSharedBinaryBinaryFunctionEorAbsY createCpuInstruction() {
-        return CpuInstructionSharedBinaryBinaryFunctionEorAbsY.INSTANCE;
+        return CpuInstructionSharedBinaryBinaryFunctionEorAbsY.instance();
     }
 
     // class............................................................................................................

@@ -83,7 +83,7 @@ public final class CpuInstructionSharedBinaryBinaryConsumerBitZpTest extends Cpu
 
     @Override
     public CpuInstructionSharedBinaryBinaryConsumerBitZp createCpuInstruction() {
-        return CpuInstructionSharedBinaryBinaryConsumerBitZp.INSTANCE;
+        return CpuInstructionSharedBinaryBinaryConsumerBitZp.instance();
     }
 
     // class............................................................................................................

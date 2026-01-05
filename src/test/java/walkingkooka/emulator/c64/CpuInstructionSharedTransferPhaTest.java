@@ -59,7 +59,7 @@ public final class CpuInstructionSharedTransferPhaTest extends CpuInstructionSha
 
     @Override
     public CpuInstructionSharedTransferPha createCpuInstruction() {
-        return CpuInstructionSharedTransferPha.INSTANCE;
+        return CpuInstructionSharedTransferPha.instance();
     }
 
     @Override

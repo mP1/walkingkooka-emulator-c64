@@ -119,7 +119,7 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpAbsYTest extends C
 
     @Override
     public CpuInstructionSharedBinaryBinaryConsumerCmpAbsY createCpuInstruction() {
-        return CpuInstructionSharedBinaryBinaryConsumerCmpAbsY.INSTANCE;
+        return CpuInstructionSharedBinaryBinaryConsumerCmpAbsY.instance();
     }
 
     // class............................................................................................................

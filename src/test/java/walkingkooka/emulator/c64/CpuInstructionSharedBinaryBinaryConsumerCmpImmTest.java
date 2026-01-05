@@ -95,7 +95,7 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpImmTest extends Cp
 
     @Override
     public CpuInstructionSharedBinaryBinaryConsumerCmpImm createCpuInstruction() {
-        return CpuInstructionSharedBinaryBinaryConsumerCmpImm.INSTANCE;
+        return CpuInstructionSharedBinaryBinaryConsumerCmpImm.instance();
     }
 
     // class............................................................................................................
