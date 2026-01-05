@@ -585,6 +585,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedBinaryBinaryFunctionOrAbs}
+     */
+    public static CpuInstruction orAbs() {
+        return CpuInstructionSharedBinaryBinaryFunctionOrAbs.INSTANCE;
+    }
+    
+    /**
      * {@see CpuInstructionSharedBinaryBinaryFunctionOrImm}
      */
     public static CpuInstruction orImm() {
