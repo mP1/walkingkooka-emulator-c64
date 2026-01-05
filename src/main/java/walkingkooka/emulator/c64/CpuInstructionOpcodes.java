@@ -177,6 +177,8 @@ public interface CpuInstructionOpcodes {
 
     byte NOP = (byte) 0xEA;
 
+    byte ORABS = (byte) 0x0D;
+
     byte ORIMM = (byte) 0x09;
 
     byte ORZP = (byte) 0x05;
