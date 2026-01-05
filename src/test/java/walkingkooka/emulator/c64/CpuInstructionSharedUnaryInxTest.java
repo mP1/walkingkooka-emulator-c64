@@ -35,7 +35,7 @@ public final class CpuInstructionSharedUnaryInxTest extends CpuInstructionShared
             this.createCpuInstruction(),
             context,
             (byte) 0x10,
-            CpuFlags.parse("C----1--")
+            "C----1--"
         );
     }
 
