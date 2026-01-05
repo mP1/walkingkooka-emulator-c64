@@ -19,6 +19,8 @@ package walkingkooka.emulator.c64;
 
 public interface CpuInstructionOpcodes {
 
+    byte ADCABS = (byte) 0x6D;
+
     byte ADCIMM = (byte) 0x69;
 
     byte ADCZP = (byte) 0x65;
