@@ -46,7 +46,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerBitAbsTest extends Cp
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerBitAbs.INSTANCE,
             context,
             "-----1VN"
         );
@@ -77,7 +76,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerBitAbsTest extends Cp
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerBitAbs.INSTANCE,
             context,
             "-Z---1VN"
         );

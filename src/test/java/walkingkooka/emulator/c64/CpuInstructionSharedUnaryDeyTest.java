@@ -32,7 +32,6 @@ public final class CpuInstructionSharedUnaryDeyTest extends CpuInstructionShared
         context.setY((byte) 0x0f);
 
         this.executeYAndCheck(
-            this.createCpuInstruction(),
             context,
             (byte) 0x0e,
             "C----1--"

@@ -32,6 +32,15 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
         );
     }
 
+    default void executeBranchOrJumpAndCheck(final CpuContext context,
+                                             final short expected) {
+        this.executeBranchOrJumpAndCheck(
+            this.createCpuInstruction(),
+            context,
+            expected
+        );
+    }
+
     default void executeBranchOrJumpAndCheck(final I instruction,
                                              final CpuContext context,
                                              final short expected) {
@@ -50,6 +59,17 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
         );
     }
 
+    default void executeAccumulatorAndCheck(final CpuContext context,
+                                            final byte a,
+                                            final String flags) {
+        this.executeAccumulatorAndCheck(
+            this.createCpuInstruction(),
+            context,
+            a,
+            flags
+        );
+    }
+
     default void executeAccumulatorAndCheck(final I instruction,
                                             final CpuContext context,
                                             final byte a,
@@ -59,6 +79,17 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
             context,
             a,
             CpuFlags.parse(flags)
+        );
+    }
+
+    default void executeAccumulatorAndCheck(final CpuContext context,
+                                            final byte a,
+                                            final CpuFlags flags) {
+        this.executeAccumulatorAndCheck(
+            this.createCpuInstruction(),
+            context,
+            a,
+            flags
         );
     }
 
@@ -76,6 +107,17 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
         );
     }
 
+    default void executeXAndCheck(final CpuContext context,
+                                  final byte x,
+                                  final String flags) {
+        this.executeXAndCheck(
+            this.createCpuInstruction(),
+            context,
+            x,
+            flags
+        );
+    }
+
     default void executeXAndCheck(final I instruction,
                                   final CpuContext context,
                                   final byte x,
@@ -85,6 +127,17 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
             context,
             x,
             CpuFlags.parse(flags)
+        );
+    }
+
+    default void executeXAndCheck(final CpuContext context,
+                                  final byte x,
+                                  final CpuFlags flags) {
+        this.executeXAndCheck(
+            this.createCpuInstruction(),
+            context,
+            x,
+            flags
         );
     }
 
@@ -102,6 +155,17 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
         );
     }
 
+    default void executeYAndCheck(final CpuContext context,
+                                  final byte y,
+                                  final String flags) {
+        this.executeYAndCheck(
+            this.createCpuInstruction(),
+            context,
+            y,
+            flags
+        );
+    }
+
     default void executeYAndCheck(final I instruction,
                                   final CpuContext context,
                                   final byte y,
@@ -111,6 +175,17 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
             context,
             y,
             CpuFlags.parse(flags)
+        );
+    }
+
+    default void executeYAndCheck(final CpuContext context,
+                                  final byte y,
+                                  final CpuFlags flags) {
+        this.executeYAndCheck(
+            this.createCpuInstruction(),
+            context,
+            y,
+            flags
         );
     }
 
@@ -125,6 +200,15 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
             context.x(),
             y,
             flags
+        );
+    }
+
+    default void executeAndCheck(final CpuContext context,
+                                 final String flags) {
+        this.executeAndCheck(
+            this.createCpuInstruction(),
+            context,
+            CpuFlags.parse(flags)
         );
     }
 

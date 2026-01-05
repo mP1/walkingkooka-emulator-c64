@@ -32,7 +32,6 @@ public final class CpuInstructionSharedUnaryInyTest extends CpuInstructionShared
         context.setY((byte) 0x0f);
 
         this.executeYAndCheck(
-            this.createCpuInstruction(),
             context,
             (byte) 0x10,
             "C----1--"

@@ -32,7 +32,6 @@ public final class CpuInstructionSharedUnaryRorATest extends CpuInstructionShare
         context.setA((byte) 0x83);
 
         this.executeAccumulatorAndCheck(
-            this.createCpuInstruction(),
             context,
             (byte) 0xC1,
             "C----1-N"

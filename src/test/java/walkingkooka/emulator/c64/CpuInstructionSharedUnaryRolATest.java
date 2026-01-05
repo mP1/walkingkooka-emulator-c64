@@ -32,7 +32,6 @@ public final class CpuInstructionSharedUnaryRolATest extends CpuInstructionShare
         context.setA((byte) 0xC1);
 
         this.executeAccumulatorAndCheck(
-            this.createCpuInstruction(),
             context,
             (byte) 0x83,
             "C----1-N"
