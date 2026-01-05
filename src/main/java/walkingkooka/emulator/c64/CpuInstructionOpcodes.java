@@ -37,6 +37,8 @@ public interface CpuInstructionOpcodes {
 
     byte ANDIMM = (byte) 0x29;
 
+    byte ANDZP = (byte) 0x25;
+
     byte ASLA = (byte) 0x0a;
 
     byte ASLZP = (byte) 0x06;
