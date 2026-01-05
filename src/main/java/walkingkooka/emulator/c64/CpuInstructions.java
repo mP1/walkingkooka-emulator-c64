@@ -431,6 +431,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedBinaryBinaryFunctionEorZpX}
+     */
+    public static CpuInstruction eorZpX() {
+        return CpuInstructionSharedBinaryBinaryFunctionEorZpX.INSTANCE;
+    }
+
+    /**
      * {@see FakeCpuInstruction}
      */
     public static FakeCpuInstruction fake() {
