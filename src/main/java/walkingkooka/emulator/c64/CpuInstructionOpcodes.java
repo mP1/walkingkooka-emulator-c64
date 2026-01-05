@@ -135,6 +135,8 @@ public interface CpuInstructionOpcodes {
 
     byte EORABSX = (byte) 0x5D;
 
+    byte EORABSY = (byte) 0x59;
+
     byte EORIMM = (byte) 0x49;
 
     byte EORZP = (byte) 0x45;
