@@ -121,10 +121,14 @@ import static walkingkooka.emulator.c64.CpuInstructionShared.setMinusAndZero;
  */
 final class CpuInstructionSharedBinaryFunctionSbc extends CpuInstructionSharedBinaryFunction {
 
-    /**
-     * Singleton
-     */
-    final static CpuInstructionSharedBinaryFunctionSbc INSTANCE = new CpuInstructionSharedBinaryFunctionSbc();
+    static CpuInstructionSharedBinaryFunctionSbc instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedBinaryFunctionSbc();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedBinaryFunctionSbc INSTANCE;
 
     private CpuInstructionSharedBinaryFunctionSbc() {
         super();

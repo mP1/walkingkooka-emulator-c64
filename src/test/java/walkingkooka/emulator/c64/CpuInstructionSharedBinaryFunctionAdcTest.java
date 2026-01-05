@@ -179,7 +179,7 @@ public final class CpuInstructionSharedBinaryFunctionAdcTest extends CpuInstruct
 
     @Override
     CpuInstructionSharedBinaryFunctionAdc createCpuInstructionSharedBinaryFunction() {
-        return CpuInstructionSharedBinaryFunctionAdc.INSTANCE;
+        return CpuInstructionSharedBinaryFunctionAdc.instance();
     }
 
     @Override

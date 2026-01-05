@@ -57,7 +57,7 @@ public final class CpuInstructionSharedBinaryFunctionAndTest extends CpuInstruct
 
     @Override
     CpuInstructionSharedBinaryFunctionAnd createCpuInstructionSharedBinaryFunction() {
-        return CpuInstructionSharedBinaryFunctionAnd.INSTANCE;
+        return CpuInstructionSharedBinaryFunctionAnd.instance();
     }
 
     @Override

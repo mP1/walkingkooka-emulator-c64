@@ -57,7 +57,7 @@ public final class CpuInstructionSharedBinaryFunctionEorTest extends CpuInstruct
 
     @Override
     CpuInstructionSharedBinaryFunctionEor createCpuInstructionSharedBinaryFunction() {
-        return CpuInstructionSharedBinaryFunctionEor.INSTANCE;
+        return CpuInstructionSharedBinaryFunctionEor.instance();
     }
 
     @Override
