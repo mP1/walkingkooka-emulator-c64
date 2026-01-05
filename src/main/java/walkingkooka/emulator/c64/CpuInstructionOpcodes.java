@@ -225,6 +225,8 @@ public interface CpuInstructionOpcodes {
 
     byte SBCIMM = (byte) 0xE9;
 
+    byte SBCZP = (byte) 0xE5;
+
     byte SEC = (byte) 0x38;
 
     byte SED = (byte) 0xF8;
