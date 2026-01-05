@@ -53,6 +53,18 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
     default void executeAccumulatorAndCheck(final I instruction,
                                             final CpuContext context,
                                             final byte a,
+                                            final String flags) {
+        this.executeAccumulatorAndCheck(
+            instruction,
+            context,
+            a,
+            CpuFlags.parse(flags)
+        );
+    }
+
+    default void executeAccumulatorAndCheck(final I instruction,
+                                            final CpuContext context,
+                                            final byte a,
                                             final CpuFlags flags) {
         this.executeAndCheck(
             instruction,

@@ -35,7 +35,7 @@ public final class CpuInstructionSharedUnaryAslATest extends CpuInstructionShare
             this.createCpuInstruction(),
             context,
             (byte) 0x1E,
-            CpuFlags.parse("-----1--")
+            "-----1--"
         );
     }
 
