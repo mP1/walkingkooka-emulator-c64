@@ -181,6 +181,8 @@ public interface CpuInstructionOpcodes {
 
     byte ORABSX = (byte) 0x1D;
 
+    byte ORABSY = (byte) 0x19;
+
     byte ORIMM = (byte) 0x09;
 
     byte ORZP = (byte) 0x05;
