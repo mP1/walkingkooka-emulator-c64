@@ -223,6 +223,8 @@ public interface CpuInstructionOpcodes {
 
     byte RTS = (byte) 0x60;
 
+    byte SBCIMM = (byte) 0xE9;
+
     byte SEC = (byte) 0x38;
 
     byte SED = (byte) 0xF8;
