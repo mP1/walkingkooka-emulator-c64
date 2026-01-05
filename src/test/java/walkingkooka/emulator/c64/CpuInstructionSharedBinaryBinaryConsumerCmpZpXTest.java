@@ -46,7 +46,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpZpXTest extends Cp
         context.setX((byte) 0x10);
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpZpX.INSTANCE,
             context,
             "C----1--"
         );
@@ -77,7 +76,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpZpXTest extends Cp
         context.setX((byte) 0x10);
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpZpX.INSTANCE,
             context,
             "C----1-N"
         );
@@ -108,7 +106,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpZpXTest extends Cp
         context.setX((byte) 0x10);
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpZpX.INSTANCE,
             context,
             "-----1--"
         );

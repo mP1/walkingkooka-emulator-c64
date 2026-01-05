@@ -48,7 +48,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpAbsYTest extends C
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpAbsY.INSTANCE,
             context,
             "C----1--"
         );
@@ -81,7 +80,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpAbsYTest extends C
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpAbsY.INSTANCE,
             context,
             "CZ---1--"
         );
@@ -114,7 +112,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpAbsYTest extends C
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpAbsY.INSTANCE,
             context,
             "-----1--"
         );

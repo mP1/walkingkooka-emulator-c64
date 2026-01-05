@@ -46,7 +46,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerBitZpTest extends Cpu
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerBitZp.INSTANCE,
             context,
             "-----1VN"
         );
@@ -77,7 +76,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerBitZpTest extends Cpu
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerBitZp.INSTANCE,
             context,
             "-Z---1VN"
         );

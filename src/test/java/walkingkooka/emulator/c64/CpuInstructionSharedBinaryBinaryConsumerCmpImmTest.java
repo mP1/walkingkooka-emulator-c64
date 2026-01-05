@@ -40,7 +40,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpImmTest extends Cp
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpImm.INSTANCE,
             context,
             "C----1--"
         );
@@ -65,7 +64,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpImmTest extends Cp
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpImm.INSTANCE,
             context,
             "CZ---1--"
         );
@@ -90,7 +88,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpImmTest extends Cp
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpImm.INSTANCE,
             context,
             "-----1--"
         );

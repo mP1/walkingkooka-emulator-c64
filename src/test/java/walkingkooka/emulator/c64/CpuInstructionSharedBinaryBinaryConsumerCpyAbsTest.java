@@ -47,7 +47,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCpyAbsTest extends Cp
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCpyAbs.INSTANCE,
             context,
             "C----1--"
         );
@@ -79,7 +78,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCpyAbsTest extends Cp
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCpyAbs.INSTANCE,
             context,
             "CZ---1--"
         );
@@ -111,7 +109,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCpyAbsTest extends Cp
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCpyAbs.INSTANCE,
             context,
             "-----1--"
         );

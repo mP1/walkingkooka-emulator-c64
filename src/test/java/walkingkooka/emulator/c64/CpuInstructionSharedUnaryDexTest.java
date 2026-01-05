@@ -32,7 +32,6 @@ public final class CpuInstructionSharedUnaryDexTest extends CpuInstructionShared
         context.setX((byte) 0x0f);
 
         this.executeXAndCheck(
-            this.createCpuInstruction(),
             context,
             (byte) 0x0e,
             "C----1--"

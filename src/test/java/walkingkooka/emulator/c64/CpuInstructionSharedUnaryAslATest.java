@@ -32,7 +32,6 @@ public final class CpuInstructionSharedUnaryAslATest extends CpuInstructionShare
         context.setA((byte) 0x0f);
 
         this.executeAccumulatorAndCheck(
-            this.createCpuInstruction(),
             context,
             (byte) 0x1E,
             "-----1--"

@@ -53,7 +53,6 @@ public abstract class CpuInstructionSharedBranchTestCase<I extends CpuInstructio
         this.setFlagTrue(context);
 
         this.executeBranchOrJumpAndCheck(
-            this.createCpuInstruction(),
             context,
             (short) (pc + 1 + offset)
         );
@@ -75,7 +74,6 @@ public abstract class CpuInstructionSharedBranchTestCase<I extends CpuInstructio
         this.setFlagFalse(context);
 
         this.executeBranchOrJumpAndCheck(
-            this.createCpuInstruction(),
             context,
             (short) (pc + 1)
         );

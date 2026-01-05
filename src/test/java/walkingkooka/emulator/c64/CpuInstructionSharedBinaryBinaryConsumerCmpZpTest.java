@@ -47,7 +47,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpZpTest extends Cpu
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpZp.INSTANCE,
             context,
             "C----1--"
         );
@@ -79,7 +78,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpZpTest extends Cpu
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpZp.INSTANCE,
             context,
             "CZ---1--"
         );
@@ -111,7 +109,6 @@ public final class CpuInstructionSharedBinaryBinaryConsumerCmpZpTest extends Cpu
         );
 
         this.executeAndCheck(
-            CpuInstructionSharedBinaryBinaryConsumerCmpZp.INSTANCE,
             context,
             "-----1--"
         );

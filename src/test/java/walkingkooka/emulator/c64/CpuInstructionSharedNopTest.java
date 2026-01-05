@@ -27,7 +27,6 @@ public final class CpuInstructionSharedNopTest extends CpuInstructionSharedTestC
         context.setPc((short) 0x1000);
 
         this.executeBranchOrJumpAndCheck(
-            CpuInstructionSharedNop.INSTANCE,
             context,
             (short) 0x1000
         );
