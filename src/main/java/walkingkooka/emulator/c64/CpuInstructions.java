@@ -417,6 +417,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedBinaryBinaryFunctionEorAbs}
+     */
+    public static CpuInstruction eorAbs() {
+        return CpuInstructionSharedBinaryBinaryFunctionEorAbs.INSTANCE;
+    }
+    
+    /**
      * {@see CpuInstructionSharedBinaryBinaryFunctionEorImm}
      */
     public static CpuInstruction eorImm() {
