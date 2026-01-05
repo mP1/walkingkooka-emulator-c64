@@ -181,6 +181,8 @@ public interface CpuInstructionOpcodes {
 
     byte ORZP = (byte) 0x05;
 
+    byte ORZPX = (byte) 0x15;
+
     byte PHA = (byte) 0x48;
 
     byte PHP = (byte) 0x08;
