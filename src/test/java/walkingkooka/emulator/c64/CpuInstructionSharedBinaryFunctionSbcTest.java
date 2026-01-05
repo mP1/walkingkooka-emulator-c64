@@ -44,6 +44,17 @@ public final class CpuInstructionSharedBinaryFunctionSbcTest extends CpuInstruct
     }
 
     @Test
+    public void testHandleBinaryZeroWithCarryClear() {
+        this.handleAndCheck(
+            (byte) 0x0,
+            (byte) 0x0,
+            "-----1--",
+            (byte) 0xff,
+            "-----1-N"
+        );
+    }
+
+    @Test
     public void testHandleBinaryPositive() {
         this.handleAndCheck(
             (byte) 0x04,
@@ -123,6 +134,17 @@ public final class CpuInstructionSharedBinaryFunctionSbcTest extends CpuInstruct
     }
 
     @Test
+    public void testHandleDecimalZeroWithCarryClear() {
+        this.handleAndCheck(
+            (byte) 0x0,
+            (byte) 0x0,
+            "---D-1VN",
+            (byte) 0x99,
+            "C--D-1-N"
+        );
+    }
+
+    @Test
     public void testHandleDecimal() {
         this.handleAndCheck(
             (byte) 0x05,
@@ -145,11 +167,22 @@ public final class CpuInstructionSharedBinaryFunctionSbcTest extends CpuInstruct
     }
 
     @Test
+    public void testHandleDecimalWithCarryClear() {
+        this.handleAndCheck(
+            (byte) 0x34,
+            (byte) 0x12,
+            "---D-1--",
+            (byte) 0x21,
+            "---D-1--"
+        );
+    }
+
+    @Test
     public void testHandleDecimalUnitsUnderflow() {
         this.handleAndCheck(
             (byte) 0x80,
             (byte) 0x01,
-            "---D-1VN",
+            "C--D-1VN",
             (byte) 0x79,
             "---D-1--"
         );
@@ -160,7 +193,7 @@ public final class CpuInstructionSharedBinaryFunctionSbcTest extends CpuInstruct
         this.handleAndCheck(
             (byte) 0x50,
             (byte) 0x60,
-            "---D-1VN",
+            "C--D-1VN",
             (byte) 0x90,
             "C--D-1-N"
         );
