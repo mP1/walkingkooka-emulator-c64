@@ -30,7 +30,7 @@ public final class CpuInstructionSharedBinaryBinaryFunctionAdcImmTest extends Cp
         final short pc = 0x1000;
         context.setPc(pc);
 
-        context.writeAddress(
+        context.writeByte(
             pc,
             (byte) 0x12
         );
@@ -56,7 +56,7 @@ public final class CpuInstructionSharedBinaryBinaryFunctionAdcImmTest extends Cp
         final short pc = 0x1000;
         context.setPc(pc);
 
-        context.writeAddress(
+        context.writeByte(
             pc,
             (byte) 0x15
         );
