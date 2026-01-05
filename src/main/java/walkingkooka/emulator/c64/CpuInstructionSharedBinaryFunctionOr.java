@@ -33,10 +33,14 @@ import static walkingkooka.emulator.c64.CpuInstructionShared.setMinusAndZero;
  */
 final class CpuInstructionSharedBinaryFunctionOr extends CpuInstructionSharedBinaryFunction {
 
-    /**
-     * Singleton
-     */
-    final static CpuInstructionSharedBinaryFunctionOr INSTANCE = new CpuInstructionSharedBinaryFunctionOr();
+    static CpuInstructionSharedBinaryFunctionOr instance() {
+        if (null == INSTANCE) {
+            INSTANCE = new CpuInstructionSharedBinaryFunctionOr();
+        }
+        return INSTANCE;
+    }
+
+    private static CpuInstructionSharedBinaryFunctionOr INSTANCE;
 
     private CpuInstructionSharedBinaryFunctionOr() {
         super();

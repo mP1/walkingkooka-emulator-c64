@@ -22,27 +22,27 @@ abstract class CpuInstructionSharedBinaryFunction {
     /**
      * {@see CpuInstructionSharedBinaryFunctionAdc}
      */
-    final static CpuInstructionSharedBinaryFunction ADC = CpuInstructionSharedBinaryFunctionAdc.INSTANCE;
+    final static CpuInstructionSharedBinaryFunction ADC = CpuInstructionSharedBinaryFunctionAdc.instance();
 
     /**
      * {@see CpuInstructionSharedBinaryFunctionAnd}
      */
-    final static CpuInstructionSharedBinaryFunction AND = CpuInstructionSharedBinaryFunctionAnd.INSTANCE;
+    final static CpuInstructionSharedBinaryFunction AND = CpuInstructionSharedBinaryFunctionAnd.instance();
 
     /**
      * {@see CpuInstructionSharedBinaryFunctionEor}
      */
-    final static CpuInstructionSharedBinaryFunction EOR = CpuInstructionSharedBinaryFunctionEor.INSTANCE;
+    final static CpuInstructionSharedBinaryFunction EOR = CpuInstructionSharedBinaryFunctionEor.instance();
 
     /**
      * {@see CpuInstructionSharedBinaryFunctionOr}
      */
-    final static CpuInstructionSharedBinaryFunction OR = CpuInstructionSharedBinaryFunctionOr.INSTANCE;
+    final static CpuInstructionSharedBinaryFunction OR = CpuInstructionSharedBinaryFunctionOr.instance();
 
     /**
      * {@see CpuInstructionSharedBinaryFunctionSbc}
      */
-    final static CpuInstructionSharedBinaryFunction SBC = CpuInstructionSharedBinaryFunctionSbc.INSTANCE;
+    final static CpuInstructionSharedBinaryFunction SBC = CpuInstructionSharedBinaryFunctionSbc.instance();
 
     abstract byte handle(final byte left,
                          final byte right,
