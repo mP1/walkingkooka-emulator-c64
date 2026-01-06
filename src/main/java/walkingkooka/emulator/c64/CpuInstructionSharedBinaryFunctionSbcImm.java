@@ -51,7 +51,7 @@ final class CpuInstructionSharedBinaryFunctionSbcImm extends CpuInstructionShare
     }
 
     @Override
-    CpuInstructionSharedOperand memory() {
+    CpuInstructionSharedOperandMemory memory() {
         return CpuInstructionSharedOperand.IMMEDIATE;
     }
 }

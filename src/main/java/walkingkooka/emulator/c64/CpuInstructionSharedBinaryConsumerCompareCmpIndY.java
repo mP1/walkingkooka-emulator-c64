@@ -51,7 +51,7 @@ final class CpuInstructionSharedBinaryConsumerCompareCmpIndY extends CpuInstruct
     }
 
     @Override
-    CpuInstructionSharedOperand memory() {
+    CpuInstructionSharedOperandMemory memory() {
         return CpuInstructionSharedOperand.INDY;
     }
 }

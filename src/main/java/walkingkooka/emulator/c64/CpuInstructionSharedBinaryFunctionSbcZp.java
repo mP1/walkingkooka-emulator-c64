@@ -51,7 +51,7 @@ final class CpuInstructionSharedBinaryFunctionSbcZp extends CpuInstructionShared
     }
 
     @Override
-    CpuInstructionSharedOperand memory() {
+    CpuInstructionSharedOperandMemory memory() {
         return CpuInstructionSharedOperand.ZP;
     }
 }

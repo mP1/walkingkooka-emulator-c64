@@ -51,7 +51,7 @@ final class CpuInstructionSharedBinaryConsumerCompareCpyZp extends CpuInstructio
     }
 
     @Override
-    CpuInstructionSharedOperand memory() {
+    CpuInstructionSharedOperandMemory memory() {
         return CpuInstructionSharedOperand.ZP;
     }
 }

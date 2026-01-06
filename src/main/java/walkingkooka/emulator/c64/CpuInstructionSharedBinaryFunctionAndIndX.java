@@ -51,7 +51,7 @@ final class CpuInstructionSharedBinaryFunctionAndIndX extends CpuInstructionShar
     }
 
     @Override
-    CpuInstructionSharedOperand memory() {
+    CpuInstructionSharedOperandMemory memory() {
         return CpuInstructionSharedOperand.INDX;
     }
 }

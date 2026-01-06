@@ -59,7 +59,7 @@ final class CpuInstructionSharedBinaryConsumerBitAbs extends CpuInstructionShare
     }
 
     @Override
-    CpuInstructionSharedOperand memory() {
+    CpuInstructionSharedOperandMemory memory() {
         return CpuInstructionSharedOperand.ABS;
     }
 }
