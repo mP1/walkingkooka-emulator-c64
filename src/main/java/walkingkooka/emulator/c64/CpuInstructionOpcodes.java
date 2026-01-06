@@ -305,6 +305,8 @@ public interface CpuInstructionOpcodes {
 
     byte STYZP = (byte) 0x84;
 
+    byte STYZPX = (byte) 0x94;
+
     byte TAX = (byte) 0xAA;
 
     byte TAY = (byte) 0xA8;
