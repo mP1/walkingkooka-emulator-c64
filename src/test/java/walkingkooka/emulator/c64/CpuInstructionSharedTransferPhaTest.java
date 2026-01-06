@@ -57,6 +57,15 @@ public final class CpuInstructionSharedTransferPhaTest extends CpuInstructionSha
         );
     }
 
+    @Test
+    public void testDisassemble() {
+        this.disassembleAndCheck(
+            CpuInstructionSharedTransferPha.instance(),
+            CpuContexts.fake(),
+            "PHA"
+        );
+    }
+
     @Override
     public CpuInstructionSharedTransferPha createCpuInstruction() {
         return CpuInstructionSharedTransferPha.instance();
