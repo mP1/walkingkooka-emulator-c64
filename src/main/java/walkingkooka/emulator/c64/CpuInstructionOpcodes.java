@@ -193,6 +193,8 @@ public interface CpuInstructionOpcodes {
 
     byte LDYIMM = (byte) 0xA0;
 
+    byte LDYZP = (byte) 0xA4;
+
     byte LSRA = (byte) 0x4A;
 
     byte LSRZP = (byte) 0x46;
