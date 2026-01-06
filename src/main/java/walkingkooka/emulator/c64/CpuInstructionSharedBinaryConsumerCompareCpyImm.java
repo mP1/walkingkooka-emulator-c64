@@ -51,7 +51,7 @@ final class CpuInstructionSharedBinaryConsumerCompareCpyImm extends CpuInstructi
     }
 
     @Override
-    CpuInstructionSharedOperand memory() {
+    CpuInstructionSharedOperandMemory memory() {
         return CpuInstructionSharedOperand.IMMEDIATE;
     }
 }

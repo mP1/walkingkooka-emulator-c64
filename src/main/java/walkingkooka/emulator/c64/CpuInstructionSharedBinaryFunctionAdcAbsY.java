@@ -52,7 +52,7 @@ final class CpuInstructionSharedBinaryFunctionAdcAbsY extends CpuInstructionShar
     }
 
     @Override
-    CpuInstructionSharedOperand memory() {
+    CpuInstructionSharedOperandMemory memory() {
         return CpuInstructionSharedOperand.ABSY;
     }
 }

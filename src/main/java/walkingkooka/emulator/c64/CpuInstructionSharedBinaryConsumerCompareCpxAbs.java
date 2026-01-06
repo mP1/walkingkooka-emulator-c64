@@ -51,7 +51,7 @@ final class CpuInstructionSharedBinaryConsumerCompareCpxAbs extends CpuInstructi
     }
 
     @Override
-    CpuInstructionSharedOperand memory() {
+    CpuInstructionSharedOperandMemory memory() {
         return CpuInstructionSharedOperand.ABS;
     }
 }

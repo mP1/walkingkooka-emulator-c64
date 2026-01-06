@@ -51,7 +51,7 @@ final class CpuInstructionSharedBinaryFunctionSbcAbsX extends CpuInstructionShar
     }
 
     @Override
-    CpuInstructionSharedOperand memory() {
+    CpuInstructionSharedOperandMemory memory() {
         return CpuInstructionSharedOperand.ABSX;
     }
 }

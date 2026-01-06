@@ -51,7 +51,7 @@ final class CpuInstructionSharedBinaryFunctionAndAbs extends CpuInstructionShare
     }
 
     @Override
-    CpuInstructionSharedOperand memory() {
+    CpuInstructionSharedOperandMemory memory() {
         return CpuInstructionSharedOperand.ABS;
     }
 }
