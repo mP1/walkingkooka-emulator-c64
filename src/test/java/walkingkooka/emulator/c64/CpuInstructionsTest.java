@@ -20,6 +20,7 @@ package walkingkooka.emulator.c64;
 import org.junit.jupiter.api.Test;
 import walkingkooka.collect.map.Maps;
 import walkingkooka.collect.set.Sets;
+import walkingkooka.collect.set.SortedSets;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.MethodAttributes;
 import walkingkooka.reflect.PublicStaticHelperTesting;
@@ -28,8 +29,69 @@ import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public final class CpuInstructionsTest implements PublicStaticHelperTesting<CpuInstructions> {
+
+    // https://www.c64-wiki.com/wiki/Opcode
+    // Opcodes (short for Operation Codes) are processor instructions used in machine language. The 6510 CPU offers 151 [1] official opcodes, plus 105 illegal (unofficial) opcodes, totaling 256 opcodes.
+    //
+    // Cant see the missing opcode
+
+    @Test
+    public void testAll() throws Exception {
+        final Set<CpuInstruction> collected = SortedSets.tree(
+            (l, r) -> l.opcode() - r.opcode()
+        );
+
+        int i = 0;
+        for (final Method method : CpuInstructions.class.getDeclaredMethods()) {
+            if (MethodAttributes.STATIC.is(method) && JavaVisibility.of(method) == JavaVisibility.PUBLIC) {
+                if (method.getName().equals("fake")) {
+                    continue;
+                }
+
+                if (method.getReturnType() == CpuInstruction.class && method.getParameterCount() == 0) {
+                    final CpuInstruction cpuInstruction = (CpuInstruction) method.invoke(null);
+
+                    collected.add(cpuInstruction);
+
+                    i++;
+                }
+            }
+        }
+
+        this.checkNotEquals(
+            0,
+            i
+        );
+
+        this.checkEquals(
+            collected,
+            CpuInstructions.all()
+        );
+
+        this.checkEquals(
+            collected.stream()
+                .map(ii -> ii.getClass().getSimpleName())
+                .collect(Collectors.joining("\n")),
+            CpuInstructions.all()
+                .stream()
+                .map(ii -> ii.getClass().getSimpleName())
+                .collect(Collectors.joining("\n"))
+        );
+
+        this.checkEquals(
+            150,
+            collected.size()
+        );
+
+        this.checkEquals(
+            150,
+            CpuInstructions.all()
+                .size()
+        );
+    }
 
     @Test
     public void testInstructionsUniqueOpCodes() throws Exception {
@@ -39,6 +101,10 @@ public final class CpuInstructionsTest implements PublicStaticHelperTesting<CpuI
 
         for (final Method method : CpuInstructions.class.getDeclaredMethods()) {
             if (MethodAttributes.STATIC.is(method) && JavaVisibility.of(method) == JavaVisibility.PUBLIC) {
+                if (method.getName().equals("fake")) {
+                    continue;
+                }
+
                 if (method.getReturnType() == CpuInstruction.class && method.getParameterCount() == 0) {
                     final CpuInstruction cpuInstruction = (CpuInstruction) method.invoke(null);
 
@@ -69,8 +135,8 @@ public final class CpuInstructionsTest implements PublicStaticHelperTesting<CpuI
             opcodeToCpuInstruction
         );
 
-        this.checkNotEquals(
-            0,
+        this.checkEquals(
+            151,
             i
         );
     }
