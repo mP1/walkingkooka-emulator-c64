@@ -285,6 +285,8 @@ public interface CpuInstructionOpcodes {
 
     byte STAZP = (byte) 0x85;
 
+    byte STAZPX = (byte) 0x95;
+
     byte TAX = (byte) 0xAA;
 
     byte TAY = (byte) 0xA8;
