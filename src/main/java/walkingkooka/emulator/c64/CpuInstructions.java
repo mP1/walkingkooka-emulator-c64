@@ -1005,6 +1005,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedStoreXStxZp}
+     */
+    public static CpuInstruction stxZp() {
+        return CpuInstructionSharedStoreXStxZp.instance();
+    }
+
+    /**
      * {@see CpuInstructionSharedTransferTax}
      */
     public static CpuInstruction tax() {
