@@ -203,6 +203,37 @@ public interface CpuInstructionTesting<I extends CpuInstruction> extends CpuCont
         );
     }
 
+    default void executeAndMemoryWriteCheck(final CpuContext context,
+                                            final short address,
+                                            final byte value) {
+        this.executeAndMemoryWriteCheck(
+            this.createCpuInstruction(),
+            context,
+            address,
+            value
+        );
+    }
+
+    default void executeAndMemoryWriteCheck(final I instruction,
+                                            final CpuContext context,
+                                            final short address,
+                                            final byte value) {
+        final CpuFlags cpuFlags = CpuFlags.create();
+        cpuFlags.setValue(context.flags());
+
+        this.executeAndCheck(
+            instruction,
+            context,
+            cpuFlags
+        );
+
+        this.readByteAndCheck(
+            context,
+            address,
+            value
+        );
+    }
+
     default void executeAndCheck(final CpuContext context,
                                  final String flags) {
         this.executeAndCheck(
