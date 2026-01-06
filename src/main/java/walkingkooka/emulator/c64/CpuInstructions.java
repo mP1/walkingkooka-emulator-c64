@@ -555,6 +555,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction ldaAbsX() {
         return CpuInstructionSharedLoadALdaAbsX.instance();
     }
+
+    /**
+     * {@see CpuInstructionSharedLoadALdaAbsY}
+     */
+    public static CpuInstruction ldaAbsY() {
+        return CpuInstructionSharedLoadALdaAbsY.instance();
+    }
     
     /**
      * {@see CpuInstructionSharedLoadALdaImm}
