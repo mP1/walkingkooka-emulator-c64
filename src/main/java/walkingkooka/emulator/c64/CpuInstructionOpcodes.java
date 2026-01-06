@@ -185,6 +185,8 @@ public interface CpuInstructionOpcodes {
 
     byte LDXZP = (byte) 0xA6;
 
+    byte LDXZPY = (byte) 0xB6;
+
     byte LSRA = (byte) 0x4A;
 
     byte LSRZP = (byte) 0x46;
