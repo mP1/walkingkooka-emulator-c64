@@ -1026,6 +1026,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedStoreYStyAbs}
+     */
+    public static CpuInstruction styAbs() {
+        return CpuInstructionSharedStoreYStyAbs.instance();
+    }
+    
+    /**
      * {@see CpuInstructionSharedStoreYStyZp}
      */
     public static CpuInstruction styZp() {
