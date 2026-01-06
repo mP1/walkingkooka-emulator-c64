@@ -287,6 +287,8 @@ public interface CpuInstructionOpcodes {
 
     byte STAABSX = (byte) 0x9D;
 
+    byte STAABSY = (byte) 0x99;
+
     byte STAZP = (byte) 0x85;
 
     byte STAZPX = (byte) 0x95;
