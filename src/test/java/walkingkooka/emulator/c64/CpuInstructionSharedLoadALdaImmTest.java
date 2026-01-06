@@ -90,6 +90,27 @@ public final class CpuInstructionSharedLoadALdaImmTest extends CpuInstructionSha
         );
     }
 
+    @Test
+    public void testDisassemble() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.writeByte(
+            pc,
+            (byte) 0x55
+        );
+
+        this.disassembleAndCheck(
+            CpuInstructionSharedLoadALdaImm.instance(),
+            context,
+            "LDA #$55"
+        );
+    }
+
     @Override
     public CpuInstructionSharedLoadALdaImm createCpuInstruction() {
         return CpuInstructionSharedLoadALdaImm.instance();

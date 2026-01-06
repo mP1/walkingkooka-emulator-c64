@@ -56,6 +56,27 @@ public final class CpuInstructionSharedOperandMemoryImmediateTest extends CpuIns
         );
     }
 
+    @Test
+    public void testDisassemble() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.writeByte(
+            pc,
+            (byte) 0x55
+        );
+
+        this.disassembleAndCheck(
+            this.createCpuInstructionSharedOperand(),
+            context,
+            "#$55"
+        );
+    }
+
     @Override
     CpuInstructionSharedOperandMemoryImmediate createCpuInstructionSharedOperand() {
         return CpuInstructionSharedOperandMemoryImmediate.instance();
