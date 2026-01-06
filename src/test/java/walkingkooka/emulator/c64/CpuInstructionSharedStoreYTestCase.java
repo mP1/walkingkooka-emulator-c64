@@ -17,9 +17,9 @@
 
 package walkingkooka.emulator.c64;
 
-public abstract class CpuInstructionSharedSaveTestCase<I extends CpuInstructionSharedSave> extends CpuInstructionSharedTestCase<I> {
+public abstract class CpuInstructionSharedStoreYTestCase<I extends CpuInstructionSharedStoreY> extends CpuInstructionSharedStoreTestCase<I> {
 
-    CpuInstructionSharedSaveTestCase() {
+    CpuInstructionSharedStoreYTestCase() {
         super();
     }
 }

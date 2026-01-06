@@ -20,13 +20,13 @@ package walkingkooka.emulator.c64;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
-public final class CpuInstructionSharedSaveXTest implements ClassTesting<CpuInstructionSharedSaveX> {
+public final class CpuInstructionSharedStoreTest implements ClassTesting<CpuInstructionSharedStore> {
 
     // class............................................................................................................
 
     @Override
-    public Class<CpuInstructionSharedSaveX> type() {
-        return CpuInstructionSharedSaveX.class;
+    public Class<CpuInstructionSharedStore> type() {
+        return CpuInstructionSharedStore.class;
     }
 
     @Override
