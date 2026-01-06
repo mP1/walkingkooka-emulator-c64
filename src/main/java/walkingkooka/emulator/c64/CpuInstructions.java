@@ -634,6 +634,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedLoadYLdyImm}
+     */
+    public static CpuInstruction ldyImm() {
+        return CpuInstructionSharedLoadYLdyImm.instance();
+    }
+
+    /**
      * {@see CpuInstructionSharedUnaryLsrA}
      */
     public static CpuInstruction lsrA() {
