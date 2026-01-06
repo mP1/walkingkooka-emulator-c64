@@ -52,6 +52,14 @@ abstract class CpuInstructionSharedOperandMemory extends CpuInstructionSharedOpe
         );
     }
 
+    final void writeValue(final byte value,
+                          final CpuContext context) {
+        context.writeByte(
+            this.operandAddress(context),
+            value
+        );
+    }
+
     // helpers..........................................................................................................
 
     final byte readPcByte(final CpuContext context) {
