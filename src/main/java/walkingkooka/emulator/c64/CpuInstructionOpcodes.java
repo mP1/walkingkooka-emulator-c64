@@ -283,6 +283,8 @@ public interface CpuInstructionOpcodes {
 
     byte SEI = (byte) 0x78;
 
+    byte STAZP = (byte) 0x85;
+
     byte TAX = (byte) 0xAA;
 
     byte TAY = (byte) 0xA8;

@@ -956,6 +956,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedStoreAStaZp}
+     */
+    public static CpuInstruction staZp() {
+        return CpuInstructionSharedStoreAStaZp.instance();
+    }
+
+    /**
      * {@see CpuInstructionSharedTransferTax}
      */
     public static CpuInstruction tax() {
