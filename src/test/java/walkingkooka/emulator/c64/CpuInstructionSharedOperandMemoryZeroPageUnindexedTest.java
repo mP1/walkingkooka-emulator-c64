@@ -89,7 +89,7 @@ public final class CpuInstructionSharedOperandMemoryZeroPageUnindexedTest extend
 
     @Override
     CpuInstructionSharedOperandMemoryZeroPageUnindexed createCpuInstructionSharedOperand() {
-        return CpuInstructionSharedOperandMemoryZeroPageUnindexed.ZP;
+        return CpuInstructionSharedOperandMemoryZeroPageUnindexed.instance();
     }
 
     // class............................................................................................................

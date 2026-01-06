@@ -46,32 +46,32 @@ abstract class CpuInstructionSharedOperand {
     /**
      * {@see CpuInstructionSharedOperandMemoryAbsoluteUnindexed}
      */
-    final static CpuInstructionSharedOperand ABS = CpuInstructionSharedOperandMemoryAbsoluteUnindexed.instance();
+    final static CpuInstructionSharedOperandMemory ABS = CpuInstructionSharedOperandMemoryAbsoluteUnindexed.instance();
 
     /**
      * {@see CpuInstructionSharedOperandMemoryAbsoluteX}
      */
-    final static CpuInstructionSharedOperand ABSX = CpuInstructionSharedOperandMemoryAbsoluteX.instance();
+    final static CpuInstructionSharedOperandMemory ABSX = CpuInstructionSharedOperandMemoryAbsoluteX.instance();
 
     /**
      * {@see CpuInstructionSharedOperandMemoryAbsoluteY}
      */
-    final static CpuInstructionSharedOperand ABSY = CpuInstructionSharedOperandMemoryAbsoluteY.instance();
+    final static CpuInstructionSharedOperandMemory ABSY = CpuInstructionSharedOperandMemoryAbsoluteY.instance();
 
     /**
      * {@see CpuInstructionSharedOperandMemoryImmediate}
      */
-    final static CpuInstructionSharedOperand IMMEDIATE = CpuInstructionSharedOperandMemoryImmediate.instance();
+    final static CpuInstructionSharedOperandMemory IMMEDIATE = CpuInstructionSharedOperandMemoryImmediate.instance();
 
     /**
      * {@see CpuInstructionSharedOperandMemoryIndexedIndirectX}
      */
-    final static CpuInstructionSharedOperand INDX = CpuInstructionSharedOperandMemoryIndexedIndirectX.instance();
+    final static CpuInstructionSharedOperandMemory INDX = CpuInstructionSharedOperandMemoryIndexedIndirectX.instance();
 
     /**
      * {@see CpuInstructionSharedOperandMemoryIndirectIndexedY}
      */
-    final static CpuInstructionSharedOperand INDY = CpuInstructionSharedOperandMemoryIndirectIndexedY.instance();
+    final static CpuInstructionSharedOperandMemory INDY = CpuInstructionSharedOperandMemoryIndirectIndexedY.instance();
 
     /**
      * {@see CpuInstructionSharedOperandRegisterX}
@@ -86,17 +86,17 @@ abstract class CpuInstructionSharedOperand {
     /**
      * {@see CpuInstructionSharedOperandMemoryZeroPageUnindexed}
      */
-    final static CpuInstructionSharedOperandMemoryZeroPageUnindexed ZP = CpuInstructionSharedOperandMemoryZeroPageUnindexed.instance();
+    final static CpuInstructionSharedOperandMemory ZP = CpuInstructionSharedOperandMemoryZeroPageUnindexed.instance();
 
     /**
      * {@see CpuInstructionSharedOperandMemoryZeroPageX}
      */
-    final static CpuInstructionSharedOperand ZPX = CpuInstructionSharedOperandMemoryZeroPageX.instance();
+    final static CpuInstructionSharedOperandMemory ZPX = CpuInstructionSharedOperandMemoryZeroPageX.instance();
 
     /**
      * {@see CpuInstructionSharedOperandMemoryZeroPageY}
      */
-    final static CpuInstructionSharedOperand ZPY = CpuInstructionSharedOperandMemoryZeroPageY.instance();
+    final static CpuInstructionSharedOperandMemory ZPY = CpuInstructionSharedOperandMemoryZeroPageY.instance();
 
     CpuInstructionSharedOperand() {
         super();
