@@ -173,6 +173,8 @@ public interface CpuInstructionOpcodes {
 
     byte LDAIMM = (byte) 0xA9;
 
+    byte LDAINDX = (byte) 0xA1;
+
     byte LDAZP = (byte) 0xA5;
 
     byte LDAZPX = (byte) 0xB5;
