@@ -299,6 +299,8 @@ public interface CpuInstructionOpcodes {
 
     byte STXZP = (byte) 0x86;
 
+    byte STXZPY = (byte) 0x96;
+
     byte TAX = (byte) 0xAA;
 
     byte TAY = (byte) 0xA8;
