@@ -24,7 +24,9 @@ abstract class CpuInstructionSharedTransfer extends CpuInstructionShared {
     CpuInstructionSharedTransfer() {
         super();
 
-        this.mnemonic = this.getClass().getName()
+        // CpuInstructionSharedTransferPla -> Pla
+        this.mnemonic = this.getClass()
+            .getSimpleName()
             .substring(CpuInstructionSharedTransfer.class.getSimpleName().length())
             .toUpperCase();
     }

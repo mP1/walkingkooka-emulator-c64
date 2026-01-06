@@ -108,6 +108,15 @@ public final class CpuInstructionSharedTransferTxaTest extends CpuInstructionSha
         );
     }
 
+    @Test
+    public void testDisassemble() {
+        this.disassembleAndCheck(
+            CpuInstructionSharedTransferTxa.instance(),
+            CpuContexts.fake(),
+            "TXA"
+        );
+    }
+
     @Override
     public CpuInstructionSharedTransferTxa createCpuInstruction() {
         return CpuInstructionSharedTransferTxa.instance();
