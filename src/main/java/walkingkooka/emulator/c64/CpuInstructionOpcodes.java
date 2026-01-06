@@ -175,6 +175,8 @@ public interface CpuInstructionOpcodes {
 
     byte LDAINDX = (byte) 0xA1;
 
+    byte LDAINDY = (byte) 0xB1;
+
     byte LDAZP = (byte) 0xA5;
 
     byte LDAZPX = (byte) 0xB5;
