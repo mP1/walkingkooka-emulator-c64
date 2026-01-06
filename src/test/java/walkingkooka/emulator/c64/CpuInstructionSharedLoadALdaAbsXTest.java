@@ -55,6 +55,40 @@ public final class CpuInstructionSharedLoadALdaAbsXTest extends CpuInstructionSh
         );
     }
 
+    @Test
+    public void testDisassemble() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.writeAddress(
+            pc,
+            (short) 0x2000
+        );
+
+        context.writeByte(
+            (short) 0x2005,
+            (byte) 0x99
+        );
+
+        context.setA(
+            (byte) 0xFF
+        );
+        context.setX(
+            (byte) 0x5
+        );
+        context.setCarry(true);
+
+        this.disassembleAndCheck(
+            this.createCpuInstruction(),
+            context,
+            "LDA $2000,X"
+        );
+    }
+
     @Override
     public CpuInstructionSharedLoadALdaAbsX createCpuInstruction() {
         return CpuInstructionSharedLoadALdaAbsX.instance();
