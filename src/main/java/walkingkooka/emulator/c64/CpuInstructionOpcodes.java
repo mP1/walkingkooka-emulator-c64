@@ -303,6 +303,8 @@ public interface CpuInstructionOpcodes {
 
     byte STXZPY = (byte) 0x96;
 
+    byte STYABS = (byte) 0x8C;
+
     byte STYZP = (byte) 0x84;
 
     byte STYZPX = (byte) 0x94;
