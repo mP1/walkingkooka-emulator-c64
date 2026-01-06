@@ -599,6 +599,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedLoadXLdxImm}
+     */
+    public static CpuInstruction ldxImm() {
+        return CpuInstructionSharedLoadXLdxImm.instance();
+    }
+    
+    /**
      * {@see CpuInstructionSharedUnaryLsrA}
      */
     public static CpuInstruction lsrA() {
