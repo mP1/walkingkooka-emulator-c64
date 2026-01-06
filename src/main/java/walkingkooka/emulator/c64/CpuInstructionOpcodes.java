@@ -235,6 +235,8 @@ public interface CpuInstructionOpcodes {
 
     byte PLA = (byte) 0x68;
 
+    byte PLP = (byte) 0x28;
+
     byte ROLA = (byte) 0x2A;
 
     byte ROLZP = (byte) 0x26;

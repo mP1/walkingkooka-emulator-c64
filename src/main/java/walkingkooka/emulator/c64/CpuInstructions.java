@@ -788,6 +788,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedTransferPlp}
+     */
+    public static CpuInstruction plp() {
+        return CpuInstructionSharedTransferPlp.instance();
+    }
+
+    /**
      * {@see CpuInstructionSharedUnaryRolA}
      */
     public static CpuInstruction rolA() {
