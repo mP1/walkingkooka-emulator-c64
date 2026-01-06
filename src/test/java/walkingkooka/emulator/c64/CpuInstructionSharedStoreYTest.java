@@ -17,17 +17,20 @@
 
 package walkingkooka.emulator.c64;
 
-/**
- * Base class for all save accumulator instructions only the operand is variable
- */
-abstract class CpuInstructionSharedSaveA extends CpuInstructionSharedSave {
+import walkingkooka.reflect.ClassTesting;
+import walkingkooka.reflect.JavaVisibility;
 
-    CpuInstructionSharedSaveA() {
-        super();
+public final class CpuInstructionSharedStoreYTest implements ClassTesting<CpuInstructionSharedStoreY> {
+
+    // class............................................................................................................
+
+    @Override
+    public Class<CpuInstructionSharedStoreY> type() {
+        return CpuInstructionSharedStoreY.class;
     }
 
-    @Override //
-    final CpuInstructionSharedOperandRegister register() {
-        return CpuInstructionSharedOperandRegister.A;
+    @Override
+    public JavaVisibility typeVisibility() {
+        return JavaVisibility.PACKAGE_PRIVATE;
     }
 }

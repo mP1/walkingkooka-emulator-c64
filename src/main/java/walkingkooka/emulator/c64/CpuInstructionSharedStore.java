@@ -22,9 +22,9 @@ import java.util.Objects;
 /**
  * Base class for all SAVE instructions.
  */
-abstract class CpuInstructionSharedSave extends CpuInstructionShared {
+abstract class CpuInstructionSharedStore extends CpuInstructionShared {
 
-    CpuInstructionSharedSave() {
+    CpuInstructionSharedStore() {
         super();
     }
 

@@ -17,9 +17,17 @@
 
 package walkingkooka.emulator.c64;
 
-public abstract class CpuInstructionSharedSaveXTestCase<I extends CpuInstructionSharedSaveX> extends CpuInstructionSharedSaveTestCase<I> {
+/**
+ * Base class for all store Y instructions only the operand is variable
+ */
+abstract class CpuInstructionSharedStoreY extends CpuInstructionSharedStore {
 
-    CpuInstructionSharedSaveXTestCase() {
+    CpuInstructionSharedStoreY() {
         super();
+    }
+
+    @Override //
+    final CpuInstructionSharedOperandRegister register() {
+        return CpuInstructionSharedOperandRegister.Y;
     }
 }

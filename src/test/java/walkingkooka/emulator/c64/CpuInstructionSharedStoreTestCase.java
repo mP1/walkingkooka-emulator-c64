@@ -17,20 +17,9 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.reflect.ClassTesting;
-import walkingkooka.reflect.JavaVisibility;
+public abstract class CpuInstructionSharedStoreTestCase<I extends CpuInstructionSharedStore> extends CpuInstructionSharedTestCase<I> {
 
-public final class CpuInstructionSharedSaveATest implements ClassTesting<CpuInstructionSharedSaveA> {
-
-    // class............................................................................................................
-
-    @Override
-    public Class<CpuInstructionSharedSaveA> type() {
-        return CpuInstructionSharedSaveA.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PACKAGE_PRIVATE;
+    CpuInstructionSharedStoreTestCase() {
+        super();
     }
 }

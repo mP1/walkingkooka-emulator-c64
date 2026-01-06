@@ -17,17 +17,20 @@
 
 package walkingkooka.emulator.c64;
 
-/**
- * Base class for all save X instructions only the operand is variable
- */
-abstract class CpuInstructionSharedSaveX extends CpuInstructionSharedSave {
+import walkingkooka.reflect.ClassTesting;
+import walkingkooka.reflect.JavaVisibility;
 
-    CpuInstructionSharedSaveX() {
-        super();
+public final class CpuInstructionSharedStoreATest implements ClassTesting<CpuInstructionSharedStoreA> {
+
+    // class............................................................................................................
+
+    @Override
+    public Class<CpuInstructionSharedStoreA> type() {
+        return CpuInstructionSharedStoreA.class;
     }
 
-    @Override //
-    final CpuInstructionSharedOperandRegister register() {
-        return CpuInstructionSharedOperandRegister.X;
+    @Override
+    public JavaVisibility typeVisibility() {
+        return JavaVisibility.PACKAGE_PRIVATE;
     }
 }
