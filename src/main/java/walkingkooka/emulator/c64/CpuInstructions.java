@@ -963,6 +963,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedStoreAStaAbsX}
+     */
+    public static CpuInstruction staAbsX() {
+        return CpuInstructionSharedStoreAStaAbsX.instance();
+    }
+
+    /**
      * {@see CpuInstructionSharedStoreAStaZp}
      */
     public static CpuInstruction staZp() {
