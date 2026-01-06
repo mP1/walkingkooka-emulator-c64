@@ -611,7 +611,14 @@ public final class CpuInstructions implements PublicStaticHelper {
     public static CpuInstruction ldxZp() {
         return CpuInstructionSharedLoadXLdxZp.instance();
     }
-    
+
+    /**
+     * {@see CpuInstructionSharedLoadXLdxZpY}
+     */
+    public static CpuInstruction ldxZpY() {
+        return CpuInstructionSharedLoadXLdxZpY.instance();
+    }
+
     /**
      * {@see CpuInstructionSharedUnaryLsrA}
      */
