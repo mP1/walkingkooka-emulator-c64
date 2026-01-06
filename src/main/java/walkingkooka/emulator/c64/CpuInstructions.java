@@ -17,12 +17,216 @@
 
 package walkingkooka.emulator.c64;
 
+import walkingkooka.collect.set.SortedSets;
 import walkingkooka.reflect.PublicStaticHelper;
+
+import java.util.Set;
+import java.util.SortedSet;
 
 /**
  * A collection of {@link CpuInstruction} factory methods.
  */
 public final class CpuInstructions implements PublicStaticHelper {
+
+    /**
+     * {@see CpuInstructionSharedBinaryFunctionAdcAbs}
+     */
+    public static Set<CpuInstruction> all() {
+        if (null == ALL) {
+            final SortedSet<CpuInstruction> all = SortedSets.tree(
+                (l, r) -> l.opcode() - r.opcode()
+            );
+
+            all.add(adcAbs());
+            all.add(adcAbsX());
+            all.add(adcAbsY());
+            all.add(adcImm());
+            all.add(adcIndX());
+            all.add(adcIndY());
+            all.add(adcZp());
+            all.add(adcZpX());
+
+            all.add(andAbs());
+            all.add(andAbsX());
+            all.add(andAbsY());
+            all.add(andImm());
+            all.add(andIndX());
+            all.add(andIndY());
+            all.add(andZp());
+            all.add(andZpX());
+
+            all.add(aslA());
+            all.add(aslAbs());
+            all.add(aslAbsX());
+            all.add(aslZp());
+            all.add(aslZpX());
+
+            all.add(bcc());
+            all.add(bcs());
+            all.add(beq());
+            all.add(bmi());
+            all.add(bne());
+            all.add(bpl());
+            all.add(bvc());
+            all.add(bvs());
+
+            all.add(bitZp());
+            all.add(bitAbs());
+
+            all.add(brk());
+
+            all.add(clc());
+            all.add(cld());
+            all.add(cli());
+            all.add(clv());
+
+            all.add(cmpAbs());
+            all.add(cmpAbsX());
+            all.add(cmpAbsY());
+            all.add(cmpImm());
+            all.add(cmpIndX());
+            all.add(cmpIndY());
+            all.add(cmpZp());
+            all.add(cmpZpX());
+
+            all.add(cpxAbs());
+            all.add(cpxImm());
+            all.add(cpxZp());
+
+            all.add(cpyAbs());
+            all.add(cpyImm());
+            all.add(cpyZp());
+
+            all.add(decAbs());
+            all.add(decAbsX());
+            all.add(decZp());
+            all.add(decZpX());
+
+            all.add(dex());
+            all.add(dey());
+
+            all.add(eorAbs());
+            all.add(eorAbsX());
+            all.add(eorAbsY());
+            all.add(eorImm());
+            all.add(eorIndX());
+            all.add(eorIndY());
+            all.add(eorZp());
+            all.add(eorZpX());
+
+            all.add(incAbs());
+            all.add(incAbsX());
+            all.add(incZp());
+            all.add(incZpX());
+
+            all.add(inx());
+            all.add(iny());
+
+            all.add(jmpAbs());
+            all.add(jmpIndirect());
+
+            all.add(jsr());
+
+            all.add(ldaAbs());
+            all.add(ldaAbsX());
+            all.add(ldaAbsY());
+            all.add(ldaImm());
+            all.add(ldaIndX());
+            all.add(ldaIndY());
+            all.add(ldaZp());
+            all.add(ldaZpX());
+
+            all.add(ldxAbs());
+            all.add(ldxAbsY());
+            all.add(ldxImm());
+            all.add(ldxZp());
+            all.add(ldxZpY());
+
+            all.add(ldyAbs());
+            all.add(ldyAbsX());
+            all.add(ldyImm());
+            all.add(ldyZp());
+            all.add(ldyZpX());
+
+            all.add(lsrA());
+            all.add(lsrAbs());
+            all.add(lsrAbsX());
+            all.add(lsrZp());
+            all.add(lsrZpX());
+
+            all.add(nop());
+
+            all.add(orAbs());
+            all.add(orAbsX());
+            all.add(orAbsY());
+            all.add(orImm());
+            all.add(orIndX());
+            all.add(orIndY());
+            all.add(orZp());
+            all.add(orZpX());
+
+            all.add(pha());
+            all.add(php());
+            all.add(pla());
+            all.add(plp());
+
+            all.add(rolA());
+            all.add(rolAbs());
+            all.add(rolAbsX());
+            all.add(rolZp());
+            all.add(rolZpX());
+
+            all.add(rorA());
+            all.add(rorAbs());
+            all.add(rorAbsX());
+            all.add(rorZp());
+            all.add(rorZpX());
+
+            all.add(rti());
+            all.add(rts());
+
+            all.add(sbcAbs());
+            all.add(sbcAbsX());
+            all.add(sbcAbsY());
+            all.add(sbcImm());
+            all.add(sbcIndX());
+            all.add(sbcIndY());
+            all.add(sbcZp());
+            all.add(sbcZpX());
+
+            all.add(sec());
+            all.add(sed());
+            all.add(sei());
+
+            all.add(staAbs());
+            all.add(staAbsX());
+            all.add(staAbsY());
+            all.add(staIndX());
+            all.add(staIndY());
+            all.add(staZp());
+            all.add(staZpX());
+
+            all.add(stxAbs());
+            all.add(stxZp());
+            all.add(stxZpY());
+
+            all.add(styAbs());
+            all.add(styZp());
+            all.add(styZpX());
+            
+            all.add(tax());
+            all.add(tay());
+            all.add(tsx());
+            all.add(txa());
+            all.add(txs());
+            all.add(tya());
+
+            ALL = SortedSets.immutable(all);
+        }
+        return ALL;
+    }
+
+    private static Set<CpuInstruction> ALL;
 
     /**
      * {@see CpuInstructionSharedBinaryFunctionAdcAbs}
