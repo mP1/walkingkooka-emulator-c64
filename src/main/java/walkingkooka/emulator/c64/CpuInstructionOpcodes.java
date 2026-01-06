@@ -191,6 +191,8 @@ public interface CpuInstructionOpcodes {
 
     byte LDXZPY = (byte) 0xB6;
 
+    byte LDYABS = (byte) 0xAC;
+
     byte LDYIMM = (byte) 0xA0;
 
     byte LDYZP = (byte) 0xA4;
