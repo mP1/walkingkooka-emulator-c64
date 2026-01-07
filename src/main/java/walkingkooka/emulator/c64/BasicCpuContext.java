@@ -151,7 +151,7 @@ final class BasicCpuContext implements CpuContext {
         this.flags.setZero(zero);
     }
 
-    private CpuFlags flags = CpuFlags.create();
+    private final CpuFlags flags = CpuFlags.create();
 
     @Override
     public byte stackPointer() {
@@ -265,7 +265,7 @@ final class BasicCpuContext implements CpuContext {
 
     private final static short STACK_PAGE_OFFSET = 0x100;
 
-    private AddressBus addressBus;
+    private final AddressBus addressBus;
 
     @Override
     public void reset() {
