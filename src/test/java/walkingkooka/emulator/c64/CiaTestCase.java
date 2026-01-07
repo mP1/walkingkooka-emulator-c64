@@ -788,7 +788,11 @@ public abstract class CiaTestCase<C extends Cia> extends AddressBusTestCase<C> i
     }
 
     final void interruptCheck(final Cia cia, final boolean interrupted) {
-        assertEquals(interrupted, this.interrupt, () -> cia.toString());
+        assertEquals(
+            interrupted,
+            this.interrupt,
+            cia::toString
+        );
         this.interrupt = false;
     }
 

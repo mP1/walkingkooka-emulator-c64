@@ -140,7 +140,11 @@ public final class TimerTest implements ClassTesting2<Timer>, ToStringTesting<Ti
 
     private void checkUnderflowed(final Timer timer,
                                   final boolean value) {
-        assertEquals(value, this.underflowed, () -> timer.toString());
+        assertEquals(
+            value,
+            this.underflowed,
+            timer::toString
+        );
     }
 
     @Test
