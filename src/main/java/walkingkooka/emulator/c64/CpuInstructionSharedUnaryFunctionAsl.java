@@ -33,8 +33,6 @@ final class CpuInstructionSharedUnaryFunctionAsl extends CpuInstructionSharedUna
         return new CpuInstructionSharedUnaryFunctionAsl();
     }
 
-    ;
-
     private CpuInstructionSharedUnaryFunctionAsl() {
         super();
     }
