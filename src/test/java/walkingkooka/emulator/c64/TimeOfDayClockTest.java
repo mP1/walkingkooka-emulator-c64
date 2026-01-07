@@ -186,7 +186,11 @@ public final class TimeOfDayClockTest implements ClassTesting2<TimeOfDayClock>, 
 
     private void checkAlarmFired(final TimeOfDayClock clock,
                                  final boolean alarm) {
-        assertEquals(alarm, this.alarm, () -> clock.toString());
+        assertEquals(
+            alarm,
+            this.alarm,
+            clock::toString
+        );
         this.alarm = false;
     }
 
