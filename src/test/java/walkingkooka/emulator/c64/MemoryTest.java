@@ -78,7 +78,7 @@ public final class MemoryTest extends AddressBusTestCase<Memory> {
         this.toStringAndCheck(memory, "Memory 0xff");
     }
 
-    @Test
+    @Override
     public Memory createAddressBus() {
         return Memory.with(256);
     }

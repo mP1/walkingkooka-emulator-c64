@@ -120,7 +120,7 @@ public final class BaseOffsetAddressBusTest extends AddressBusTestCase<BaseOffse
         this.toStringAndCheck(base, "baseOffset: 2 Memory 0xff");
     }
 
-    @Test
+    @Override
     public BaseOffsetAddressBus createAddressBus() {
         final AddressBus memory = AddressBuses.memory(256);
         return (BaseOffsetAddressBus) BaseOffsetAddressBus.with(2, memory);
