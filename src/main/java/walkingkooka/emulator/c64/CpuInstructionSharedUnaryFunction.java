@@ -49,11 +49,6 @@ abstract class CpuInstructionSharedUnaryFunction {
      */
     final static CpuInstructionSharedUnaryFunction ROR = CpuInstructionSharedUnaryFunctionRor.instance();
 
-    /**
-     * {@see CpuInstructionSharedUnaryFunctionStore}
-     */
-    final static CpuInstructionSharedUnaryFunction STORE = CpuInstructionSharedUnaryFunctionStore.instance();
-
     CpuInstructionSharedUnaryFunction() {
         super();
     }
