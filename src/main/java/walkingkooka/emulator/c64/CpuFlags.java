@@ -95,8 +95,6 @@ public final class CpuFlags implements HasCpuFlags {
         return cpuFlags;
     }
 
-    ;
-
     /**
      * Creates a new instance with none of the flags set.
      */
