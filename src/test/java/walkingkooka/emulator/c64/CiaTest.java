@@ -28,7 +28,7 @@ public final class CiaTest implements ClassTesting2<Cia> {
     }
 
     @Override
-    public final JavaVisibility typeVisibility() {
+    public JavaVisibility typeVisibility() {
         return JavaVisibility.PACKAGE_PRIVATE;
     }
 }

@@ -28,7 +28,7 @@ public final class VicMapperAddressBusTest implements ClassTesting2<VicMapperAdd
     }
 
     @Override
-    public final JavaVisibility typeVisibility() {
+    public JavaVisibility typeVisibility() {
         return JavaVisibility.PACKAGE_PRIVATE;
     }
 }
