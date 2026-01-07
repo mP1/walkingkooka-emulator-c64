@@ -47,7 +47,7 @@ final class CpuInstructionSharedTransferTsx extends CpuInstructionSharedTransfer
                final CpuContext context) {
         context.setX(value);
 
-        this.setMinusAndZero(
+        setMinusAndZero(
             value,
             context
         );
