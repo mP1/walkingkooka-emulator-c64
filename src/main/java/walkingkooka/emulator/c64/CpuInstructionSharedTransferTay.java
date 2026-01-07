@@ -47,7 +47,7 @@ final class CpuInstructionSharedTransferTay extends CpuInstructionSharedTransfer
                final CpuContext context) {
         context.setY(value);
 
-        this.setMinusAndZero(
+        setMinusAndZero(
             value,
             context
         );

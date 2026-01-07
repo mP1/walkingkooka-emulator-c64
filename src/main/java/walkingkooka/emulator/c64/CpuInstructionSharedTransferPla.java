@@ -47,7 +47,7 @@ final class CpuInstructionSharedTransferPla extends CpuInstructionSharedTransfer
                final CpuContext context) {
         context.setA(value);
 
-        this.setMinusAndZero(
+        setMinusAndZero(
             value,
             context
         );
