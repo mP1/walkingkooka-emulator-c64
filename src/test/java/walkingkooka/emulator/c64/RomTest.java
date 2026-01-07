@@ -115,7 +115,7 @@ public final class RomTest extends AddressBusTestCase<Rom> {
         return values;
     }
 
-    @Test
+    @Override
     public Rom createAddressBus() {
         return Rom.with(this.values(), AddressBuses.memory(256));
     }

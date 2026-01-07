@@ -767,7 +767,7 @@ public abstract class CiaTestCase<C extends Cia> extends AddressBusTestCase<C> i
 
     // helpers..........................................................................................................
 
-    @Test
+    @Override
     public final C createAddressBus() {
         return this.createCiaInterruptable();
     }
