@@ -23,5 +23,7 @@ public interface Cpu {
 
     short KERNAL_ROM_BASE = (short) 0xe000;
 
+    Runnable addWatcher(final CpuWatcher watcher);
+
     void step(final CpuContext context);
 }

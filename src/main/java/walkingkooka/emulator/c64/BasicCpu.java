@@ -43,6 +43,13 @@ final class BasicCpu implements Cpu {
     }
 
     @Override
+    public Runnable addWatcher(final CpuWatcher watcher) {
+        return this.watchers.add(watcher);
+    }
+
+    private final CpuWatchers watchers = CpuWatchers.empty();
+
+    @Override
     public void step(final CpuContext context) {
         short pc = context.pc();
 
