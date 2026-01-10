@@ -24,3 +24,10 @@ A C64 java emulator with unit tests for each and every individual component.
 ## ROMS
 
 [Roms](https://www.commodore.ca/manuals/funet/cbm/firmware/computers/c64/index-t.html)
+
+### [Functions](https://github.com/mP1/walkingkooka-tree/blob/master/src/main/java/walkingkooka/tree/expression/function/ExpressionFunction.java)
+
+Functions that will be useful within a terminal session
+
+- [c64basic](https://github.com/mP1/walkingkooka-emulator-c64/blob/master/src/main/java/walkingkooka/emulator/c64/expression/function/C64ExpressionFunctionC64Basic.java)
+  *WIP*
