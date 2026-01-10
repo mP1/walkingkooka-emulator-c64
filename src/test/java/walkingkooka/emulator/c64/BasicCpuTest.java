@@ -85,6 +85,179 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         );
     }
 
+    @Test
+    public void testStepWithBreakpointDifferentPc() {
+        final CpuInstruction inx = CpuInstructions.inx();
+
+        final BasicCpu cpu = BasicCpu.with(
+            Lists.of(
+                inx
+            )
+        );
+
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(
+                256 * 256
+            )
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.writeByte(
+            pc,
+            inx.opcode()
+        );
+
+        context.setX(
+            (byte) 0x1
+        );
+
+        cpu.addWatcher(
+            new CpuWatcher() {
+                @Override
+                public void onBreakpoint(final CpuContext context) {
+                    throw new UnsupportedOperationException();
+                }
+            }
+        );
+
+        cpu.addBreakpoint(
+            (short) 0x2000
+        );
+
+        cpu.step(context);
+
+        this.pcAndCheck(
+            context,
+            (short) (pc + 1)
+        );
+
+        this.xAndCheck(
+            context,
+            (byte) 0x2
+        );
+    }
+
+    @Test
+    public void testStepFiresBreakpoint() {
+        final CpuInstruction inx = CpuInstructions.inx();
+
+        final BasicCpu cpu = BasicCpu.with(
+            Lists.of(
+                inx
+            )
+        );
+
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(
+                256 * 256
+            )
+        );
+
+        context.writeByte(
+            (short) 0x1000,
+            inx.opcode()
+        );
+
+        context.setX(
+            (byte) 0x1
+        );
+        context.setY(
+            (byte) 0x0
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        final byte newYValue = 1;
+
+        // breakpoint is fired first and changes pc to 0x2000
+        cpu.addWatcher(
+            new CpuWatcher() {
+                @Override
+                public void onBreakpoint(final CpuContext context) {
+                    context.setY(newYValue);
+                }
+            }
+        );
+
+        cpu.addBreakpoint(
+            (short) 0x1000
+        );
+
+        cpu.step(context);
+
+        this.pcAndCheck(
+            context,
+            (short) 0x1001
+        );
+
+        this.xAndCheck(
+            context,
+            (byte) 0x2
+        );
+        this.yAndCheck(
+            context,
+            newYValue
+        );
+    }
+
+    @Test
+    public void testStepFiresBreakpointWhichChangesPc() {
+        final CpuInstruction inx = CpuInstructions.inx();
+
+        final BasicCpu cpu = BasicCpu.with(
+            Lists.of(
+                inx
+            )
+        );
+
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(
+                256 * 256
+            )
+        );
+
+        context.setX(
+            (byte) 0x1
+        );
+
+        final short initialPc = 0x1000;
+        context.setPc(initialPc);
+        cpu.addBreakpoint(
+            initialPc
+        );
+
+        final short pc = 0x2000;
+        context.writeByte(
+            pc,
+            inx.opcode()
+        );
+
+        // breakpoint is fired first and changes pc to 0x2000
+        cpu.addWatcher(
+            new CpuWatcher() {
+                @Override
+                public void onBreakpoint(final CpuContext context) {
+                    context.setPc(pc);
+                }
+            }
+        );
+
+        cpu.step(context);
+
+        this.pcAndCheck(
+            context,
+            (short) 0x2001
+        );
+
+        this.xAndCheck(
+            context,
+            (byte) 0x2
+        );
+    }
+
     // Cpu..............................................................................................................
 
     @Override
