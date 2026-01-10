@@ -17,7 +17,10 @@
 package walkingkooka.emulator.c64;
 
 import walkingkooka.reflect.PublicStaticHelper;
+import walkingkooka.text.CharSequences;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -32,6 +35,16 @@ public final class AddressBuses implements PublicStaticHelper {
     public static AddressBus baseOffset(final int baseOffset,
                                         final AddressBus bus) {
         return BaseOffsetAddressBus.with(baseOffset, bus);
+    }
+
+    /**
+     * ROM with the basic ROM.
+     */
+    public static AddressBus basicRom(final AddressBus write) {
+        return rom(
+            loadRom("basic.901226-01.bin"),
+            write
+        );
     }
 
     /**
@@ -93,6 +106,19 @@ public final class AddressBuses implements PublicStaticHelper {
         return Rom.with(values, write);
     }
 
+    private static byte[] loadRom(final String name) {
+        try {
+            final InputStream inputStream = AddressBuses.class.getResourceAsStream(
+                "/walkingkooka/emulator/c64/" + name
+            );
+            if (null == inputStream) {
+                throw new IllegalStateException("Unable to load ROM file " + CharSequences.quote(name));
+            }
+            return inputStream.readAllBytes();
+        } catch (final IOException cause) {
+            throw new IllegalStateException("Reading ROM file " + CharSequences.quote(name) + " failed: " + cause.getMessage(), cause);
+        }
+    }
 
     // ................................................................................................................
 
