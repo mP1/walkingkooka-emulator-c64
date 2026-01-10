@@ -37,6 +37,54 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         );
     }
 
+    // step.............................................................................................................
+
+    @Test
+    public void testStep() {
+        final CpuInstruction ldaImm = CpuInstructions.ldaImm();
+
+        final BasicCpu cpu = BasicCpu.with(
+            Lists.of(
+                ldaImm
+            )
+        );
+
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(
+                256 * 256
+            )
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        context.writeByte(
+            pc,
+            ldaImm.opcode()
+        );
+
+        final byte value = 0x12;
+        context.writeByte(
+            (short) (pc + 1),
+            value
+        );
+
+        context.setA(
+            (byte) 0x99
+        );
+        cpu.step(context);
+
+        this.pcAndCheck(
+            context,
+            (short) (pc + 2)
+        );
+
+        this.aAndCheck(
+            context,
+            value
+        );
+    }
+
     // Cpu..............................................................................................................
 
     @Override
