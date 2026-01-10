@@ -46,6 +46,27 @@ public final class AddressBusesTest implements AddressBusTesting,
         );
     }
 
+    @Test
+    public void testCharacterGenerator() {
+        final AddressBus write = AddressBuses.memory(
+            4 * 1024
+        );
+        final AddressBus rom = AddressBuses.characterGenerator(
+            write
+        );
+
+        this.readAndCheck(
+            rom,
+            0, // offset
+            (byte) 60
+        );
+        this.readAndCheck(
+            rom,
+            1, // offset
+            (byte) 102
+        );
+    }
+
     // class............................................................................................................
 
     @Override

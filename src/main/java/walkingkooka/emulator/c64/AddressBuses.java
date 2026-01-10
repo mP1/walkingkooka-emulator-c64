@@ -48,6 +48,19 @@ public final class AddressBuses implements PublicStaticHelper {
     }
 
     /**
+     * The character generator ROM.
+     * <pre>
+     * https://www.commodore.ca/manuals/funet/cbm/firmware/computers/c64/characters.901225-01.bin
+     * </pre>
+     */
+    public static AddressBus characterGenerator(final AddressBus write) {
+        return rom(
+            loadRom("characters.901225-01.bin"),
+            write
+        );
+    }
+
+    /**
      * {@see Ciaa}
      */
     public static AddressBus ciaa(final Consumer<Consumer<HardwareMatrixKey>> keyPress,
