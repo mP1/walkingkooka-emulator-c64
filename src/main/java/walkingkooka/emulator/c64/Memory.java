@@ -55,6 +55,11 @@ final class Memory implements AddressBus {
         this.values[this.offset(offset)] = value;
     }
 
+    @Override
+    public int size() {
+        return this.values.length;
+    }
+
     /**
      * The memory value.
      */

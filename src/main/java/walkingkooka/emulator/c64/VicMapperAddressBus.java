@@ -75,6 +75,11 @@ final class VicMapperAddressBus implements AddressBus {
     private final static int CHARGEN_HI = 0x2000; // excl
     private final static int CHARGEN_MASK = 0x0fff;
 
+    @Override
+    public int size() {
+        return 256 * 256;
+    }
+
     private final int baseOffset;
     private final AddressBus characters;
     private final AddressBus memory;

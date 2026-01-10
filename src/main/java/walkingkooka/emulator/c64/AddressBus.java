@@ -33,6 +33,11 @@ public interface AddressBus {
     void write(final int offset, final byte value);
 
     /**
+     * The number of values
+     */
+    int size();
+
+    /**
      * Creates a view of this {@link AddressBus} where reads/writes have the given base offset added.
      * This is useful to break up a large memory into smaller chunks.
      */

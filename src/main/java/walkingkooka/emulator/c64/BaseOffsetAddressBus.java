@@ -50,6 +50,11 @@ final class BaseOffsetAddressBus implements AddressBus {
             value);
     }
 
+    @Override
+    public int size() {
+        return this.bus.size();
+    }
+
     private final int baseOffset;
     private final AddressBus bus;
 

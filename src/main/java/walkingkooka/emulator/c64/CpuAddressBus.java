@@ -208,6 +208,11 @@ final class CpuAddressBus implements AddressBus {
      */
     final static Bit CHAREN = Bit.BIT2;
 
+    @Override
+    public int size() {
+        return 256 * 256;
+    }
+
     private final AddressBus memory;
     private final AddressBus chargen;
     private final AddressBus basic;

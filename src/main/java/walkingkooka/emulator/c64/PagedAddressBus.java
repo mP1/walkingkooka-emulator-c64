@@ -63,6 +63,11 @@ final class PagedAddressBus implements AddressBus {
     private final int mask;
 
     @Override
+    public int size() {
+        return 256 * 256;
+    }
+
+    @Override
     public String toString() {
         return ToStringBuilder.empty()
             .value(this.pages)
