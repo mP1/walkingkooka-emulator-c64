@@ -17,8 +17,11 @@
 
 package walkingkooka.emulator.c64;
 
+import walkingkooka.collect.set.SortedSets;
+
 import java.util.Collection;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A simple cpu that simply dispatches opcodes to {@link CpuInstruction}.
@@ -43,6 +46,15 @@ final class BasicCpu implements Cpu {
     }
 
     @Override
+    public Runnable addBreakpoint(final short address) {
+        this.breakpoints.add(address);
+
+        return () -> this.breakpoints.remove(address);
+    }
+
+    private final Set<Short> breakpoints = SortedSets.tree();
+
+    @Override
     public Runnable addWatcher(final CpuWatcher watcher) {
         return this.watchers.add(watcher);
     }
@@ -51,8 +63,12 @@ final class BasicCpu implements Cpu {
 
     @Override
     public void step(final CpuContext context) {
-        short pc = context.pc();
+        if (this.breakpoints.contains(context.pc())) {
+            this.watchers.onBreakpoint(context);
+        }
 
+        // breakpoints above might have changed pc - so load it again
+        final short pc = context.pc();
         final byte opcode = context.readByte(pc);
         context.setPc(
             (short) (pc + 1)
