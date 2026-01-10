@@ -67,6 +67,27 @@ public final class AddressBusesTest implements AddressBusTesting,
         );
     }
 
+    @Test
+    public void testKernalRom() {
+        final AddressBus write = AddressBuses.memory(
+            4 * 1024
+        );
+        final AddressBus rom = AddressBuses.kernalRom(
+            write
+        );
+
+        this.readAndCheck(
+            rom,
+            0, // offset
+            (byte) -123
+        );
+        this.readAndCheck(
+            rom,
+            1, // offset
+            (byte) 86
+        );
+    }
+
     // class............................................................................................................
 
     @Override

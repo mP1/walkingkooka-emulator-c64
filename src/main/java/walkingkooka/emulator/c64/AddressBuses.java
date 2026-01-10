@@ -101,6 +101,19 @@ public final class AddressBuses implements PublicStaticHelper {
     }
 
     /**
+     * ROM with the kernal ROM.
+     * <pre>
+     * https://www.commodore.ca/manuals/funet/cbm/firmware/computers/c64/kernal.901227-03.bin
+     * </pre>
+     */
+    public static AddressBus kernalRom(final AddressBus write) {
+        return rom(
+            loadRom("kernal.901227-03.bin"),
+            write
+        );
+    }
+
+    /**
      * {@see Memory}
      */
     public static AddressBus memory(final int size) {
