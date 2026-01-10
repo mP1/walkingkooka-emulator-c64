@@ -16,12 +16,37 @@
  */
 package walkingkooka.emulator.c64;
 
+import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
 
-public final class AddressBusesTest implements PublicStaticHelperTesting<AddressBuses> {
+public final class AddressBusesTest implements AddressBusTesting,
+    PublicStaticHelperTesting<AddressBuses> {
+
+    @Test
+    public void testBasicRom() {
+        final AddressBus write = AddressBuses.memory(
+            4 * 1024
+        );
+        final AddressBus rom = AddressBuses.basicRom(
+            write
+        );
+
+        this.readAndCheck(
+            rom,
+            0, // offset
+            (byte) -108
+        );
+        this.readAndCheck(
+            rom,
+            1, // offset
+            (byte) -29
+        );
+    }
+
+    // class............................................................................................................
 
     @Override
     public Class<AddressBuses> type() {
