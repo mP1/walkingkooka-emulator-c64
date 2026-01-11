@@ -179,16 +179,22 @@ final class BasicCpuContext implements CpuContext {
 
     @Override
     public byte readByte(final short address) {
-        return this.addressBus.read(address);
+        return this.addressBus.read(
+            mask(address)
+        );
     }
 
     @Override
     public void writeByte(final short address,
                           final byte value) {
         this.addressBus.write(
-            address,
+            mask(address),
             value
         );
+    }
+
+    private static int mask(final short address) {
+        return address & 0xFFFF;
     }
 
     @Override
