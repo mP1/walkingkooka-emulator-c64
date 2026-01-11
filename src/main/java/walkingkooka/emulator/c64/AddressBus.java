@@ -45,6 +45,36 @@ package walkingkooka.emulator.c64;
  */
 public interface AddressBus {
 
+    /**
+     * <pre>
+     * $0000	0	Register	6510 CPU's data direction I/O port register; 0 = input, 1 = output
+     * Bit 0 - Direction of I/O on port at bit 0 of address $0001; default = 1
+     * Bit 1 - Direction of I/O on port at bit 1 of address $0001; default = 1
+     * Bit 2 - Direction of I/O on port at bit 2 of address $0001; default = 1
+     * Bit 3 - Direction of I/O on port at bit 3 of address $0001; default = 1
+     * Bit 4 - Direction of I/O on port at bit 4 of address $0001; default = 0
+     * Bit 5 - Direction of I/O on port at bit 5 of address $0001; default = 1
+     * Bit 6 - Direction of I/O on port at bit 6 of address $0001; unused, as bit 6 of address $0001 is undefined
+     * Bit 7 - Direction of I/O on port at bit 7 of address $0001; unused, as bit 7 of address $0001 is undefined
+     * </pre>
+     */
+    byte DEFAULT_CPU_DATA_DIRECTION = (byte) 0b0101111;
+
+    /**
+     * <pre>
+     * $0001	1	Register	6510 CPU's on-chip port register
+     * Bit 0 - LORAM: Configures RAM or ROM at $A000-$BFFF (see bankswitching)
+     * Bit 1 - HIRAM: Configures RAM or ROM at $E000-$FFFF (see bankswitching)
+     * Bit 2 - CHAREN: Configures I/O or ROM at $D000-$DFFF (see bankswitching)
+     * Bit 3 - Cassette Data Output Line (Datasette)
+     * Bit 4 - Cassette Switch Sense; 1 = Switch Closed
+     * Bit 5 - Cassette Motor Control; 0 = On, 1 = Off
+     * Bit 6 - Undefined
+     * Bit 7 - Undefined
+     * </pre>
+     */
+    byte DEFAULT_CPU_PORT = (byte) 0b100111;
+
     short BASIC_BASE = (short) 0xA000;
 
     short CARTRIDGE_BASE = (short) 0x8000;
