@@ -627,6 +627,54 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
         );
     }
 
+    @Test
+    public void testToStringRegistersRequireZeroPadding() {
+        final BasicCpuContext context = this.createContext();
+
+        context.setBreak(true);
+        context.setCarry(true);
+        context.setDecimalMode(true);
+        context.setInterruptDisabled(true);
+        context.setMinus(true);
+        context.setZero(true);
+
+        context.setPc((short) 0xabcd);
+        context.setStackPointer((byte) 0xfe);
+
+        context.setA((byte) 0x1);
+        context.setX((byte) 0x2);
+        context.setY((byte) 0x3);
+
+        this.toStringAndCheck(
+            context,
+            "A: 0x01, X: 0x02, Y: 0x03, SP: 0xfe, PC: 0xabcd, CpuFlags: CZIDB1-N"
+        );
+    }
+
+    @Test
+    public void testToStringPcRequiresZeroPadding() {
+        final BasicCpuContext context = this.createContext();
+
+        context.setBreak(true);
+        context.setCarry(true);
+        context.setDecimalMode(true);
+        context.setInterruptDisabled(true);
+        context.setMinus(true);
+        context.setZero(true);
+
+        context.setPc((short) 0xf);
+        context.setStackPointer((byte) 0xfe);
+
+        context.setA((byte) 0x12);
+        context.setX((byte) 0x34);
+        context.setY((byte) 0x56);
+
+        this.toStringAndCheck(
+            context,
+            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0x000f, CpuFlags: CZIDB1-N"
+        );
+    }
+
     // class............................................................................................................
 
     @Override

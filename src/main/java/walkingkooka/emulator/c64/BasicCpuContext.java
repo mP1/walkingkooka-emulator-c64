@@ -17,6 +17,8 @@
 
 package walkingkooka.emulator.c64;
 
+import walkingkooka.text.CharSequences;
+
 import java.util.Objects;
 
 final class BasicCpuContext implements CpuContext {
@@ -395,10 +397,20 @@ final class BasicCpuContext implements CpuContext {
     }
 
     private static String hex(final byte value) {
-        return "0x" + Integer.toHexString(BYTE_MASK & value);
+        return "0x" +
+            CharSequences.padLeft(
+                Integer.toHexString(BYTE_MASK & value),
+                2,
+                '0'
+            );
     }
 
     private static String hexAddress(final short value) {
-        return "0x" + Integer.toHexString(0xFFFF & value);
+        return "0x" +
+            CharSequences.padLeft(
+                Integer.toHexString(0xFFFF & value),
+                4,
+                '0'
+            );
     }
 }
