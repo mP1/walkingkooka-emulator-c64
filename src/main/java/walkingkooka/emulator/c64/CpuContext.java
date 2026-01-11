@@ -110,6 +110,8 @@ public interface CpuContext extends Context {
 
     void handleInvalidOpcode();
 
+    void handleNmi();
+
     void handleBreakpoints();
 
     Runnable addBreakpoint(final short address);
