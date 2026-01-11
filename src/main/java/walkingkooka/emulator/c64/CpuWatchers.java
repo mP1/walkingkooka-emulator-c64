@@ -58,6 +58,13 @@ public class CpuWatchers implements CpuWatcher {
         );
     }
 
+    @Override
+    public void onNmi(final CpuContext context) {
+        this.fire(
+            CpuWatcherEvent.nmi(context)
+        );
+    }
+
     final void fire(final CpuWatcherEvent event) {
         this.watchers.accept(event);
     }

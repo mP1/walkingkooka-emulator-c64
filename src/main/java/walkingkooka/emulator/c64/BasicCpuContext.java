@@ -313,6 +313,8 @@ final class BasicCpuContext implements CpuContext {
             }
 
             if ((mode & NMI) != 0) {
+                this.handleNmi();
+
                 final short pc = this.pc;
 
                 // push hi(pc), lo(pc), flags with break=0
@@ -378,6 +380,11 @@ final class BasicCpuContext implements CpuContext {
     @Override
     public void handleInvalidOpcode() {
         this.watchers.onInvalidOpcode(this);
+    }
+
+    @Override
+    public void handleNmi() {
+        this.watchers.onNmi(this);
     }
 
     @Override

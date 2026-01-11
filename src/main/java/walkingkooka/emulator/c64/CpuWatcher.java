@@ -28,4 +28,9 @@ public interface CpuWatcher {
      * This is fired by the cpu when an invalid opcode is executed.
      */
     void onInvalidOpcode(final CpuContext context);
+
+    /**
+     * This is fired by the cpu when a NMI is executed.
+     */
+    void onNmi(final CpuContext context);
 }

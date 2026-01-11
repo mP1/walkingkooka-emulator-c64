@@ -17,24 +17,25 @@
 
 package walkingkooka.emulator.c64;
 
-public class FakeCpuWatcher implements CpuWatcher {
+final class CpuWatcherEventNmi extends CpuWatcherEvent {
 
-    public FakeCpuWatcher() {
-        super();
+    static CpuWatcherEventNmi with(final CpuContext context) {
+        return new CpuWatcherEventNmi(context);
+    }
+
+    private CpuWatcherEventNmi(final CpuContext context) {
+        super(context);
     }
 
     @Override
-    public void onBreakpoint(final CpuContext context) {
-        throw new UnsupportedOperationException();
+    void fire(final CpuWatcher watcher) {
+        watcher.onInvalidOpcode(this.context);
     }
 
-    @Override
-    public void onInvalidOpcode(final CpuContext context) {
-        throw new UnsupportedOperationException();
-    }
+    // Object...........................................................................................................
 
     @Override
-    public void onNmi(final CpuContext context) {
-        throw new UnsupportedOperationException();
+    public String toString() {
+        return this.getClass().getSimpleName();
     }
 }
