@@ -92,27 +92,24 @@ final class CpuAddressBus implements AddressBus {
 
     @Override
     public byte read(final int offset) {
-        byte value;
+        final byte value;
 
-        do {
-            if (this.basicRomMapped && offset >= BASIC_ROM_BEGIN && offset <= BASIC_ROM_END) {
-                value = this.basic.read(offset);
-                break;
-            }
+        if (this.basicRomMapped && offset >= BASIC_ROM_BEGIN && offset <= BASIC_ROM_END) {
+            value = this.basic.read(offset);
+        } else {
             if (offset >= IO_DEVICES_BEGIN && offset <= IO_DEVICES_END) {
                 value = this.ioDevicesMapped ?
                     this.ioDevices.read(offset) :
                     this.chargen.read(offset);
-                break;
+            } else {
+                if (this.kernalRomMapped && offset >= KERNAL_ROM_BEGIN && offset <= KERNAL_ROM_END) {
+                    value = this.kernal.read(offset);
+                } else {
+                    // default read from memory...
+                    value = this.memory.read(offset);
+                }
             }
-            if (this.kernalRomMapped && offset >= KERNAL_ROM_BEGIN && offset <= KERNAL_ROM_END) {
-                value = this.kernal.read(offset);
-                break;
-            }
-
-            // default read from memory...
-            value = this.memory.read(offset);
-        } while (false);
+        }
 
         return value;
     }
