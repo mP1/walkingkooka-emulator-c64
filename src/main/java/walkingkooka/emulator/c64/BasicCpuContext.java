@@ -376,6 +376,11 @@ final class BasicCpuContext implements CpuContext {
     }
 
     @Override
+    public void handleInvalidOpcode() {
+        this.watchers.onInvalidOpcode(this);
+    }
+
+    @Override
     public Runnable addBreakpoint(final short address) {
         this.breakpoints.add(address);
 
