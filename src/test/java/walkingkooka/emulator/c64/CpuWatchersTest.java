@@ -35,16 +35,11 @@ public final class CpuWatchersTest implements ClassTesting2<CpuWatchers> {
 
         final AtomicBoolean fired = new AtomicBoolean();
         watchers.add(
-            new CpuWatcher() {
+            new FakeCpuWatcher() {
                 @Override
                 public void onBreakpoint(final CpuContext c) {
                     assertSame(context, c);
                     fired.set(true);
-                }
-
-                @Override
-                public void onInvalidOpcode(final CpuContext context) {
-                    throw new UnsupportedOperationException();
                 }
             }
         );

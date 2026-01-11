@@ -114,14 +114,9 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         );
 
         cpu.addWatcher(
-            new CpuWatcher() {
+            new FakeCpuWatcher() {
                 @Override
                 public void onBreakpoint(final CpuContext context) {
-                    throw new UnsupportedOperationException();
-                }
-
-                @Override
-                public void onInvalidOpcode(final CpuContext context) {
                     throw new UnsupportedOperationException();
                 }
             }
@@ -179,15 +174,10 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
 
         // breakpoint is fired first and changes pc to 0x2000
         cpu.addWatcher(
-            new CpuWatcher() {
+            new FakeCpuWatcher() {
                 @Override
                 public void onBreakpoint(final CpuContext context) {
                     context.setY(newYValue);
-                }
-
-                @Override
-                public void onInvalidOpcode(final CpuContext context) {
-                    throw new UnsupportedOperationException();
                 }
             }
         );
@@ -247,15 +237,10 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
 
         // breakpoint is fired first and changes pc to 0x2000
         cpu.addWatcher(
-            new CpuWatcher() {
+            new FakeCpuWatcher() {
                 @Override
                 public void onBreakpoint(final CpuContext context) {
                     context.setPc(pc);
-                }
-
-                @Override
-                public void onInvalidOpcode(final CpuContext context) {
-                    throw new UnsupportedOperationException();
                 }
             }
         );
