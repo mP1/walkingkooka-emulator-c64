@@ -37,6 +37,25 @@ public interface CpuTesting<C extends Cpu> extends TreePrintableTesting,
     }
 
     @Test
+    default void testDisassembleWithNullContextFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> this.createCpu()
+                .disassemble(null)
+        );
+    }
+
+    default void disassembleAndCheck(final C cpu,
+                                     final CpuContext context,
+                                     final String expected) {
+        this.checkEquals(
+            expected,
+            cpu.disassemble(context),
+            context::toString
+        );
+    }
+
+    @Test
     default void testStepWithNullContextFails() {
         assertThrows(
             NullPointerException.class,

@@ -258,6 +258,114 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         );
     }
 
+    // disassemble......................................................................................................
+
+    @Test
+    public void testDisassemble() {
+        final BasicCpu cpu = BasicCpu.with(
+            CpuInstructions.all()
+        );
+        final AddressBus ram = AddressBuses.memory(
+            256 * 256
+        );
+        final CpuContext cpuContext = CpuContexts.basic(
+            AddressBuses.cpu(
+                ram, // writable memory
+                AddressBuses.basicRom(
+                    AddressBuses.baseOffset(
+                        AddressBus.BASIC_BASE,
+                        ram
+                    ) // write
+                ),
+                AddressBuses.characterGenerator(
+                    AddressBuses.baseOffset(
+                        AddressBus.CHARACTER_GENERATOR_BASE,
+                        ram
+                    ) // write
+                ),
+                AddressBuses.memory(4 * 1024), // i,oDevices
+                AddressBuses.kernalRom(
+                    AddressBuses.baseOffset(
+                        AddressBus.KERNAL_BASE,
+                        ram
+                    ) // write
+                )
+            )
+        );
+
+        cpuContext.setPc(
+            (short) 0xFCE2
+        );
+
+        cpuContext.writeByte(
+            (short) 0x0,
+            AddressBus.DEFAULT_CPU_DATA_DIRECTION
+        );
+
+        cpuContext.writeByte(
+            (short) 0x1,
+            AddressBus.DEFAULT_CPU_PORT
+        );
+
+        this.readByteAndCheck(
+            cpuContext,
+            AddressBus.BASIC_BASE,
+            (byte) 60
+        );
+
+        this.readByteAndCheck(
+            cpuContext,
+            AddressBus.KERNAL_BASE,
+            (byte) 133
+        );
+
+        this.disassembleAndCheck(
+            cpu,
+            cpuContext,
+            "LDX #$ff"
+        );
+
+        cpuContext.setPc(
+            (short) (cpuContext.pc() + 2)
+        );
+
+        this.disassembleAndCheck(
+            cpu,
+            cpuContext,
+            "SEI"
+        );
+
+        cpuContext.setPc(
+            (short) (cpuContext.pc() + 1)
+        );
+
+        this.disassembleAndCheck(
+            cpu,
+            cpuContext,
+            "TXS"
+        );
+
+        cpuContext.setPc(
+            (short) (cpuContext.pc() + 1)
+        );
+
+        this.disassembleAndCheck(
+            cpu,
+            cpuContext,
+            "CLD"
+        );
+
+        cpuContext.setPc(
+            (short) (cpuContext.pc() + 1)
+        );
+
+        this.disassembleAndCheck(
+            cpu,
+            cpuContext,
+            "JSR $fd02"
+        );
+    }
+
     // Cpu..............................................................................................................
 
     @Override
