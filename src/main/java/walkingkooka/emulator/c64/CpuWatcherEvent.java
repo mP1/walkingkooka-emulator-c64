@@ -17,6 +17,7 @@
 
 package walkingkooka.emulator.c64;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 abstract class CpuWatcherEvent implements Consumer<CpuWatcher> {
@@ -25,8 +26,9 @@ abstract class CpuWatcherEvent implements Consumer<CpuWatcher> {
         return CpuWatcherEventBreakpoint.with(context);
     }
 
-    CpuWatcherEvent() {
+    CpuWatcherEvent(final CpuContext context) {
         super();
+        this.context = Objects.requireNonNull(context, "context");
     }
 
     @Override
@@ -38,6 +40,8 @@ abstract class CpuWatcherEvent implements Consumer<CpuWatcher> {
      * Sub-classes should implement this method, note any caught {@link Exception} will be logged as an ERROR.
      */
     abstract void fire(final CpuWatcher watcher);
+
+    final CpuContext context;
 
     // Object...........................................................................................................
 
