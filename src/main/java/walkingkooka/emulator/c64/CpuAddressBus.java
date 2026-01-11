@@ -81,13 +81,13 @@ final class CpuAddressBus implements AddressBus {
         this.kernal = kernal;
     }
 
-    final static int BASIC_ROM_BEGIN = 0xA000;
+    final static int BASIC_ROM_BEGIN = 0xFFFF & BASIC_BASE;
     final static int BASIC_ROM_END = 0xBFFF;
 
     final static int IO_DEVICES_BEGIN = 0xD000;
     final static int IO_DEVICES_END = 0xDFFF;
 
-    final static int KERNAL_ROM_BEGIN = 0xe000;
+    final static int KERNAL_ROM_BEGIN = 0xFFFF & KERNAL_BASE;
     final static int KERNAL_ROM_END = 0xffff;
 
     @Override
