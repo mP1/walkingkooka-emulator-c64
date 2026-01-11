@@ -122,7 +122,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
             }
         );
 
-        cpu.addBreakpoint(
+        context.addBreakpoint(
             (short) 0x2000
         );
 
@@ -182,7 +182,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
             }
         );
 
-        cpu.addBreakpoint(
+        context.addBreakpoint(
             (short) 0x1000
         );
 
@@ -225,7 +225,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
 
         final short initialPc = 0x1000;
         context.setPc(initialPc);
-        cpu.addBreakpoint(
+        context.addBreakpoint(
             initialPc
         );
 

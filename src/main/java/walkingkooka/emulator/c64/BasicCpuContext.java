@@ -17,9 +17,11 @@
 
 package walkingkooka.emulator.c64;
 
+import walkingkooka.collect.set.SortedSets;
 import walkingkooka.text.CharSequences;
 
 import java.util.Objects;
+import java.util.Set;
 
 final class BasicCpuContext implements CpuContext {
 
@@ -367,9 +369,20 @@ final class BasicCpuContext implements CpuContext {
     private int mode = NONE;
 
     @Override
-    public void fireBreakpoints() {
-        this.watchers.onBreakpoint(this);
+    public void handleBreakpoints() {
+        if (this.breakpoints.contains(this.pc)) {
+            this.watchers.onBreakpoint(this);
+        }
     }
+
+    @Override
+    public Runnable addBreakpoint(final short address) {
+        this.breakpoints.add(address);
+
+        return () -> this.breakpoints.remove(address);
+    }
+
+    private final Set<Short> breakpoints = SortedSets.tree();
 
     @Override
     public Runnable addWatcher(final CpuWatcher watcher) {
