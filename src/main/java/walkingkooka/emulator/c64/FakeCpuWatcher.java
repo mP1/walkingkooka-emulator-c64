@@ -37,4 +37,9 @@ public class FakeCpuWatcher implements CpuWatcher {
     public void onNmi(final CpuContext context) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public void onReset(final CpuContext context) {
+        throw new UnsupportedOperationException();
+    }
 }

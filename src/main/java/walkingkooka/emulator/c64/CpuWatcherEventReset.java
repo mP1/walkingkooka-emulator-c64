@@ -17,25 +17,25 @@
 
 package walkingkooka.emulator.c64;
 
-public interface CpuWatcher {
+final class CpuWatcherEventReset extends CpuWatcherEvent {
 
-    /**
-     * This is fired by the CPU when a breakpoint is encountered.
-     */
-    void onBreakpoint(final CpuContext context);
+    static CpuWatcherEventReset with(final CpuContext context) {
+        return new CpuWatcherEventReset(context);
+    }
 
-    /**
-     * This is fired by the cpu when an invalid opcode is executed.
-     */
-    void onInvalidOpcode(final CpuContext context);
+    private CpuWatcherEventReset(final CpuContext context) {
+        super(context);
+    }
 
-    /**
-     * This is fired by the cpu when a NMI is executed.
-     */
-    void onNmi(final CpuContext context);
+    @Override
+    void fire(final CpuWatcher watcher) {
+        watcher.onReset(this.context);
+    }
 
-    /**
-     * This is fired by the cpu when the cpu is reset.
-     */
-    void onReset(final CpuContext context);
+    // Object...........................................................................................................
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
 }

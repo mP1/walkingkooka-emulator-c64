@@ -298,6 +298,8 @@ final class BasicCpuContext implements CpuContext {
 
         if (NONE != mode) {
             if ((mode & RESET) != 0) {
+                this.handleReset();
+
                 this.setA((byte) 0);
                 this.setX((byte) 0);
                 this.setY((byte) 0);
@@ -385,6 +387,11 @@ final class BasicCpuContext implements CpuContext {
     @Override
     public void handleNmi() {
         this.watchers.onNmi(this);
+    }
+
+    @Override
+    public void handleReset() {
+        this.watchers.onReset(this);
     }
 
     @Override
