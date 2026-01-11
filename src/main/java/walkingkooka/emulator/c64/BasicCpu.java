@@ -62,6 +62,25 @@ final class BasicCpu implements Cpu {
     private final CpuWatchers watchers = CpuWatchers.empty();
 
     @Override
+    public String disassemble(final CpuContext context) {
+        Objects.requireNonNull(context, "context");
+
+        final short pc = context.pc();
+
+        final byte opcode = context.readByte(pc);
+        context.setPc(
+            (short) (pc + 1)
+        );
+
+        try {
+            return this.instructions[mask(opcode)]
+                .disassemble(context);
+        } finally {
+            context.setPc(pc);
+        }
+    }
+
+    @Override
     public void step(final CpuContext context) {
         if (this.breakpoints.contains(context.pc())) {
             this.watchers.onBreakpoint(context);

@@ -27,5 +27,7 @@ public interface Cpu {
 
     Runnable addWatcher(final CpuWatcher watcher);
 
+    String disassemble(final CpuContext context);
+
     void step(final CpuContext context);
 }
