@@ -129,14 +129,17 @@ final class CpuAddressBus implements AddressBus {
                 this.chargen.write(masked, value); // assumes writing to CHARGEN eventually writes to memory
             }
         } else {
-            switch (masked & MASK) {
+            switch (masked) {
                 case DATA_DIRECTION:
                     this.writeDataDirection(value);
                     break;
                 case PORT:
                     this.writePort(value);
                     break;
+                default:
+                    break;
             }
+
             this.memory.write(masked, value);
         }
     }
