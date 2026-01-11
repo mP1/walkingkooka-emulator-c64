@@ -113,7 +113,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
             (byte) 0x1
         );
 
-        cpu.addWatcher(
+        context.addWatcher(
             new FakeCpuWatcher() {
                 @Override
                 public void onBreakpoint(final CpuContext context) {
@@ -173,7 +173,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         final byte newYValue = 1;
 
         // breakpoint is fired first and changes pc to 0x2000
-        cpu.addWatcher(
+        context.addWatcher(
             new FakeCpuWatcher() {
                 @Override
                 public void onBreakpoint(final CpuContext context) {
@@ -236,7 +236,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         );
 
         // breakpoint is fired first and changes pc to 0x2000
-        cpu.addWatcher(
+        context.addWatcher(
             new FakeCpuWatcher() {
                 @Override
                 public void onBreakpoint(final CpuContext context) {

@@ -17,10 +17,22 @@
 
 package walkingkooka.emulator.c64;
 
+import org.junit.jupiter.api.Test;
 import walkingkooka.ContextTesting;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public interface CpuContextTesting2<C extends CpuContext> extends ContextTesting<C>,
     CpuContextTesting {
+
+    @Test
+    default void testAddWatcherWithNullFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> this.createContext()
+                .addWatcher(null)
+        );
+    }
 
     // Class............................................................................................................
 
