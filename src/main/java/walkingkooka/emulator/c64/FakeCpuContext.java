@@ -220,4 +220,14 @@ public class FakeCpuContext implements CpuContext {
     public void reset() {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public void fireBreakpoints() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Runnable addWatcher(final CpuWatcher watcher) {
+        throw new UnsupportedOperationException();
+    }
 }

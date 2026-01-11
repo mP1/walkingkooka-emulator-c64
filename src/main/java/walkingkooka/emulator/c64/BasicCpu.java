@@ -55,13 +55,6 @@ final class BasicCpu implements Cpu {
     private final Set<Short> breakpoints = SortedSets.tree();
 
     @Override
-    public Runnable addWatcher(final CpuWatcher watcher) {
-        return this.watchers.add(watcher);
-    }
-
-    private final CpuWatchers watchers = CpuWatchers.empty();
-
-    @Override
     public String disassemble(final CpuContext context) {
         Objects.requireNonNull(context, "context");
 
@@ -83,7 +76,7 @@ final class BasicCpu implements Cpu {
     @Override
     public void step(final CpuContext context) {
         if (this.breakpoints.contains(context.pc())) {
-            this.watchers.onBreakpoint(context);
+            context.fireBreakpoints();
         }
 
         // breakpoints above might have changed pc - so load it again

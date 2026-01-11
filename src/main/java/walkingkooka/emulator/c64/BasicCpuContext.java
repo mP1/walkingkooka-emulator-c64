@@ -366,6 +366,18 @@ final class BasicCpuContext implements CpuContext {
 
     private int mode = NONE;
 
+    @Override
+    public void fireBreakpoints() {
+        this.watchers.onBreakpoint(this);
+    }
+
+    @Override
+    public Runnable addWatcher(final CpuWatcher watcher) {
+        return this.watchers.add(watcher);
+    }
+
+    private final CpuWatchers watchers = CpuWatchers.empty();
+
     // helpers..........................................................................................................
 
     private byte hi(final short value) {

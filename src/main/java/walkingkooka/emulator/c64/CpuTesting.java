@@ -28,15 +28,6 @@ public interface CpuTesting<C extends Cpu> extends TreePrintableTesting,
     ClassTesting<C> {
 
     @Test
-    default void testAddWatcherWithNullFails() {
-        assertThrows(
-            NullPointerException.class,
-            () -> this.createCpu()
-                .addWatcher(null)
-        );
-    }
-
-    @Test
     default void testDisassembleWithNullContextFails() {
         assertThrows(
             NullPointerException.class,

@@ -107,4 +107,8 @@ public interface CpuContext extends Context {
     void irq();
 
     void handleInterrupts();
+
+    void fireBreakpoints();
+
+    Runnable addWatcher(final CpuWatcher watcher);
 }
