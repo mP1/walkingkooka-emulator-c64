@@ -33,57 +33,72 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
 
     @Test
     public void testWithNullMemoryFails() {
-        this.withFails(null,
-            this.basic(),
-            this.chargen(),
-            this.ioDevices(),
-            this.kernal());
+        assertThrows(
+            NullPointerException.class,
+            () -> CpuAddressBus.with(
+                null,
+                this.chargen(),
+                this.basic(),
+                this.ioDevices(),
+                this.kernal()
+            )
+        );
     }
 
     @Test
     public void testWithNullBasicFails() {
-        this.withFails(this.memory(),
-            null,
-            this.chargen(),
-            this.ioDevices(),
-            this.kernal());
+        assertThrows(
+            NullPointerException.class,
+            () -> CpuAddressBus.with(
+                this.memory(),
+                this.chargen(),
+                null,
+                this.ioDevices(),
+                this.kernal()
+            )
+        );
     }
 
     @Test
     public void testWithNullChargenFails() {
-        this.withFails(this.memory(),
-            this.basic(),
-            null,
-            this.ioDevices(),
-            this.kernal());
+        assertThrows(
+            NullPointerException.class,
+            () -> CpuAddressBus.with(
+                this.memory(),
+                null,
+                this.basic(),
+                this.ioDevices(),
+                this.kernal()
+            )
+        );
     }
 
     @Test
     public void testWithNullIoDevicesFails() {
-        this.withFails(this.memory(),
-            this.basic(),
-            this.chargen(),
-            null,
-            this.kernal());
+        assertThrows(
+            NullPointerException.class,
+            () -> CpuAddressBus.with(
+                this.memory(),
+                this.chargen(),
+                this.basic(),
+                null,
+                this.kernal()
+            )
+        );
     }
 
     @Test
     public void testWithNullKernalFails() {
-        this.withFails(this.memory(),
-            this.basic(),
-            this.chargen(),
-            this.ioDevices(),
-            null);
-    }
-
-    private void withFails(final AddressBus memory,
-                           final AddressBus basic,
-                           final AddressBus chargen,
-                           final AddressBus ioDevices,
-                           final AddressBus kernal) {
-        assertThrows(NullPointerException.class, () -> {
-            CpuAddressBus.with(memory, chargen, basic, ioDevices, kernal);
-        });
+        assertThrows(
+            NullPointerException.class,
+            () -> CpuAddressBus.with(
+                this.memory(),
+                this.chargen(),
+                this.basic(),
+                this.ioDevices(),
+                null
+            )
+        );
     }
 
     // read.............................................................................................................
@@ -291,10 +306,12 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
 
         final CpuAddressBus bus = CpuAddressBus.with(memory, basic, chargen, ioDevices, kernal);
 
-        this.write2(bus,
+        this.write2(
+            bus,
             CpuAddressBus.IO_DEVICES_BEGIN,
             CpuAddressBus.IO_DEVICES_END,
-            CHARGEN);
+            CHARGEN
+        );
 
         this.readIoAndCheck(bus, CHARGEN);
     }
@@ -310,10 +327,12 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
         final CpuAddressBus bus = CpuAddressBus.with(memory, basic, chargen, ioDevices, kernal);
         bus.ioDevicesMapped = true;
 
-        this.write2(bus,
+        this.write2(
+            bus,
             CpuAddressBus.IO_DEVICES_BEGIN,
             CpuAddressBus.IO_DEVICES_END,
-            IO);
+            IO
+        );
 
         this.readIoAndCheck(bus, IO);
 
@@ -323,9 +342,11 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
 
     @Test
     public void testWriteKernalRom() {
-        final AddressBus memory = this.memory(CpuAddressBus.KERNAL_ROM_BEGIN,
+        final AddressBus memory = this.memory(
+            CpuAddressBus.KERNAL_ROM_BEGIN,
             CpuAddressBus.KERNAL_ROM_END,
-            KERNAL);
+            KERNAL
+        );
         final AddressBus basic = this.basic();
         final AddressBus chargen = this.chargen();
         final AddressBus ioDevices = this.ioDevices();
@@ -334,10 +355,12 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
         final CpuAddressBus bus = CpuAddressBus.with(memory, basic, chargen, ioDevices, kernal);
         bus.kernalRomMapped = true;
 
-        this.write2(bus,
+        this.write2(
+            bus,
             CpuAddressBus.KERNAL_ROM_BEGIN,
             CpuAddressBus.KERNAL_ROM_END,
-            KERNAL);
+            KERNAL
+        );
 
         bus.kernalRomMapped = false;
 
@@ -354,67 +377,93 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
 
         final CpuAddressBus bus = CpuAddressBus.with(memory, basic, chargen, ioDevices, kernal);
 
-        this.write2(bus,
+        this.write2(
+            bus,
             0,
             CpuAddressBus.BASIC_ROM_BEGIN - 1,
-            MEMORY);
-        this.write2(bus,
+            MEMORY
+        );
+        this.write2(
+            bus,
             CpuAddressBus.KERNAL_ROM_BEGIN,
             CpuAddressBus.KERNAL_ROM_END,
-            MEMORY);
+            MEMORY
+        );
 
         bus.basicRomMapped = true;
         bus.ioDevicesMapped = true;
         bus.kernalRomMapped = true;
 
-        this.readBasicAndCheck(bus,
-            BASIC);
+        this.readBasicAndCheck(
+            bus,
+            BASIC
+        );
 
-        this.write2(bus,
+        this.write2(
+            bus,
             CpuAddressBus.BASIC_ROM_BEGIN,
             CpuAddressBus.BASIC_ROM_END,
-            MEMORY);
+            MEMORY
+        );
 
-        this.readIoAndCheck(bus,
-            IO);
+        this.readIoAndCheck(
+            bus,
+            IO
+        );
 
-        this.write2(bus,
+        this.write2(
+            bus,
             CpuAddressBus.IO_DEVICES_BEGIN,
             CpuAddressBus.IO_DEVICES_END,
-            IO);
+            IO
+        );
 
-        this.readKernalAndCheck(bus,
-            KERNAL);
+        this.readKernalAndCheck(
+            bus,
+            KERNAL
+        );
 
-        this.write2(bus,
+        this.write2(
+            bus,
             CpuAddressBus.KERNAL_ROM_BEGIN,
             CpuAddressBus.KERNAL_ROM_END,
-            MEMORY);
+            MEMORY
+        );
 
-        this.readAndCheck2(bus,
+        this.readAndCheck2(
+            bus,
             0,
             CpuAddressBus.BASIC_ROM_BEGIN - 1,
-            MEMORY);
+            MEMORY
+        );
 
-        this.readAndCheck2(bus,
+        this.readAndCheck2(
+            bus,
             CpuAddressBus.BASIC_ROM_BEGIN,
             CpuAddressBus.BASIC_ROM_END,
-            BASIC);
+            BASIC
+        );
 
-        this.readAndCheck2(bus,
+        this.readAndCheck2(
+            bus,
             CpuAddressBus.BASIC_ROM_END + 1,
             CpuAddressBus.IO_DEVICES_BEGIN - 1,
-            MEMORY);
+            MEMORY
+        );
 
-        this.readAndCheck2(bus,
+        this.readAndCheck2(
+            bus,
             CpuAddressBus.IO_DEVICES_BEGIN,
             CpuAddressBus.IO_DEVICES_END,
-            IO);
+            IO
+        );
 
-        this.readAndCheck2(bus,
+        this.readAndCheck2(
+            bus,
             CpuAddressBus.KERNAL_ROM_BEGIN,
             CpuAddressBus.KERNAL_ROM_END,
-            KERNAL);
+            KERNAL
+        );
     }
 
     private void write2(final CpuAddressBus bus,
@@ -428,34 +477,42 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
 
     private void readBelowBasicAndCheck(final CpuAddressBus bus,
                                         final byte value) {
-        this.readAndCheck2(bus,
+        this.readAndCheck2(
+            bus,
             0,
             CpuAddressBus.BASIC_ROM_BEGIN - 1,
-            value);
+            value
+        );
     }
 
     private void readBasicAndCheck(final CpuAddressBus bus,
                                    final byte value) {
-        this.readAndCheck2(bus,
+        this.readAndCheck2(
+            bus,
             CpuAddressBus.BASIC_ROM_BEGIN,
             CpuAddressBus.BASIC_ROM_END,
-            value);
+            value
+        );
     }
 
     private void readIoAndCheck(final CpuAddressBus bus,
                                 final byte value) {
-        this.readAndCheck2(bus,
+        this.readAndCheck2(
+            bus,
             CpuAddressBus.IO_DEVICES_BEGIN,
             CpuAddressBus.IO_DEVICES_END,
-            value);
+            value
+        );
     }
 
     private void readKernalAndCheck(final CpuAddressBus bus,
                                     final byte value) {
-        this.readAndCheck2(bus,
+        this.readAndCheck2(
+            bus,
             CpuAddressBus.KERNAL_ROM_BEGIN,
             CpuAddressBus.KERNAL_ROM_END,
-            value);
+            value
+        );
     }
 
     private void readAndCheck2(final CpuAddressBus bus,
@@ -465,48 +522,6 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
         for (int i = lo; i <= hi; i++) {
             this.readAndCheck(bus, i, value);
         }
-    }
-
-    // toString.........................................................................................................
-
-    @Test
-    public void testToStringBasicIOKernal() {
-        final CpuAddressBus bus = this.createAddressBus();
-        bus.basicRomMapped = true;
-        bus.ioDevicesMapped = true;
-        bus.kernalRomMapped = true;
-
-        this.toStringAndCheck(bus, "BASIC IO KERNAL");
-    }
-
-    @Test
-    public void testToStringBasicChargen() {
-        final CpuAddressBus bus = this.createAddressBus();
-        bus.basicRomMapped = true;
-        bus.ioDevicesMapped = false;
-        bus.kernalRomMapped = false;
-
-        this.toStringAndCheck(bus, "BASIC CHARGEN");
-    }
-
-    @Test
-    public void testToStringChargen() {
-        final CpuAddressBus bus = this.createAddressBus();
-        bus.basicRomMapped = false;
-        bus.ioDevicesMapped = false;
-        bus.kernalRomMapped = false;
-
-        this.toStringAndCheck(bus, "CHARGEN");
-    }
-
-    @Test
-    public void testToStringIo() {
-        final CpuAddressBus bus = this.createAddressBus();
-        bus.basicRomMapped = false;
-        bus.ioDevicesMapped = true;
-        bus.kernalRomMapped = false;
-
-        this.toStringAndCheck(bus, "IO");
     }
 
     // helpers..........................................................................................................
@@ -583,6 +598,59 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
             }
         };
     }
+
+    // toString.........................................................................................................
+
+    @Test
+    public void testToStringBasicIOKernal() {
+        final CpuAddressBus bus = this.createAddressBus();
+        bus.basicRomMapped = true;
+        bus.ioDevicesMapped = true;
+        bus.kernalRomMapped = true;
+
+        this.toStringAndCheck(bus, "BASIC IO KERNAL");
+    }
+
+    @Test
+    public void testToStringBasicChargen() {
+        final CpuAddressBus bus = this.createAddressBus();
+        bus.basicRomMapped = true;
+        bus.ioDevicesMapped = false;
+        bus.kernalRomMapped = false;
+
+        this.toStringAndCheck(
+            bus,
+            "BASIC CHARGEN"
+        );
+    }
+
+    @Test
+    public void testToStringChargen() {
+        final CpuAddressBus bus = this.createAddressBus();
+        bus.basicRomMapped = false;
+        bus.ioDevicesMapped = false;
+        bus.kernalRomMapped = false;
+
+        this.toStringAndCheck(
+            bus,
+            "CHARGEN"
+        );
+    }
+
+    @Test
+    public void testToStringIo() {
+        final CpuAddressBus bus = this.createAddressBus();
+        bus.basicRomMapped = false;
+        bus.ioDevicesMapped = true;
+        bus.kernalRomMapped = false;
+
+        this.toStringAndCheck(
+            bus,
+            "IO"
+        );
+    }
+
+    // class............................................................................................................
 
     @Override
     public Class<CpuAddressBus> type() {
