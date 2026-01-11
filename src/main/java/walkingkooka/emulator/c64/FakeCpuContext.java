@@ -227,6 +227,11 @@ public class FakeCpuContext implements CpuContext {
     }
 
     @Override
+    public void handleInvalidOpcode() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public Runnable addBreakpoint(final short address) {
         throw new UnsupportedOperationException();
     }
