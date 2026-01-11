@@ -75,6 +75,11 @@ final class Rom implements AddressBus {
     private final int baseOffset;
 
     @Override
+    public int size() {
+        return this.values.length;
+    }
+
+    @Override
     public Rom setBaseOffset(final int offset) {
         return 0 == offset ?
             this :

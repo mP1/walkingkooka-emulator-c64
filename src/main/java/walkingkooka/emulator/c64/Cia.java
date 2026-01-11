@@ -568,6 +568,26 @@ abstract class Cia implements AddressBus, Updatable {
         }
     }
 
+    /**
+     * https://www.c64-wiki.com/wiki/Memory_Map
+     * <pre>
+     * I/O Table
+     * Hex Address	Dec Address	Page	Contents
+     * $0000-$0001	0-1	-	CPU I/O port - see Zeropage
+     * $D000-$D3FF	53248-54271	Page 208-211	VIC-II registers
+     * $D400-$D7FF	54272-55295	Page 212-215	SID registers
+     * $D800-$DBFF	55296-56319	Page 216-219	Color Memory
+     * $DC00-$DCFF	56320-56575	Page 220	CIA 1
+     * $DD00-$DDFF	56576-56831	Page 221	CIA 2
+     * $DE00-$DEFF	56832-57087	Page 222	I/O 1
+     * $DF00-$DFFF	57088-57343	Page 223	I/O 2
+     * </pre>
+     */
+    @Override
+    public final int size() {
+        return 0x100;
+    }
+
     // Interrupts.......................................................................................................
 
     /**

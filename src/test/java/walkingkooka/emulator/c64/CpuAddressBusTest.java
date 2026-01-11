@@ -573,6 +573,11 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
             }
 
             @Override
+            public int size() {
+                return 1;
+            }
+
+            @Override
             public String toString() {
                 return Integer.toHexString(lo) + ".." + Integer.toHexString(hi) + " value=" + value;
             }

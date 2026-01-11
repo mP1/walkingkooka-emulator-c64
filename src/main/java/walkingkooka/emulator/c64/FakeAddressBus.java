@@ -34,4 +34,9 @@ public class FakeAddressBus implements AddressBus, Fake {
     public void write(final int offset, final byte value) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public int size() {
+        throw new UnsupportedOperationException();
+    }
 }
