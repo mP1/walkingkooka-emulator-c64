@@ -41,6 +41,11 @@ public final class CpuWatchersTest implements ClassTesting2<CpuWatchers> {
                     assertSame(context, c);
                     fired.set(true);
                 }
+
+                @Override
+                public void onInvalidOpcode(final CpuContext context) {
+                    throw new UnsupportedOperationException();
+                }
             }
         );
 

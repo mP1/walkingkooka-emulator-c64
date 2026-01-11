@@ -51,6 +51,13 @@ public class CpuWatchers implements CpuWatcher {
         );
     }
 
+    @Override
+    public void onInvalidOpcode(final CpuContext context) {
+        this.fire(
+            CpuWatcherEventInvalidOpcode.with(context)
+        );
+    }
+
     final void fire(final CpuWatcherEvent event) {
         this.watchers.accept(event);
     }

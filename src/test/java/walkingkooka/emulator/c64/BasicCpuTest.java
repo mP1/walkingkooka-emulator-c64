@@ -119,6 +119,11 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
                 public void onBreakpoint(final CpuContext context) {
                     throw new UnsupportedOperationException();
                 }
+
+                @Override
+                public void onInvalidOpcode(final CpuContext context) {
+                    throw new UnsupportedOperationException();
+                }
             }
         );
 
@@ -178,6 +183,11 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
                 @Override
                 public void onBreakpoint(final CpuContext context) {
                     context.setY(newYValue);
+                }
+
+                @Override
+                public void onInvalidOpcode(final CpuContext context) {
+                    throw new UnsupportedOperationException();
                 }
             }
         );
@@ -241,6 +251,11 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
                 @Override
                 public void onBreakpoint(final CpuContext context) {
                     context.setPc(pc);
+                }
+
+                @Override
+                public void onInvalidOpcode(final CpuContext context) {
+                    throw new UnsupportedOperationException();
                 }
             }
         );

@@ -17,12 +17,25 @@
 
 package walkingkooka.emulator.c64;
 
-public interface CpuWatcher {
+final class CpuWatcherEventInvalidOpcode extends CpuWatcherEvent {
 
-    void onBreakpoint(final CpuContext context);
+    static CpuWatcherEventInvalidOpcode with(final CpuContext context) {
+        return new CpuWatcherEventInvalidOpcode(context);
+    }
 
-    /**
-     * This is fired by the cpu when an invalid opcode is executed.
-     */
-    void onInvalidOpcode(final CpuContext context);
+    private CpuWatcherEventInvalidOpcode(final CpuContext context) {
+        super(context);
+    }
+
+    @Override
+    void fire(final CpuWatcher watcher) {
+        watcher.onInvalidOpcode(this.context);
+    }
+
+    // Object...........................................................................................................
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
 }
