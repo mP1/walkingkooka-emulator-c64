@@ -580,7 +580,7 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
 
         this.toStringAndCheck(
             context,
-            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0xabcd, CpuFlags: C----1--"
+            "PC: 0xABCD, A: 0x12, X: 0x34, Y: 0x56, SP: 0xFE, SR: C----1--"
         );
     }
 
@@ -599,7 +599,7 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
 
         this.toStringAndCheck(
             context,
-            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0xabcd, CpuFlags: -----1V-"
+            "PC: 0xABCD, A: 0x12, X: 0x34, Y: 0x56, SP: 0xFE, SR: -----1V-"
         );
     }
 
@@ -623,7 +623,7 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
 
         this.toStringAndCheck(
             context,
-            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0xabcd, CpuFlags: CZIDB1-N"
+            "PC: 0xABCD, A: 0x12, X: 0x34, Y: 0x56, SP: 0xFE, SR: CZIDB1-N"
         );
     }
 
@@ -647,7 +647,7 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
 
         this.toStringAndCheck(
             context,
-            "A: 0x01, X: 0x02, Y: 0x03, SP: 0xfe, PC: 0xabcd, CpuFlags: CZIDB1-N"
+            "PC: 0xABCD, A: 0x01, X: 0x02, Y: 0x03, SP: 0xFE, SR: CZIDB1-N"
         );
     }
 
@@ -671,7 +671,7 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
 
         this.toStringAndCheck(
             context,
-            "A: 0x12, X: 0x34, Y: 0x56, SP: 0xfe, PC: 0x000f, CpuFlags: CZIDB1-N"
+            "PC: 0x000F, A: 0x12, X: 0x34, Y: 0x56, SP: 0xFE, SR: CZIDB1-N"
         );
     }
 

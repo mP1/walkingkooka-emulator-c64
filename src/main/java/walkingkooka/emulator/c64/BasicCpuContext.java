@@ -432,18 +432,19 @@ final class BasicCpuContext implements CpuContext {
 
     @Override
     public String toString() {
-        return "A: " + hex(this.a) +
+        return "PC: " + hexAddress(this.pc) +
+            ", A: " + hex(this.a) +
             ", X: " + hex(this.x) +
             ", Y: " + hex(this.y) +
             ", SP: " + hex(this.stackPointer) +
-            ", PC: " + hexAddress(this.pc) +
-            ", CpuFlags: " + this.flags;
+            ", SR: " + this.flags;
     }
 
     private static String hex(final byte value) {
         return "0x" +
             CharSequences.padLeft(
-                Integer.toHexString(BYTE_MASK & value),
+                Integer.toHexString(BYTE_MASK & value)
+                    .toUpperCase(),
                 2,
                 '0'
             );
@@ -452,7 +453,8 @@ final class BasicCpuContext implements CpuContext {
     private static String hexAddress(final short value) {
         return "0x" +
             CharSequences.padLeft(
-                Integer.toHexString(0xFFFF & value),
+                Integer.toHexString(0xFFFF & value)
+                    .toUpperCase(),
                 4,
                 '0'
             );
