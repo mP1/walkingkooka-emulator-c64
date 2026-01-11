@@ -26,6 +26,10 @@ abstract class CpuWatcherEvent implements Consumer<CpuWatcher> {
         return CpuWatcherEventBreakpoint.with(context);
     }
 
+    static CpuWatcherEventInvalidOpcode invalidOpcode(final CpuContext context) {
+        return CpuWatcherEventInvalidOpcode.with(context);
+    }
+
     static CpuWatcherEventNmi nmi(final CpuContext context) {
         return CpuWatcherEventNmi.with(context);
     }
