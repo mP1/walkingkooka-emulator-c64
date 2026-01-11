@@ -29,7 +29,7 @@ final class CpuWatcherEventNmi extends CpuWatcherEvent {
 
     @Override
     void fire(final CpuWatcher watcher) {
-        watcher.onInvalidOpcode(this.context);
+        watcher.onNmi(this.context);
     }
 
     // Object...........................................................................................................
