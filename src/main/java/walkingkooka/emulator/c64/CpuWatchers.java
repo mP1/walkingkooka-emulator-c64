@@ -47,14 +47,14 @@ public class CpuWatchers implements CpuWatcher {
     @Override
     public void onBreakpoint(final CpuContext context) {
         this.fire(
-            CpuWatcherEventBreakpoint.with(context)
+            CpuWatcherEvent.breakpoint(context)
         );
     }
 
     @Override
     public void onInvalidOpcode(final CpuContext context) {
         this.fire(
-            CpuWatcherEventInvalidOpcode.with(context)
+            CpuWatcherEvent.invalidOpcode(context)
         );
     }
 
