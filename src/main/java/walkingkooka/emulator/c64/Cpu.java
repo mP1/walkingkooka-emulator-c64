@@ -23,8 +23,6 @@ public interface Cpu {
 
     short KERNAL_ROM_BASE = (short) 0xe000;
 
-    Runnable addBreakpoint(final short address);
-
     String disassemble(final CpuContext context);
 
     void step(final CpuContext context);

@@ -108,7 +108,9 @@ public interface CpuContext extends Context {
 
     void handleInterrupts();
 
-    void fireBreakpoints();
+    void handleBreakpoints();
+
+    Runnable addBreakpoint(final short address);
 
     Runnable addWatcher(final CpuWatcher watcher);
 }
