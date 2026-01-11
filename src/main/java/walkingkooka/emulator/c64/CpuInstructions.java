@@ -712,6 +712,13 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
+     * {@see CpuInstructionSharedInvalidOpcode}
+     */
+    public static CpuInstruction invalidOpcode(final byte opcode) {
+        return CpuInstructionSharedInvalidOpcode.with(opcode);
+    }
+
+    /**
      * {@see CpuInstructionSharedInx}
      */
     public static CpuInstruction inx() {
