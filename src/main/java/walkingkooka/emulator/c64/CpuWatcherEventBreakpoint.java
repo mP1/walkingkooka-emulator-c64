@@ -17,27 +17,20 @@
 
 package walkingkooka.emulator.c64;
 
-import java.util.Objects;
-
 final class CpuWatcherEventBreakpoint extends CpuWatcherEvent {
 
     static CpuWatcherEventBreakpoint with(final CpuContext context) {
-        return new CpuWatcherEventBreakpoint(
-            Objects.requireNonNull(context, "context")
-        );
+        return new CpuWatcherEventBreakpoint(context);
     }
 
     private CpuWatcherEventBreakpoint(final CpuContext context) {
-        super();
-        this.context = context;
+        super(context);
     }
 
     @Override
     void fire(final CpuWatcher watcher) {
         watcher.onBreakpoint(this.context);
     }
-
-    private final CpuContext context;
 
     // Object...........................................................................................................
 
