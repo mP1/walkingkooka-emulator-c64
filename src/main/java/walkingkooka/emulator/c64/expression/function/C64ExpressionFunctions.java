@@ -18,11 +18,20 @@
 package walkingkooka.emulator.c64.expression.function;
 
 import walkingkooka.reflect.PublicStaticHelper;
+import walkingkooka.terminal.expression.TerminalExpressionEvaluationContext;
+import walkingkooka.tree.expression.function.ExpressionFunction;
 
 /**
  * A collection of {@link walkingkooka.tree.expression.function.ExpressionFunction} that probably use the C64 emulator.
  */
 public final class C64ExpressionFunctions implements PublicStaticHelper {
+
+    /**
+     * {@see C64ExpressionFunctionC64Basic}
+     */
+    public static <C extends TerminalExpressionEvaluationContext> ExpressionFunction<Integer, C> c64Basic() {
+        return C64ExpressionFunctionC64Basic.instance();
+    }
 
     /**
      * Stop creation
