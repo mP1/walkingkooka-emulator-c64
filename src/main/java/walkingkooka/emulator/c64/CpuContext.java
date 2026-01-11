@@ -112,6 +112,8 @@ public interface CpuContext extends Context {
 
     void handleNmi();
 
+    void handleReset();
+
     void handleBreakpoints();
 
     Runnable addBreakpoint(final short address);

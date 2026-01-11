@@ -65,6 +65,13 @@ public class CpuWatchers implements CpuWatcher {
         );
     }
 
+    @Override
+    public void onReset(final CpuContext context) {
+        this.fire(
+            CpuWatcherEvent.reset(context)
+        );
+    }
+
     final void fire(final CpuWatcherEvent event) {
         this.watchers.accept(event);
     }
