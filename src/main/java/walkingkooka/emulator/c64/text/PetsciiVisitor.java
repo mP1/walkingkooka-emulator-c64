@@ -29,91 +29,11 @@ import java.util.Objects;
  * https://www.c64-wiki.com/wiki/PETSCII
  * </pre>
  */
-public class PetsciiVisitor extends Visitor<Byte> {
+public class PetsciiVisitor extends Visitor<Byte> implements PetsciiConstants {
 
     protected PetsciiVisitor() {
         super();
     }
-
-    private final byte KEY_NA = (byte) 0;  // to indicate that no key is presed
-
-    // PETSCII codes for programmable keys
-
-    private final byte KEY_STOP = (byte) 0x03;
-    private final byte KEY_RUN = (byte) 0x83;
-
-    // PETSCII codes for cursor keys
-
-    private final byte KEY_CRSR_UP = (byte) 0x91;
-    private final byte KEY_CRSR_DOWN = (byte) 0x11;
-    private final byte KEY_CRSR_LEFT = (byte) 0x9D;
-    private final byte KEY_CRSR_RIGHT = (byte) 0x1D;
-
-    // PETSCII codes for colors
-
-    private final byte KEY_RVS_ON = (byte) 0x12;// CTRL+9;
-    private final byte KEY_RVS_OFF = (byte) 0x92;// CTRL+0;
-    private final byte KEY_BLACK = (byte) 0x90;// CTRL+1;
-    private final byte KEY_WHITE = (byte) 0x05; // CTRL+2;
-    private final byte KEY_RED = (byte) 0x1C; // CTRL+3;
-    private final byte KEY_CYAN = (byte) 0x9F; // CTRL+4;
-    private final byte KEY_PURPLE = (byte) 0x9C; // CTRL+5;
-    private final byte KEY_GREEN = (byte) 0x1E; // CTRL+6;
-    private final byte KEY_BLUE = (byte) 0x1F; // CTRL+7;
-    private final byte KEY_YELLOW = (byte) 0x9E; // CTRL+8;
-
-    private final byte KEY_ORANGE = (byte) 0x81;// VENDOR+1;
-    private final byte KEY_BROWN = (byte) 0x95;// VENDOR+2;
-    private final byte KEY_LT_RED = (byte) 0x96;// VENDOR+3;
-    private final byte KEY_GREY_1 = (byte) 0x97;// VENDOR+4;
-    private final byte KEY_GREY_2 = (byte) 0x98;// VENDOR+5;
-    private final byte KEY_LT_GREEN = (byte) 0x99;// VENDOR+6;
-    private final byte KEY_LT_BLUE = (byte) 0x9A;// VENDOR+7;
-    private final byte KEY_GREY_3 = (byte) 0x9B;// VENDOR+8;
-
-    // PETSCII codes for other non-printable characters
-    private final byte KEY_RETURN = (byte) 0x0D;
-    private final byte KEY_SHIFT_RETURN = (byte) 0x8D;
-    private final byte KEY_CLR = (byte) 0x93;
-    private final byte KEY_HOME = (byte) 0x13;
-    private final byte KEY_INS = (byte) 0x94;
-    private final byte KEY_DEL = (byte) 0x14;
-
-    // PETSCII codes for printable characters
-
-    private final byte KEY_SPACE = (byte) 0x20;
-    private final byte KEY_EXCLAMATION = (byte) 0x21;
-    private final byte KEY_QUOTE = (byte) 0x22;
-    private final byte KEY_HASH = (byte) 0x23;
-    private final byte KEY_DOLLAR = (byte) 0x24;
-    private final byte KEY_PERCENT = (byte) 0x25;
-    private final byte KEY_AMPERSAND = (byte) 0x26;
-    private final byte KEY_APOSTROPHE = (byte) 0x27;
-    private final byte KEY_R_BRACKET_L = (byte) 0x28;
-    private final byte KEY_R_BRACKET_R = (byte) 0x29;
-    private final byte KEY_ASTERISK = (byte) 0x2A;
-    private final byte KEY_PLUS = (byte) 0x2B;
-    private final byte KEY_COMA = (byte) 0x2C;
-    private final byte KEY_MINUS = (byte) 0x2D;
-    private final byte KEY_FULLSTOP = (byte) 0x2E;
-    private final byte KEY_SLASH = (byte) 0x2F;
-
-    private final byte KEY_0 = (byte) 0x30;
-    private final byte KEY_1 = (byte) 0x31;
-    private final byte KEY_2 = (byte) 0x32;
-    private final byte KEY_3 = (byte) 0x33;
-    private final byte KEY_4 = (byte) 0x34;
-    private final byte KEY_5 = (byte) 0x35;
-    private final byte KEY_6 = (byte) 0x36;
-    private final byte KEY_7 = (byte) 0x37;
-    private final byte KEY_8 = (byte) 0x38;
-    private final byte KEY_9 = (byte) 0x39;
-    private final byte KEY_COLON = (byte) 0x3A;
-    private final byte KEY_SEMICOLON = (byte) 0x3B;
-    private final byte KEY_LT = (byte) 0x3C;
-    private final byte KEY_EQ = (byte) 0x3D;
-    private final byte KEY_GT = (byte) 0x3E;
-    private final byte KEY_QUESTION = (byte) 0x3F;
 
     // XXX finish this: $4x, $5x, $6x, $7x, $Ax, $Bx, $Cx, $Dx, $Ex, $Fx
 
