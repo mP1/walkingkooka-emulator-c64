@@ -156,15 +156,12 @@ final class CpuAddressBus implements AddressBus {
     }
 
     private void writePort(final byte value) {
-        if (this.basicRomOutput) {
-            this.basicRomMapped = LORAM.read(value);
-        }
-        if (this.ioDevicesOutput) {
-            this.ioDevicesMapped = CHAREN.read(value);
-        }
-        if (this.kernalRomOutput) {
-            this.kernalRomMapped = HIRAM.read(value);
-        }
+        this.basicRomMapped = this.basicRomOutput &&
+            LORAM.read(value);
+        this.ioDevicesMapped = this.ioDevicesOutput &&
+            CHAREN.read(value);
+        this.kernalRomMapped = this.kernalRomOutput &&
+            HIRAM.read(value);
     }
 
     boolean basicRomOutput;
