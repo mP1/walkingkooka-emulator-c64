@@ -153,6 +153,8 @@ final class CpuAddressBus implements AddressBus {
         this.basicRomOutput = LORAM.read(value);
         this.ioDevicesOutput = CHAREN.read(value);
         this.kernalRomOutput = HIRAM.read(value);
+
+        this.writePort(this.port);
     }
 
     private void writePort(final byte value) {
@@ -162,6 +164,8 @@ final class CpuAddressBus implements AddressBus {
             CHAREN.read(value);
         this.kernalRomMapped = this.kernalRomOutput &&
             HIRAM.read(value);
+
+        this.port = value;
     }
 
     boolean basicRomOutput;
@@ -171,6 +175,11 @@ final class CpuAddressBus implements AddressBus {
     boolean basicRomMapped;
     boolean ioDevicesMapped;
     boolean kernalRomMapped;
+
+    /**
+     * Cached local copy of the 6510 port register (memory 0x1)
+     */
+    byte port;
 
     /**
      * <pre>
