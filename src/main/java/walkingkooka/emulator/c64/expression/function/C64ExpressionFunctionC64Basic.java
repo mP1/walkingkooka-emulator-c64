@@ -24,6 +24,7 @@ import walkingkooka.emulator.c64.Cpu;
 import walkingkooka.emulator.c64.CpuContext;
 import walkingkooka.emulator.c64.CpuContexts;
 import walkingkooka.emulator.c64.CpuInstructions;
+import walkingkooka.emulator.c64.CpuWatcher;
 import walkingkooka.emulator.c64.Cpus;
 import walkingkooka.environment.EnvironmentContexts;
 import walkingkooka.io.TextReader;
@@ -111,6 +112,36 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                     ) // write
                 )
             )
+        );
+
+        cpuContext.addWatcher(
+            new CpuWatcher() {
+                @Override
+                public void onBreakpoint(final CpuContext context) {
+                    System.out.println("\n*** BREAKPOINT ***");
+                    System.out.println(cpu.toString());
+                }
+
+                @Override
+                public void onInvalidOpcode(final CpuContext context) {
+                    System.out.println("\n*** INVALID OPCODE ***");
+                    System.out.println(cpu.toString());
+
+                    throw new RuntimeException("Invalid opcode");
+                }
+
+                @Override
+                public void onNmi(final CpuContext context) {
+                    System.out.println("\n*** NMI ***");
+                    System.out.println(cpu.toString());
+                }
+
+                @Override
+                public void onReset(final CpuContext context) {
+                    System.out.println("\n*** RESET ***");
+                    System.out.println(cpu.toString());
+                }
+            }
         );
 
         int exitCode = 0;
