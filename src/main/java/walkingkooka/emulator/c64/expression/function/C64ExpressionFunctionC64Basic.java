@@ -102,7 +102,8 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                         ram
                     ) // write
                 ),
-                AddressBuses.memory(4 * 1024), // i,oDevices
+                C64ExpressionFunctionC64BasicIoDevices.with(), // IODevices
+                //AddressBuses.memory(4 * 1024), // i,oDevices
                 AddressBuses.kernalRom(
                     AddressBuses.baseOffset(
                         AddressBus.KERNAL_BASE,
