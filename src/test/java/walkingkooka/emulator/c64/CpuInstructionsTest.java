@@ -81,13 +81,15 @@ public final class CpuInstructionsTest implements PublicStaticHelperTesting<CpuI
                 .collect(Collectors.joining("\n"))
         );
 
+        // - https://www.c64-wiki.com/wiki/Opcode
+        // - Opcodes (short for Operation Codes) are processor instructions used in machine language. The 6510 CPU offers 151 [1] official opcodes, plus 105 illegal (unofficial) opcodes, totaling 256 opcodes.
         this.checkEquals(
-            150,
+            151,
             collected.size()
         );
 
         this.checkEquals(
-            150,
+            151,
             CpuInstructions.all()
                 .size()
         );
