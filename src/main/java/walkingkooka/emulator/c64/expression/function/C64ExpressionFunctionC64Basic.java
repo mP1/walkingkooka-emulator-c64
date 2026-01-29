@@ -119,13 +119,13 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                 @Override
                 public void onBreakpoint(final CpuContext context) {
                     System.out.println("\n*** BREAKPOINT ***");
-                    System.out.println(cpu.toString());
+                    System.out.println(context);
                 }
 
                 @Override
                 public void onInvalidOpcode(final CpuContext context) {
                     System.out.println("\n*** INVALID OPCODE ***");
-                    System.out.println(cpu.toString());
+                    System.out.println(context);
 
                     throw new RuntimeException("Invalid opcode");
                 }
@@ -133,13 +133,13 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                 @Override
                 public void onNmi(final CpuContext context) {
                     System.out.println("\n*** NMI ***");
-                    System.out.println(cpu.toString());
+                    System.out.println(context);
                 }
 
                 @Override
                 public void onReset(final CpuContext context) {
                     System.out.println("\n*** RESET ***");
-                    System.out.println(cpu.toString());
+                    System.out.println(context);
                 }
             }
         );
