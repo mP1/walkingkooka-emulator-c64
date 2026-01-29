@@ -34,7 +34,7 @@ final class BasicCpu implements Cpu {
     private BasicCpu(final Collection<CpuInstruction> instructions) {
         final CpuInstruction[] i = new CpuInstruction[256];
 
-        for (int opcode = 0; opcode < 0xff; opcode++) {
+        for (int opcode = 0; opcode <= 0xff; opcode++) {
             i[opcode] = CpuInstructions.invalidOpcode(
                 (byte) opcode
             );
