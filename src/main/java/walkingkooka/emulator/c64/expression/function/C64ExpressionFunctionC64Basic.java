@@ -179,6 +179,29 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         return exitCode;
     }
 
+    private final static short CHROUT = (short) 0xFFD2;
+
+    // Get a character
+    private final static short GETIN = (short) 0xFFE4;
+
+    // Read the system clock
+    private final static short RDTIM = (short) 0xFFDE;
+
+    // Scan the keyboard
+    private final static short SCNKEY = (short) 0xFF9F;
+
+    // Set system message
+    private final static short SETMSG = (short) 0xFF90;
+
+    // Set the system clock
+    private final static short SETTIM = (short) 0xFFDB;
+
+    // Check if STOP key pressed
+    private final static short STOP = (short) 0xFFE1;
+
+    // Update the system clock
+    private final static short UDTIM = (short) 0xFFEA;
+
     public static void main(final String[] main) {
         final TerminalContext terminalContext = TerminalContexts.system(
             TerminalId.with(1),
