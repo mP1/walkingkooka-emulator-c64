@@ -740,10 +740,10 @@ public final class CpuInstructions implements PublicStaticHelper {
     }
 
     /**
-     * {@see CpuInstructionSharedJmpAbs}
+     * {@see CpuInstructionSharedJmpIndirect}
      */
     public static CpuInstruction jmpIndirect() {
-        return CpuInstructionSharedJmpAbs.instance();
+        return CpuInstructionSharedJmpIndirect.instance();
     }
 
     /**
