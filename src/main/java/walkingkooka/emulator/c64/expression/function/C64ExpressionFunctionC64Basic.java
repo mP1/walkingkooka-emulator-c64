@@ -77,6 +77,31 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         return false;
     }
 
+    // jump table of a few routines that need to be trapped and re-routed.
+
+    private final static short CHROUT = (short) 0xFFD2;
+
+    // Get a character
+    private final static short GETIN = (short) 0xFFE4;
+
+    // Read the system clock
+    private final static short RDTIM = (short) 0xFFDE;
+
+    // Scan the keyboard
+    private final static short SCNKEY = (short) 0xFF9F;
+
+    // Set system message
+    private final static short SETMSG = (short) 0xFF90;
+
+    // Set the system clock
+    private final static short SETTIM = (short) 0xFFDB;
+
+    // Check if STOP key pressed
+    private final static short STOP = (short) 0xFFE1;
+
+    // Update the system clock
+    private final static short UDTIM = (short) 0xFFEA;
+
     @Override
     public Integer apply(final List<Object> values,
                          final C context) {
@@ -117,9 +142,35 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         cpuContext.addWatcher(
             new CpuWatcher() {
                 @Override
-                public void onBreakpoint(final CpuContext context) {
-                    System.out.println("\n*** BREAKPOINT ***");
-                    System.out.println(context);
+                public void onBreakpoint(final CpuContext cpuContext) {
+                    switch (cpuContext.pc()) {
+                        case CHROUT:
+                            chrout(cpuContext, context);
+                            break;
+                        case GETIN:
+                            getin(cpuContext, context);
+                            break;
+                        case RDTIM:
+                            rdtim(cpuContext, context);
+                            break;
+                        case SCNKEY:
+                            scnkey(cpuContext, context);
+                            break;
+                        case SETMSG:
+                            setmsg(cpuContext, context);
+                            break;
+                        case SETTIM:
+                            settim(cpuContext, context);
+                            break;
+                        case STOP:
+                            stop(cpuContext, context);
+                            break;
+                        case UDTIM:
+                            udtim(cpuContext, context);
+                            break;
+                        default:
+                            throw new IllegalStateException("Unknown breakpoint: " + cpuContext);
+                    }
                 }
 
                 @Override
@@ -143,6 +194,15 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                 }
             }
         );
+
+        cpuContext.addBreakpoint(CHROUT);
+        cpuContext.addBreakpoint(GETIN);
+        cpuContext.addBreakpoint(RDTIM);
+        cpuContext.addBreakpoint(SCNKEY);
+        cpuContext.addBreakpoint(SETMSG);
+        cpuContext.addBreakpoint(SETTIM);
+        cpuContext.addBreakpoint(STOP);
+        cpuContext.addBreakpoint(UDTIM);
 
         int exitCode = 0;
 
@@ -179,28 +239,53 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         return exitCode;
     }
 
-    private final static short CHROUT = (short) 0xFFD2;
+    private void chrout(final CpuContext cpuContext,
+                        final C terminalContext) {
+        System.out.println("\n*** BREAKPOINT CHROUT ***");
+        System.out.println(cpuContext);
+    }
 
-    // Get a character
-    private final static short GETIN = (short) 0xFFE4;
+    private void getin(final CpuContext cpuContext,
+                       final C terminalContext) {
+        System.out.println("\n*** BREAKPOINT GETIN ***");
+        System.out.println(cpuContext);
+    }
 
-    // Read the system clock
-    private final static short RDTIM = (short) 0xFFDE;
+    private void rdtim(final CpuContext cpuContext,
+                       final C terminalContext) {
+        System.out.println("\n*** BREAKPOINT RDTIM ***");
+        System.out.println(cpuContext);
+    }
 
-    // Scan the keyboard
-    private final static short SCNKEY = (short) 0xFF9F;
+    private void scnkey(final CpuContext cpuContext,
+                        final C terminalContext) {
+        System.out.println("\n*** BREAKPOINT SCNKEY ***");
+        System.out.println(cpuContext);
+    }
 
-    // Set system message
-    private final static short SETMSG = (short) 0xFF90;
+    private void setmsg(final CpuContext cpuContext,
+                        final C terminalContext) {
+        System.out.println("\n*** BREAKPOINT SETMSG ***");
+        System.out.println(cpuContext);
+    }
 
-    // Set the system clock
-    private final static short SETTIM = (short) 0xFFDB;
+    private void settim(final CpuContext cpuContext,
+                        final C terminalContext) {
+        System.out.println("\n*** BREAKPOINT SETTIM ***");
+        System.out.println(cpuContext);
+    }
 
-    // Check if STOP key pressed
-    private final static short STOP = (short) 0xFFE1;
+    private void stop(final CpuContext cpuContext,
+                      final C terminalContext) {
+        System.out.println("\n*** BREAKPOINT STOP ***");
+        System.out.println(cpuContext);
+    }
 
-    // Update the system clock
-    private final static short UDTIM = (short) 0xFFEA;
+    private void udtim(final CpuContext cpuContext,
+                       final C terminalContext) {
+        System.out.println("\n*** BREAKPOINT UDTIM ***");
+        System.out.println(cpuContext);
+    }
 
     public static void main(final String[] main) {
         final TerminalContext terminalContext = TerminalContexts.system(
