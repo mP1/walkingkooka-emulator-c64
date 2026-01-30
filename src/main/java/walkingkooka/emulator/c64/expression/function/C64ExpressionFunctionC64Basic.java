@@ -46,6 +46,8 @@ import java.util.List;
  */
 final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluationContext> extends C64ExpressionFunction<Integer, C> {
 
+    private final static boolean DISASSEMBLE = false;
+
     /**
      * Type safe instance getter.
      */
@@ -220,12 +222,14 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         while (true) {
             cpuContext.handleInterrupts();
 
-            context.output()
-                .println(
-                    cpuContext +
-                        " " +
-                        cpu.disassemble(cpuContext)
-                );
+            if (DISASSEMBLE) {
+                context.output()
+                    .println(
+                        cpuContext +
+                            " " +
+                            cpu.disassemble(cpuContext)
+                    );
+            }
             try {
                 cpu.step(cpuContext);
             } catch (final RuntimeException cause) {
@@ -274,8 +278,8 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
      */
     private void chrout(final CpuContext cpuContext,
                         final C terminalContext) {
-        System.out.println("\n*** BREAKPOINT CHROUT ***");
-        System.out.println(cpuContext);
+        // System.out.println("\n*** BREAKPOINT CHROUT ***");
+        // System.out.println(cpuContext);
 
         C64ExpressionFunctionC64BasicChroutPetsciiVisitor.chrout(
             cpuContext.a(),
@@ -283,6 +287,9 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         );
 
         this.executeRts(cpuContext);
+
+        // The status-register carry bit will always be clear upon return, unless output to tape is aborted by pressing the RUN/STOP key.
+        cpuContext.setCarry(false);
     }
 
     private void getin(final CpuContext cpuContext,
