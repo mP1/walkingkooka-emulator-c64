@@ -87,8 +87,9 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
     // Read the system clock
     private final static short RDTIM = (short) 0xFFDE;
 
+    // appears within the kernal there are direct jmps to SCNKEY without using the jump table.
     // Scan the keyboard
-    private final static short SCNKEY = (short) 0xFF9F;
+    private final static short SCNKEY = (short) 0xEA87; // 0xFF9F;
 
     // Set system message
     private final static short SETMSG = (short) 0xFF90;
@@ -300,13 +301,58 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         this.executeRts(cpuContext);
     }
 
+    /**
+     * <pre>
+     * https://www.pagetable.com/c64ref/kernal/#SCNKEY
+     *
+     * JMP EA87/EB1E to the Keyboard Scan routine (see chapter 4) to check for a keypress. If a valid key is found down and the keyboard buffer is not full, the ASCII code value for the key is placed in the buffer.
+     *
+     * SCNKEY is useful if you have written a machine language program that runs with IRQ interrupts disabled, but you still want to scan the keyboard.
+     * </pre>
+     */
     private void scnkey(final CpuContext cpuContext,
                         final C terminalContext) {
         System.out.println("\n*** BREAKPOINT SCNKEY ***");
         System.out.println(cpuContext);
 
+        int index = cpuContext.readByte(NDX);
+        final int readCount = KEYBOARD_BUFFER_SIZE - index;
+        if (readCount > 0) {
+            final String input = terminalContext.input()
+                .readText(
+                    readCount,
+                    READ_TIMEOUT_MILLIS
+                );
+            for (final byte petscii : C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor.translate(input)) {
+                cpuContext.writeByte(
+                    (short) (KEYBOARD_BUFFER + index),
+                    petscii
+                );
+                index++;
+            }
+
+            cpuContext.writeByte(
+                NDX,
+                (byte) index
+            );
+        }
+
         this.executeRts(cpuContext);
     }
+
+    // https://www.c64-wiki.com/wiki/198
+    // The zeropage address 198 ($C6, official name NDX) is used by the Kernal system to hold the number of keyboard entries
+    // waiting in the ten-character keyboard buffer (see address 631-640).
+    private final byte NDX = (byte) 198;
+
+    private final short KEYBOARD_BUFFER = (short) 631;
+
+    private final int KEYBOARD_BUFFER_SIZE = 10;
+
+    /**
+     * Max wait time when reading the keyboard.
+     */
+    private final long READ_TIMEOUT_MILLIS = 50;
 
     private void setmsg(final CpuContext cpuContext,
                         final C terminalContext) {
