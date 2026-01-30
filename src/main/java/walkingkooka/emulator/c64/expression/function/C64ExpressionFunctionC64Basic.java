@@ -239,10 +239,53 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         return exitCode;
     }
 
+    // https://www.pagetable.com/c64ref/kernal/#READST
+
+    /**
+     * <pre>
+     * Communication registers: A
+     * Preparatory routines: None
+     * Error returns: None
+     * Stack requirements: 2
+     * Registers affected: A
+     * Description: This routine returns the current status of the I/O devices in the accumulator. The routine is usually called after new communication to an I/O device. The routine gives you information about device status, or errors that have occurred during the I/O operation.
+     *
+     * The bits returned in the accumulator contain the following information: (see table below)
+     *
+     * ST Bit Position	ST Numeric Value	Cassette Read	Serial Bus R/W	Tape Verify + Load
+     * 0	1		time out write
+     * 1	2		time out read
+     * 2	4	short block		short block
+     * 3	8	long block		long block
+     * 4	16	unrecoverable read error		any mismatch
+     * 5	32	checksum error		checksum error
+     * 6	64	end of file	EOI line
+     * 7	-128	end of tape	device not present	end of tape
+     * How to Use:
+     * Call this routine.
+     * Decode the information in the A register as it refers to your pro- gram.
+     * EXAMPLE:
+     * ;CHECK FOR END OF FILE DURING READ
+     *      JSR READST
+     *      AND #64                       ;CHECK EOF BIT (EOF=END OF FILE)
+     *      BNE EOF                       ;BRANCH ON EOF
+     * </pre>
+     */
     private void chrout(final CpuContext cpuContext,
                         final C terminalContext) {
         System.out.println("\n*** BREAKPOINT CHROUT ***");
         System.out.println(cpuContext);
+
+        C64ExpressionFunctionC64BasicChroutPetsciiVisitor.chrout(
+            cpuContext.a(),
+            terminalContext.output()
+        );
+
+        CpuInstructions.rts()
+            .execute(cpuContext);
+        cpuContext.setA(
+            (byte) 0
+        );
     }
 
     private void getin(final CpuContext cpuContext,
