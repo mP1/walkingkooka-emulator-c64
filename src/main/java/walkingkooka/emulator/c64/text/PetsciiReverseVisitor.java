@@ -22,6 +22,9 @@ import walkingkooka.visit.Visitor;
 
 import java.util.Objects;
 
+/**
+ * A {@link Visitor} that may be used to translate unicode back to PETSCII.
+ */
 public class PetsciiReverseVisitor extends Visitor<Character> implements PetsciiConstants {
 
     public PetsciiReverseVisitor() {
