@@ -90,7 +90,13 @@ public final class AddressBuses implements PublicStaticHelper {
                                  final AddressBus chargen,
                                  final AddressBus ioDevices,
                                  final AddressBus kernal) {
-        return CpuAddressBus.with(memory, chargen, basic, ioDevices, kernal);
+        return CpuAddressBus.with(
+            memory,
+            basic,
+            chargen,
+            ioDevices,
+            kernal
+        );
     }
 
     /**

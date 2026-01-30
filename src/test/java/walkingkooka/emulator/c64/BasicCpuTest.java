@@ -310,7 +310,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         this.readByteAndCheck(
             cpuContext,
             AddressBus.BASIC_BASE,
-            (byte) 60
+            (byte) 0x94
         );
 
         this.readByteAndCheck(
