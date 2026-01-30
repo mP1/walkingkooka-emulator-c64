@@ -281,53 +281,71 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
             terminalContext.output()
         );
 
-        CpuInstructions.rts()
-            .execute(cpuContext);
-        cpuContext.setA(
-            (byte) 0
-        );
+        this.executeRts(cpuContext);
     }
 
     private void getin(final CpuContext cpuContext,
                        final C terminalContext) {
         System.out.println("\n*** BREAKPOINT GETIN ***");
         System.out.println(cpuContext);
+
+        this.executeRts(cpuContext);
     }
 
     private void rdtim(final CpuContext cpuContext,
                        final C terminalContext) {
         System.out.println("\n*** BREAKPOINT RDTIM ***");
         System.out.println(cpuContext);
+
+        this.executeRts(cpuContext);
     }
 
     private void scnkey(final CpuContext cpuContext,
                         final C terminalContext) {
         System.out.println("\n*** BREAKPOINT SCNKEY ***");
         System.out.println(cpuContext);
+
+        this.executeRts(cpuContext);
     }
 
     private void setmsg(final CpuContext cpuContext,
                         final C terminalContext) {
         System.out.println("\n*** BREAKPOINT SETMSG ***");
         System.out.println(cpuContext);
+
+        this.executeRts(cpuContext);
     }
 
     private void settim(final CpuContext cpuContext,
                         final C terminalContext) {
         System.out.println("\n*** BREAKPOINT SETTIM ***");
         System.out.println(cpuContext);
+
+        this.executeRts(cpuContext);
     }
 
     private void stop(final CpuContext cpuContext,
                       final C terminalContext) {
         System.out.println("\n*** BREAKPOINT STOP ***");
         System.out.println(cpuContext);
+
+        this.executeRts(cpuContext);
     }
 
     private void udtim(final CpuContext cpuContext,
                        final C terminalContext) {
         System.out.println("\n*** BREAKPOINT UDTIM ***");
         System.out.println(cpuContext);
+
+        this.executeRts(cpuContext);
+    }
+
+    private void executeRts(final CpuContext cpuContext) {
+        CpuInstructions.rts()
+            .execute(cpuContext);
+        cpuContext.setA(
+            (byte) 0
+        );
     }
 
     public static void main(final String[] main) {
