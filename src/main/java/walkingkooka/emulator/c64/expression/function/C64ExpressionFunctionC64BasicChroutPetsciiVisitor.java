@@ -47,6 +47,16 @@ final class C64ExpressionFunctionC64BasicChroutPetsciiVisitor extends PetsciiVis
     }
 
     @Override
+    protected void visitClear() {
+        this.printer.println("CLEAR");
+    }
+
+    @Override
+    protected void visitHome() {
+        this.printer.println("HOME");
+    }
+
+    @Override
     protected void visitReturn() {
         this.printer.println();
         this.printer.flush();
