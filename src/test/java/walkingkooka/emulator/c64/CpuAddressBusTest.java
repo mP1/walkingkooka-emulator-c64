@@ -275,9 +275,12 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
 
     @Test
     public void testWriteBasicRom() {
-        final AddressBus memory = this.memory(CpuAddressBus.BASIC_ROM_BEGIN,
+        final AddressBus memory = this.memory(
+            65536,
+            CpuAddressBus.BASIC_ROM_BEGIN,
             CpuAddressBus.BASIC_ROM_END,
-            BASIC);
+            BASIC
+        );
         final AddressBus basic = this.basic();
         final AddressBus chargen = this.chargen();
         final AddressBus ioDevices = this.ioDevices();
@@ -298,7 +301,12 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
 
     @Test
     public void testWriteChargen() {
-        final AddressBus memory = AddressBuses.fake();
+        final AddressBus memory = this.memory(
+            65536,
+            CpuAddressBus.IO_DEVICES_BEGIN,
+            CpuAddressBus.IO_DEVICES_END,
+            CHARGEN
+        );
         final AddressBus basic = this.basic();
         final AddressBus chargen = this.chargen();
         final AddressBus ioDevices = this.ioDevices();
@@ -318,7 +326,12 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
 
     @Test
     public void testWriteIoDevices() {
-        final AddressBus memory = AddressBuses.fake();
+        final AddressBus memory = this.memory(
+            65536,
+            CpuAddressBus.IO_DEVICES_BEGIN,
+            CpuAddressBus.IO_DEVICES_END,
+            IO
+        );
         final AddressBus basic = this.basic();
         final AddressBus chargen = this.chargen();
         final AddressBus ioDevices = this.ioDevices();
@@ -343,6 +356,7 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
     @Test
     public void testWriteKernalRom() {
         final AddressBus memory = this.memory(
+            65536,
             CpuAddressBus.KERNAL_ROM_BEGIN,
             CpuAddressBus.KERNAL_ROM_END,
             KERNAL
@@ -536,9 +550,11 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
     }
 
     private AddressBus memory() {
-        return this.memory(0,
+        return this.memory(
+            0,
             0xffff,
-            MEMORY);
+            MEMORY
+        );
     }
 
     private AddressBus basic() {
@@ -560,12 +576,26 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
     }
 
     private AddressBus kernal() {
-        return this.memory(CpuAddressBus.KERNAL_ROM_BEGIN,
+        return this.memory(
+            CpuAddressBus.KERNAL_ROM_BEGIN,
             CpuAddressBus.KERNAL_ROM_END,
-            KERNAL);
+            KERNAL
+        );
     }
 
     private AddressBus memory(final int lo,
+                              final int hi,
+                              final byte value) {
+        return this.memory(
+            hi - lo + 1,
+            lo,
+            hi,
+            value
+        );
+    }
+
+    private AddressBus memory(final int size,
+                              final int lo,
                               final int hi,
                               final byte value) {
         return new AddressBus() {
@@ -589,7 +619,7 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
 
             @Override
             public int size() {
-                return 1;
+                return size;
             }
 
             @Override

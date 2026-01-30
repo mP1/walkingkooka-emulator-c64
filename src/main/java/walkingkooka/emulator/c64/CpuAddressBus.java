@@ -60,12 +60,30 @@ final class CpuAddressBus implements AddressBus {
                               final AddressBus ioDevices,
                               final AddressBus kernal) {
         Objects.requireNonNull(memory, "memory");
+        checkSize("memory", memory, 256 * 256);
+
         Objects.requireNonNull(basic, "basic");
+        checkSize("basic", basic, 8 * 1024);
+
         Objects.requireNonNull(chargen, "chargen");
+        checkSize("chargen", chargen, 4 * 1024);
+
         Objects.requireNonNull(ioDevices, "ioDevices");
+        checkSize("ioDevices", ioDevices, 4 * 1024);
+
         Objects.requireNonNull(kernal, "kernal");
+        checkSize("kernal", kernal, 8 * 1024);
 
         return new CpuAddressBus(memory, basic, chargen, ioDevices, kernal);
+    }
+
+    private static void checkSize(final String label,
+                                  final AddressBus bus,
+                                  final int size) {
+        final int actual = bus.size();
+        if (actual != size) {
+            throw new IllegalArgumentException("Invalid " + label + " size " + actual + " should be " + size);
+        }
     }
 
     private CpuAddressBus(final AddressBus memory,
