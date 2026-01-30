@@ -23,6 +23,9 @@ import walkingkooka.visit.Visitor;
 import java.util.Objects;
 
 /**
+ * Translates petscii character codes which contain many ascii character codes and other codes for C64 specific functionality,
+ * like changing the color.
+ * <br>
  * All constants below are taken from the MEGA65 project.
  * <pre>
  * https://github.com/MEGA65/open-roms/blob/master/src/aliases/%2Caliases_petscii_codes.s
