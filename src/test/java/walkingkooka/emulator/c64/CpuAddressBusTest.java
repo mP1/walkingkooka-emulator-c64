@@ -37,8 +37,8 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
             NullPointerException.class,
             () -> CpuAddressBus.with(
                 null,
-                this.chargen(),
                 this.basic(),
+                this.chargen(),
                 this.ioDevices(),
                 this.kernal()
             )
@@ -51,8 +51,8 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
             NullPointerException.class,
             () -> CpuAddressBus.with(
                 this.memory(),
-                this.chargen(),
                 null,
+                chargen(),
                 this.ioDevices(),
                 this.kernal()
             )
@@ -65,8 +65,8 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
             NullPointerException.class,
             () -> CpuAddressBus.with(
                 this.memory(),
-                null,
                 this.basic(),
+                null,
                 this.ioDevices(),
                 this.kernal()
             )
@@ -79,8 +79,8 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
             NullPointerException.class,
             () -> CpuAddressBus.with(
                 this.memory(),
-                this.chargen(),
                 this.basic(),
+                this.chargen(),
                 null,
                 this.kernal()
             )
@@ -93,8 +93,8 @@ public final class CpuAddressBusTest extends AddressBusTestCase<CpuAddressBus> {
             NullPointerException.class,
             () -> CpuAddressBus.with(
                 this.memory(),
-                this.chargen(),
                 this.basic(),
+                this.chargen(),
                 this.ioDevices(),
                 null
             )
