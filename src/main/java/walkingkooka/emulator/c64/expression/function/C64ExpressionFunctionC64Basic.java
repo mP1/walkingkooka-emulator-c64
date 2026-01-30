@@ -370,11 +370,23 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         this.executeRts(cpuContext);
     }
 
+    /**
+     * <pre>
+     * https://www.pagetable.com/c64ref/kernal/#STOP
+     *
+     * This routine checks whether the RUN/STOP key is currently pressed. It returns with the status-register Z bit clear
+     * if the key is not pressed, or with the bit set if it is pressed. Additionally, if RUN/STOP is pressed the CLRCH routine
+     * is called to restore default I/O channels, and the count of keys in the keyboard buffer is reset to zero.
+     * The JMP to the STOP execution routine is by way of the ISTOP indirect vector at $0328-$0329. You can modify the actions
+     * of the routine by changing the vector to point to a routine of your own.
+     * </pre>
+     */
     private void stop(final CpuContext cpuContext,
                       final C terminalContext) {
         System.out.println("\n*** BREAKPOINT STOP ***");
         System.out.println(cpuContext);
 
+        cpuContext.setZero(false);
         this.executeRts(cpuContext);
     }
 
