@@ -202,7 +202,7 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         cpuContext.addBreakpoint(GETIN);
         cpuContext.addBreakpoint(RDTIM);
         cpuContext.addBreakpoint(SCNKEY);
-        cpuContext.addBreakpoint(SETMSG);
+        //cpuContext.addBreakpoint(SETMSG);
         cpuContext.addBreakpoint(SETTIM);
         cpuContext.addBreakpoint(STOP);
         cpuContext.addBreakpoint(UDTIM);
