@@ -248,9 +248,9 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                 // assume PAL 60 frames a second.
                 try {
                     Thread.sleep(
-                        Math.min(
+                        Math.max(
                             1000 / 60 - System.currentTimeMillis() - timeBefore,
-                            30
+                            1
                         )
                     );
                 } catch (final InterruptedException ignored) {
