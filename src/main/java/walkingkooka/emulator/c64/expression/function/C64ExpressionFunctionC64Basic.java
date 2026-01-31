@@ -351,8 +351,12 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         // System.out.println("\n*** BREAKPOINT SCNKEY ***");
         // System.out.println(cpuContext);
 
+        final int keyboardBufferSize = 0xFF & cpuContext.readByte(XMAX);
+        if (keyboardBufferSize != 10) {
+            System.out.println("\n*** SCNKEY ***keyboardBufferSize=" + keyboardBufferSize);
+        }
         int index = cpuContext.readByte(NDX);
-        final int readCount = KEYBOARD_BUFFER_SIZE - index;
+        final int readCount = keyboardBufferSize - index;
         if (readCount > 0) {
             final String input = terminalContext.input()
                 .readText(
@@ -383,7 +387,11 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
 
     private final static short KEYBOARD_BUFFER = 631;
 
-    private final int KEYBOARD_BUFFER_SIZE = 10;
+    // https://www.pagetable.com/c64ref/c64mem/#289
+    // The value here indicates the number of characters waiting in the keyboard buffer at 631 ($0277).
+    // The maximum number of characters in the keyboard buffer at any one time is determined by the value in
+    // location 649 ($0289), which defaults to 10.
+    private final static short XMAX = 0x289;
 
     /**
      * Max wait time when reading the keyboard.
