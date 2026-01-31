@@ -219,6 +219,9 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         );
         cpuContext.reset();
 
+        int fireInterruptCountdown = INSTRUCTIONS_PER_JIFFY;
+        long timeBefore = System.currentTimeMillis();
+
         while (true) {
             cpuContext.handleInterrupts();
 
@@ -239,10 +242,37 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                 printer.flush();
                 break;
             }
+
+            fireInterruptCountdown--;
+            if (fireInterruptCountdown <= 0) {
+                // assume 4 ticks per instruction
+                // assume PAL 60 frames a second.
+                try {
+                    Thread.sleep(
+                        Math.min(
+                            1000 / 60 - System.currentTimeMillis() - timeBefore,
+                            30
+                        )
+                    );
+                } catch (final InterruptedException ignored) {
+
+                }
+
+                cpuContext.irq();
+
+                fireInterruptCountdown = INSTRUCTIONS_PER_JIFFY;
+            }
+
         }
 
         return exitCode;
     }
+
+    /**
+     * Cycles are not counted for each instruction, use a rough approximation of 4 cycles which is good
+     * enough for our purposes of firing a TIMER IRQ which will trigger a SCNKEY to read any entered keys.
+     */
+    private final int INSTRUCTIONS_PER_JIFFY = 1 * 1000 * 1000 / 4 / 60;
 
     // https://www.pagetable.com/c64ref/kernal/#READST
 
