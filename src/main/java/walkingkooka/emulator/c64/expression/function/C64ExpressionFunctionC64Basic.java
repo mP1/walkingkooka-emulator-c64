@@ -343,7 +343,7 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
 
             for (final byte petscii : petsciiTranslator.petscii()) {
                 cpuContext.writeByte(
-                    (short) (KEYBOARD_BUFFER + index),
+                    (short) (KEYD + index),
                     petscii
                 );
                 index++;
@@ -365,7 +365,17 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
     // waiting in the ten-character keyboard buffer (see address 631-640).
     private final static short NDX = 198;
 
-    private final static short KEYBOARD_BUFFER = 631;
+    // https://www.pagetable.com/c64ref/c64mem/#0277
+    ///
+    // This buffer, sometimes also referred to as the keyboard queue, holds the ASCII values of the characters entered
+    // from the keyboard. The interrupt routine which scans the keyboard deposits a character here each time a key is pressed.
+    // When BASIC sees that there are characters waiting, it removes and prints them, one by one, in the order in which they were entered.
+    //
+    // This kind of a buffer is known as FIFO, for First In, First Out. The buffer will hold up to ten characters,
+    // allowing you to type faster than the computer prints characters, without losing characters. The maximum number of
+    // characters this buffer can hold at one time is ten (as determined by the value at 649 ($0289)). Characters entered
+    // after the buffer is full will be ignored.
+    private final static short KEYD = 631;
 
     // https://www.pagetable.com/c64ref/c64mem/#289
     // The value here indicates the number of characters waiting in the keyboard buffer at 631 ($0277).
