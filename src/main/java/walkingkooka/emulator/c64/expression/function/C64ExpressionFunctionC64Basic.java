@@ -352,9 +352,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         // System.out.println(cpuContext);
 
         final int keyboardBufferSize = 0xFF & cpuContext.readByte(XMAX);
-        if (keyboardBufferSize != 10) {
-            System.out.println("\n*** SCNKEY ***keyboardBufferSize=" + keyboardBufferSize);
-        }
         int index = cpuContext.readByte(NDX);
         final int readCount = keyboardBufferSize - index;
         if (readCount > 0) {
