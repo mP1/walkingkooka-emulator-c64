@@ -24,7 +24,9 @@ import java.io.IOException;
 
 final class C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor extends PetsciiReverseVisitor {
 
-    static byte[] translate(final String text) {
+    final static char TAB = '\u0009';
+
+    static C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor translate(final String text) {
         final C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor visitor = new C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor();
         for (final char c : text.toCharArray()) {
             visitor.accept(c);
@@ -35,11 +37,13 @@ final class C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor extends Pet
         } catch (final IOException ignore) {
             // never happens
         }
-        return buffer.toByteArray();
+
+        return visitor;
     }
 
     C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor() {
         super();
+        this.stop = false;
     }
 
     @Override
@@ -47,7 +51,20 @@ final class C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor extends Pet
         this.buffer.write(value);
     }
 
+    byte[] petscii() {
+        return this.buffer.toByteArray();
+    }
+
     private final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
+    @Override
+    protected void visitInvalidCharacter(final char value) {
+        if (TAB == value) {
+            this.stop = true;
+        }
+    }
+
+    boolean stop;
 
     // Object...........................................................................................................
 
