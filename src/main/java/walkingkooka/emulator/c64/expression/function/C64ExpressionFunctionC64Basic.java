@@ -323,16 +323,16 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
 
     private void getin(final CpuContext cpuContext,
                        final C terminalContext) {
-        System.out.println("\n*** BREAKPOINT GETIN ***");
-        System.out.println(cpuContext);
+        // System.out.println("\n*** BREAKPOINT GETIN ***");
+        // System.out.println(cpuContext);
 
         this.executeRts(cpuContext);
     }
 
     private void rdtim(final CpuContext cpuContext,
                        final C terminalContext) {
-        System.out.println("\n*** BREAKPOINT RDTIM ***");
-        System.out.println(cpuContext);
+        // System.out.println("\n*** BREAKPOINT RDTIM ***");
+        // System.out.println(cpuContext);
 
         this.executeRts(cpuContext);
     }
@@ -348,8 +348,8 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
      */
     private void scnkey(final CpuContext cpuContext,
                         final C terminalContext) {
-        System.out.println("\n*** BREAKPOINT SCNKEY ***");
-        System.out.println(cpuContext);
+        // System.out.println("\n*** BREAKPOINT SCNKEY ***");
+        // System.out.println(cpuContext);
 
         int index = cpuContext.readByte(NDX);
         final int readCount = KEYBOARD_BUFFER_SIZE - index;
@@ -428,8 +428,8 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
 
     private void udtim(final CpuContext cpuContext,
                        final C terminalContext) {
-        System.out.println("\n*** BREAKPOINT UDTIM ***");
-        System.out.println(cpuContext);
+        // System.out.println("\n*** BREAKPOINT UDTIM ***");
+        // System.out.println(cpuContext);
 
         this.executeRts(cpuContext);
     }
