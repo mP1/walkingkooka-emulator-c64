@@ -83,9 +83,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
 
     private final static short CHROUT = (short) 0xFFD2;
 
-    // Get a character
-    private final static short GETIN = (short) 0xFFE4;
-
     // Read the system clock
     private final static short RDTIM = (short) 0xFFDE;
 
@@ -149,9 +146,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                         case CHROUT:
                             chrout(cpuContext, context);
                             break;
-                        case GETIN:
-                            getin(cpuContext, context);
-                            break;
                         case RDTIM:
                             rdtim(cpuContext, context);
                             break;
@@ -198,7 +192,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         );
 
         cpuContext.addBreakpoint(CHROUT);
-        cpuContext.addBreakpoint(GETIN);
         cpuContext.addBreakpoint(RDTIM);
         cpuContext.addBreakpoint(SCNKEY);
         //cpuContext.addBreakpoint(SETMSG);
@@ -319,14 +312,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
 
         // The status-register carry bit will always be clear upon return, unless output to tape is aborted by pressing the RUN/STOP key.
         cpuContext.setCarry(false);
-    }
-
-    private void getin(final CpuContext cpuContext,
-                       final C terminalContext) {
-        // System.out.println("\n*** BREAKPOINT GETIN ***");
-        // System.out.println(cpuContext);
-
-        this.executeRts(cpuContext);
     }
 
     private void rdtim(final CpuContext cpuContext,
