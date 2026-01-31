@@ -300,9 +300,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
      */
     private void chrout(final CpuContext cpuContext,
                         final C terminalContext) {
-        // System.out.println("\n*** BREAKPOINT CHROUT ***");
-        // System.out.println(cpuContext);
-
         C64ExpressionFunctionC64BasicChroutPetsciiVisitor.chrout(
             cpuContext.a(),
             terminalContext.output()
