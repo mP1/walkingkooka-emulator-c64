@@ -348,9 +348,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
      */
     private void scnkey(final CpuContext cpuContext,
                         final C terminalContext) {
-        // System.out.println("\n*** BREAKPOINT SCNKEY ***");
-        // System.out.println(cpuContext);
-
         final int keyboardBufferSize = 0xFF & cpuContext.readByte(XMAX);
         int index = cpuContext.readByte(NDX);
         final int readCount = keyboardBufferSize - index;
