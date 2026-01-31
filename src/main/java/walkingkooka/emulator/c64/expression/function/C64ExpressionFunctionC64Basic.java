@@ -342,7 +342,9 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                     readCount,
                     READ_TIMEOUT_MILLIS
                 );
-            for (final byte petscii : C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor.translate(input)) {
+            final C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor petsciiTranslator = C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor.translate(input);
+
+            for (final byte petscii : petsciiTranslator.petscii()) {
                 cpuContext.writeByte(
                     (short) (KEYBOARD_BUFFER + index),
                     petscii
@@ -354,6 +356,8 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                 NDX,
                 (byte) index
             );
+
+            this.stop = petsciiTranslator.stop;
         }
 
         this.executeRts(cpuContext);
@@ -409,9 +413,13 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         System.out.println("\n*** BREAKPOINT STOP ***");
         System.out.println(cpuContext);
 
-        cpuContext.setZero(false);
+        cpuContext.setZero(this.stop);
+        this.stop = false;
+
         this.executeRts(cpuContext);
     }
+
+    private boolean stop;
 
     private void udtim(final CpuContext cpuContext,
                        final C terminalContext) {
