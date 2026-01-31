@@ -108,7 +108,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
     @Override
     public Integer apply(final List<Object> values,
                          final C context) {
-        // TODO maybe include a NOP instruction for invalid op-codes
         final Cpu cpu = Cpus.basic(
             CpuInstructions.all()
         );
