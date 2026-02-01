@@ -337,7 +337,7 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
             final String input = terminalContext.input()
                 .readText(
                     readCount,
-                    READ_TIMEOUT_MILLIS
+                    1 // timeout terminal should buffer ahead as necessary
                 );
             final C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor petsciiTranslator = C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor.translate(input);
 
@@ -408,11 +408,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
     // Bit #1: 1 = Commodore was pressed at the time of previous check.
     // Bit #2: 1 = Control was pressed at the time of previous check.
     private final static short LSTSHF = 0x028E;
-
-    /**
-     * Max wait time when reading the keyboard.
-     */
-    private final long READ_TIMEOUT_MILLIS = 50;
 
     private void setmsg(final CpuContext cpuContext,
                         final C terminalContext) {
