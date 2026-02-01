@@ -355,6 +355,15 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
             );
 
             this.stop = petsciiTranslator.stop;
+
+            cpuContext.writeByte(
+                SHFLAG,
+                (byte) 0
+            );
+            cpuContext.writeByte(
+                LSTSHF,
+                (byte) 0
+            );
         }
 
         this.executeRts(cpuContext);
@@ -382,6 +391,23 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
     // The maximum number of characters in the keyboard buffer at any one time is determined by the value in
     // location 649 ($0289), which defaults to 10.
     private final static short XMAX = 0x289;
+
+    // https://www.pagetable.com/c64ref/c64mem/#SHFLAG
+    //
+    // Bit #0: 1 = One or more of left Shift, right Shift or Shift Lock is currently being pressed or locked.
+    // Bit #1: 1 = Commodore is currently being pressed.
+    // Bit #2: 1 = Control is currently being pressed.
+    private final static short SHFLAG = 0x28D;
+
+    // https://www.pagetable.com/c64ref/c64mem/#LSTSHF
+    //
+    // Previous value of shift key indicator
+    // Bits:
+    //
+    // Bit #0: 1 = One or more of left Shift, right Shift or Shift Lock was pressed or locked at the time of previous check.
+    // Bit #1: 1 = Commodore was pressed at the time of previous check.
+    // Bit #2: 1 = Control was pressed at the time of previous check.
+    private final static short LSTSHF = 0x028E;
 
     /**
      * Max wait time when reading the keyboard.
