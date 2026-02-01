@@ -384,7 +384,7 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
     // allowing you to type faster than the computer prints characters, without losing characters. The maximum number of
     // characters this buffer can hold at one time is ten (as determined by the value at 649 ($0289)). Characters entered
     // after the buffer is full will be ignored.
-    private final static short KEYD = 631;
+    private final static short KEYD = 0x277;
 
     // https://www.pagetable.com/c64ref/c64mem/#289
     // The value here indicates the number of characters waiting in the keyboard buffer at 631 ($0277).
