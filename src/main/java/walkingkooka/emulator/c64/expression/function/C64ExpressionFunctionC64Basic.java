@@ -90,9 +90,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
     // Scan the keyboard
     private final static short SCNKEY = (short) 0xEA87; // 0xFF9F;
 
-    // Set system message
-    private final static short SETMSG = (short) 0xFF90;
-
     // Set the system clock
     private final static short SETTIM = (short) 0xFFDB;
 
@@ -152,9 +149,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                         case SCNKEY:
                             scnkey(cpuContext, context);
                             break;
-                        case SETMSG:
-                            setmsg(cpuContext, context);
-                            break;
                         case SETTIM:
                             settim(cpuContext, context);
                             break;
@@ -194,7 +188,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         cpuContext.addBreakpoint(CHROUT);
         cpuContext.addBreakpoint(RDTIM);
         cpuContext.addBreakpoint(SCNKEY);
-        //cpuContext.addBreakpoint(SETMSG);
         cpuContext.addBreakpoint(SETTIM);
         cpuContext.addBreakpoint(STOP);
         cpuContext.addBreakpoint(UDTIM);
@@ -408,14 +401,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
     // Bit #1: 1 = Commodore was pressed at the time of previous check.
     // Bit #2: 1 = Control was pressed at the time of previous check.
     private final static short LSTSHF = 0x028E;
-
-    private void setmsg(final CpuContext cpuContext,
-                        final C terminalContext) {
-        System.out.println("\n*** BREAKPOINT SETMSG ***");
-        System.out.println(cpuContext);
-
-        this.executeRts(cpuContext);
-    }
 
     private void settim(final CpuContext cpuContext,
                         final C terminalContext) {
