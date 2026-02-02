@@ -70,8 +70,8 @@ public abstract class CpuInstructionSharedOperandTestCase<T extends CpuInstructi
                                    final CpuContext context,
                                    final String expected) {
         this.checkEquals(
-            operand.disassemble(context),
             expected,
+            operand.disassemble(context),
             operand::toString
         );
     }
