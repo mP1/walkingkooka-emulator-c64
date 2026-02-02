@@ -50,19 +50,6 @@ public final class PetsciiReverseVisitorTest implements PetsciiReverseVisitorTes
     }
 
     @Test
-    public void testVisitLowercaseA() {
-        new TestPetsciiReverseVisitor() {
-            @Override
-            public void visitCharacter(final byte b) {
-                this.visited = b;
-            }
-        }.acceptAndCheck(
-            'a',
-            (byte) 65
-        );
-    }
-
-    @Test
     public void testVisitUpperCaseA() {
         new TestPetsciiReverseVisitor() {
             @Override
@@ -71,6 +58,19 @@ public final class PetsciiReverseVisitorTest implements PetsciiReverseVisitorTes
             }
         }.acceptAndCheck(
             'A',
+            (byte) 65
+        );
+    }
+
+    @Test
+    public void testVisitLowerCaseA() {
+        new TestPetsciiReverseVisitor() {
+            @Override
+            public void visitCharacter(final byte b) {
+                this.visited = b;
+            }
+        }.acceptAndCheck(
+            'a',
             (byte) 97
         );
     }

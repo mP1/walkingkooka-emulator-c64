@@ -38,16 +38,7 @@ public class PetsciiReverseVisitor extends Visitor<Character> implements Petscii
         final char c = value.charValue();
 
         if (Ascii.isLetter(c)) {
-            // petscii lower case is actually mapped to ascii upper and vice versa
-            if (Character.isLowerCase(c)) {
-                this.visitCharacter(
-                    Character.toUpperCase(c)
-                );
-            } else {
-                this.visitCharacter(
-                    Character.toLowerCase(c)
-                );
-            }
+            this.visitCharacter(c);
         } else {
             switch (c) {
                 case KEY_NA:
