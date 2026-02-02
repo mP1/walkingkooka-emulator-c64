@@ -61,6 +61,22 @@ final class CpuInstructionSharedOperandMemoryIndexedIndirectX extends CpuInstruc
 
     @Override
     String disassemble(final CpuContext context) {
-        return "(" + this.readPcByte(context) + ",X)";
+        final byte zeroPageOffset = readPcByte(context);
+        final byte x = context.x();
+
+        final byte vectorZeroPageOffset = (byte) zeroPageOffset(
+            zeroPageOffset,
+            x
+        );
+
+        final short vector = context.readZeroPageAddress(vectorZeroPageOffset);
+
+        return "(" +
+            CpuInstructionShared.hexByte(zeroPageOffset) +
+            ",X) " +
+            "(" +
+            CpuInstructionShared.hexByte(vectorZeroPageOffset) +
+            ") " +
+            CpuInstructionShared.hexAddress(vector);
     }
 }
