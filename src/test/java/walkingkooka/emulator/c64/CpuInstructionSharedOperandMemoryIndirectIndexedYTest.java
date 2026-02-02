@@ -183,6 +183,78 @@ public final class CpuInstructionSharedOperandMemoryIndirectIndexedYTest extends
         );
     }
 
+    @Test
+    public void testDisassemble() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        final byte offset = (byte) 0x81;
+
+        context.writeByte(
+            pc,
+            offset
+        );
+
+        context.writeAddress(
+            (short) (0xff & offset),
+            (short) 0x2000
+        );
+
+        final byte value = (byte) 0x34;
+        context.writeByte(
+            (short) 0x2012,
+            value
+        );
+
+        context.setY((byte) 0x12);
+
+        this.disassembleAndCheck(
+            this.createCpuInstructionSharedOperand(),
+            context,
+            "($81),Y $2012"
+        );
+    }
+
+    @Test
+    public void testDisassembleYPageOverflow() {
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.memory(256 * 256)
+        );
+
+        final short pc = 0x1000;
+        context.setPc(pc);
+
+        final byte offset = (byte) 0x81;
+
+        context.writeByte(
+            pc,
+            offset
+        );
+
+        context.writeAddress(
+            (short) (0xff & offset),
+            (short) 0x2080
+        );
+
+        final byte value = (byte) 0x34;
+        context.writeByte(
+            (short) 0x2111,
+            value
+        );
+
+        context.setY((byte) 0x91);
+
+        this.disassembleAndCheck(
+            this.createCpuInstructionSharedOperand(),
+            context,
+            "($81),Y $2111"
+        );
+    }
+
     @Override
     CpuInstructionSharedOperandMemoryIndirectIndexedY createCpuInstructionSharedOperand() {
         return CpuInstructionSharedOperandMemoryIndirectIndexedY.instance();
