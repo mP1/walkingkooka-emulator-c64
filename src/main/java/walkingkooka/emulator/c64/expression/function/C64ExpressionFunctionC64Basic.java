@@ -360,12 +360,26 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         }
 
         cpuContext.writeByte(
+            LSTX,
+            (byte) 0x40 // no key
+        );
+
+        cpuContext.writeByte(
             SFDX,
             (byte) 0x40 // no key
         );
 
         this.executeRts(cpuContext);
     }
+
+    // https://www.pagetable.com/c64ref/c64mem/#LSTX
+    // Matrix code of key previously pressed
+    // Values:
+    //
+    // $00-$3F: Keyboard matrix code.
+    // $40: No key was pressed at the time of previous check.
+
+    private final static short LSTX = 0xC5;
 
     // https://www.c64-wiki.com/wiki/198
     // The zeropage address 198 ($C6, official name NDX) is used by the Kernal system to hold the number of keyboard entries
