@@ -359,6 +359,15 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
             );
         }
 
+        // $7F: Stop key is pressed.
+        // $FF: Stop key is not pressed.
+        cpuContext.writeByte(
+            STKEY,
+            this.stop ?
+                (byte) 0x7f :
+                (byte) 0xff
+        );
+
         cpuContext.writeByte(
             LSTX,
             (byte) 0x40 // no key
@@ -371,6 +380,15 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
 
         this.executeRts(cpuContext);
     }
+
+    // https://www.pagetable.com/c64ref/c64mem/#STKEY
+    // Stop key indicator
+    // Values:
+    //
+    // $7F: Stop key is pressed.
+    // $FF: Stop key is not pressed.
+
+    private final static short STKEY = 0x91;
 
     // https://www.pagetable.com/c64ref/c64mem/#LSTX
     // Matrix code of key previously pressed
