@@ -348,15 +348,6 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
             );
 
             this.stop = petsciiTranslator.stop;
-
-            cpuContext.writeByte(
-                SHFLAG,
-                (byte) 0
-            );
-            cpuContext.writeByte(
-                LSTSHF,
-                (byte) 0
-            );
         }
 
         // $7F: Stop key is pressed.
@@ -376,6 +367,15 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         cpuContext.writeByte(
             SFDX,
             (byte) 0x40 // no key
+        );
+
+        cpuContext.writeByte(
+            SHFLAG,
+            (byte) 0
+        );
+        cpuContext.writeByte(
+            LSTSHF,
+            (byte) 0
         );
 
         this.executeRts(cpuContext);
