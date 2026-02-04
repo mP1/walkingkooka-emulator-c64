@@ -370,7 +370,7 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
     // https://www.c64-wiki.com/wiki/198
     // The zeropage address 198 ($C6, official name NDX) is used by the Kernal system to hold the number of keyboard entries
     // waiting in the ten-character keyboard buffer (see address 631-640).
-    private final static short NDX = 198;
+    private final static short NDX = 0xC6;
 
     // https://www.pagetable.com/c64ref/c64mem/#SFDX
     // Matrix code of key currently being pressed
