@@ -359,6 +359,11 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
             );
         }
 
+        cpuContext.writeByte(
+            SFDX,
+            (byte) 0x40 // no key
+        );
+
         this.executeRts(cpuContext);
     }
 
@@ -366,6 +371,14 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
     // The zeropage address 198 ($C6, official name NDX) is used by the Kernal system to hold the number of keyboard entries
     // waiting in the ten-character keyboard buffer (see address 631-640).
     private final static short NDX = 198;
+
+    // https://www.pagetable.com/c64ref/c64mem/#SFDX
+    // Matrix code of key currently being pressed
+    // Values:
+    //
+    // $00-$3F: Keyboard matrix code.
+    // $40: No key is currently pressed.
+    private final static short SFDX = 0xCB;
 
     // https://www.pagetable.com/c64ref/c64mem/#0277
     ///
