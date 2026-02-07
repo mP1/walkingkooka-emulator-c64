@@ -109,7 +109,7 @@ public final class CpuInstructionSharedUnaryRorZpXTest extends CpuInstructionSha
     public void testDisassemble() {
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(256 * 256),
-            SYMBOL_LOOKUP_UOE
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
 
         context.setPc((short) 0x1000);
@@ -124,7 +124,7 @@ public final class CpuInstructionSharedUnaryRorZpXTest extends CpuInstructionSha
             offset
         );
 
-        final byte x = 82;
+        final byte x = (byte) 0x82;
         context.setX(x);
 
         final short valueAddress = 0xff & (offset + x);
@@ -137,7 +137,7 @@ public final class CpuInstructionSharedUnaryRorZpXTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ROR $81,X"
+            "ROR LABEL3,X"
         );
     }
 

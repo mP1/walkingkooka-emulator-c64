@@ -62,7 +62,7 @@ public final class CpuInstructionSharedUnaryRorZpTest extends CpuInstructionShar
     public void testDisassemble() {
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(256 * 256),
-            SYMBOL_LOOKUP_UOE
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
 
         context.setPc((short) 0x1000);
@@ -80,7 +80,7 @@ public final class CpuInstructionSharedUnaryRorZpTest extends CpuInstructionShar
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ROR $81"
+            "ROR LABEL81"
         );
     }
 

@@ -124,7 +124,7 @@ public final class CpuInstructionSharedUnaryIncZpXTest extends CpuInstructionSha
             offset
         );
 
-        final byte x = 82;
+        final byte x = (byte) 0x82;
         context.setX(x);
 
         final short valueAddress = 0xff & (offset + x);
@@ -137,7 +137,7 @@ public final class CpuInstructionSharedUnaryIncZpXTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "INC $81,X"
+            "INC LABEL3,X"
         );
     }
 

@@ -80,7 +80,7 @@ public final class CpuInstructionSharedUnaryLsrZpTest extends CpuInstructionShar
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "LSR $81"
+            "LSR LABEL81"
         );
     }
 
