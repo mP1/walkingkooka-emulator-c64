@@ -441,7 +441,7 @@ final class BasicCpuContext implements CpuContext {
     }
 
     private static String hex(final byte value) {
-        return "0x" +
+        return "$" +
             CharSequences.padLeft(
                 Integer.toHexString(BYTE_MASK & value)
                     .toUpperCase(),
@@ -451,7 +451,7 @@ final class BasicCpuContext implements CpuContext {
     }
 
     private static String hexAddress(final short value) {
-        return "0x" +
+        return "$" +
             CharSequences.padLeft(
                 Integer.toHexString(0xFFFF & value)
                     .toUpperCase(),
