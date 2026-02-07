@@ -87,7 +87,7 @@ public final class CpuInstructionSharedLoadALdaAbsXTest extends CpuInstructionSh
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "LDA LABEL2000,X"
+            "LDA LABEL2005,X"
         );
     }
 
