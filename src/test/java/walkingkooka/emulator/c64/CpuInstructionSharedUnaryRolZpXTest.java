@@ -124,7 +124,7 @@ public final class CpuInstructionSharedUnaryRolZpXTest extends CpuInstructionSha
             offset
         );
 
-        final byte x = 82;
+        final byte x = (byte) 0x82;
         context.setX(x);
 
         final short valueAddress = 0xff & (offset + x);
@@ -137,7 +137,7 @@ public final class CpuInstructionSharedUnaryRolZpXTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ROL $81,X"
+            "ROL LABEL3,X"
         );
     }
 

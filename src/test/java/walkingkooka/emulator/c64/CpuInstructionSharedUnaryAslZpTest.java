@@ -118,7 +118,7 @@ public final class CpuInstructionSharedUnaryAslZpTest extends CpuInstructionShar
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ASL $81"
+            "ASL LABEL81"
         );
     }
 
@@ -144,7 +144,7 @@ public final class CpuInstructionSharedUnaryAslZpTest extends CpuInstructionShar
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ASL $23"
+            "ASL LABEL23"
         );
     }
 

@@ -80,7 +80,7 @@ public final class CpuInstructionSharedUnaryIncZpTest extends CpuInstructionShar
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "INC $81"
+            "INC LABEL81"
         );
     }
 

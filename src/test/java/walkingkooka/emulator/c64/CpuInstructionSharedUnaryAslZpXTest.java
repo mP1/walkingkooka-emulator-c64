@@ -124,7 +124,7 @@ public final class CpuInstructionSharedUnaryAslZpXTest extends CpuInstructionSha
             offset
         );
 
-        final byte x = 82;
+        final byte x = (byte) 0x82;
         context.setX(x);
 
         final short valueAddress = 0xff & (offset + x);
@@ -137,7 +137,7 @@ public final class CpuInstructionSharedUnaryAslZpXTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ASL $81,X"
+            "ASL LABEL3,X"
         );
     }
 
