@@ -17,6 +17,8 @@
 
 package walkingkooka.emulator.c64;
 
+import walkingkooka.text.CharSequences;
+
 import java.util.Collection;
 import java.util.Objects;
 
@@ -59,12 +61,76 @@ final class BasicCpu implements Cpu {
             (short) (pc + 1)
         );
 
+        final CpuInstruction instruction = this.instructions[
+            mask(opcode)
+            ];
+
+        // include opcode and any parameters in HEX form
+        final StringBuilder b = new StringBuilder();
+
+        b.append(
+            hexByte(opcode)
+        );
+
+        final int opcodeCount = instruction.length() - 1;
+
+        switch (opcodeCount) {
+            case 2:
+                b.append(' ');
+                b.append(
+                    hexByte(
+                        context.readByte(
+                            (short) (pc + 1)
+                        )
+                    )
+                );
+                b.append(' ');
+                b.append(
+                    hexByte(
+                        context.readByte(
+                            (short) (pc + 2)
+                        )
+                    )
+                );
+                b.append(' ');
+                break;
+            case 1:
+                b.append(' ');
+                b.append(
+                    hexByte(
+                        context.readByte(
+                            (short) (pc + 1)
+                        )
+                    )
+                );
+                b.append("    ");
+                break;
+            case 0:
+                b.append("       ");
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid opcode length " + opcodeCount + 1 + " for " + hexByte(opcode));
+        }
+
         try {
-            return this.instructions[mask(opcode)]
-                .disassemble(context);
+            b.append(
+                instruction.disassemble(context)
+            );
         } finally {
             context.setPc(pc);
         }
+
+        return b.toString();
+    }
+
+    private static CharSequence hexByte(final byte value) {
+        return CharSequences.padLeft(
+            Integer.toHexString(
+                mask(value)
+            ).toUpperCase(),
+            2,
+            '0' // leading zero if necessary
+        );
     }
 
     @Override
@@ -83,7 +149,7 @@ final class BasicCpu implements Cpu {
 
     private final CpuInstruction[] instructions;
 
-    private int mask(final byte value) {
+    private static int mask(final byte value) {
         return 0xff & value;
     }
 }

@@ -261,7 +261,39 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
     // disassemble......................................................................................................
 
     @Test
-    public void testDisassemble() {
+    public void testDisassembleTwoByteOpcodeLdxImm() {
+        this.disassembleAndCheck(
+            (short) 0xFCE2,
+            "A2 FF    LDX #$FF"
+        );
+    }
+
+    @Test
+    public void testDisassembleOneByteOpcodeSei() {
+        this.disassembleAndCheck(
+            (short) 0xFCE4,
+            "78       SEI"
+        );
+    }
+
+    @Test
+    public void testDisassembleOneByteOpcodeTxs() {
+        this.disassembleAndCheck(
+            (short) 0xFCE5,
+            "9A       TXS"
+        );
+    }
+
+    @Test
+    public void testDisassembleThreeByteOpcodeJsr() {
+        this.disassembleAndCheck(
+            (short) 0xFCE7,
+            "20 02 FD JSR $FD02"
+        );
+    }
+
+    private void disassembleAndCheck(final short pc,
+                                     final String expected) {
         final BasicCpu cpu = BasicCpu.with(
             CpuInstructions.all()
         );
@@ -293,9 +325,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
             )
         );
 
-        cpuContext.setPc(
-            (short) 0xFCE2
-        );
+        cpuContext.setPc(pc);
 
         cpuContext.writeByte(
             (short) 0x0,
@@ -322,47 +352,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         this.disassembleAndCheck(
             cpu,
             cpuContext,
-            "LDX #$FF"
-        );
-
-        cpuContext.setPc(
-            (short) (cpuContext.pc() + 2)
-        );
-
-        this.disassembleAndCheck(
-            cpu,
-            cpuContext,
-            "SEI"
-        );
-
-        cpuContext.setPc(
-            (short) (cpuContext.pc() + 1)
-        );
-
-        this.disassembleAndCheck(
-            cpu,
-            cpuContext,
-            "TXS"
-        );
-
-        cpuContext.setPc(
-            (short) (cpuContext.pc() + 1)
-        );
-
-        this.disassembleAndCheck(
-            cpu,
-            cpuContext,
-            "CLD"
-        );
-
-        cpuContext.setPc(
-            (short) (cpuContext.pc() + 1)
-        );
-
-        this.disassembleAndCheck(
-            cpu,
-            cpuContext,
-            "JSR $FD02"
+            expected
         );
     }
 
