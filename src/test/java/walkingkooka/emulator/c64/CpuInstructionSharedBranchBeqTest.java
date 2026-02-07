@@ -49,7 +49,7 @@ public final class CpuInstructionSharedBranchBeqTest extends CpuInstructionShare
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "BEQ $12 ($1014)"
+            "BEQ $12 ($1013)"
         );
     }
 

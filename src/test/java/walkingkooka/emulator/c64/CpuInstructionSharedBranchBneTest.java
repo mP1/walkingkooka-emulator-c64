@@ -49,7 +49,7 @@ public final class CpuInstructionSharedBranchBneTest extends CpuInstructionShare
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "BNE $12 ($1014)"
+            "BNE $12 ($1013)"
         );
     }
 
