@@ -26,6 +26,7 @@ import walkingkooka.emulator.c64.CpuContexts;
 import walkingkooka.emulator.c64.CpuInstructions;
 import walkingkooka.emulator.c64.CpuWatcher;
 import walkingkooka.emulator.c64.Cpus;
+import walkingkooka.emulator.c64.PageTableComAddressSymbolsFunction;
 import walkingkooka.environment.EnvironmentContexts;
 import walkingkooka.io.TextReader;
 import walkingkooka.terminal.TerminalContext;
@@ -39,7 +40,6 @@ import walkingkooka.tree.expression.function.ExpressionFunction;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * A function that may be executed within a terminal session and supports entering basic expressions that execute and
@@ -134,7 +134,7 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                     ) // write
                 )
             ),
-            (address) -> Optional.empty()
+            PageTableComAddressSymbolsFunction.INSTANCE
         );
 
         cpuContext.addWatcher(
