@@ -73,12 +73,9 @@ final class CpuInstructionSharedOperandMemoryIndexedIndirectX extends CpuInstruc
 
         return "(" +
             context.addressSymbol(
-                (short) (0xff & zeroPageOffset)
+                (short) (0xff & zeroPageOffset + x)
             ) +
             ",X) " +
-            "(" +
-            CpuInstructionShared.hexByte(vectorZeroPageOffset) +
-            ") " +
             context.addressSymbol(vector);
     }
 }
