@@ -47,7 +47,7 @@ public final class PageTableComAddressSymbolsFunctionTest implements FunctionTes
     public void testApply0003() {
         this.applyAndCheck(
             (short) 0x0003,
-            "< ADRAY1"
+            "ADRAY1"
         );
     }
 
@@ -55,7 +55,7 @@ public final class PageTableComAddressSymbolsFunctionTest implements FunctionTes
     public void testApply0004() {
         this.applyAndCheck(
             (short) 0x0004,
-            "> ADRAY1"
+            "ADRAY1+1"
         );
     }
 

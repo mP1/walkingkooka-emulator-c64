@@ -314,11 +314,11 @@ public final class PageTableComAddressSymbolsFunction implements Function<Short,
 
                 addressToSymbols.put(
                     parseAddress(lower),
-                    "< " + label
+                    label
                 );
                 addressToSymbols.put(
                     parseAddress(upper),
-                    "> " + label
+                    label + "+1"
                 );
             }
         }
