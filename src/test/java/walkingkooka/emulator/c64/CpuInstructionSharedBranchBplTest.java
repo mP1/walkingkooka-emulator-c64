@@ -49,7 +49,7 @@ public final class CpuInstructionSharedBranchBplTest extends CpuInstructionShare
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "BPL $12 ($1013)"
+            "BPL $1013"
         );
     }
 
