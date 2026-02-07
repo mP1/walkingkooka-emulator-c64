@@ -133,7 +133,7 @@ public final class CpuContextTestingTest implements CpuContextTesting {
     @Test
     public void testHexByte() {
         this.checkEquals(
-            "$ff 255",
+            "$FF 255",
             CpuContextTesting.hex((byte) 0xff)
         );
     }
