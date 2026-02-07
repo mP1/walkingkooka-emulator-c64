@@ -47,6 +47,7 @@ abstract class CpuInstructionSharedBranch extends CpuInstructionShared {
 
     abstract boolean testFlag(final CpuContext context);
 
+    // BNE $1013
     @Override
     public final String disassemble(final CpuContext context) {
         final short pc = context.pc();
@@ -56,12 +57,9 @@ abstract class CpuInstructionSharedBranch extends CpuInstructionShared {
         // BPL $FF ($F000)
         return this.conditionText() +
             " " +
-            hexByte(offset) +
-            " (" +
             hexAddress(
                 (short) (pc + 1 + mask(offset))
-            ) +
-            ")";
+            );
     }
 
     abstract String conditionText();
