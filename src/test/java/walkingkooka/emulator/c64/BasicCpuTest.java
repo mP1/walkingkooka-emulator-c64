@@ -322,7 +322,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         this.disassembleAndCheck(
             cpu,
             cpuContext,
-            "LDX #$ff"
+            "LDX #$FF"
         );
 
         cpuContext.setPc(
@@ -362,7 +362,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         this.disassembleAndCheck(
             cpu,
             cpuContext,
-            "JSR $fd02"
+            "JSR $FD02"
         );
     }
 

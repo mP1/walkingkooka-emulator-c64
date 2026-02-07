@@ -101,7 +101,8 @@ public abstract class CpuInstructionSharedOperandTestCase<T extends CpuInstructi
 
     // $2000 4096
     private static String hex(final int value) {
-        return "$" + Integer.toHexString(value) +
+        return "$" + Integer.toHexString(value)
+            .toUpperCase() +
             " " +
             value;
     }

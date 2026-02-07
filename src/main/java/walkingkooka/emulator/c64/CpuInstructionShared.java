@@ -38,13 +38,13 @@ abstract class CpuInstructionShared implements CpuInstruction,
     static String hexAddress(final short address) {
         return "$" + Integer.toHexString(
             (0xFFFF & address)
-        );
+        ).toUpperCase();
     }
 
     static String hexByte(final byte value) {
         return "$" + Integer.toHexString(
             mask(value)
-        );
+        ).toUpperCase();
     }
 
     static byte hi(final short value) {
