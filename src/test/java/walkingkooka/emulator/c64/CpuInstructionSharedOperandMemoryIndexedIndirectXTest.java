@@ -218,7 +218,7 @@ public final class CpuInstructionSharedOperandMemoryIndexedIndirectXTest extends
         this.disassembleAndCheck(
             this.createCpuInstructionSharedOperand(),
             context,
-            "(LABEL1,X) ($3) LABEL2000"
+            "(LABEL3,X) LABEL2000"
         );
     }
 
@@ -255,7 +255,7 @@ public final class CpuInstructionSharedOperandMemoryIndexedIndirectXTest extends
         this.disassembleAndCheck(
             this.createCpuInstructionSharedOperand(),
             context,
-            "(LABEL81,X) ($3) LABEL2000"
+            "(LABEL3,X) LABEL2000"
         );
     }
 
