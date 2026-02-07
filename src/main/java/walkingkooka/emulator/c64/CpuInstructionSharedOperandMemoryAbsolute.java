@@ -51,7 +51,10 @@ abstract class CpuInstructionSharedOperandMemoryAbsolute extends CpuInstructionS
         // $1234
         // $ABCD,X
         return context.addressSymbol(
-            this.readPcAddress(context)
+            (short)
+                (
+                    this.readPcAddress(context) + this.operandAddressIndex(context)
+                )
         ) +
             this.disassembleIndex();
     }
