@@ -24,7 +24,8 @@ public final class CpuInstructionSharedOperandRegisterATest extends CpuInstructi
     @Test
     public void testHandleUnaryFunction() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
+            AddressBuses.fake(),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x1234;
@@ -53,7 +54,8 @@ public final class CpuInstructionSharedOperandRegisterATest extends CpuInstructi
     @Test
     public void testReadValue() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
+            AddressBuses.fake(),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x1234;

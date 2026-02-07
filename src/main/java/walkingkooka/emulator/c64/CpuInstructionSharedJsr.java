@@ -88,7 +88,7 @@ final class CpuInstructionSharedJsr extends CpuInstructionShared {
         );
 
         return "JSR " +
-            hexAddress(
+            context.addressSymbol(
                 address(
                     hi,
                     lo

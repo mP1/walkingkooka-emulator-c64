@@ -24,7 +24,8 @@ public final class CpuInstructionSharedUnaryIncAbsTest extends CpuInstructionSha
     @Test
     public void testExecute() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         context.setPc((short) 0x1000);
@@ -60,7 +61,8 @@ public final class CpuInstructionSharedUnaryIncAbsTest extends CpuInstructionSha
     @Test
     public void testDisassemble() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
 
         context.setPc((short) 0x1000);
@@ -83,7 +85,7 @@ public final class CpuInstructionSharedUnaryIncAbsTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "INC $4567"
+            "INC LABEL4567"
         );
     }
 

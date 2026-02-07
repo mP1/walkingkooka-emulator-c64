@@ -20,9 +20,22 @@ package walkingkooka.emulator.c64;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
+import java.util.Optional;
+import java.util.function.Function;
+
 public abstract class CpuInstructionSharedTestCase<I extends CpuInstruction> implements CpuInstructionTesting<I>,
     CpuInstructionOpcodes,
     ClassTesting<I> {
+
+    final static Function<Short, Optional<String>> SYMBOL_LOOKUP_DISASSEMBLE = (address) -> Optional.of(
+        "LABEL" + Integer.toHexString(
+            0xffff & address
+        ).toUpperCase()
+    );
+
+    final static Function<Short, Optional<String>> SYMBOL_LOOKUP_UOE = (address) -> {
+        throw new UnsupportedOperationException();
+    };
 
     CpuInstructionSharedTestCase() {
         super();

@@ -19,6 +19,9 @@ package walkingkooka.emulator.c64;
 
 import walkingkooka.reflect.PublicStaticHelper;
 
+import java.util.Optional;
+import java.util.function.Function;
+
 /**
  * A collection of {@link CpuContext} factory methods.
  */
@@ -27,8 +30,12 @@ public final class CpuContexts implements PublicStaticHelper {
     /**
      * {@see BasicCpuContext}
      */
-    public static CpuContext basic(final AddressBus addressBus) {
-        return BasicCpuContext.with(addressBus);
+    public static CpuContext basic(final AddressBus addressBus,
+                                   final Function<Short, Optional<String>> addressSymbols) {
+        return BasicCpuContext.with(
+            addressBus,
+            addressSymbols
+        );
     }
 
     /**

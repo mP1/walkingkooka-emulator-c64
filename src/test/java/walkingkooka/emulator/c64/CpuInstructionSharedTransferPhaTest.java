@@ -28,7 +28,8 @@ public final class CpuInstructionSharedTransferPhaTest extends CpuInstructionSha
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(
                 256 * 256
-            )
+            ),
+            SYMBOL_LOOKUP_UOE
         );
         context.setPc(pc);
 

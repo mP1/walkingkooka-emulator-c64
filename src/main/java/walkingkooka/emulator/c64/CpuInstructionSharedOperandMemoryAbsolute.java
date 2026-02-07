@@ -50,7 +50,7 @@ abstract class CpuInstructionSharedOperandMemoryAbsolute extends CpuInstructionS
     final String disassemble(final CpuContext context) {
         // $1234
         // $ABCD,X
-        return CpuInstructionShared.hexAddress(
+        return context.addressSymbol(
             this.readPcAddress(context)
         ) +
             this.disassembleIndex();

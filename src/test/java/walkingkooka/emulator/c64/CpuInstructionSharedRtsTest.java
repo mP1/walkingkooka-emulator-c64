@@ -24,7 +24,8 @@ public final class CpuInstructionSharedRtsTest extends CpuInstructionSharedTestC
     @Test
     public void testStep() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final byte hi = (byte) 0xFF;
@@ -54,7 +55,8 @@ public final class CpuInstructionSharedRtsTest extends CpuInstructionSharedTestC
     @Test
     public void testStep2() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final byte hi = (byte) 0xFF;
@@ -86,7 +88,8 @@ public final class CpuInstructionSharedRtsTest extends CpuInstructionSharedTestC
     @Test
     public void testStep3() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final byte hi = 0x12;
@@ -118,7 +121,8 @@ public final class CpuInstructionSharedRtsTest extends CpuInstructionSharedTestC
     @Test
     public void testStep4() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final byte hi = 0x02;

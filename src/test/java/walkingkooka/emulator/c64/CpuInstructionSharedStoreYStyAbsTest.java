@@ -26,7 +26,8 @@ public final class CpuInstructionSharedStoreYStyAbsTest extends CpuInstructionSh
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(
                 256 * 256
-            )
+            ),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short address = 0x2040;

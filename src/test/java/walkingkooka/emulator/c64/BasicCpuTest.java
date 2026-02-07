@@ -22,10 +22,22 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.JavaVisibility;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class BasicCpuTest implements CpuTesting<BasicCpu> {
+
+    private final static Function<Short, Optional<String>> SYMBOL_LOOKUP_DISASSEMBLE = (address) -> Optional.of(
+        "LABEL" + Integer.toHexString(
+            0xffff & address
+        ).toUpperCase()
+    );
+
+    private final static Function<Short, Optional<String>> SYMBOL_LOOKUP_UOE = (address) -> {
+        throw new UnsupportedOperationException();
+    };
 
     // with.............................................................................................................
 
@@ -52,7 +64,8 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(
                 256 * 256
-            )
+            ),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x1000;
@@ -98,7 +111,8 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(
                 256 * 256
-            )
+            ),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x1000;
@@ -152,7 +166,8 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(
                 256 * 256
-            )
+            ),
+            SYMBOL_LOOKUP_UOE
         );
 
         context.writeByte(
@@ -216,7 +231,8 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(
                 256 * 256
-            )
+            ),
+            SYMBOL_LOOKUP_UOE
         );
 
         context.setX(
@@ -288,7 +304,7 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
     public void testDisassembleThreeByteOpcodeJsr() {
         this.disassembleAndCheck(
             (short) 0xFCE7,
-            "20 02 FD JSR $FD02"
+            "20 02 FD JSR LABELFD02"
         );
     }
 
@@ -322,7 +338,8 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
                         ram
                     ) // write
                 )
-            )
+            ),
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
 
         cpuContext.setPc(pc);
@@ -390,7 +407,8 @@ public final class BasicCpuTest implements CpuTesting<BasicCpu> {
     @Override
     public CpuContext createCpuContext() {
         return CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
     }
 

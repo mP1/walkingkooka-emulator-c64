@@ -32,10 +32,26 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
     ToStringTesting<BasicCpuContext> {
 
     @Test
-    public void testWithNullFails() {
+    public void testWithNullAddressBusFails() {
         assertThrows(
             NullPointerException.class,
-            () -> BasicCpuContext.with(null)
+            () -> BasicCpuContext.with(
+                null,
+                (a) -> {
+                    throw new UnsupportedOperationException();
+                }
+            )
+        );
+    }
+
+    @Test
+    public void testWithNullAddressSymbolFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> BasicCpuContext.with(
+                AddressBuses.fake(),
+                null
+            )
         );
     }
 
@@ -522,7 +538,10 @@ public final class BasicCpuContextTest implements CpuContextTesting2<BasicCpuCon
     @Override
     public BasicCpuContext createContext() {
         return BasicCpuContext.with(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            (a) -> {
+                throw new UnsupportedOperationException();
+            }
         );
     }
 

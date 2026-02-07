@@ -72,11 +72,13 @@ final class CpuInstructionSharedOperandMemoryIndexedIndirectX extends CpuInstruc
         final short vector = context.readZeroPageAddress(vectorZeroPageOffset);
 
         return "(" +
-            CpuInstructionShared.hexByte(zeroPageOffset) +
+            context.addressSymbol(
+                (short) (0xff & zeroPageOffset)
+            ) +
             ",X) " +
             "(" +
             CpuInstructionShared.hexByte(vectorZeroPageOffset) +
             ") " +
-            CpuInstructionShared.hexAddress(vector);
+            context.addressSymbol(vector);
     }
 }

@@ -68,9 +68,10 @@ final class CpuInstructionSharedOperandMemoryIndirectIndexedY extends CpuInstruc
         );
 
         return "(" +
-            CpuInstructionShared.hexByte(zeroPageOffset) +
+            context.addressSymbol(
+                (short) ((0xff) & zeroPageOffset)) +
             "),Y " +
-            CpuInstructionShared.hexAddress(
+            context.addressSymbol(
                 (short) (base + (0xff & y))
             );
     }

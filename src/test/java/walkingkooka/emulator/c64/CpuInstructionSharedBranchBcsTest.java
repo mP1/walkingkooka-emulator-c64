@@ -40,7 +40,8 @@ public final class CpuInstructionSharedBranchBcsTest extends CpuInstructionShare
                     checkEquals(0x1000, o);
                     return 0x12;
                 }
-            }
+            },
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
         context.setPc(
             (short) 0x1000
@@ -49,7 +50,7 @@ public final class CpuInstructionSharedBranchBcsTest extends CpuInstructionShare
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "BCS $1013"
+            "BCS LABEL1013"
         );
     }
 

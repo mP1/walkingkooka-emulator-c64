@@ -25,7 +25,8 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
     @Test
     public void testStep() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x5678;
@@ -67,7 +68,8 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
     @Test
     public void testJsrThenRts() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x5005;
@@ -118,7 +120,8 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
     @Test
     public void testDisassemble() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
 
         final short pc = 0x5000;
@@ -134,7 +137,7 @@ public final class CpuInstructionSharedJsrTest extends CpuInstructionSharedTestC
         this.disassembleAndCheck(
             CpuInstructionSharedJsr.instance(),
             context,
-            "JSR $1234"
+            "JSR LABEL1234"
         );
     }
 

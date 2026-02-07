@@ -66,7 +66,8 @@ public final class CpuInstructionSharedLoadYLdyImmTest extends CpuInstructionSha
                                           final String flags,
                                           final String expectedFlags) {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x1000;

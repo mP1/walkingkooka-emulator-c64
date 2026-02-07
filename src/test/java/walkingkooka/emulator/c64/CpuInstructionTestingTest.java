@@ -36,9 +36,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
         final short begin = 0x1000;
         final byte length = 5;
 
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setPc(begin);
 
         this.executeBranchOrJumpAndCheck(
@@ -57,9 +55,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteAccumulatorAndCheckWithDifferentValueFails() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setA((byte) 0x11);
         context.setPc(PC);
 
@@ -87,9 +83,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteAccumulatorAndCheckWithDifferentFlagsFails() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setA((byte) 0x11);
         context.setPc(PC);
 
@@ -116,9 +110,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteAccumulatorAndCheckWithDifferentPcFails() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setA((byte) 0x11);
         context.setPc(PC);
 
@@ -144,9 +136,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteAccumulatorAndCheck() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setA((byte) 0x11);
         context.setPc(PC);
 
@@ -174,9 +164,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteXAndCheckWithDifferentValueFails() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setX((byte) 0x11);
         context.setPc(PC);
 
@@ -204,9 +192,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteXAndCheckWithDifferentFlagsFails() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setX((byte) 0x11);
         context.setPc(PC);
 
@@ -233,9 +219,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteXAndCheckWithDifferentPcFails() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setX((byte) 0x11);
         context.setPc(PC);
 
@@ -261,9 +245,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteXAndCheck() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setX((byte) 0x11);
         context.setPc(PC);
 
@@ -291,9 +273,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteYAndCheckWithDifferentValueFails() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setY((byte) 0x11);
         context.setPc(PC);
 
@@ -321,9 +301,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteYAndCheckWithDifferentFlagsFails() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setY((byte) 0x11);
         context.setPc(PC);
 
@@ -350,9 +328,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteYAndCheckWithDifferentPcFails() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setY((byte) 0x11);
         context.setPc(PC);
 
@@ -378,9 +354,7 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
 
     @Test
     public void testExecuteYAndCheck() {
-        final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
-        );
+        final CpuContext context = this.createBasicCpuContext();
         context.setY((byte) 0x11);
         context.setPc(PC);
 
@@ -424,6 +398,15 @@ public final class CpuInstructionTestingTest implements CpuInstructionTesting<Te
         return new TestCpuInstruction(
             1,
             (c) -> {
+                throw new UnsupportedOperationException();
+            }
+        );
+    }
+
+    private CpuContext createBasicCpuContext() {
+        return CpuContexts.basic(
+            AddressBuses.fake(),
+            (Short address) -> {
                 throw new UnsupportedOperationException();
             }
         );

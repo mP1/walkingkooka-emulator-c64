@@ -24,7 +24,8 @@ public final class CpuInstructionSharedJmpIndirectTest extends CpuInstructionSha
     @Test
     public void testStep() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = (byte) 0xF000;
@@ -58,7 +59,8 @@ public final class CpuInstructionSharedJmpIndirectTest extends CpuInstructionSha
     @Test
     public void testDisassemble() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
 
         final short pc = (byte) 0xF000;
@@ -80,7 +82,7 @@ public final class CpuInstructionSharedJmpIndirectTest extends CpuInstructionSha
         this.disassembleAndCheck(
             CpuInstructionSharedJmpIndirect.instance(),
             context,
-            "JMP ($1234) $5678"
+            "JMP (LABEL1234) LABEL5678"
         );
     }
 

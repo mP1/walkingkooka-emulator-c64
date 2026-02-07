@@ -24,7 +24,8 @@ public final class CpuInstructionSharedBinaryFunctionAdcIndYTest extends CpuInst
     @Test
     public void testExecute() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x1000;
@@ -63,7 +64,8 @@ public final class CpuInstructionSharedBinaryFunctionAdcIndYTest extends CpuInst
     @Test
     public void testExecuteWithDecimalMode() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x1000;

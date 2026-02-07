@@ -57,7 +57,7 @@ abstract class CpuInstructionSharedBranch extends CpuInstructionShared {
         // BPL $FF ($F000)
         return this.conditionText() +
             " " +
-            hexAddress(
+            context.addressSymbol(
                 (short) (pc + 1 + mask(offset))
             );
     }

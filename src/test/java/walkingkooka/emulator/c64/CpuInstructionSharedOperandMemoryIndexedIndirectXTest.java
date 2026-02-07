@@ -24,7 +24,8 @@ public final class CpuInstructionSharedOperandMemoryIndexedIndirectXTest extends
     @Test
     public void testHandleUnaryFunction() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x1000;
@@ -69,7 +70,8 @@ public final class CpuInstructionSharedOperandMemoryIndexedIndirectXTest extends
     @Test
     public void testHandleUnaryFunctionZeroPageWrap() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x1000;
@@ -114,7 +116,8 @@ public final class CpuInstructionSharedOperandMemoryIndexedIndirectXTest extends
     @Test
     public void testReadValue() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x1000;
@@ -149,7 +152,8 @@ public final class CpuInstructionSharedOperandMemoryIndexedIndirectXTest extends
     @Test
     public void testReadValueZeroPageWrap() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x1000;
@@ -184,7 +188,8 @@ public final class CpuInstructionSharedOperandMemoryIndexedIndirectXTest extends
     @Test
     public void testDisassemble() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
 
         final short pc = 0x1000;
@@ -213,14 +218,15 @@ public final class CpuInstructionSharedOperandMemoryIndexedIndirectXTest extends
         this.disassembleAndCheck(
             this.createCpuInstructionSharedOperand(),
             context,
-            "($1,X) ($3) $2000"
+            "(LABEL1,X) ($3) LABEL2000"
         );
     }
 
     @Test
     public void testDisassembleZeroPageWrap() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
 
         final short pc = 0x1000;
@@ -249,7 +255,7 @@ public final class CpuInstructionSharedOperandMemoryIndexedIndirectXTest extends
         this.disassembleAndCheck(
             this.createCpuInstructionSharedOperand(),
             context,
-            "($81,X) ($3) $2000"
+            "(LABEL81,X) ($3) LABEL2000"
         );
     }
 

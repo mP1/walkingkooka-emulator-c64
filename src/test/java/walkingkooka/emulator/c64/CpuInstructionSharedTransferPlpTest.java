@@ -24,7 +24,8 @@ public final class CpuInstructionSharedTransferPlpTest extends CpuInstructionSha
     @Test
     public void testExecuteIncludesBreakFlag() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         context.setPc(
@@ -58,7 +59,8 @@ public final class CpuInstructionSharedTransferPlpTest extends CpuInstructionSha
     @Test
     public void testExecuteMissingBreakFlag() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         context.setPc(

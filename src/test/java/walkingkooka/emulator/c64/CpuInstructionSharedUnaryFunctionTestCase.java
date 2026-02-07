@@ -20,9 +20,21 @@ package walkingkooka.emulator.c64;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public abstract class CpuInstructionSharedUnaryFunctionTestCase<T extends CpuInstructionSharedUnaryFunction> implements ClassTesting<T> {
+
+    final static Function<Short, Optional<String>> SYMBOL_LOOKUP_DISASSEMBLE = (address) -> Optional.of(
+        "LABEL" + Integer.toHexString(
+            0xffff & address
+        ).toUpperCase()
+    );
+
+    final static Function<Short, Optional<String>> SYMBOL_LOOKUP_UOE = (address) -> {
+        throw new UnsupportedOperationException();
+    };
 
     CpuInstructionSharedUnaryFunctionTestCase() {
         super();
@@ -59,7 +71,8 @@ public abstract class CpuInstructionSharedUnaryFunctionTestCase<T extends CpuIns
                               final byte expectedValue,
                               final CpuFlags expectedFlags) {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
+            AddressBuses.fake(),
+            SYMBOL_LOOKUP_UOE
         );
 
         context.setFlags(
