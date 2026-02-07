@@ -49,7 +49,7 @@ public final class CpuInstructionSharedBranchBmiTest extends CpuInstructionShare
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "BMI $12 ($1014)"
+            "BMI $12 ($1013)"
         );
     }
 

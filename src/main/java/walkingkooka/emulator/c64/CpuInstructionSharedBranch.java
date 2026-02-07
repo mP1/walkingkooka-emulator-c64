@@ -59,7 +59,7 @@ abstract class CpuInstructionSharedBranch extends CpuInstructionShared {
             hexByte(offset) +
             " (" +
             hexAddress(
-                (short) (pc + 2 + mask(offset))
+                (short) (pc + 1 + mask(offset))
             ) +
             ")";
     }

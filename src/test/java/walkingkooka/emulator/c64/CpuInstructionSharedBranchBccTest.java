@@ -49,7 +49,7 @@ public final class CpuInstructionSharedBranchBccTest extends CpuInstructionShare
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "BCC $12 ($1014)"
+            "BCC $12 ($1013)"
         );
     }
 
