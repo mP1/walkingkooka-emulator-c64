@@ -36,7 +36,8 @@ public final class CpuInstructionSharedInvalidOpcodeTest extends CpuInstructionS
     @Test
     public void testStep() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         context.setPc((short) 0x1000);

@@ -24,7 +24,8 @@ public final class CpuInstructionSharedUnaryInyTest extends CpuInstructionShared
     @Test
     public void testExecute() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
+            AddressBuses.fake(),
+            SYMBOL_LOOKUP_UOE
         );
 
         context.setPc((short) 0x1000);
@@ -43,7 +44,8 @@ public final class CpuInstructionSharedUnaryInyTest extends CpuInstructionShared
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             CpuContexts.basic(
-                AddressBuses.fake()
+                AddressBuses.fake(),
+                SYMBOL_LOOKUP_UOE
             ),
             "INY"
         );

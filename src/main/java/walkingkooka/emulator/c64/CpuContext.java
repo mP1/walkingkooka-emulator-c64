@@ -119,4 +119,9 @@ public interface CpuContext extends Context {
     Runnable addBreakpoint(final short address);
 
     Runnable addWatcher(final CpuWatcher watcher);
+
+    /**
+     * Tries to resolve the address to a symbol or returns the address in HEX form.
+     */
+    String addressSymbol(final short address);
 }

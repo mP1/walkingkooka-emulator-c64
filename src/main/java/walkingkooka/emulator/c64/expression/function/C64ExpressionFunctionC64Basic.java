@@ -39,6 +39,7 @@ import walkingkooka.tree.expression.function.ExpressionFunction;
 import walkingkooka.tree.expression.function.ExpressionFunctionParameter;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * A function that may be executed within a terminal session and supports entering basic expressions that execute and
@@ -132,7 +133,8 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
                         ram
                     ) // write
                 )
-            )
+            ),
+            (address) -> Optional.empty()
         );
 
         cpuContext.addWatcher(

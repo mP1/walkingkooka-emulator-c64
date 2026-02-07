@@ -25,7 +25,8 @@ public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestC
     @Test
     public void testStepWithBreak() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final CpuFlags cpuFlags = CpuFlags.create();
@@ -62,7 +63,8 @@ public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestC
     @Test
     public void testStepWithoutBreak() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final CpuFlags cpuFlags = CpuFlags.create();
@@ -98,7 +100,8 @@ public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestC
     @Test
     public void testStepWithoutBreak2() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final CpuFlags cpuFlags = CpuFlags.create();
@@ -143,7 +146,8 @@ public final class CpuInstructionSharedRtiTest extends CpuInstructionSharedTestC
     @Test
     public void testNmiHandleInterruptRti() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x5005;

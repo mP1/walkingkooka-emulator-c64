@@ -38,7 +38,8 @@ public abstract class CpuInstructionSharedClearOrSetTestCase<I extends CpuInstru
     public final void testExecuteFlagsSet() {
         final I instruction = this.createCpuInstruction();
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
+            AddressBuses.fake(),
+            SYMBOL_LOOKUP_UOE
         );
 
         final short pc = 0x2000;

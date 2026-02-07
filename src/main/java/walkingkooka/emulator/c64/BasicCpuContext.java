@@ -21,13 +21,17 @@ import walkingkooka.collect.set.SortedSets;
 import walkingkooka.text.CharSequences;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
 
 final class BasicCpuContext implements CpuContext {
 
-    static BasicCpuContext with(final AddressBus addressBus) {
+    static BasicCpuContext with(final AddressBus addressBus,
+                                final Function<Short, Optional<String>> addressSymbols) {
         return new BasicCpuContext(
-            Objects.requireNonNull(addressBus, "addressBus")
+            Objects.requireNonNull(addressBus, "addressBus"),
+            Objects.requireNonNull(addressSymbols, "addressSymbols")
         );
     }
 
@@ -35,8 +39,10 @@ final class BasicCpuContext implements CpuContext {
 
     private final static int PAGE_SIZE = 256;
 
-    private BasicCpuContext(final AddressBus addressBus) {
+    private BasicCpuContext(final AddressBus addressBus,
+                            final Function<Short, Optional<String>> addressSymbols) {
         this.addressBus = addressBus;
+        this.addressSymbols = addressSymbols;
     }
 
     @Override
@@ -409,6 +415,16 @@ final class BasicCpuContext implements CpuContext {
     }
 
     private final CpuWatchers watchers = CpuWatchers.empty();
+
+    @Override
+    public String addressSymbol(final short address) {
+        return this.addressSymbols.apply(address)
+            .orElseGet(
+                () -> hexAddress(address)
+            );
+    }
+
+    private final Function<Short, Optional<String>> addressSymbols;
 
     // helpers..........................................................................................................
 

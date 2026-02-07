@@ -23,7 +23,10 @@ public final class CpuInstructionSharedNopTest extends CpuInstructionSharedTestC
 
     @Test
     public void testStep() {
-        final CpuContext context = CpuContexts.basic(AddressBuses.fake());
+        final CpuContext context = CpuContexts.basic(
+            AddressBuses.fake(),
+            SYMBOL_LOOKUP_UOE
+        );
         context.setPc((short) 0x1000);
 
         this.executeBranchOrJumpAndCheck(

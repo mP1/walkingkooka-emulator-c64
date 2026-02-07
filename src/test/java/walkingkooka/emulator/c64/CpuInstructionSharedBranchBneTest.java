@@ -40,7 +40,8 @@ public final class CpuInstructionSharedBranchBneTest extends CpuInstructionShare
                     checkEquals(0x1000, o);
                     return 0x12;
                 }
-            }
+            },
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
         context.setPc(
             (short) 0x1000
@@ -49,7 +50,7 @@ public final class CpuInstructionSharedBranchBneTest extends CpuInstructionShare
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "BNE $1013"
+            "BNE LABEL1013"
         );
     }
 

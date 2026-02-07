@@ -24,7 +24,8 @@ public final class CpuInstructionSharedBrkTest extends CpuInstructionSharedTestC
     @Test
     public void testStep() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         final byte hi = 0x12;

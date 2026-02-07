@@ -26,7 +26,8 @@ public final class CpuInstructionSharedStoreAStaAbsXTest extends CpuInstructionS
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(
                 256 * 256
-            )
+            ),
+            SYMBOL_LOOKUP_UOE
         );
 
         context.writeAddress(

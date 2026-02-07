@@ -24,7 +24,8 @@ public final class CpuInstructionSharedUnaryLsrATest extends CpuInstructionShare
     @Test
     public void testExecute() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
+            AddressBuses.fake(),
+            SYMBOL_LOOKUP_UOE
         );
 
         context.setPc((short) 0x1000);
@@ -43,7 +44,8 @@ public final class CpuInstructionSharedUnaryLsrATest extends CpuInstructionShare
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             CpuContexts.basic(
-                AddressBuses.fake()
+                AddressBuses.fake(),
+                SYMBOL_LOOKUP_UOE
             ),
             "LSR A"
         );

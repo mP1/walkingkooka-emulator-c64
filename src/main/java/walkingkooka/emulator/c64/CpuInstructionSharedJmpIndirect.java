@@ -83,13 +83,13 @@ final class CpuInstructionSharedJmpIndirect extends CpuInstructionShared {
             );
 
         return "JMP (" +
-            hexAddress(
+            context.addressSymbol(
                 address(
                     hi,
                     lo
                 )
             ) +
             ") " +
-            hexAddress(vector);
+            context.addressSymbol(vector);
     }
 }

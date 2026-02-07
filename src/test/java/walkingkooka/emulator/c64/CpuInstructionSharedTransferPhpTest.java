@@ -28,7 +28,8 @@ public final class CpuInstructionSharedTransferPhpTest extends CpuInstructionSha
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(
                 256 * 256
-            )
+            ),
+            SYMBOL_LOOKUP_UOE
         );
         context.setPc(pc);
 
@@ -62,7 +63,8 @@ public final class CpuInstructionSharedTransferPhpTest extends CpuInstructionSha
         final CpuContext context = CpuContexts.basic(
             AddressBuses.memory(
                 256 * 256
-            )
+            ),
+            SYMBOL_LOOKUP_UOE
         );
         context.setPc(pc);
 

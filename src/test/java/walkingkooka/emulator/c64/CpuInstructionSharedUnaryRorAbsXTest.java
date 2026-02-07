@@ -24,7 +24,8 @@ public final class CpuInstructionSharedUnaryRorAbsXTest extends CpuInstructionSh
     @Test
     public void testExecute() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_UOE
         );
 
         context.setPc((short) 0x1000);
@@ -60,7 +61,8 @@ public final class CpuInstructionSharedUnaryRorAbsXTest extends CpuInstructionSh
     @Test
     public void testDisassemble() {
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.memory(256 * 256)
+            AddressBuses.memory(256 * 256),
+            SYMBOL_LOOKUP_DISASSEMBLE
         );
 
         context.setPc((short) 0x1000);
@@ -81,7 +83,7 @@ public final class CpuInstructionSharedUnaryRorAbsXTest extends CpuInstructionSh
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ROR $2000,X"
+            "ROR LABEL2000,X"
         );
     }
 

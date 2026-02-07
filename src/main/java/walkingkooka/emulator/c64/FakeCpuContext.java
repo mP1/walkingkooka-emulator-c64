@@ -250,4 +250,9 @@ public class FakeCpuContext implements CpuContext {
     public Runnable addWatcher(final CpuWatcher watcher) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public String addressSymbol(final short address) {
+        throw new UnsupportedOperationException();
+    }
 }

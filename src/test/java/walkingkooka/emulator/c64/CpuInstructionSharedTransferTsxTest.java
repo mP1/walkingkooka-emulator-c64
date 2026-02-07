@@ -26,7 +26,8 @@ public final class CpuInstructionSharedTransferTsxTest extends CpuInstructionSha
         final short pc = 0x1000;
 
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
+            AddressBuses.fake(),
+            SYMBOL_LOOKUP_UOE
         );
         context.setPc(pc);
 
@@ -55,7 +56,8 @@ public final class CpuInstructionSharedTransferTsxTest extends CpuInstructionSha
         final short pc = 0x1000;
 
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
+            AddressBuses.fake(),
+            SYMBOL_LOOKUP_UOE
         );
         context.setPc(pc);
 
@@ -84,7 +86,9 @@ public final class CpuInstructionSharedTransferTsxTest extends CpuInstructionSha
         final short pc = 0x1000;
 
         final CpuContext context = CpuContexts.basic(
-            AddressBuses.fake()
+            AddressBuses.fake(),
+            SYMBOL_LOOKUP_UOE
+
         );
         context.setPc(pc);
 

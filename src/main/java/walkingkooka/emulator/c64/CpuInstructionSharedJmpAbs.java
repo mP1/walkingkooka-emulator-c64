@@ -76,7 +76,7 @@ final class CpuInstructionSharedJmpAbs extends CpuInstructionShared {
         );
 
         return "JMP " +
-            hexAddress(
+            context.addressSymbol(
                 address(
                     hi,
                     lo
