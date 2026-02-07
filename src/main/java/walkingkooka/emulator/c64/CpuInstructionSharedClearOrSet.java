@@ -25,6 +25,6 @@ abstract class CpuInstructionSharedClearOrSet extends CpuInstructionShared {
 
     @Override
     public final int length() {
-        return 2;
+        return 1;
     }
 }
