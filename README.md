@@ -14,12 +14,12 @@ A C64 java emulator with unit tests for each and every individual component.
 ## Hardware completion status
 
 - 6510 CPU: *DONE*
-- 6510 Instructions *WIP* -> [doco](https://www.masswerk.at/6502/6502_instruction_set.html)
+- 6510 Instructions *DONE* -> [doco](https://www.masswerk.at/6502/6502_instruction_set.html)
 - CIAA: TimerA, TimerB, TOD, INTS: TimerA underflow, TimerB underflow Clock=Alarm
 - CIAB: TimerA, TimerB, TOD, INTS: TimerA underflow, TimerB underflow Clock=Alarm, VIC Mapper switch on PRA. 
 - VICII: Nothing
 - SID: Nothing
-- Memory: ROM, RAM, Bank switching
+- Memory: ROM, RAM, Bank switching *DONE*
 
 ## ROMS
 
