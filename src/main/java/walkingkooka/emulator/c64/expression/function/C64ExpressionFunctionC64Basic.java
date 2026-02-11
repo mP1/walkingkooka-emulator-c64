@@ -503,6 +503,9 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
             (s, c) -> {
                 throw new UnsupportedOperationException();
             },
+            (Object exitValue) -> {
+                throw new UnsupportedOperationException();
+            },
             EnvironmentContexts.fake()
         );
         final TerminalExpressionEvaluationContext context = new FakeTerminalExpressionEvaluationContext() {
