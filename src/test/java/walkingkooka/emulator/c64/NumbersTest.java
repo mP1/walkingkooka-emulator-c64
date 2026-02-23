@@ -17,30 +17,23 @@
 
 package walkingkooka.emulator.c64;
 
-abstract class CpuInstructionSharedBinaryFunctionAdc extends CpuInstructionSharedBinaryFunction {
+import walkingkooka.reflect.ClassTesting;
+import walkingkooka.reflect.JavaVisibility;
 
-    CpuInstructionSharedBinaryFunctionAdc() {
-        super();
+public final class NumbersTest implements ClassTesting<Numbers> {
+
+    @Override
+    public void testAllMethodsVisibility() {
+        throw new UnsupportedOperationException();
     }
 
-    @Override //
-    final CpuInstructionSharedOperandRegister register() {
-        return CpuInstructionSharedOperand.A;
+    @Override
+    public Class<Numbers> type() {
+        return Numbers.class;
     }
 
-    @Override //
-    final byte handle(final byte left,
-                      final byte right,
-                      final CpuContext context) {
-        return add(
-            left,
-            right,
-            context
-        );
-    }
-
-    @Override //
-    final String mnemonic() {
-        return "ADC";
+    @Override
+    public JavaVisibility typeVisibility() {
+        return JavaVisibility.PACKAGE_PRIVATE;
     }
 }

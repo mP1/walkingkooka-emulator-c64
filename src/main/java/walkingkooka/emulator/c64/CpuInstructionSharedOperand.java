@@ -36,7 +36,7 @@ package walkingkooka.emulator.c64;
  * In some assemblers and machine language monitors, implied and accumulator addressing are taken to be the same, so that e.g. an ASL performed on the accumulator is written as merely "ASL", whereas others distinguish between the two, requiring an ASL on the accumulator to be stated as "ASL A".
  * </pre>
  */
-abstract class CpuInstructionSharedOperand {
+abstract class CpuInstructionSharedOperand implements Numbers {
 
     /**
      * {@see CpuInstructionSharedOperandRegisterA}

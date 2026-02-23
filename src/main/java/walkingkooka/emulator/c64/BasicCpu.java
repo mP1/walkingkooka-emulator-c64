@@ -25,7 +25,7 @@ import java.util.Objects;
 /**
  * A simple cpu that simply dispatches opcodes to {@link CpuInstruction}.
  */
-final class BasicCpu implements Cpu {
+final class BasicCpu implements Cpu, Numbers {
 
     static BasicCpu with(final Collection<CpuInstruction> instructions) {
         return new BasicCpu(
@@ -123,16 +123,6 @@ final class BasicCpu implements Cpu {
         return b.toString();
     }
 
-    private static CharSequence hexByte(final byte value) {
-        return CharSequences.padLeft(
-            Integer.toHexString(
-                mask(value)
-            ).toUpperCase(),
-            2,
-            '0' // leading zero if necessary
-        );
-    }
-
     @Override
     public void step(final CpuContext context) {
         context.handleBreakpoints();
@@ -149,7 +139,17 @@ final class BasicCpu implements Cpu {
 
     private final CpuInstruction[] instructions;
 
-    private static int mask(final byte value) {
-        return 0xff & value;
+    // 00
+    // 01
+    // FF
+    @Override
+    public CharSequence hexByte(final byte value) {
+        return CharSequences.padLeft(
+            Integer.toHexString(
+                mask(value)
+            ).toUpperCase(),
+            2,
+            '0'
+        );
     }
 }

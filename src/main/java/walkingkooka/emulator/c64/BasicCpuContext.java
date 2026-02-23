@@ -18,14 +18,14 @@
 package walkingkooka.emulator.c64;
 
 import walkingkooka.collect.set.SortedSets;
-import walkingkooka.text.CharSequences;
 
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 
-final class BasicCpuContext implements CpuContext {
+final class BasicCpuContext implements CpuContext,
+    Numbers {
 
     static BasicCpuContext with(final AddressBus addressBus,
                                 final Function<Short, Optional<String>> addressSymbols) {
@@ -428,14 +428,6 @@ final class BasicCpuContext implements CpuContext {
 
     // helpers..........................................................................................................
 
-    private byte hi(final short value) {
-        return (byte) (value >> 8);
-    }
-
-    private byte lo(final short value) {
-        return (byte) (0xff & value);
-    }
-
     private static int fromByte(final byte value) {
         return BYTE_MASK & value;
     }
@@ -449,30 +441,10 @@ final class BasicCpuContext implements CpuContext {
     @Override
     public String toString() {
         return "PC: " + hexAddress(this.pc) +
-            ", A: " + hex(this.a) +
-            ", X: " + hex(this.x) +
-            ", Y: " + hex(this.y) +
-            ", SP: " + hex(this.stackPointer) +
+            ", A: " + hexByte(this.a) +
+            ", X: " + hexByte(this.x) +
+            ", Y: " + hexByte(this.y) +
+            ", SP: " + hexByte(this.stackPointer) +
             ", SR: " + this.flags;
-    }
-
-    private static String hex(final byte value) {
-        return "$" +
-            CharSequences.padLeft(
-                Integer.toHexString(BYTE_MASK & value)
-                    .toUpperCase(),
-                2,
-                '0'
-            );
-    }
-
-    private static String hexAddress(final short value) {
-        return "$" +
-            CharSequences.padLeft(
-                Integer.toHexString(0xFFFF & value)
-                    .toUpperCase(),
-                4,
-                '0'
-            );
     }
 }

@@ -17,58 +17,22 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.text.CharSequences;
-
 abstract class CpuInstructionShared implements CpuInstruction,
-    CpuInstructionOpcodes {
+    CpuInstructionOpcodes,
+    Numbers {
 
     CpuInstructionShared() {
         super();
     }
 
-    static short add(final short address,
-                     final int offset) {
+    final short add(final short address,
+                    final int offset) {
         return (short) (address + mask(offset));
     }
 
-    static short address(final byte hi,
-                         final byte lo) {
+    final short address(final byte hi,
+                        final byte lo) {
         return (short)
             (mask(hi) * 256 + mask(lo));
-    }
-
-    // $00
-    // $01
-    // $FF
-    static String hexByte(final byte value) {
-        return "$" + CharSequences.padLeft(
-            Integer.toHexString(
-                mask(value)
-            ).toUpperCase(),
-            2,
-            '0'
-        );
-    }
-
-    static byte hi(final short value) {
-        return (byte) (value >> 8);
-    }
-
-    static byte lo(final short value) {
-        return (byte) (0xff & value);
-    }
-
-    static void setMinusAndZero(final byte value,
-                                final CpuContext context) {
-        context.setZero(0 == value);
-        context.setMinus(value < 0);
-    }
-
-    static int mask(final byte value) {
-        return value & 0xFF;
-    }
-
-    static int mask(final int value) {
-        return value & 0xFF;
     }
 }

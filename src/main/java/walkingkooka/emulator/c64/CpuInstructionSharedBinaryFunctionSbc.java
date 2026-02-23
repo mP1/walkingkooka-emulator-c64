@@ -40,7 +40,7 @@ abstract class CpuInstructionSharedBinaryFunctionSbc extends CpuInstructionShare
                 context
             );
         } else {
-            value = CpuInstructionSharedBinaryFunctionAdc.add(
+            value = this.add(
                 left,
                 (byte) ~right,
                 context
