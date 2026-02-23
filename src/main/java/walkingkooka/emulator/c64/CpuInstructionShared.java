@@ -17,6 +17,8 @@
 
 package walkingkooka.emulator.c64;
 
+import walkingkooka.text.CharSequences;
+
 abstract class CpuInstructionShared implements CpuInstruction,
     CpuInstructionOpcodes {
 
@@ -35,10 +37,17 @@ abstract class CpuInstructionShared implements CpuInstruction,
             (mask(hi) * 256 + mask(lo));
     }
 
+    // $00
+    // $01
+    // $FF
     static String hexByte(final byte value) {
-        return "$" + Integer.toHexString(
-            mask(value)
-        ).toUpperCase();
+        return "$" + CharSequences.padLeft(
+            Integer.toHexString(
+                mask(value)
+            ).toUpperCase(),
+            2,
+            '0'
+        );
     }
 
     static byte hi(final short value) {
