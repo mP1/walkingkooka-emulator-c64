@@ -17,7 +17,7 @@
 
 package walkingkooka.emulator.c64;
 
-abstract class CpuInstructionSharedUnaryFunction {
+abstract class CpuInstructionSharedUnaryFunction implements Numbers {
 
     /**
      * {@see CpuInstructionSharedUnaryFunctionAsl}

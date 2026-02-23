@@ -17,8 +17,6 @@
 
 package walkingkooka.emulator.c64;
 
-import static walkingkooka.emulator.c64.CpuInstructionShared.setMinusAndZero;
-
 /**
  * https://www.masswerk.at/6502/6502_instruction_set.html#INC
  * <p>

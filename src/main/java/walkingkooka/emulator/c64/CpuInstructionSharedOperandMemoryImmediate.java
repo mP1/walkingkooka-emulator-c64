@@ -48,7 +48,7 @@ final class CpuInstructionSharedOperandMemoryImmediate extends CpuInstructionSha
     String disassemble(final CpuContext context) {
         // #$3F
         return "#" +
-            CpuInstructionShared.hexByte(
+            hexByte(
                 this.readPcByte(context)
             );
     }
