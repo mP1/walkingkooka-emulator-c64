@@ -137,7 +137,7 @@ public final class CpuInstructionSharedUnaryDecZpXTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "DEC LABEL3,X"
+            "DEC LABEL3,X $03"
         );
     }
 

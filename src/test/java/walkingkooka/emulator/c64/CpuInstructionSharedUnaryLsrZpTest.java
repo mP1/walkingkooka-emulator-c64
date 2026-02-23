@@ -77,10 +77,15 @@ public final class CpuInstructionSharedUnaryLsrZpTest extends CpuInstructionShar
             offset
         );
 
+        context.writeByte(
+            (short) (0xff & offset),
+            (byte) 0xff
+        );
+
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "LSR LABEL81"
+            "LSR LABEL81 $FF"
         );
     }
 

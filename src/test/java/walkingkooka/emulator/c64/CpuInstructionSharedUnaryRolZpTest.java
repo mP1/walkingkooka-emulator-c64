@@ -77,10 +77,15 @@ public final class CpuInstructionSharedUnaryRolZpTest extends CpuInstructionShar
             offset
         );
 
+        context.writeByte(
+            (short) (0xff & offset),
+            (byte) 0xff
+        );
+
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ROL LABEL81"
+            "ROL LABEL81 $FF"
         );
     }
 

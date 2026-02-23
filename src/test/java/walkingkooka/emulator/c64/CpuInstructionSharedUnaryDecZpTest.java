@@ -77,10 +77,15 @@ public final class CpuInstructionSharedUnaryDecZpTest extends CpuInstructionShar
             offset
         );
 
+        context.writeByte(
+            (short) (0xff & offset),
+            (byte) 0xff
+        );
+
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "DEC LABEL81"
+            "DEC LABEL81 $FF"
         );
     }
 
