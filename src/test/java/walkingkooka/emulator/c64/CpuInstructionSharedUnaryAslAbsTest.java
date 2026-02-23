@@ -85,7 +85,7 @@ public final class CpuInstructionSharedUnaryAslAbsTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ASL LABEL4567"
+            "ASL LABEL4567 $01"
         );
     }
 

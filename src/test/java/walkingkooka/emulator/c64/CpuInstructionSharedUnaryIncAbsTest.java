@@ -85,7 +85,7 @@ public final class CpuInstructionSharedUnaryIncAbsTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "INC LABEL4567"
+            "INC LABEL4567 $01"
         );
     }
 

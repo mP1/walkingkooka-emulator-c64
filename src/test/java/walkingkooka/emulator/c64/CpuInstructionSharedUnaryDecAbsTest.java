@@ -85,7 +85,7 @@ public final class CpuInstructionSharedUnaryDecAbsTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "DEC LABEL4567"
+            "DEC LABEL4567 $01"
         );
     }
 

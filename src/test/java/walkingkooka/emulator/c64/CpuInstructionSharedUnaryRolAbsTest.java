@@ -85,7 +85,7 @@ public final class CpuInstructionSharedUnaryRolAbsTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ROL LABEL4567"
+            "ROL LABEL4567 $01"
         );
     }
 
