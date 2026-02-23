@@ -66,6 +66,9 @@ public final class CpuInstructionSharedUnaryAslAbsXTest extends CpuInstructionSh
         );
 
         context.setPc((short) 0x1000);
+        context.setX(
+            (byte) 0x01
+        );
         context.setFlags(
             (byte) (0xff)
         );
@@ -77,13 +80,13 @@ public final class CpuInstructionSharedUnaryAslAbsXTest extends CpuInstructionSh
 
         context.writeByte(
             (short) 0x2001,
-            (byte) 0xC1
+            (byte) 0x01
         );
 
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ASL LABEL2000,X"
+            "ASL LABEL2000,X $01"
         );
     }
 

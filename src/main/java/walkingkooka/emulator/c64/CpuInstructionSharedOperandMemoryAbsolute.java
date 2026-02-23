@@ -48,15 +48,23 @@ abstract class CpuInstructionSharedOperandMemoryAbsolute extends CpuInstructionS
 
     @Override //
     final String disassemble(final CpuContext context) {
+        final short address = this.readPcAddress(context);
+
         // $1234
         // $ABCD,X
         return context.addressSymbol(
-            (short)
-                (
-                    this.readPcAddress(context) + this.operandAddressIndex(context)
-                )
+            address
         ) +
-            this.disassembleIndex();
+            this.disassembleIndex() +
+            " " +
+            hexByte(
+                context.readByte(
+                    address(
+                        address,
+                        this.operandAddressIndex(context)
+                    )
+                )
+            );
     }
 
     final short readPcAddress(final CpuContext context) {

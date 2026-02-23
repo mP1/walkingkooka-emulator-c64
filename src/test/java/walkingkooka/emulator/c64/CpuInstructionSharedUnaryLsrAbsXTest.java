@@ -65,6 +65,9 @@ public final class CpuInstructionSharedUnaryLsrAbsXTest extends CpuInstructionSh
             SYMBOL_LOOKUP_DISASSEMBLE
         );
 
+        context.setX(
+            (byte) 0x01
+        );
         context.setPc((short) 0x1000);
         context.setFlags(
             (byte) (0xff)
@@ -77,13 +80,13 @@ public final class CpuInstructionSharedUnaryLsrAbsXTest extends CpuInstructionSh
 
         context.writeByte(
             (short) 0x2001,
-            (byte) 0xC1
+            (byte) 0x01
         );
 
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "LSR LABEL2000,X"
+            "LSR LABEL2000,X $01"
         );
     }
 

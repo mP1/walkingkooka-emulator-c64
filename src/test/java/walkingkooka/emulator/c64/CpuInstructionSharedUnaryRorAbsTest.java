@@ -85,7 +85,7 @@ public final class CpuInstructionSharedUnaryRorAbsTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ROR LABEL4567"
+            "ROR LABEL4567 $01"
         );
     }
 

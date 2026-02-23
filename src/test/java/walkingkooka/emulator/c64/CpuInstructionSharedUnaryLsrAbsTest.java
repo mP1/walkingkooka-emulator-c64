@@ -85,7 +85,7 @@ public final class CpuInstructionSharedUnaryLsrAbsTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "LSR LABEL4567"
+            "LSR LABEL4567 $01"
         );
     }
 
