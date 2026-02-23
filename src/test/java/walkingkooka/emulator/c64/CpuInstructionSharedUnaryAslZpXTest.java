@@ -137,7 +137,7 @@ public final class CpuInstructionSharedUnaryAslZpXTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ASL LABEL3,X $03"
+            "ASL LABEL81,X $03"
         );
     }
 

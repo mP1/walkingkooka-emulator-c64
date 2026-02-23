@@ -137,7 +137,7 @@ public final class CpuInstructionSharedUnaryRolZpXTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ROL LABEL3,X $03"
+            "ROL LABEL81,X $03"
         );
     }
 

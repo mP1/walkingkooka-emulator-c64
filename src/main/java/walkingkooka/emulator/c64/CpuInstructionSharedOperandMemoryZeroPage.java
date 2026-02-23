@@ -46,20 +46,23 @@ abstract class CpuInstructionSharedOperandMemoryZeroPage extends CpuInstructionS
 
     @Override //
     final String disassemble(final CpuContext context) {
-        final short zeroPageAndIndex = (short) (
-            (0xff &
-                this.readPcByte(context) + this.operandAddressIndex(context)
-            )
-        );
+        final byte zeroPageOffset = this.readPcByte(context);
 
         // zp $3F
         // zp $3F,x
         return context.addressSymbol(
-            zeroPageAndIndex
+            (short)
+                mask(zeroPageOffset)
         ) + this.disassembleIndex() +
             " " +
             hexByte(
-                context.readByte(zeroPageAndIndex)
+                context.readByte(
+                    (short) mask(
+                        (
+                            zeroPageOffset + this.operandAddressIndex(context)
+                        )
+                    )
+                )
             );
     }
 
