@@ -137,7 +137,7 @@ public final class CpuInstructionSharedUnaryLsrZpXTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "LSR LABEL3,X"
+            "LSR LABEL3,X $03"
         );
     }
 

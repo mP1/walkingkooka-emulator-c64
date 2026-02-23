@@ -115,10 +115,15 @@ public final class CpuInstructionSharedUnaryAslZpTest extends CpuInstructionShar
             offset
         );
 
+        context.writeByte(
+            (short) (0xff & offset),
+            (byte) 0xff
+        );
+
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ASL LABEL81"
+            "ASL LABEL81 $FF"
         );
     }
 
@@ -141,10 +146,15 @@ public final class CpuInstructionSharedUnaryAslZpTest extends CpuInstructionShar
             offset
         );
 
+        context.writeByte(
+            (short) (0xff & offset),
+            (byte) 0xff
+        );
+
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ASL LABEL23"
+            "ASL LABEL23 $FF"
         );
     }
 

@@ -137,7 +137,7 @@ public final class CpuInstructionSharedUnaryRorZpXTest extends CpuInstructionSha
         this.disassembleAndCheck(
             this.createCpuInstruction(),
             context,
-            "ROR LABEL3,X"
+            "ROR LABEL3,X $03"
         );
     }
 
