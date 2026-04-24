@@ -29,5 +29,40 @@ A C64 java emulator with unit tests for each and every individual component.
 
 Functions that will be useful within a terminal session
 
-- [c64basic](https://github.com/mP1/walkingkooka-emulator-c64/blob/master/src/main/java/walkingkooka/emulator/c64/expression/function/C64ExpressionFunctionC64Basic.java)
-  *WIP*
+[c64basic](https://github.com/mP1/walkingkooka-emulator-c64/blob/master/src/main/java/walkingkooka/emulator/c64/expression/function/C64ExpressionFunctionC64Basic.java)
+Mostly functional, support for entering and executing simple basic statements works as expected.
+
+```
+PRINT 12+34
+46
+```
+
+Several Cpu breakpoints are set to intercept the following KERNEL routines.
+
+- CHROUT Now prints the given PETSCII character after translating to unicode to the terminal output.
+- SCNKEY Reads the petscii from the terminal input if one is present.
+- RDTIM [TODO](https://github.com/mP1/walkingkooka-emulator-c64/issues/580)
+- SETTIM [TODO](https://github.com/mP1/walkingkooka-emulator-c64/issues/581)
+- STOP Terminals need a way to receive interrupts from the user.
+
+### $TI
+
+In basic reading and write the magic variable $TI reads/writes using two KERNEL routines RDTIM and SETTIM, which
+actually
+reference a few zeropage bytes. These bytes are continuous updated whenever the CIA Timer clock triggers an IRQ many
+times a second. Because the timer chips are not implemented this interrupt never happens, and the clock zero page values
+are not updated.
+
+Currently the two KERNEL routines do nothing. These need to be interfaced with the `EnvironmentContext`.
+
+#### Poke
+
+Pokes do write the given byte value to memory. It is thus possible to change/corrupt BASIC programs and variables, but
+because no hardware devices are emulated or mapped it memory, no hardware magic happens.
+
+- It is not possible to change the colour of any thing printed, because BASIC CHROUT routine now prints the PETSCII
+  character after converting it to unicode to the terminal output.
+- VIC, SID, COLOR, all memory that was hardware devices is now ram - it just reads and writes bytes and has no side
+  effects.
+- BASIC and KERNEL ROMS are still mapped otherwise BASIC itself would not operate.
+
