@@ -23,12 +23,12 @@ public final class CpuInstructionSharedBranchBvsTest extends CpuInstructionShare
 
     @Override
     void setFlagFalse(final CpuContext context) {
-        context.setCarry(false);
+        context.setOverflow(false);
     }
 
     @Override
     void setFlagTrue(final CpuContext context) {
-        context.setCarry(true);
+        context.setOverflow(true);
     }
 
     @Test

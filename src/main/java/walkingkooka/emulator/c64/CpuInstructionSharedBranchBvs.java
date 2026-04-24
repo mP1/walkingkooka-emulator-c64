@@ -39,7 +39,7 @@ final class CpuInstructionSharedBranchBvs extends CpuInstructionSharedBranch {
 
     @Override
     boolean testFlag(final CpuContext context) {
-        return context.isCarry();
+        return context.isOverflow();
     }
 
     @Override
