@@ -114,6 +114,12 @@ final class C64ExpressionFunctionC64BasicCpuWatcher<C extends TerminalContext> i
         printer.println(context.toString());
     }
 
+    boolean shouldRun() {
+        return this.run < 3;
+    }
+
+    private int run;
+
     void addBreakpoints(final CpuContext cpuContext) {
         cpuContext.addBreakpoint(CHROUT);
         cpuContext.addBreakpoint(RDTIM);
@@ -195,7 +201,8 @@ final class C64ExpressionFunctionC64BasicCpuWatcher<C extends TerminalContext> i
                 );
             final C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor petsciiTranslator = C64ExpressionFunctionC64BasicScnKeyPetsciiReverseVisitor.translate(input);
 
-            for (final byte petscii : petsciiTranslator.petscii()) {
+            final byte[] allPetscii = petsciiTranslator.petscii();
+            for (final byte petscii : allPetscii) {
                 cpuContext.writeByte(
                     (short) (KEYD + index),
                     petscii
@@ -208,7 +215,12 @@ final class C64ExpressionFunctionC64BasicCpuWatcher<C extends TerminalContext> i
                 (byte) index
             );
 
-            this.stop = petsciiTranslator.stop;
+            // three RUN stops will kill cpu execute loop
+            if (allPetscii.length > 0) {
+                this.run = petsciiTranslator.stop ?
+                    this.run + 1 :
+                    0;
+            }
         }
 
         // $7F: Stop key is pressed.
