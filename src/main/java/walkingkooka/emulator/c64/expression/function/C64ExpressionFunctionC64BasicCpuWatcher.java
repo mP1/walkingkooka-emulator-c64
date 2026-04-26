@@ -91,7 +91,7 @@ final class C64ExpressionFunctionC64BasicCpuWatcher<C extends TerminalContext> i
 
     @Override
     public void onInvalidOpcode(final CpuContext context) {
-        final Printer printer = this.terminalContext.output();
+        final Printer printer = this.terminalContext.error();
         printer.println("\n*** INVALID OPCODE ***");
         printer.println(context.toString());
 
@@ -100,7 +100,7 @@ final class C64ExpressionFunctionC64BasicCpuWatcher<C extends TerminalContext> i
 
     @Override
     public void onNmi(final CpuContext context) {
-        final Printer printer = this.terminalContext.output();
+        final Printer printer = this.terminalContext.error();
 
         printer.println("\n*** NMI ***");
         printer.println(context.toString());
@@ -108,7 +108,7 @@ final class C64ExpressionFunctionC64BasicCpuWatcher<C extends TerminalContext> i
 
     @Override
     public void onReset(final CpuContext context) {
-        final Printer printer = this.terminalContext.output();
+        final Printer printer = this.terminalContext.error();
 
         printer.println("\n*** RESET ***");
         printer.println(context.toString());
