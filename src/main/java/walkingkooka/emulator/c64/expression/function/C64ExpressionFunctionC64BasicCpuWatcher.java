@@ -21,6 +21,7 @@ import walkingkooka.emulator.c64.CpuContext;
 import walkingkooka.emulator.c64.CpuInstructions;
 import walkingkooka.emulator.c64.CpuWatcher;
 import walkingkooka.terminal.TerminalContext;
+import walkingkooka.text.printer.Printer;
 
 import java.util.Objects;
 
@@ -90,22 +91,27 @@ final class C64ExpressionFunctionC64BasicCpuWatcher<C extends TerminalContext> i
 
     @Override
     public void onInvalidOpcode(final CpuContext context) {
-        System.out.println("\n*** INVALID OPCODE ***");
-        System.out.println(context);
+        final Printer printer = this.terminalContext.output();
+        printer.println("\n*** INVALID OPCODE ***");
+        printer.println(context.toString());
 
         throw new RuntimeException("Invalid opcode");
     }
 
     @Override
     public void onNmi(final CpuContext context) {
-        System.out.println("\n*** NMI ***");
-        System.out.println(context);
+        final Printer printer = this.terminalContext.output();
+
+        printer.println("\n*** NMI ***");
+        printer.println(context.toString());
     }
 
     @Override
     public void onReset(final CpuContext context) {
-        System.out.println("\n*** RESET ***");
-        System.out.println(context);
+        final Printer printer = this.terminalContext.output();
+
+        printer.println("\n*** RESET ***");
+        printer.println(context.toString());
     }
 
     void addBreakpoints(final CpuContext cpuContext) {
@@ -321,8 +327,10 @@ final class C64ExpressionFunctionC64BasicCpuWatcher<C extends TerminalContext> i
      * </pre>
      */
     private void stop(final CpuContext cpuContext) {
-        System.out.println("\n*** BREAKPOINT STOP ***");
-        System.out.println(cpuContext);
+        final Printer printer = this.terminalContext.output();
+
+        printer.println("\n*** BREAKPOINT STOP ***");
+        printer.println(cpuContext.toString());
 
         cpuContext.setZero(this.stop);
         this.stop = false;
