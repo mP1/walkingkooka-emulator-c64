@@ -21,7 +21,7 @@ import walkingkooka.Cast;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
-public final class C64ExpressionFunctionC64BasicBreakpointCpuWatcherTest implements ClassTesting<C64ExpressionFunctionC64BasicCpuWatcher<?>> {
+public final class C64ExpressionFunctionC64BasicCpuWatcherTest implements ClassTesting<C64ExpressionFunctionC64BasicCpuWatcher<?>> {
 
     @Override
     public Class<C64ExpressionFunctionC64BasicCpuWatcher<?>> type() {
