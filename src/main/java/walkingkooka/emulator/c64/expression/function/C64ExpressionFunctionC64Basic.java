@@ -136,7 +136,7 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
         int fireInterruptCountdown = INSTRUCTIONS_PER_JIFFY;
         long timeBefore = System.currentTimeMillis();
 
-        while (true) {
+        while (breapoints.shouldRun()) {
             cpuContext.handleInterrupts();
 
             if (DISASSEMBLE) {
