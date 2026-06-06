@@ -76,7 +76,7 @@ public class CpuWatchers implements CpuWatcher {
         this.watchers.accept(event);
     }
 
-    private final Watchers<CpuWatcherEvent> watchers = Watchers.create();
+    private final Watchers<CpuWatcherEvent> watchers = Watchers.empty();
 
     // Object...........................................................................................................
 
