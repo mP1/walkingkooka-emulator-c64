@@ -17,7 +17,9 @@
 
 package walkingkooka.emulator.c64;
 
-public interface CpuWatcher {
+import walkingkooka.watch.Watcher;
+
+public interface CpuWatcher extends Watcher {
 
     /**
      * This is fired by the CPU when a breakpoint is encountered.
