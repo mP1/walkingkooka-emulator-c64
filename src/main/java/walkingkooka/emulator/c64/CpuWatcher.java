@@ -19,6 +19,9 @@ package walkingkooka.emulator.c64;
 
 import walkingkooka.watch.Watcher;
 
+/**
+ * A {@link Watcher} that supports functionality typical of a CPU &amp; a debugger.
+ */
 public interface CpuWatcher extends Watcher {
 
     /**
