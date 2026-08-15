@@ -26,8 +26,8 @@ import walkingkooka.emulator.c64.CpuContexts;
 import walkingkooka.emulator.c64.CpuInstructions;
 import walkingkooka.emulator.c64.Cpus;
 import walkingkooka.emulator.c64.PageTableComAddressSymbolsFunction;
-import walkingkooka.environment.EnvironmentContexts;
 import walkingkooka.io.TextReader;
+import walkingkooka.storage.StorageEnvironmentContexts;
 import walkingkooka.terminal.TerminalContext;
 import walkingkooka.terminal.TerminalContexts;
 import walkingkooka.terminal.TerminalId;
@@ -197,7 +197,7 @@ final class C64ExpressionFunctionC64Basic<C extends TerminalExpressionEvaluation
             (Object exitValue) -> {
                 throw new UnsupportedOperationException();
             },
-            EnvironmentContexts.fake()
+            StorageEnvironmentContexts.fake()
         );
         final TerminalExpressionEvaluationContext context = new FakeTerminalExpressionEvaluationContext() {
             @Override
