@@ -20,11 +20,11 @@ package walkingkooka.emulator.c64;
 import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
-import walkingkooka.util.FunctionTesting;
+import walkingkooka.util.FunctionTesting2;
 
 import java.util.Optional;
 
-public final class PageTableComAddressSymbolsFunctionTest implements FunctionTesting<PageTableComAddressSymbolsFunction, Short, Optional<String>>,
+public final class PageTableComAddressSymbolsFunctionTest implements FunctionTesting2<PageTableComAddressSymbolsFunction, Short, Optional<String>>,
     ClassTesting2<PageTableComAddressSymbolsFunction> {
 
     @Test
