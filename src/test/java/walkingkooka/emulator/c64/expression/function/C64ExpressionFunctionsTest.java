@@ -17,7 +17,6 @@
 
 package walkingkooka.emulator.c64.expression.function;
 
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
@@ -32,10 +31,5 @@ public final class C64ExpressionFunctionsTest implements PublicStaticHelperTesti
     @Override
     public Class<C64ExpressionFunctions> type() {
         return C64ExpressionFunctions.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }

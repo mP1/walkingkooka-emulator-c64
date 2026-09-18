@@ -154,9 +154,4 @@ public final class CpuInstructionsTest implements PublicStaticHelperTesting<CpuI
     public Class<CpuInstructions> type() {
         return CpuInstructions.class;
     }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
-    }
 }

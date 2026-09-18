@@ -17,7 +17,6 @@
 package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
@@ -100,8 +99,4 @@ public final class AddressBusesTest implements AddressBusTesting,
         return false;
     }
 
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
-    }
 }

@@ -17,7 +17,6 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
@@ -32,10 +31,5 @@ public final class CpusTest implements PublicStaticHelperTesting<Cpus> {
     @Override
     public Class<Cpus> type() {
         return Cpus.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }

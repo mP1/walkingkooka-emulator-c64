@@ -17,7 +17,6 @@
 
 package walkingkooka.emulator.c64;
 
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
@@ -31,10 +30,5 @@ public final class CpuContextsTest implements PublicStaticHelperTesting<CpuConte
     @Override
     public Class<CpuContexts> type() {
         return CpuContexts.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
