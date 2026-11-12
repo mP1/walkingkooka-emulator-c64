@@ -18,11 +18,10 @@
 package walkingkooka.emulator.c64;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.ToStringTesting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public abstract class CiaTestCase<C extends Cia> extends AddressBusTestCase<C> implements ToStringTesting<C> {
+public abstract class CiaTestCase<C extends Cia> extends AddressBusTestCase<C> {
 
     CiaTestCase() {
         super();

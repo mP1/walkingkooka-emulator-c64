@@ -24,7 +24,8 @@ import walkingkooka.reflect.JavaVisibility;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public final class TimeOfDayClockTest implements ClassTesting2<TimeOfDayClock>, ToStringTesting<TimeOfDayClock> {
+public final class TimeOfDayClockTest implements ClassTesting2<TimeOfDayClock>,
+    ToStringTesting {
 
     // definition copied from LocalTime
     private final static int SECOND = 1000_000_000;

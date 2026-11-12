@@ -24,7 +24,8 @@ import walkingkooka.reflect.JavaVisibility;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public final class TimerTest implements ClassTesting2<Timer>, ToStringTesting<Timer> {
+public final class TimerTest implements ClassTesting2<Timer>,
+    ToStringTesting {
 
     @Test
     public void testCreate() {

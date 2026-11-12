@@ -20,11 +20,13 @@ package walkingkooka.emulator.c64;
 import org.junit.jupiter.api.Test;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
+import walkingkooka.reflect.PublicClassTesting;
 import walkingkooka.test.ParseStringTesting;
 
 public final class CpuFlagsTest implements ParseStringTesting<CpuFlags>,
     HashCodeEqualsDefinedTesting2<CpuFlags>,
-    ToStringTesting<CpuFlags> {
+    PublicClassTesting<CpuFlags>,
+    ToStringTesting {
 
     // parseString......................................................................................................
 
