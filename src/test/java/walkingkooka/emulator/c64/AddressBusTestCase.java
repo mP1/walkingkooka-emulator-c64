@@ -23,7 +23,7 @@ import walkingkooka.reflect.JavaVisibility;
 
 public abstract class AddressBusTestCase<A extends AddressBus> implements AddressBusTesting2<A>,
     ClassTesting2<A>,
-    ToStringTesting<A> {
+    ToStringTesting {
 
     final static byte ZERO = 0;
     final static byte ONE = 1;
